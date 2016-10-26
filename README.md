@@ -1,7 +1,7 @@
 # netjumpio-tabs-web
 Client-side for Netjump.io Tabs - Keeps track of a collection of websites
 
-Dependencies
+Key Dependencies
 - create-react-app
   - react
   - webpack
@@ -9,8 +9,7 @@ Dependencies
   - Autoprefixer
   - ESLint
   - Jest
-  - * and others?
 - react-router
 - redux
 - less
-
+- semantic-ui-react
