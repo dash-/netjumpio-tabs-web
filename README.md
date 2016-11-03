@@ -10,6 +10,11 @@ Key Dependencies
   - ESLint
   - Jest
 - react-router
-- redux
+- redux (or Cycle or mobX?)
 - less
 - semantic-ui-react
+- immutable, redux-immutable
+- rxjs@5.0.0-rc1, redux-observable
+
+To add, maybe?
+- Relay, react-relay

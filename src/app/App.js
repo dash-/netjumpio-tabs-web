@@ -1,18 +1,9 @@
-///
-// Dependencies
-///
-
 // Core dependencies
 import React, { Component } from 'react';
 import {Router, hashHistory} from 'react-router';
 
 // Aux dependencies
 import routes from '../routes';
-
-
-///
-// Component
-///
 
 class App extends Component {
   render() {
