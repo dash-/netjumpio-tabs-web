@@ -2,11 +2,12 @@ import React from 'react';
 import {Route} from 'react-router';
 
 import Landing from './landing/Landing';
-import AppForm from './apps/AppForm';
+import AppList from './apps/AppList';
+// import AppForm from './apps/AppForm';
 
 const routes = (
 	<Route path="/" component={Landing}>
-		<Route path="apps" component={AppForm} />
+		<Route path="apps" component={AppList} />
 	</Route>
 );
 
