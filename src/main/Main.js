@@ -1,14 +1,14 @@
 // Core dependencies
 import React, { Component } from 'react';
-import {Router, hashHistory} from 'react-router';
-
-// Aux dependencies
-import routes from '../routes';
+import Header from './Header';
 
 class Main extends Component {
   render() {
     return (
-			<Router history={hashHistory} routes={routes} />
+    	<div>
+    		<Header />
+				{this.props.children}
+			</div>
     );
   }
 }

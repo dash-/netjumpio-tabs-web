@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Main from './main/Main';
+import {Router, hashHistory} from 'react-router';
+import routes from './routes';
 import './less/index.less';
 
 ReactDOM.render(
-  <Main />,
+  <Router history={hashHistory} routes={routes} />,
   document.getElementById('root')
 );
 
