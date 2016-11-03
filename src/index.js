@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './app/App';
+import Main from './main/Main';
 import './less/index.less';
 
 ReactDOM.render(
-  <App />,
+  <Main />,
   document.getElementById('root')
 );
 

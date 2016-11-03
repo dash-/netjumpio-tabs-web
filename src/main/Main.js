@@ -5,7 +5,7 @@ import {Router, hashHistory} from 'react-router';
 // Aux dependencies
 import routes from '../routes';
 
-class App extends Component {
+class Main extends Component {
   render() {
     return (
 			<Router history={hashHistory} routes={routes} />
@@ -13,5 +13,5 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Main;
 
