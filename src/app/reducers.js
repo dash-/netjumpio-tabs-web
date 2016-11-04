@@ -1,5 +1,5 @@
 
-import AppReducers from './tabSet/AppReducers';
+import AppReducers from '../tabSet/AppReducers';
 
 const reducers = {
 	AppReducers,

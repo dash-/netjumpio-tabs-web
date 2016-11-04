@@ -1,10 +1,10 @@
 import React from 'react';
 import {IndexRoute, Route} from 'react-router';
 
-import MainLayout from './layouts/MainLayout.js';
-import Landing from './landing/Landing';
-import AppList from './tabSet/AppList';
-import AppForm from './tabSet/AppForm';
+import MainLayout from '../layouts/MainLayout.js';
+import Landing from '../landing/Landing';
+import AppList from '../tabSet/AppList';
+import AppForm from '../tabSet/AppForm';
 
 const routes = (
 	<Route path="/" component={MainLayout}>
