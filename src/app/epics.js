@@ -1,5 +1,5 @@
 
-import AppEpics from '../tabSet/AppEpics';
+import AppEpics from '../tabset/AppEpics';
 
 const epics = {
 	AppEpics,

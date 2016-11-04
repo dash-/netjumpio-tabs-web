@@ -6,7 +6,7 @@ class Header extends Component {
   render() {
     return (
 			<div>
-				<Link to="/tabSet">App List</Link>
+				<Link to="/tabset">App List</Link>
 			</div>
     );
   }
