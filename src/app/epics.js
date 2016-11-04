@@ -1,8 +1,8 @@
 
-import AppEpics from '../tabset/AppEpics';
+import TabsetEpics from '../tabset/TabsetEpics';
 
 const epics = {
-	AppEpics,
+	TabsetEpics,
 };
 
 export default epics;

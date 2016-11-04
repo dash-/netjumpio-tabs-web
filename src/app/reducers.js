@@ -1,8 +1,8 @@
 
-import AppReducers from '../tabset/AppReducers';
+import TabsetReducers from '../tabset/TabsetReducers';
 
 const reducers = {
-	AppReducers,
+	TabsetReducers,
 };
 
 export default reducers;

@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 
-class AppList extends Component {
+class TabsetList extends Component {
 	handleClick(e) {
 		console.log('e', e);
 	}
@@ -9,12 +9,12 @@ class AppList extends Component {
 	render() {
 		return (
 			<div>
-				<div>App List</div>
+				<div>Tabset List</div>
 				<button onClick={this.handleClick}>Click</button>
 			</div>
 		);
 	}
 }
 
-export default AppList;
+export default TabsetList;
 

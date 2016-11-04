@@ -3,14 +3,14 @@ import {IndexRoute, Route} from 'react-router';
 
 import MainLayout from '../layouts/MainLayout.js';
 import Landing from '../landing/Landing';
-import AppList from '../tabset/AppList';
-import AppForm from '../tabset/AppForm';
+import TabsetList from '../tabset/TabsetList';
+import TabsetForm from '../tabset/TabsetForm';
 
 const routes = (
 	<Route path="/" component={MainLayout}>
 		<IndexRoute component={Landing} />
-		<Route path="tabset" component={AppList}>
-			<Route path=":id" component={AppForm} />
+		<Route path="tabset" component={TabsetList}>
+			<Route path=":id" component={TabsetForm} />
 		</Route>
 	</Route>
 );
