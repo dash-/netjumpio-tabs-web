@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 
-class TabsetListView extends Component {
+class DirectiveListView extends Component {
 	handleClick(e) {
 		console.log('e', e);
 	}
@@ -9,12 +9,12 @@ class TabsetListView extends Component {
 	render() {
 		return (
 			<div>
-				<div>Tabset List</div>
+				<div>Directive List</div>
 				<button onClick={this.handleClick}>Click</button>
 			</div>
 		);
 	}
 }
 
-export default TabsetListView;
+export default DirectiveListView;
 

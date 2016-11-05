@@ -1,9 +1,9 @@
 
-import TabsetReducers from '../tabset/TabsetReducers';
 import { combineReducers } from 'redux-immutable';
+import directiveReducers from '../directive/reducers';
 
 const reducers = {
-	directives: TabsetReducers,
+	directives: directiveReducers,
 };
 
 export default combineReducers(reducers);

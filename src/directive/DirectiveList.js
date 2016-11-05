@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import TabsetListView from './TabsetListView';
+import DirectiveListView from './DirectiveListView';
 
 
 function mapStateToProps(state) {
@@ -16,5 +16,5 @@ const connector = connect(
   mapDispatchToProps
 );
 
-export default connector(TabsetListView);
+export default connector(DirectiveListView);
 

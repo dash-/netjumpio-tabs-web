@@ -1,8 +1,8 @@
 
 import { combineEpics } from 'redux-observable';
-import TabsetEpics from '../tabset/TabsetEpics';
+import directiveEpics from '../directive/epics';
 
 export default combineEpics.apply(null, [
-	TabsetEpics,
+	directiveEpics,
 ]);
 
