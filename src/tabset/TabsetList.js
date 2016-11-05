@@ -1,20 +1,20 @@
+import { connect } from 'react-redux';
+import TabsetListView from './TabsetListView';
 
-import React, { Component } from 'react';
 
-class TabsetList extends Component {
-	handleClick(e) {
-		console.log('e', e);
-	}
-
-	render() {
-		return (
-			<div>
-				<div>Tabset List</div>
-				<button onClick={this.handleClick}>Click</button>
-			</div>
-		);
-	}
+function mapStateToProps(state) {
+  return {};
 }
 
-export default TabsetList;
+function mapDispatchToProps(dispatch) {
+  return {};
+}
+
+
+const connector = connect(
+  mapStateToProps,
+  mapDispatchToProps
+);
+
+export default connector(TabsetListView);
 

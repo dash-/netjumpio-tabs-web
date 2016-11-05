@@ -1,8 +1,10 @@
 
 import TabsetReducers from '../tabset/TabsetReducers';
+import { combineReducers } from 'redux-immutable';
 
 const reducers = {
-	TabsetReducers,
+	directives: TabsetReducers,
 };
 
-export default reducers;
+export default combineReducers(reducers);
+

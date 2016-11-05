@@ -19,7 +19,7 @@ export const FETCH_TABSETS_FULFILLED = 'FETCH_TABSETS_FULFILLED';
 // Action creators
 ///
 
-export function fetchTabsets() {
+export default function fetchTabsets() {
 	return {type: FETCH_TABSETS};
 }
 

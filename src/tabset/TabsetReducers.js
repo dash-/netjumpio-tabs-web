@@ -1,3 +1,4 @@
 
-export function example() {}
-
+export default function tabsetReducers(state, action) {
+	return state;
+}

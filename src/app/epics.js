@@ -1,8 +1,8 @@
 
+import { combineEpics } from 'redux-observable';
 import TabsetEpics from '../tabset/TabsetEpics';
 
-const epics = {
+export default combineEpics.apply(null, [
 	TabsetEpics,
-};
+]);
 
-export default epics;
