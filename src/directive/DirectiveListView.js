@@ -10,7 +10,7 @@ class DirectiveListView extends Component {
 		return (
 			<div>
 				<div>Directive List</div>
-				<button onClick={this.handleClick}>Click</button>
+				<button className="btn btn-primary" onClick={this.handleClick}>Click</button>
 			</div>
 		);
 	}
