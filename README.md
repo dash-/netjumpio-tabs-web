@@ -12,9 +12,9 @@ Key Dependencies
 - react-router
 - redux (or Cycle or mobX?)
 - less
-- semantic-ui-react
 - immutable, redux-immutable
 - rxjs@5.0.0-rc1, redux-observable
+- bootstrap, bootstrap-webpack, react-bootstrap
 
 To add, maybe?
 - Relay, react-relay

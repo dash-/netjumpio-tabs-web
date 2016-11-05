@@ -51,10 +51,14 @@
   },
   "dependencies": {
     "axios": "^0.15.2",
+    "bootstrap": "^3.3.7",
+    "exports-loader": "^0.6.3",
     "immutable": "^3.8.1",
+    "imports-loader": "^0.6.5",
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
     "react": "^15.3.2",
+    "react-bootstrap": "^0.30.6",
     "react-dom": "^15.3.2",
     "react-redux": "^4.4.5",
     "react-router": "^3.0.0",
@@ -67,8 +71,8 @@
     "rxjs": "5.0.0-rc.1"
   },
   "scripts": {
-    "start": "./build && node scripts/start.js",
-    "build": "./build && node scripts/build.js",
+    "start": "node scripts/start.js",
+    "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom"
   },
   "jest": {
