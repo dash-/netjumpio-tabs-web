@@ -1,7 +1,8 @@
 import React from 'react';
+import OrgHeader from './OrgHeader';
 
 const header = () => (
-	<h3>Organizations X</h3>
+	<OrgHeader />
 );
 
 

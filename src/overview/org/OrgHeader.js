@@ -10,10 +10,10 @@ import { connect } from 'react-redux';
 // View
 ///
 
-class OrganizationListView extends Component {
+class OrgHeader extends Component {
 	render() {
 		return (
-			<div>Content</div>
+			<div>Organizations</div>
 		);
 	}
 }
@@ -36,5 +36,5 @@ const connector = connect(
   mapDispatchToProps
 );
 
-export default connector(OrganizationListView);
+export default connector(OrgHeader);
 
