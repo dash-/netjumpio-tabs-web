@@ -7,7 +7,7 @@ import Accordion from 'react-bootstrap/lib/Accordion';
 import Panel from 'react-bootstrap/lib/Panel';
 import { connect } from 'react-redux';
 
-import orgHeader from './org/header';
+import OrgHeader from './org/OrgHeader';
 import OrgList from './org/OrgList';
 
 
@@ -16,11 +16,15 @@ import OrgList from './org/OrgList';
 ///
 
 class OverviewPanelView extends Component {
+	orgHeader() {
+		return (<OrgHeader />);
+	}
+
 	render() {
 		return (
 			<div className="overview-panel">
 				<Accordion>
-					<Panel header={orgHeader()} eventKey="orgs">
+					<Panel header={this.orgHeader()} eventKey="orgs">
 						<OrgList />
 					</Panel>
 				</Accordion>
