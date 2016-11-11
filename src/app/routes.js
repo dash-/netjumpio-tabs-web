@@ -3,8 +3,8 @@ import {IndexRoute, Route} from 'react-router';
 
 import MainLayout from '../layouts/MainLayout.js';
 import Landing from '../landing/Landing';
-import DirectiveList from '../directive/DirectiveList';
-import DirectiveForm from '../directive/DirectiveForm';
+import DirectiveList from '../dirs/DirectiveList';
+import DirectiveForm from '../dirs/DirectiveForm';
 
 const routes = (
 	<Route path="/" component={MainLayout}>
