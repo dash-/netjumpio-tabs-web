@@ -1,0 +1,38 @@
+
+.overview-panel {
+	.overview-panel-item {
+		.item-header {
+			position: relative;
+			margin-bottom: 8px;
+
+			.expander-button {
+				border: 0;
+				background: none;
+				vertical-align: top;
+				width: 20px;
+				margin-right: 10px;
+				margin-top: 3px;
+
+				&:disabled {
+					.disabled-fg;
+				}
+			}
+
+			.item-title {
+				margin: 0;
+				display: inline-block;
+				cursor: pointer;
+			}
+
+			.add-button {
+				position: absolute;
+				right: 0;
+				padding-top: 4px;
+				padding-bottom: 2px;
+				padding-left: 8px;
+				padding-right: 8px;
+			}
+		}
+	}
+}
+

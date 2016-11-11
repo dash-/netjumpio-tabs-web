@@ -3,12 +3,8 @@
 ///
 
 import React, { Component } from 'react';
-import Accordion from 'react-bootstrap/lib/Accordion';
-import Panel from 'react-bootstrap/lib/Panel';
-import { connect } from 'react-redux';
 
-import OrgHeader from './org/OrgHeader';
-import OrgList from './org/OrgList';
+import OverviewPanelItem from './OverviewPanelItem';
 
 
 ///
@@ -16,40 +12,25 @@ import OrgList from './org/OrgList';
 ///
 
 class OverviewPanelView extends Component {
-	orgHeader() {
-		return (<OrgHeader />);
-	}
-
 	render() {
 		return (
 			<div className="overview-panel">
-				<Accordion>
-					<Panel header={this.orgHeader()} eventKey="orgs">
-						<OrgList />
-					</Panel>
-				</Accordion>
+				<OverviewPanelItem name="orgsPanel" title="Organizations">
+					Content
+				</OverviewPanelItem>
+				<OverviewPanelItem name="usersPanel" title="Users">
+					Content
+				</OverviewPanelItem>
+				<OverviewPanelItem name="rolesPanel" title="Roles">
+					Content
+				</OverviewPanelItem>
+				<OverviewPanelItem name="dirsPanel" title="Directives">
+					Content
+				</OverviewPanelItem>
 			</div>
 		);
 	}
 }
 
-
-///
-// Container
-///
-
-function mapStateToProps(state) {
-  return {};
-}
-
-function mapDispatchToProps(dispatch) {
-  return {};
-}
-
-const connector = connect(
-  mapStateToProps,
-  mapDispatchToProps
-);
-
-export default connector(OverviewPanelView);
+export default OverviewPanelView;
 

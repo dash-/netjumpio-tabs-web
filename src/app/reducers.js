@@ -1,9 +1,11 @@
 
 import { combineReducers } from 'redux-immutable';
-import directiveReducers from '../directive/reducers';
+import overview from '../overview/reducers';
+import directives from '../directive/reducers';
 
 const reducers = {
-	directives: directiveReducers,
+	overview,
+	directives,
 };
 
 export default combineReducers(reducers);
