@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 
 import ExpanderButton from '../elements/ExpanderButton';
 import Icon from '../elements/Icon';
+import FormModal from '../elements/FormModal';
 import * as actions from './actions';
 
 
@@ -17,6 +18,33 @@ import * as actions from './actions';
 ///
 
 class OverviewPanelItemView extends Component {
+	constructor(props) {
+		super(props);
+
+		this.openForm = this.openForm.bind(this);
+		this.closeForm = this.closeForm.bind(this);
+		this.saveForm = this.saveForm.bind(this);
+	}
+
+	componentWillMount() {
+		this.setState({
+			isFormShown: false,
+			formData: {},
+		});
+	}
+
+	openForm() {
+		this.setState({isFormShown: true});
+	}
+
+	closeForm() {
+		this.setState({isFormShown: false});
+	}
+
+	saveForm() {
+		this.setState({isFormShown: false});
+	}
+
 	render() {
 		const isSelected = this.props.selected === this.props.name;
 		const keyPath = ['panels', this.props.name, 'isExpanded'];
@@ -36,7 +64,10 @@ class OverviewPanelItemView extends Component {
 					>
 						{this.props.title}
 					</h3>
-					<Button className="add-button">
+					<Button
+						className="add-button"
+						onClick={this.openForm}
+					>
 						<Icon name="plus" />
 					</Button>
 				</div>
@@ -46,6 +77,14 @@ class OverviewPanelItemView extends Component {
 				>
 					{this.props.children}
 				</Panel>
+				<FormModal
+					title={'Add ' + this.props.title}
+					show={this.state.isFormShown}
+					onClose={this.closeForm}
+					onSave={this.saveForm}
+				>
+					Form
+				</FormModal>
 			</div>
 		);
 	}
