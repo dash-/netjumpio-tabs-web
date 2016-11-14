@@ -9,19 +9,19 @@ import React, { Component } from 'react';
 // View
 ///
 
-class OrgsFormView extends Component {
+class UsersFormView extends Component {
 	save() {
 		console.log('saving...');
 	}
 
 	render() {
 		return (
-			<div className="orgs-form">
-				Orgs Form
+			<div className="users-form">
+				Users Form
 			</div>
 		);
 	}
 }
 
-export default OrgsFormView;
+export default UsersFormView;
 

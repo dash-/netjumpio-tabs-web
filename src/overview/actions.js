@@ -2,8 +2,8 @@
 // Action types
 ///
 
-export const SELECT_OVERVIEW_ITEM = 'SELECT_OVERVIEW_ITEM ';
-export const TOGGLE_OVERVIEW_ITEM = 'TOGGLE_OVERVIEW_ITEM ';
+export const OVERVIEW_SELECT_ITEM = 'OVERVIEW_SELECT_ITEM ';
+export const OVERVIEW_TOGGLE_ITEM = 'OVERVIEW_TOGGLE_ITEM ';
 
 
 ///
@@ -11,10 +11,11 @@ export const TOGGLE_OVERVIEW_ITEM = 'TOGGLE_OVERVIEW_ITEM ';
 ///
 
 export function selectItem(item) {
-	return {type: SELECT_OVERVIEW_ITEM, payload: item};
+	return {type: OVERVIEW_SELECT_ITEM, payload: item};
 }
 
 export function toggleItem(item) {
-	return {type: TOGGLE_OVERVIEW_ITEM, payload: item};
+	return {type: OVERVIEW_TOGGLE_ITEM, payload: item};
 }
+
 

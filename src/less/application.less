@@ -5,9 +5,14 @@
   font-family: 'Open Sans', sans-serif;
 }
 
+html, body, body > #root, body > #root > div, .side-panel {
+	min-height: 100vh;
+}
+
 body {
   margin: 0;
   padding: 0;
+	min-height: 100%;
 
   .serif-font;
 }
@@ -15,4 +20,3 @@ body {
 h1, h2, h3, h4, h5, h6, button {
   .sans-font;
 }
-

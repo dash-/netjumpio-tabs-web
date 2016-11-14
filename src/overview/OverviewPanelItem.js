@@ -9,8 +9,8 @@ import { connect } from 'react-redux';
 
 import ExpanderButton from '../elements/ExpanderButton';
 import Icon from '../elements/Icon';
-import FormModal from '../elements/FormModal';
 import * as actions from './actions';
+import * as formActions from '../forms/actions';
 
 
 ///
@@ -21,34 +21,28 @@ class OverviewPanelItemView extends Component {
 	constructor(props) {
 		super(props);
 
-		this.openForm = this.openForm.bind(this);
-		this.closeForm = this.closeForm.bind(this);
-		this.saveForm = this.saveForm.bind(this);
+		this.onToggle = this.onToggle.bind(this);
+		this.onSelect = this.onSelect.bind(this);
+		this.onShowForm = this.onShowForm.bind(this);
 	}
 
-	componentWillMount() {
-		this.setState({
-			isFormShown: false,
-			formData: {},
-		});
+	onToggle() {
+		this.props.toggleItem(this.props.name);
 	}
 
-	openForm() {
-		this.setState({isFormShown: true});
+	onSelect() {
+		this.props.selectItem(this.props.name);
 	}
 
-	closeForm() {
-		this.setState({isFormShown: false});
-	}
-
-	saveForm() {
-		this.setState({isFormShown: false});
+	onShowForm() {
+		this.props.showForm(this.props.name);
 	}
 
 	render() {
 		const isSelected = this.props.selected === this.props.name;
-		const keyPath = ['panels', this.props.name, 'isExpanded'];
-		const isExpanded = this.props.overview.getIn(keyPath) || isSelected;
+		const isExpanded = isSelected || this.props.overview.getIn(
+			['panels', this.props.name, 'isExpanded']
+		);
 
 		return (
 			<div className="overview-panel-item">
@@ -56,17 +50,17 @@ class OverviewPanelItemView extends Component {
 					<ExpanderButton
 						expanded={isExpanded}
 						disabled={isSelected}
-						onClick={this.props.onToggle}
+						onClick={this.onToggle}
 					/>
-					<h3
+					<h4
 						className="item-title"
-						onClick={this.props.onSelect}
+						onClick={this.onSelect}
 					>
 						{this.props.title}
-					</h3>
+					</h4>
 					<Button
 						className="add-button"
-						onClick={this.openForm}
+						onClick={this.onShowForm}
 					>
 						<Icon name="plus" />
 					</Button>
@@ -77,14 +71,6 @@ class OverviewPanelItemView extends Component {
 				>
 					{this.props.children}
 				</Panel>
-				<FormModal
-					title={'Add ' + this.props.title}
-					show={this.state.isFormShown}
-					onClose={this.closeForm}
-					onSave={this.saveForm}
-				>
-					Form
-				</FormModal>
 			</div>
 		);
 	}
@@ -104,8 +90,9 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch, ownProps) {
   return {
-		onToggle: () => dispatch(actions.toggleItem(ownProps.name)),
-		onSelect: () => dispatch(actions.selectItem(ownProps.name)),
+		toggleItem: (name) => dispatch(actions.toggleItem(name)),
+		selectItem: (name) => dispatch(actions.selectItem(name)),
+		showForm: (name) => dispatch(formActions.showForm(name)),
   };
 }
 

@@ -1,7 +1,56 @@
+///
+// Color variables
+///
 
 @disabled: rgb(150, 150, 150, .7);
 
+// Dark theme color wheel
+@darkTheme1: white;
+@darkTheme2: #d9B310;
+@darkTheme3: #328cc1;
+@darkTheme4: #0b3c5d;
+@darkTheme5: #1d2731;
+
+// Dark theme colors
+@darkThemeBg: @darkTheme4;
+@darkThemeFg: @darkTheme1;
+@darkThemeAltBg: @darkTheme3;
+@darkThemeAltFg: @darkTheme1;
+@darkThemeItemBorder: @darkTheme3;
+@darkThemeContentBg: @darkTheme4;
+@darkThemeContentFg: @darkTheme1;
+
+
+///
+// Styles
+///
 
 .disabled-fg {
 	color: @disabled;
 }
+
+// Dark theme
+.dark-theme-bg {
+	background: @darkThemeBg;
+}
+
+.dark-theme-fg {
+	color: @darkThemeFg;
+}
+
+.dark-theme-alt-bg {
+	background: @darkThemeAltBg;
+}
+
+.dark-theme-alt-fg {
+	color: @darkThemeAltFg;
+}
+
+.dark-theme-content-bg {
+	background: @darkThemeContentBg;
+}
+
+.dark-theme-content-fg {
+	color: @darkThemeContentFg;
+}
+

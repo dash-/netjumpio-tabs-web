@@ -20,7 +20,7 @@ function root(state, action) {
 	}
 
 	const handlers = {
-		[actions.SELECT_OVERVIEW_ITEM]: selectOverviewItem,
+		[actions.OVERVIEW_SELECT_ITEM]: selectOverviewItem,
 		default: (state) => state,
 	};
 
@@ -40,7 +40,7 @@ export default combineReducers({
 
 function init() {
 	return Immutable.fromJS({
-		selected: 'x-orgsPanel',
+		selected: 'orgs',
 	});
 }
 

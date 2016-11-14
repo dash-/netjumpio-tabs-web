@@ -1,9 +1,18 @@
+.side-panel {
+	.dark-theme-bg;
+}
 
 .overview-panel {
+	height: ~"calc(100% - 47px)";
+
 	.overview-panel-item {
 		.item-header {
 			position: relative;
-			margin-bottom: 8px;
+			padding-top: 12px;
+			padding-bottom: 8px;
+			border-bottom: 1px solid @darkThemeItemBorder;
+
+			.dark-theme-fg;
 
 			.expander-button {
 				border: 0;
@@ -11,7 +20,8 @@
 				vertical-align: top;
 				width: 20px;
 				margin-right: 10px;
-				margin-top: 3px;
+				position: relative;
+				top: -2px;
 
 				&:disabled {
 					.disabled-fg;
@@ -22,15 +32,35 @@
 				margin: 0;
 				display: inline-block;
 				cursor: pointer;
+				width: ~"calc(100% - 65px)";
 			}
 
 			.add-button {
 				position: absolute;
 				right: 0;
+				top: 8px;
 				padding-top: 4px;
 				padding-bottom: 2px;
 				padding-left: 8px;
 				padding-right: 8px;
+
+				.dark-theme-alt-bg;
+				.dark-theme-alt-fg;
+				border-color: black;
+			}
+		}
+
+		.item-content {
+			border: 0;
+			border-radius: 0;
+			box-shadow: none;
+			margin-bottom: 0;
+
+			.dark-theme-content-bg;
+			.dark-theme-content-fg;
+
+			.panel-body {
+				border-bottom: 1px solid @darkThemeItemBorder;
 			}
 		}
 	}

@@ -17,7 +17,7 @@ export default function panels(state, action) {
 	}
 
 	const handlers = {
-		[actions.TOGGLE_OVERVIEW_ITEM]: toggleOverviewItem,
+		[actions.OVERVIEW_TOGGLE_ITEM]: toggleOverviewItem,
 		default: (state) => state,
 	};
 
@@ -32,7 +32,16 @@ export default function panels(state, action) {
 
 function init() {
 	return Immutable.fromJS({
-		orgsPanel: {
+		orgs: {
+			isExpanded: false,
+		},
+		users: {
+			isExpanded: false,
+		},
+		roles: {
+			isExpanded: false,
+		},
+		dirs: {
 			isExpanded: false,
 		},
 	});
