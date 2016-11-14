@@ -7,7 +7,10 @@ class Header extends Component {
     return (
     	<div className="app-header-container">
 				<div className="app-header">
-					<Link to="/directive">App List</Link>
+					<h3 className="title">DashTabs</h3>
+					<div className="links">
+						<Link to="/directive">App List</Link>
+					</div>
 				</div>
 				<div className="app-header-spacer"></div>
 			</div>

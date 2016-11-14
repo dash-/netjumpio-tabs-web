@@ -6,8 +6,27 @@
 		height: @headerHeight;
 		width: 100%;
 		z-index: 10;
-		background: black;
-		color: white;
+
+		.dark-theme-header-bg;
+		.dark-theme-header-fg;
+
+		.title {
+			display: inline-block;
+			vertical-align: top;
+			margin-top: 10px;
+			margin-left: 10px;
+			margin-right: 40px;
+		}
+
+		.links {
+			display: inline-block;
+			margin-top: 14px;
+
+			a {
+				display: inline-block;
+				.dark-theme-header-links;
+			}
+		}
 	}
 
 	.app-header-spacer {

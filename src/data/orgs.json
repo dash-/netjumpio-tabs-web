@@ -1,0 +1,44 @@
+[
+	{
+		"id": "1000",
+		"name": "Adobe",
+		"url": "www.adobe.com",
+		"icon": ""
+	},
+	{
+		"id": "1001",
+		"name": "Google",
+		"url": "www.google.com",
+		"icon": ""
+	},
+	{
+		"id": "1002",
+		"name": "Microsoft",
+		"url": "www.microsoft.com",
+		"icon": ""
+	},
+	{
+		"id": "1003",
+		"name": "Apple",
+		"url": "www.apple.com",
+		"icon": ""
+	},
+	{
+		"id": "1004",
+		"name": "Facebook",
+		"url": "www.facebook.com",
+		"icon": ""
+	},
+	{
+		"id": "1005",
+		"name": "Twitter",
+		"url": "www.twitter.com",
+		"icon": ""
+	},
+	{
+		"id": "1006",
+		"name": "Imaginearly",
+		"url": "www.doesnotexist392843.com",
+		"icon": ""
+	}
+]
