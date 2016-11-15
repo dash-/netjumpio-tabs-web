@@ -4,6 +4,7 @@
 
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+import classNames from 'classnames';
 
 import Icon from './Icon';
 
@@ -13,6 +14,19 @@ import Icon from './Icon';
 ///
 
 class CardsListItemView extends Component {
+	widthClass() {
+		if(! this.props.width) return [];
+
+		return 'width-' + this.props.width;
+	}
+
+	classNames() {
+		return classNames(
+			'cards-list-item',
+			this.widthClass(),
+		);
+	}
+
 	renderLogo(item) {
 		if(item.get('logoUrl')) {
 			return (
@@ -35,7 +49,7 @@ class CardsListItemView extends Component {
 
 	render() {
 		return (
-			<li className="cards-list-item">
+			<li className={this.classNames()}>
 				<Link to={this.props.item.get('href')}>
 					<div className="logo-container">
 						{this.renderLogo(this.props.item)}
@@ -43,6 +57,7 @@ class CardsListItemView extends Component {
 					<div className="title">
 						{this.props.item.get('name')}
 					</div>
+					{this.props.children}
 				</Link>
 			</li>
 		);

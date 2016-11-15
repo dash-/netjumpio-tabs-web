@@ -22,8 +22,8 @@ class UsersListItemView extends Component {
 			<CardsListItem
 				item={this.processItem(this.props.item)}
 				defaultLogoIcon="user-o"
-				size="2x"
-			/>
+				width="2x"
+			></CardsListItem>
 		);
 	}
 }
