@@ -4,6 +4,8 @@
 
 import React, { Component } from 'react';
 
+import TabSetsLogo from '../elements/TabSetsLogo';
+
 import OverviewPanelItem from './OverviewPanelItem';
 import FormModal from '../forms/FormModal';
 
@@ -30,7 +32,7 @@ class OverviewPanelView extends Component {
 				title: 'TabSets',
 				list: DirsList,
 				form: DirsForm,
-				icon: 'link',
+				icon: <TabSetsLogo />
 			},
 			{
 				name: 'users',
