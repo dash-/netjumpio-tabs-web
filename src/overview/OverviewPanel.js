@@ -27,7 +27,7 @@ class OverviewPanelView extends Component {
 		return [
 			{
 				name: 'dirs',
-				title: 'DashTabs',
+				title: 'TabSets',
 				list: DirsList,
 				form: DirsForm,
 				icon: 'link',
