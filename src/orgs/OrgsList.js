@@ -5,6 +5,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import CardsList from '../elements/CardsList';
 import OrgsListItem from './OrgsListItem';
 import * as actions from './actions';
 
@@ -29,9 +30,9 @@ class OrgsListView extends Component {
 
 	render() {
 		return (
-			<ul className="orgs-list">
+			<CardsList theme="dark" className="orgs-list">
 				{this.renderOrgs(this.props.orgs)}
-			</ul>
+			</CardsList>
 		);
 	}
 }

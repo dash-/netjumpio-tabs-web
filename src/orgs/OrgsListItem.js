@@ -3,9 +3,9 @@
 ///
 
 import React, { Component } from 'react';
-import { Link } from 'react-router';
 
-import Icon from '../elements/Icon';
+import CardsListItem from '../elements/CardsListItem';
+
 
 
 ///
@@ -13,38 +13,16 @@ import Icon from '../elements/Icon';
 ///
 
 class OrgsListItemView extends Component {
-	renderLogo(item) {
-		if(item.get('logoUrl')) {
-			return (
-				<img
-					className="logo"
-					src={this.props.item.get('logoUrl')}
-					role="presentation"
-				/>
-			);
-		}
-
-		return (
-			<Icon
-				name="building-o"
-				className="blank-logo"
-				size="3x"
-			/>
-		);
+	processItem(item) {
+		return item.set('href', '/orgs/' + this.props.item.get('id'));
 	}
 
 	render() {
 		return (
-			<li className="orgs-list-item">
-				<Link to={'/orgs/' + this.props.item.get('id')}>
-					<div className="logo-container">
-						{this.renderLogo(this.props.item)}
-					</div>
-					<div className="title">
-						{this.props.item.get('name')}
-					</div>
-				</Link>
-			</li>
+			<CardsListItem
+				item={this.processItem(this.props.item)}
+				defaultLogoIcon="building-o"
+			/>
 		);
 	}
 }

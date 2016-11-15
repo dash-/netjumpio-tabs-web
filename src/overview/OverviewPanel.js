@@ -26,28 +26,28 @@ class OverviewPanelView extends Component {
 	getItems() {
 		return [
 			{
-				name: 'orgs',
-				title: 'Organizations',
-				list: OrgsList,
-				form: OrgsForm,
+				name: 'dirs',
+				title: 'DashTabs',
+				list: DirsList,
+				form: DirsForm,
 			},
 			{
 				name: 'users',
-				title: 'Users',
+				title: 'Friends',
 				list: UsersList,
 				form: UsersForm,
+			},
+			{
+				name: 'orgs',
+				title: 'Groups',
+				list: OrgsList,
+				form: OrgsForm,
 			},
 			{
 				name: 'roles',
 				title: 'Roles',
 				list: RolesList,
 				form: RolesForm,
-			},
-			{
-				name: 'dirs',
-				title: 'Directives',
-				list: DirsList,
-				form: DirsForm,
 			},
 		];
 	}
