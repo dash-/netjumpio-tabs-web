@@ -1,8 +1,10 @@
 
 import { combineEpics } from 'redux-observable';
-import directiveEpics from '../dirs/epics';
+import dirsEpics from '../dirs/epics';
+import orgsEpics from '../orgs/epics';
 
 export default combineEpics.apply(null, [
-	directiveEpics,
+	dirsEpics,
+	orgsEpics,
 ]);
 

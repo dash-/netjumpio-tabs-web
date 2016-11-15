@@ -3,6 +3,10 @@
 ///
 
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import * as actions from './actions';
+
 
 
 ///
@@ -10,6 +14,12 @@ import React, { Component } from 'react';
 ///
 
 class OrgsListView extends Component {
+	constructor(props) {
+		super(props);
+
+		this.props.retrieveOrgs();
+	}
+
 	render() {
 		return (
 			<div className="orgs-list">
@@ -19,5 +29,27 @@ class OrgsListView extends Component {
 	}
 }
 
-export default OrgsListView;
+
+///
+// Container
+///
+
+function mapStateToProps(state) {
+	return {
+		orgs: state.get('orgs'),
+	};
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+		retrieveOrgs: () => dispatch(actions.retrieveOrgs()),
+  };
+}
+
+const connector = connect(
+  mapStateToProps,
+  mapDispatchToProps
+);
+
+export default connector(OrgsListView);
 

@@ -88,7 +88,7 @@ function mapStateToProps(state) {
 	};
 }
 
-function mapDispatchToProps(dispatch, ownProps) {
+function mapDispatchToProps(dispatch) {
   return {
 		toggleItem: (name) => dispatch(actions.toggleItem(name)),
 		selectItem: (name) => dispatch(actions.selectItem(name)),
