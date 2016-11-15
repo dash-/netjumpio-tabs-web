@@ -22,6 +22,7 @@ class OrgsListItemView extends Component {
 			<CardsListItem
 				item={this.processItem(this.props.item)}
 				defaultLogoIcon="building-o"
+				width="2x"
 			/>
 		);
 	}

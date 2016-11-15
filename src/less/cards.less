@@ -1,28 +1,30 @@
 .cards-list {
+	width: 100%;
 	padding: 0;
 
 	.cards-list-item {
 		display: inline-block;
+		width: 25%;
 		list-style-type: none;
 
 		a {
 			display: inline-block;
 			position: relative;
-			width: 90px;
+			width: ~"calc(100% - 10px)";
 			height: 90px;
 			padding: 7px;
-			margin-right: 10px;
+			margin-left: 5px;
+			margin-right: 5px;
 			margin-bottom: 10px;
 			border-radius: 10px;
 			text-align: center;
 
 			.logo-container {
-				position: absolute;
 				width: 56px;
 				height: 56px;
-				top: 6px;
-				margin-left: 9px;
 				padding: 4px;
+				margin-bottom: 4px;
+				margin-left: ~"calc(50% - 29px)";
 				border-radius: 4px;
 				text-align: center;
 				vertical-align: center;
@@ -37,26 +39,34 @@
 			}
 
 			.title {
-				position: absolute;
-				left: 0;
-				right: 0;
-				bottom: 3px;
 			}
 		}
 	}
 
 	.cards-list-item.width-2x {
+		width: 50%;
+
 		a {
-			width: 190px;
-			height: 70px;
+			height: 72px;
+			text-align: left;
+
+			.logo-container {
+				display: inline-block;
+				margin-left: 6px;
+				overflow: hidden;
+				vertical-align: top;
+
+				.logo {
+				}
+			}
 
 			.title {
-				left: 82px;
-				right: inherit;
-				bottom: inherit;
-				top: 6px;
-				width: 96px;
+				display: inline-block;
+				margin-top: 4px;
+				margin-left: 10px;
+				width: ~"calc(100% - 76px)";
 				text-align: left;
+				vertical-align: top;
 			}
 		}
 	}
