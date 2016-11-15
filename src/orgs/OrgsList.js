@@ -5,6 +5,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import OrgsListItem from './OrgsListItem';
 import * as actions from './actions';
 
 
@@ -20,11 +21,17 @@ class OrgsListView extends Component {
 		this.props.retrieveOrgs();
 	}
 
+	renderOrgs(orgs) {
+		return orgs.map((item, key) => (
+			<OrgsListItem item={item} key={key} />
+		));
+	}
+
 	render() {
 		return (
-			<div className="orgs-list">
-				Orgs List
-			</div>
+			<ul className="orgs-list">
+				{this.renderOrgs(this.props.orgs)}
+			</ul>
 		);
 	}
 }
