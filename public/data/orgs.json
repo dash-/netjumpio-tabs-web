@@ -3,49 +3,42 @@
 		"id": "1000",
 		"name": "Adobe",
 		"url": "www.adobe.com",
-		"logoUrl": "https://wwwimages2.adobe.com/include/img/favicon.ico",
-		"icon": ""
+		"logoUrl": "https://wwwimages2.adobe.com/include/img/favicon.ico"
 	},
 	{
 		"id": "1001",
 		"name": "Google",
 		"url": "www.google.com",
-		"logoUrl": "https://lh3.googleusercontent.com/-qn7Hl_AXEOA/Vegu58jvBrI/AAAAAAAAAVA/RtkSABWWZsU/w768-h768/Google_icon_2015.png",
-		"icon": ""
+		"logoUrl": "https://lh3.googleusercontent.com/-qn7Hl_AXEOA/Vegu58jvBrI/AAAAAAAAAVA/RtkSABWWZsU/w768-h768/Google_icon_2015.png"
 	},
 	{
 		"id": "1002",
 		"name": "Microsoft",
 		"url": "www.microsoft.com",
-		"logoUrl": "http://betanews.com/wp-content/uploads/2022/08/Microsoft-Logo1.jpg",
-		"icon": ""
+		"logoUrl": "http://betanews.com/wp-content/uploads/2022/08/Microsoft-Logo1.jpg"
 	},
 	{
 		"id": "1003",
 		"name": "Apple",
 		"url": "www.apple.com",
-		"logoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/500px-Apple_logo_black.svg.png",
-		"icon": ""
+		"logoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/500px-Apple_logo_black.svg.png"
 	},
 	{
 		"id": "1004",
 		"name": "Facebook",
 		"url": "www.facebook.com",
-		"logoUrl": "https://www.facebook.com/images/fb_icon_325x325.png",
-		"icon": ""
+		"logoUrl": "https://www.facebook.com/images/fb_icon_325x325.png"
 	},
 	{
 		"id": "1005",
 		"name": "Twitter",
 		"url": "www.twitter.com",
-		"logoUrl": "https://upload.wikimedia.org/wikipedia/en/thumb/9/9f/Twitter_bird_logo_2012.svg/1259px-Twitter_bird_logo_2012.svg.png",
-		"icon": ""
+		"logoUrl": "https://upload.wikimedia.org/wikipedia/en/thumb/9/9f/Twitter_bird_logo_2012.svg/1259px-Twitter_bird_logo_2012.svg.png"
 	},
 	{
 		"id": "1006",
 		"name": "Imaginearly",
 		"url": "www.doesnotexist392843.com",
-		"logoUrl": "",
-		"icon": ""
+		"logoUrl": ""
 	}
 ]
