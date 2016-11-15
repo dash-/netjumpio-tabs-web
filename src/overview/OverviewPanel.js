@@ -53,18 +53,15 @@ class OverviewPanelView extends Component {
 	}
 
 	renderItems(items) {
-		return items.map((item) => {
-			const listItem = React.createElement(item.list, {});
-			return (
-				<OverviewPanelItem
-					name={item.name}
-					title={item.title}
-					key={item.name}
-				>
-					{listItem}
-				</OverviewPanelItem>
-			);
-		});
+		return items.map((item) => (
+			<OverviewPanelItem
+				name={item.name}
+				title={item.title}
+				key={item.name}
+			>
+				{React.createElement(item.list, {})}
+			</OverviewPanelItem>
+		));
 	}
 
 	renderFormModals(items) {
@@ -79,13 +76,12 @@ class OverviewPanelView extends Component {
 	}
 
 	render() {
-		const items = this.renderItems(this.getItems());
-		const formModals = this.renderFormModals(this.getItems());
+		const items = this.getItems();
 
 		return (
 			<div className="overview-panel">
-				{items}
-				{formModals}
+				{this.renderItems(items)}
+				{this.renderFormModals(items)}
 			</div>
 		);
 	}
