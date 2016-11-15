@@ -6,6 +6,5 @@ export default {
 	organizations: [],
 	roles: [],
 	*/
-	directives: [],
 };
 

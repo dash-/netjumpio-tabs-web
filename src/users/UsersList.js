@@ -3,6 +3,12 @@
 ///
 
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import CardsList from '../elements/CardsList';
+import UsersListItem from './UsersListItem';
+import * as actions from './actions';
+
 
 
 ///
@@ -10,14 +16,48 @@ import React, { Component } from 'react';
 ///
 
 class UsersListView extends Component {
+	constructor(props) {
+		super(props);
+
+		this.props.retrieveUsers();
+	}
+
+	renderUsers(users) {
+		return users.map((item, key) => (
+			<UsersListItem item={item} key={key} />
+		));
+	}
+
 	render() {
 		return (
-			<div className="users-list">
-				Users List
-			</div>
+			<CardsList theme="dark" className="users-list">
+				{this.renderUsers(this.props.users)}
+			</CardsList>
 		);
 	}
 }
 
-export default UsersListView;
+
+///
+// Container
+///
+
+function mapStateToProps(state) {
+	return {
+		users: state.get('users'),
+	};
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+		retrieveUsers: () => dispatch(actions.retrieveUsers()),
+  };
+}
+
+const connector = connect(
+  mapStateToProps,
+  mapDispatchToProps
+);
+
+export default connector(UsersListView);
 
