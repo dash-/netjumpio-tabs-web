@@ -1,0 +1,58 @@
+{
+	"roles": [
+		{
+			"id": "2000",
+			"name": "Personal",
+			"logoUrl": ""
+		},
+		{
+			"id": "2001",
+			"name": "Software Developer",
+			"logoUrl": ""
+		}
+	],
+	"byGroup": [
+		{
+			"id": "1000",
+			"name": "Adobe",
+			"roles": [
+				{
+					"id": "2100",
+					"name": "Software Engineer",
+					"logoUrl": ""
+				},
+				{
+					"id": "2101",
+					"name": "User Experience Designer",
+					"logoUrl": ""
+				},
+				{
+					"id": "2102",
+					"name": "Upper Manager",
+					"logoUrl": ""
+				}
+			]
+		},
+		{
+			"id": "1001",
+			"name": "Imaginearly",
+			"roles": [
+				{
+					"id": "2200",
+					"name": "Salesman",
+					"logoUrl": ""
+				},
+				{
+					"id": "2201",
+					"name": "Web Developer",
+					"logoUrl": ""
+				},
+				{
+					"id": "2202",
+					"name": "Founder",
+					"logoUrl": ""
+				}
+			]
+		}
+	]
+}
