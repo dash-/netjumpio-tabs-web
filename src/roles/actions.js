@@ -2,8 +2,8 @@
 // Action types
 ///
 
-export const RETRIEVE_ROLES_START = 'ROLES_RETRIEVE_START';
-export const RETRIEVE_ROLES_FULFILLED = 'ROLES_RETRIEVE_FULFILLED';
+export const FETCH_ROLES_START = 'ROLES_FETCH_START';
+export const FETCH_ROLES_FULFILLED = 'ROLES_FETCH_FULFILLED';
 
 
 ///
@@ -11,6 +11,6 @@ export const RETRIEVE_ROLES_FULFILLED = 'ROLES_RETRIEVE_FULFILLED';
 ///
 
 export function retrieveRoles() {
-	return {type: RETRIEVE_ROLES_START};
+	return {type: FETCH_ROLES_START};
 }
 

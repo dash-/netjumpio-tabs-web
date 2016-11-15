@@ -18,7 +18,7 @@ function root(state, action) {
 	}
 
 	const handlers = {
-		[actions.RETRIEVE_ROLES_FULFILLED]: retrieveRolesFulfilled,
+		[actions.FETCH_ROLES_FULFILLED]: retrieveRolesFulfilled,
 		default: (state) => state,
 	};
 

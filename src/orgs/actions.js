@@ -2,8 +2,8 @@
 // Action types
 ///
 
-export const RETRIEVE_ORGS_START = 'ORGS_RETRIEVE_START';
-export const RETRIEVE_ORGS_FULFILLED = 'ORGS_RETRIEVE_FULFILLED';
+export const FETCH_ORGS_START = 'ORGS_FETCH_START';
+export const FETCH_ORGS_FULFILLED = 'ORGS_FETCH_FULFILLED';
 
 
 ///
@@ -11,6 +11,6 @@ export const RETRIEVE_ORGS_FULFILLED = 'ORGS_RETRIEVE_FULFILLED';
 ///
 
 export function retrieveOrgs() {
-	return {type: RETRIEVE_ORGS_START};
+	return {type: FETCH_ORGS_START};
 }
 

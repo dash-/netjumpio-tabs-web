@@ -18,7 +18,7 @@ function root(state, action) {
 	}
 
 	const handlers = {
-		[actions.RETRIEVE_ORGS_FULFILLED]: retrieveOrgsFulfilled,
+		[actions.FETCH_ORGS_FULFILLED]: retrieveOrgsFulfilled,
 		default: (state) => state,
 	};
 
