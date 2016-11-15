@@ -3,11 +3,9 @@
 ///
 
 import Immutable from 'immutable';
-import { combineReducers } from 'redux-immutable';
 import _ from 'lodash';
 
 import * as actions from './actions';
-import panels from './panelsReducers';
 
 
 ///
@@ -20,7 +18,7 @@ function root(state, action) {
 	}
 
 	const handlers = {
-		[actions.OVERVIEW_SELECT_ITEM]: selectOverviewItem,
+		[actions.RETRIEVE_ROLES_FULFILLED]: retrieveRolesFulfilled,
 		default: (state) => state,
 	};
 
@@ -28,10 +26,7 @@ function root(state, action) {
 	return handler(state, action);
 }
 
-export default combineReducers({
-	root,
-	panels,
-});
+export default root;
 
 
 ///
@@ -39,12 +34,10 @@ export default combineReducers({
 ///
 
 function init() {
-	return Immutable.fromJS({
-		selected: 'roles',
-	});
+	return Immutable.fromJS([]);
 }
 
-function selectOverviewItem(state, action) {
-	return state.set('selected', action.payload);
+function retrieveRolesFulfilled(state, action) {
+	return Immutable.fromJS(action.payload.data);
 }
 

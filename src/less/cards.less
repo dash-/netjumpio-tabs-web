@@ -2,12 +2,32 @@
 	width: 100%;
 	padding: 0;
 
+	.cards-list-category {
+		display: block;
+		list-style-type: none;
+		width: 100%;
+
+		& > .title {
+			margin-left: 6px;
+			width: 100%;
+			padding-bottom: 8px;
+			border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+			font-style: italic;
+			opacity: 0.8;
+		}
+
+		& > ul {
+			padding: 0;
+			margin: 0;
+		}
+	}
+
 	.cards-list-item {
 		display: inline-block;
 		width: 25%;
 		list-style-type: none;
 
-		a {
+		& > a {
 			display: inline-block;
 			position: relative;
 			width: ~"calc(100% - 10px)";
@@ -46,7 +66,7 @@
 	.cards-list-item.width-2x {
 		width: 50%;
 
-		a {
+		& > a {
 			height: 72px;
 			text-align: left;
 

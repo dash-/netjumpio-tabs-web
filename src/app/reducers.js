@@ -4,6 +4,7 @@ import overview from '../overview/reducers';
 import forms from '../forms/reducers';
 import orgs from '../orgs/reducers';
 import users from '../users/reducers';
+import roles from '../roles/reducers';
 import dirs from '../dirs/reducers';
 
 const reducers = {
@@ -11,6 +12,7 @@ const reducers = {
 	forms,
 	orgs,
 	users,
+	roles,
 	dirs,
 };
 
