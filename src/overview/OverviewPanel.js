@@ -30,24 +30,28 @@ class OverviewPanelView extends Component {
 				title: 'DashTabs',
 				list: DirsList,
 				form: DirsForm,
+				icon: 'link',
 			},
 			{
 				name: 'users',
 				title: 'Friends',
 				list: UsersList,
 				form: UsersForm,
+				icon: 'user-circle',
 			},
 			{
 				name: 'orgs',
 				title: 'Groups',
 				list: OrgsList,
 				form: OrgsForm,
+				icon: 'id-card',
 			},
 			{
 				name: 'roles',
 				title: 'Roles',
 				list: RolesList,
 				form: RolesForm,
+				icon: 'user-secret',
 			},
 		];
 	}
@@ -58,6 +62,7 @@ class OverviewPanelView extends Component {
 				name={item.name}
 				title={item.title}
 				key={item.name}
+				icon={item.icon}
 			>
 				{React.createElement(item.list, {})}
 			</OverviewPanelItem>

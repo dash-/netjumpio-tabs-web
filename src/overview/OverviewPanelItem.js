@@ -6,6 +6,7 @@ import React, { Component } from 'react';
 import Panel from 'react-bootstrap/lib/Panel';
 import Button from 'react-bootstrap/lib/Button';
 import { connect } from 'react-redux';
+import classNames from 'classnames';
 
 import ExpanderButton from '../elements/ExpanderButton';
 import Icon from '../elements/Icon';
@@ -38,14 +39,29 @@ class OverviewPanelItemView extends Component {
 		this.props.showForm(this.props.name);
 	}
 
+	renderIcon(icon) {
+		if(! icon) return '';
+
+		return (
+			<div className="item-icon">
+				<Icon name={icon} />
+			</div>
+		);
+	}
+
 	render() {
 		const isSelected = this.props.selected === this.props.name;
 		const isExpanded = isSelected || this.props.overview.getIn(
 			['panels', this.props.name, 'isExpanded']
 		);
 
+		const itemClassName = classNames('overview-panel-item', {
+			selected: isSelected,
+			expanded: isExpanded,
+		});
+
 		return (
-			<div className="overview-panel-item">
+			<div className={itemClassName}>
 				<div className="item-header">
 					<ExpanderButton
 						expanded={isExpanded}
@@ -56,6 +72,7 @@ class OverviewPanelItemView extends Component {
 						className="item-title"
 						onClick={this.onSelect}
 					>
+						{this.renderIcon(this.props.icon)}
 						{this.props.title}
 					</h4>
 					<Button

@@ -27,6 +27,14 @@
 				}
 			}
 
+			.item-icon {
+				display: inline-block;
+				width: 24px;
+				margin-right: 10px;
+				text-align: right;
+				.dark-theme-alt-fg;
+			}
+
 			.item-title {
 				margin: 0;
 				display: inline-block;
@@ -44,7 +52,7 @@
 				padding-right: 8px;
 
 				.dark-theme-alt-bg;
-				.dark-theme-alt-fg;
+				.dark-theme-fg;
 				border-color: black;
 			}
 		}
@@ -61,6 +69,12 @@
 			.panel-body {
 				border-bottom: 1px solid @darkThemeItemBorder;
 			}
+		}
+	}
+
+	.overview-panel-item.selected {
+		.item-icon {
+			.dark-theme-fg;
 		}
 	}
 }
