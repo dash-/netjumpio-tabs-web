@@ -5,27 +5,32 @@
 import React, { Component } from 'react';
 
 import CardsListItem from '../elements/CardsListItem';
+import TabSetsLogo from '../elements/TabSetsLogo';
 
 
 ///
 // View
 ///
 
-class RolesListItemView extends Component {
+class DirsListItemView extends Component {
 	processItem(item) {
-		return item.set('href', '/roles/' + this.props.item.get('id'));
+		return item.set('href', '/dirs/' + this.props.item.get('id'));
 	}
 
 	render() {
+		const defaultLogoIcon = (
+			<TabSetsLogo />
+		);
+
 		return (
 			<CardsListItem
 				item={this.processItem(this.props.item)}
-				defaultLogoIcon="user-secret"
+				defaultLogoIcon={defaultLogoIcon}
 				width="2x"
 			></CardsListItem>
 		);
 	}
 }
 
-export default RolesListItemView;
+export default DirsListItemView;
 

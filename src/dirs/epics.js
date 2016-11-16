@@ -1,15 +1,19 @@
-const INCREMENT = 'INCREMENT';
-const INCREMENT_IF_ODD = 'INCREMENT_IF_ODD';
 
-const increment = () => ({ type: INCREMENT });
+import axios from 'axios';
+import { Observable } from 'rxjs';
+import * as actions from './actions';
 
-const incrementIfOddEpic = function(action$, store) {
-	return (action$
-		.ofType(INCREMENT_IF_ODD)
-		.filter(() => store.getState().counter % 2 === 0)
-		.map(increment)
-	);
-}
+const retrieveDirsList = (action$, store) => (
+	action$.ofType(actions.FETCH_DIRS_START)
+		.debounceTime(500)
+		.switchMap(action => (
+			Observable.fromPromise(axios.get('/data/dirs.json'))
+				.map(payload => ({
+					type: actions.FETCH_DIRS_FULFILLED,
+					payload
+				}))
+		))
+);
 
-export default incrementIfOddEpic;
+export default retrieveDirsList;
 

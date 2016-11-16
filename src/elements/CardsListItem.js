@@ -5,6 +5,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import classNames from 'classnames';
+import _ from 'lodash';
 
 import Icon from './Icon';
 
@@ -36,15 +37,21 @@ class CardsListItemView extends Component {
 					role="presentation"
 				/>
 			);
+		} 
+
+		const defLogoIcon = this.props.defaultLogoIcon || 'question-circle';
+
+		if(_.isString(defLogoIcon)) {
+			return (
+				<Icon
+					name={this.props.defaultLogoIcon}
+					className="blank-logo"
+					size="3x"
+				/>
+			);
 		}
 
-		return (
-			<Icon
-				name={this.props.defaultLogoIcon}
-				className="blank-logo"
-				size="3x"
-			/>
-		);
+		return defLogoIcon;
 	}
 
 	render() {
