@@ -28,7 +28,7 @@
 @darkThemeListItemBorder: @darkTheme5;
 @darkThemeListItemLogoBg: @darkTheme1;
 @darkThemeListItemLogoFg: @darkTheme4;
-@darkThemeListItemTabsetLogoBorder: @darkTheme3;
+@darkThemeListItemTSLogoBorder: @darkTheme3;
 
 @darkThemeAltBg: @darkTheme3;
 @darkThemeAltFg: @darkTheme3;
@@ -36,71 +36,67 @@
 
 
 ///
-// Styles
+// Dark theme namespace
 ///
 
-.disabled-fg {
-	color: @disabled;
-}
+#dark-theme {
+	.bg {
+		background: @darkThemeBg;
+	}
 
-// Dark theme
-.dark-theme-bg {
-	background: @darkThemeBg;
-}
+	.fg {
+		color: @darkThemeFg;
+	}
 
-.dark-theme-fg {
-	color: @darkThemeFg;
-}
+	.alt-bg {
+		background: @darkThemeAltBg;
+	}
 
-.dark-theme-alt-bg {
-	background: @darkThemeAltBg;
-}
+	.alt-fg {
+		color: @darkThemeAltFg;
+	}
 
-.dark-theme-alt-fg {
-	color: @darkThemeAltFg;
-}
+	.header-bg {
+		background: @darkThemeHeaderBg;
+	}
 
-.dark-theme-header-bg {
-	background: @darkThemeHeaderBg;
-}
+	.header-fg {
+		color: @darkThemeHeaderFg;
+	}
 
-.dark-theme-header-fg {
-	color: @darkThemeHeaderFg;
-}
+	.header-links {
+		color: @darkThemeHeaderLinks;
+	}
 
-.dark-theme-header-links {
-	color: @darkThemeHeaderLinks;
-}
+	.content-bg {
+		background: @darkThemeContentBg;
+	}
 
-.dark-theme-content-bg {
-	background: @darkThemeContentBg;
-}
+	.content-fg {
+		color: @darkThemeContentFg;
+	}
 
-.dark-theme-content-fg {
-	color: @darkThemeContentFg;
-}
+	.list-item-bg {
+		background: @darkThemeListItemBg;
+	}
 
-.dark-theme-list-item-bg {
-	background: @darkThemeListItemBg;
-}
+	.list-item-fg {
+		color: @darkThemeListItemFg;
+	}
 
-.dark-theme-list-item-fg {
-	color: @darkThemeListItemFg;
-}
+	.list-item-border {
+		border: 1px solid @darkThemeListItemBorder;
+	}
 
-.dark-theme-list-item-border {
-	border: 1px solid @darkThemeListItemBorder;
-}
+	.list-item-logo-bg {
+		background: @darkThemeListItemLogoBg;
+	}
 
-.dark-theme-list-item-logo-bg {
-	background: @darkThemeListItemLogoBg;
-}
+	.list-item-logo-fg {
+		color: @darkThemeListItemLogoFg;
+	}
 
-.dark-theme-list-item-logo-fg {
-	color: @darkThemeListItemLogoFg;
+	.list-item-ts-logo-border {
+		border-color: @darkThemeListItemTSLogoBorder;
+	}
 }
-
-.dark-theme-list-item-tabset-logo-border {
-	border-color: @darkThemeListItemTabsetLogoBorder;
-}
-
