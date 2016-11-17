@@ -15,7 +15,7 @@ import * as actions from './actions';
 
 class TabsetsItemView extends Component {
 	componentWillMount() {
-		this.props.retrieveTabset(this.props.params.id);
+		this.props.getTabsetsItem(this.props.params.id);
 	}
 
 	render() {
@@ -38,7 +38,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-		retrieveTabset: (id) => dispatch(actions.retrieveTabset(id)),
+		getTabsetsItem: (id) => dispatch(actions.getTabsetsItem(id)),
   };
 }
 

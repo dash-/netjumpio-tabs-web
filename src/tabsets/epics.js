@@ -5,26 +5,26 @@ import { Observable } from 'rxjs';
 import * as actions from './actions';
 
 const fetchList = (action$, store) => (
-	action$.ofType(actions.FETCH_TABSETS_START)
+	action$.ofType(actions.GET_TABSETS_LIST_START)
 		.debounceTime(500)
 		.switchMap(action => (
 			Observable.fromPromise(
 				axios.get('/data/tabsets.json')
 			).map(payload => ({
-				type: actions.FETCH_TABSETS_FULFILLED,
+				type: actions.GET_TABSETS_LIST_FULFILLED,
 				payload
 			}))
 		))
 );
 
 const fetchItem = (action$, store) => (
-	action$.ofType(actions.FETCH_TABSET_START)
+	action$.ofType(actions.GET_TABSETS_ITEM_START)
 		.debounceTime(500)
 		.switchMap(action => (
 			Observable.fromPromise(
 				axios.get('/data/tabsets/' + action.payload + '.json')
 			).map(payload => ({
-				type: actions.FETCH_TABSET_FULFILLED,
+				type: actions.GET_TABSETS_ITEM_FULFILLED,
 				payload,
 			}))
 		))

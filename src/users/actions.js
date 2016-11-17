@@ -2,15 +2,16 @@
 // Action types
 ///
 
-export const FETCH_USERS_START = 'USERS_FETCH_START';
-export const FETCH_USERS_FULFILLED = 'USERS_FETCH_FULFILLED';
+export const GET_USERS_LIST_START = 'GET_USERS_LIST_START';
+export const GET_USERS_LIST_REJECTED = 'GET_USERS_LIST_REJECTED';
+export const GET_USERS_LIST_FULFILLED = 'GET_USERS_LIST_FULFILLED';
 
 
 ///
 // Action creators
 ///
 
-export function retrieveUsers() {
-	return {type: FETCH_USERS_START};
+export function getUsersList() {
+	return {type: GET_USERS_LIST_START};
 }
 

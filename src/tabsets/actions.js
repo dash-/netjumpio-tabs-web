@@ -2,23 +2,24 @@
 // Action types
 ///
 
-export const FETCH_TABSETS_START = 'FETCH_TABSETS_START';
-export const FETCH_TABSETS_REJECTED = 'FETCH_TABSETS_REJECTED';
-export const FETCH_TABSETS_FULFILLED = 'FETCH_TABSETS_FULFILLED';
+export const GET_TABSETS_LIST_START = 'GET_TABSETS_LIST_START';
+export const GET_TABSETS_LIST_REJECTED = 'GET_TABSETS_LIST_REJECTED';
+export const GET_TABSETS_LIST_FULFILLED = 'GET_TABSETS_LIST_FULFILLED';
 
-export const FETCH_TABSET_START = 'FETCH_TABSET_START';
-export const FETCH_TABSET_REJECTED = 'FETCH_TABSET_REJECTED';
-export const FETCH_TABSET_FULFILLED = 'FETCH_TABSET_FULFILLED';
+export const GET_TABSETS_ITEM_START = 'GET_TABSETS_ITEM_START';
+export const GET_TABSETS_ITEM_REJECTED = 'GET_TABSETS_ITEM_REJECTED';
+export const GET_TABSETS_ITEM_FULFILLED = 'GET_TABSETS_ITEM_FULFILLED';
 
 
 ///
 // Action creators
 ///
 
-export function retrieveTabsets() {
-	return {type: FETCH_TABSETS_START};
+export function getTabsetsList() {
+	return {type: GET_TABSETS_LIST_START};
 }
 
-export function retrieveTabset(id) {
-	return {type: FETCH_TABSET_START, payload: id};
+export function getTabsetsItem(id) {
+	return {type: GET_TABSETS_ITEM_START, payload: id};
 }
+

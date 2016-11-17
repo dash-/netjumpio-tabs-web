@@ -2,15 +2,16 @@
 // Action types
 ///
 
-export const FETCH_GROUPS_START = 'GROUPS_FETCH_START';
-export const FETCH_GROUPS_FULFILLED = 'GROUPS_FETCH_FULFILLED';
+export const GET_GROUPS_LIST_START = 'GET_GROUPS_LIST_START';
+export const GET_GROUPS_LIST_REJECTED = 'GET_GROUPS_LIST_REJECTED';
+export const GET_GROUPS_LIST_FULFILLED = 'GET_GROUPS_LIST_FULFILLED';
 
 
 ///
 // Action creators
 ///
 
-export function retrieveGroups() {
-	return {type: FETCH_GROUPS_START};
+export function getGroupsList() {
+	return {type: GET_GROUPS_LIST_START};
 }
 

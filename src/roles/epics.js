@@ -3,17 +3,17 @@ import axios from 'axios';
 import { Observable } from 'rxjs';
 import * as actions from './actions';
 
-const retrieveRolesList = (action$, store) => (
-	action$.ofType(actions.FETCH_ROLES_START)
+const getRolesList = (action$, store) => (
+	action$.ofType(actions.GET_ROLES_LIST_START)
 		.debounceTime(500)
 		.switchMap(action => (
 			Observable.fromPromise(axios.get('/data/roles.json'))
 				.map(payload => ({
-					type: actions.FETCH_ROLES_FULFILLED,
+					type: actions.GET_ROLES_LIST_FULFILLED,
 					payload
 				}))
 		))
 );
 
-export default retrieveRolesList;
+export default getRolesList;
 

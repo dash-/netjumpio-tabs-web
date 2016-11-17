@@ -18,7 +18,7 @@ function root(state, action) {
 	}
 
 	const handlers = {
-		[actions.FETCH_GROUPS_FULFILLED]: retrieveGroupsFulfilled,
+		[actions.GET_GROUPS_LIST_FULFILLED]: getGroupsListFulfilled,
 		default: (state) => state,
 	};
 
@@ -37,7 +37,7 @@ function init() {
 	return Immutable.fromJS([]);
 }
 
-function retrieveGroupsFulfilled(state, action) {
+function getGroupsListFulfilled(state, action) {
 	return Immutable.fromJS(action.payload.data);
 }
 

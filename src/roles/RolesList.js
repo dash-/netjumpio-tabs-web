@@ -21,7 +21,7 @@ class RolesListView extends Component {
 	constructor(props) {
 		super(props);
 
-		this.props.retrieveRoles();
+		this.props.getRolesList();
 	}
 
 	renderRoles(roles) {
@@ -68,7 +68,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-		retrieveRoles: () => dispatch(actions.retrieveRoles()),
+		getRolesList: () => dispatch(actions.getRolesList()),
   };
 }
 

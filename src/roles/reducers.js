@@ -18,7 +18,7 @@ function root(state, action) {
 	}
 
 	const handlers = {
-		[actions.FETCH_ROLES_FULFILLED]: retrieveRolesFulfilled,
+		[actions.GET_ROLES_LIST_FULFILLED]: getRolesListFulfilled,
 		default: (state) => state,
 	};
 
@@ -37,7 +37,7 @@ function init() {
 	return Immutable.fromJS([]);
 }
 
-function retrieveRolesFulfilled(state, action) {
+function getRolesListFulfilled(state, action) {
 	return Immutable.fromJS(action.payload.data);
 }
 

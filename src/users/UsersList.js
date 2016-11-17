@@ -19,7 +19,7 @@ class UsersListView extends Component {
 	constructor(props) {
 		super(props);
 
-		this.props.retrieveUsers();
+		this.props.getUsersList();
 	}
 
 	renderUsers(users) {
@@ -50,7 +50,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-		retrieveUsers: () => dispatch(actions.retrieveUsers()),
+		getUsersList: () => dispatch(actions.getUsersList()),
   };
 }
 

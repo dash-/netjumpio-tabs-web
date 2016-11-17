@@ -18,7 +18,7 @@ function root(state, action) {
 	}
 
 	const handlers = {
-		[actions.FETCH_USERS_FULFILLED]: retrieveUsersFulfilled,
+		[actions.GET_USERS_LIST_FULFILLED]: getUsersListFulfilled,
 		default: (state) => state,
 	};
 
@@ -37,7 +37,7 @@ function init() {
 	return Immutable.fromJS([]);
 }
 
-function retrieveUsersFulfilled(state, action) {
+function getUsersListFulfilled(state, action) {
 	return Immutable.fromJS(action.payload.data);
 }
 
