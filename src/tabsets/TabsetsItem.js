@@ -6,6 +6,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 
+import TabSetsLogo from '../elements/TabSetsLogo';
+import ItemPanel from '../elements/ItemPanel';
+import ItemPanelHeader from '../elements/ItemPanelHeader';
 import * as actions from './actions';
 
 
@@ -19,8 +22,18 @@ class TabsetsItemView extends Component {
 	}
 
 	render() {
+		const defaultLogoIcon = (
+			<TabSetsLogo />
+		);
+
 		return (
-			<div>Tabset</div>
+			<ItemPanel className="tabsets-item-panel" item={this.props.item}>
+				<ItemPanelHeader
+					item={this.props.item}
+					category="TabSet"
+					defaultLogoIcon={defaultLogoIcon}
+				/>
+			</ItemPanel>
 		);
 	}
 }
@@ -32,7 +45,7 @@ class TabsetsItemView extends Component {
 
 function mapStateToProps(state) {
 	return {
-		content: state.get('tabsets').get('item'),
+		item: state.get('tabsets').get('item'),
 	};
 }
 
