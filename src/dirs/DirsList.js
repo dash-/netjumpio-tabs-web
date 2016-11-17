@@ -76,7 +76,7 @@ class DirsListView extends Component {
 
 function mapStateToProps(state) {
 	return {
-		dirs: state.get('dirs'),
+		dirs: state.get('dirs').get('list'),
 	};
 }
 

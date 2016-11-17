@@ -1,19 +1,36 @@
 
+import { combineEpics } from 'redux-observable';
 import axios from 'axios';
 import { Observable } from 'rxjs';
 import * as actions from './actions';
 
-const retrieveDirsList = (action$, store) => (
+const fetchList = (action$, store) => (
 	action$.ofType(actions.FETCH_DIRS_START)
 		.debounceTime(500)
 		.switchMap(action => (
-			Observable.fromPromise(axios.get('/data/dirs.json'))
-				.map(payload => ({
-					type: actions.FETCH_DIRS_FULFILLED,
-					payload
-				}))
+			Observable.fromPromise(
+				axios.get('/data/dirs.json')
+			).map(payload => ({
+				type: actions.FETCH_DIRS_FULFILLED,
+				payload
+			}))
 		))
 );
 
-export default retrieveDirsList;
+const fetchItem = (action$, store) => (
+	action$.ofType(actions.FETCH_DIR_START)
+		.debounceTime(500)
+		.switchMap(action => (
+			Observable.fromPromise(
+				axios.get('/data/dirs/' + action.payload + '.json')
+			).map(payload => ({
+				type: actions.FETCH_DIR_FULFILLED,
+				payload,
+			}))
+		))
+);
+
+export default combineEpics(
+	fetchList, fetchItem
+);
 

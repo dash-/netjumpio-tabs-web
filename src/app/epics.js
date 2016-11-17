@@ -5,10 +5,10 @@ import usersEpics from '../users/epics';
 import rolesEpics from '../roles/epics';
 import dirsEpics from '../dirs/epics';
 
-export default combineEpics.apply(null, [
+export default combineEpics(
 	orgsEpics,
 	usersEpics,
 	rolesEpics,
-	dirsEpics,
-]);
+	dirsEpics
+);
 
