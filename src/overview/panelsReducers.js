@@ -32,7 +32,7 @@ export default function panels(state, action) {
 
 function init() {
 	return Immutable.fromJS({
-		orgs: {
+		groups: {
 			isExpanded: false,
 		},
 		users: {

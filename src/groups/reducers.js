@@ -18,7 +18,7 @@ function root(state, action) {
 	}
 
 	const handlers = {
-		[actions.FETCH_ORGS_FULFILLED]: retrieveOrgsFulfilled,
+		[actions.FETCH_GROUPS_FULFILLED]: retrieveGroupsFulfilled,
 		default: (state) => state,
 	};
 
@@ -37,7 +37,7 @@ function init() {
 	return Immutable.fromJS([]);
 }
 
-function retrieveOrgsFulfilled(state, action) {
+function retrieveGroupsFulfilled(state, action) {
 	return Immutable.fromJS(action.payload.data);
 }
 

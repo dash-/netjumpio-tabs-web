@@ -9,12 +9,12 @@ import TabSetsLogo from '../elements/TabSetsLogo';
 import OverviewPanelItem from './OverviewPanelItem';
 import FormModal from '../forms/FormModal';
 
-import OrgsList from '../orgs/OrgsList';
+import GroupsList from '../groups/GroupsList';
 import UsersList from '../users/UsersList';
 import RolesList from '../roles/RolesList';
 import DirsList from '../dirs/DirsList';
 
-import OrgsForm from '../orgs/OrgsForm';
+import GroupsForm from '../groups/GroupsForm';
 import UsersForm from '../users/UsersForm';
 import RolesForm from '../roles/RolesForm';
 import DirsForm from '../dirs/DirsForm';
@@ -42,10 +42,10 @@ class OverviewPanelView extends Component {
 				icon: 'user-circle',
 			},
 			{
-				name: 'orgs',
+				name: 'groups',
 				title: 'Groups',
-				list: OrgsList,
-				form: OrgsForm,
+				list: GroupsList,
+				form: GroupsForm,
 				icon: 'id-card',
 			},
 			{

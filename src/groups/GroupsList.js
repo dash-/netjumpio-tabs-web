@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import CardsList from '../elements/CardsList';
-import OrgsListItem from './OrgsListItem';
+import GroupsListItem from './GroupsListItem';
 import * as actions from './actions';
 
 
@@ -15,23 +15,23 @@ import * as actions from './actions';
 // View
 ///
 
-class OrgsListView extends Component {
+class GroupsListView extends Component {
 	constructor(props) {
 		super(props);
 
-		this.props.retrieveOrgs();
+		this.props.retrieveGroups();
 	}
 
-	renderOrgs(orgs) {
-		return orgs.map((item, key) => (
-			<OrgsListItem item={item} key={key} />
+	renderGroups(groups) {
+		return groups.map((item, key) => (
+			<GroupsListItem item={item} key={key} />
 		));
 	}
 
 	render() {
 		return (
-			<CardsList theme="dark" className="orgs-list">
-				{this.renderOrgs(this.props.orgs)}
+			<CardsList theme="dark" className="groups-list">
+				{this.renderGroups(this.props.groups)}
 			</CardsList>
 		);
 	}
@@ -44,13 +44,13 @@ class OrgsListView extends Component {
 
 function mapStateToProps(state) {
 	return {
-		orgs: state.get('orgs'),
+		groups: state.get('groups'),
 	};
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-		retrieveOrgs: () => dispatch(actions.retrieveOrgs()),
+		retrieveGroups: () => dispatch(actions.retrieveGroups()),
   };
 }
 
@@ -59,5 +59,5 @@ const connector = connect(
   mapDispatchToProps
 );
 
-export default connector(OrgsListView);
+export default connector(GroupsListView);
 

@@ -40,7 +40,7 @@ function init() {
 	};
 
 	return Immutable.fromJS({
-		orgs: _.assign({}, defaultItem),
+		groups: _.assign({}, defaultItem),
 		users: _.assign({}, defaultItem),
 		roles: _.assign({}, defaultItem),
 		dirs: _.assign({}, defaultItem),
