@@ -1,5 +1,5 @@
 {
-	"directives": [
+	"tabsets": [
 		{
 			"id": "3000",
 			"name": "Default TabSet",
@@ -15,7 +15,7 @@
 		{
 			"id": "2000",
 			"name": "Personal",
-			"directives": [
+			"tabsets": [
 				{
 					"id": "3100",
 					"name": "Finances",
@@ -31,7 +31,7 @@
 		{
 			"id": "2001",
 			"name": "Software Developer",
-			"directives": [
+			"tabsets": [
 				{
 					"id": "3102",
 					"name": "TS App",
@@ -64,7 +64,7 @@
 		{
 			"id": "1000",
 			"name": "Adobe",
-			"directives": [
+			"tabsets": [
 				{
 					"id": "3200",
 					"name": "Human Resources",
@@ -75,7 +75,7 @@
 				{
 					"id": "2100",
 					"name": "Software Engineer",
-					"directives": [
+					"tabsets": [
 						{
 							"id": "3200",
 							"name": "Engineering Resources",

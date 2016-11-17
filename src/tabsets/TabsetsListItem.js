@@ -12,9 +12,9 @@ import TabSetsLogo from '../elements/TabSetsLogo';
 // View
 ///
 
-class DirsListItemView extends Component {
+class TabsetsListItemView extends Component {
 	processItem(item) {
-		return item.set('href', '/dirs/' + this.props.item.get('id'));
+		return item.set('href', '/tabsets/' + this.props.item.get('id'));
 	}
 
 	render() {
@@ -32,5 +32,5 @@ class DirsListItemView extends Component {
 	}
 }
 
-export default DirsListItemView;
+export default TabsetsListItemView;
 

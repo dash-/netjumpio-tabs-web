@@ -12,7 +12,7 @@ class Header extends Component {
 					<TabSetsLogo />
 					<h3 className="title">TabSets</h3>
 					<div className="links">
-						<Link to="/directive">App List</Link>
+						<Link to="/tabsets/">Example Link</Link>
 					</div>
 				</div>
 				<div className="app-header-spacer"></div>

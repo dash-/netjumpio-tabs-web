@@ -12,12 +12,12 @@ import FormModal from '../forms/FormModal';
 import GroupsList from '../groups/GroupsList';
 import UsersList from '../users/UsersList';
 import RolesList from '../roles/RolesList';
-import DirsList from '../dirs/DirsList';
+import TabsetsList from '../tabsets/TabsetsList';
 
 import GroupsForm from '../groups/GroupsForm';
 import UsersForm from '../users/UsersForm';
 import RolesForm from '../roles/RolesForm';
-import DirsForm from '../dirs/DirsForm';
+import TabsetsForm from '../tabsets/TabsetsForm';
 
 
 ///
@@ -28,10 +28,10 @@ class OverviewPanelView extends Component {
 	getItems() {
 		return [
 			{
-				name: 'dirs',
+				name: 'tabsets',
 				title: 'TabSets',
-				list: DirsList,
-				form: DirsForm,
+				list: TabsetsList,
+				form: TabsetsForm,
 				icon: <TabSetsLogo />
 			},
 			{

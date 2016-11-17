@@ -13,14 +13,14 @@ import * as actions from './actions';
 // View
 ///
 
-class DirsItemView extends Component {
+class TabsetsItemView extends Component {
 	componentWillMount() {
-		this.props.retrieveDir(this.props.params.id);
+		this.props.retrieveTabset(this.props.params.id);
 	}
 
 	render() {
 		return (
-			<div>Dir</div>
+			<div>Tabset</div>
 		);
 	}
 }
@@ -32,13 +32,13 @@ class DirsItemView extends Component {
 
 function mapStateToProps(state) {
 	return {
-		content: state.get('dirs').get('item'),
+		content: state.get('tabsets').get('item'),
 	};
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-		retrieveDir: (id) => dispatch(actions.retrieveDir(id)),
+		retrieveTabset: (id) => dispatch(actions.retrieveTabset(id)),
   };
 }
 
@@ -47,5 +47,5 @@ const connector = connect(
   mapDispatchToProps
 );
 
-export default connector(DirsItemView);
+export default connector(TabsetsItemView);
 

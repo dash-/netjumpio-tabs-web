@@ -40,7 +40,7 @@ export default combineReducers({
 
 function init() {
 	return Immutable.fromJS({
-		selected: 'dirs',
+		selected: 'tabsets',
 	});
 }
 

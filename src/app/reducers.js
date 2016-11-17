@@ -5,7 +5,7 @@ import forms from '../forms/reducers';
 import groups from '../groups/reducers';
 import users from '../users/reducers';
 import roles from '../roles/reducers';
-import dirs from '../dirs/reducers';
+import tabsets from '../tabsets/reducers';
 
 const reducers = {
 	overview,
@@ -13,7 +13,7 @@ const reducers = {
 	groups,
 	users,
 	roles,
-	dirs,
+	tabsets,
 };
 
 export default combineReducers(reducers);

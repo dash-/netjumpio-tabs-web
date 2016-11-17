@@ -41,7 +41,7 @@ function init() {
 		roles: {
 			isExpanded: false,
 		},
-		dirs: {
+		tabsets: {
 			isExpanded: false,
 		},
 	});

@@ -43,7 +43,7 @@ function init() {
 		groups: _.assign({}, defaultItem),
 		users: _.assign({}, defaultItem),
 		roles: _.assign({}, defaultItem),
-		dirs: _.assign({}, defaultItem),
+		tabsets: _.assign({}, defaultItem),
 	});
 }
 

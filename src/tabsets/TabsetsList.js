@@ -8,7 +8,7 @@ import _ from 'lodash';
 
 import CardsList from '../elements/CardsList';
 import CardsListCategory from '../elements/CardsListCategory';
-import DirsListItem from './DirsListItem';
+import TabsetsListItem from './TabsetsListItem';
 import * as actions from './actions';
 
 
@@ -16,22 +16,22 @@ import * as actions from './actions';
 // View
 ///
 
-class DirsListView extends Component {
+class TabsetsListView extends Component {
 	constructor(props) {
 		super(props);
 
-		this.props.retrieveDirs();
+		this.props.retrieveTabsets();
 	}
 
-	renderDirs(dirs) {
-		if(_.isUndefined(dirs)) return '';
+	renderTabsets(tabsets) {
+		if(_.isUndefined(tabsets)) return '';
 
-		return dirs.map((item, key) => (
-			<DirsListItem item={item} key={key} />
+		return tabsets.map((item, key) => (
+			<TabsetsListItem item={item} key={key} />
 		));
 	}
 
-	renderDirsByRole(roles, groupName) {
+	renderTabsetsByRole(roles, groupName) {
 		if(_.isUndefined(roles)) return '';
 
 		return roles.map((item, key) => (
@@ -39,12 +39,12 @@ class DirsListView extends Component {
 				name={(groupName ? groupName + ' - ' : '') + item.get('name')}
 				key={key}
 			>
-				{this.renderDirs(item.get('directives'))}
+				{this.renderTabsets(item.get('tabsets'))}
 			</CardsListCategory>
 		));
 	}
 
-	renderDirsByGroup(groups) {
+	renderTabsetsByGroup(groups) {
 		if(_.isUndefined(groups)) return '';
 
 		return groups.map((item, key) => (
@@ -52,18 +52,18 @@ class DirsListView extends Component {
 				name={item.get('name')}
 				key={key}
 			>
-				{this.renderDirs(item.get('directives'))}
-				{this.renderDirsByRole(item.get('byRole'), item.get('name'))}
+				{this.renderTabsets(item.get('tabsets'))}
+				{this.renderTabsetsByRole(item.get('byRole'), item.get('name'))}
 			</CardsListCategory>
 		));
 	}
 
 	render() {
 		return (
-			<CardsList theme="dark" className="dirs-list">
-				{this.renderDirs(this.props.dirs.get('directives'))}
-				{this.renderDirsByRole(this.props.dirs.get('byRole'))}
-				{this.renderDirsByGroup(this.props.dirs.get('byGroup'))}
+			<CardsList theme="dark" className="tabsets-list">
+				{this.renderTabsets(this.props.tabsets.get('tabsets'))}
+				{this.renderTabsetsByRole(this.props.tabsets.get('byRole'))}
+				{this.renderTabsetsByGroup(this.props.tabsets.get('byGroup'))}
 			</CardsList>
 		);
 	}
@@ -76,13 +76,13 @@ class DirsListView extends Component {
 
 function mapStateToProps(state) {
 	return {
-		dirs: state.get('dirs').get('list'),
+		tabsets: state.get('tabsets').get('list'),
 	};
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-		retrieveDirs: () => dispatch(actions.retrieveDirs()),
+		retrieveTabsets: () => dispatch(actions.retrieveTabsets()),
   };
 }
 
@@ -91,5 +91,5 @@ const connector = connect(
   mapDispatchToProps
 );
 
-export default connector(DirsListView);
+export default connector(TabsetsListView);
 
