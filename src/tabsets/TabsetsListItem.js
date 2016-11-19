@@ -27,6 +27,7 @@ class TabsetsListItemView extends Component {
 				item={this.processItem(this.props.item)}
 				defaultLogoIcon={defaultLogoIcon}
 				width="2x"
+				horizontal
 			></CardsListItem>
 		);
 	}

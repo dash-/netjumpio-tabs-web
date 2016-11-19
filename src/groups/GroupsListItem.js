@@ -23,6 +23,7 @@ class GroupsListItemView extends Component {
 				item={this.processItem(this.props.item)}
 				defaultLogoIcon="id-card"
 				width="2x"
+				horizontal
 			/>
 		);
 	}

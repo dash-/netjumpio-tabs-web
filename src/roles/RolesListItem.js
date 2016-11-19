@@ -22,6 +22,7 @@ class RolesListItemView extends Component {
 				item={this.processItem(this.props.item)}
 				defaultLogoIcon="user-secret"
 				width="2x"
+				horizontal
 			></CardsListItem>
 		);
 	}

@@ -5,18 +5,27 @@
 	"tabs": [
 		{
 			"id": "4000",
+			"name": "Google",
 			"url": "https://www.google.com/",
 			"logoUrl": "https://lh3.googleusercontent.com/-qn7Hl_AXEOA/Vegu58jvBrI/AAAAAAAAAVA/RtkSABWWZsU/w768-h768/Google_icon_2015.png"
 		},
 		{
 			"id": "4001",
-			"url": "www.facebook.com",
+			"name": "Facebook",
+			"url": "https://www.facebook.com",
 			"logoUrl": "https://www.facebook.com/images/fb_icon_325x325.png"
 		},
 		{
 			"id": "4002",
-			"url": "www.twitter.com",
+			"name": "Twitter",
+			"url": "https://www.twitter.com",
 			"logoUrl": "https://upload.wikimedia.org/wikipedia/en/thumb/9/9f/Twitter_bird_logo_2012.svg/1259px-Twitter_bird_logo_2012.svg.png"
+		},
+		{
+			"id": "4003",
+			"name": "Microsoft",
+			"url": "http://www.microsoft.com",
+			"logoUrl": "http://betanews.com/wp-content/uploads/2022/08/Microsoft-Logo1.jpg"
 		}
 	]
 }

@@ -48,9 +48,14 @@ class ItemPanelHeaderView extends Component {
 				<div className="title">
 					{this.props.item.get('name')}
 				</div>
-				<small className="category-name">
-					{this.props.category}
-				</small>
+				<div className="other">
+					<small className="category-name">
+						{this.props.category}
+					</small>
+					<div className="addons">
+						{this.props.children}
+					</div>
+				</div>
 			</h2>
 		);
 	}

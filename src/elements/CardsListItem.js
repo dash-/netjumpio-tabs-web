@@ -3,10 +3,10 @@
 ///
 
 import React, { Component } from 'react';
-import { Link } from 'react-router';
 import classNames from 'classnames';
 import _ from 'lodash';
 
+import AdvancedLink from './AdvancedLink';
 import Icon from './Icon';
 
 
@@ -21,10 +21,15 @@ class CardsListItemView extends Component {
 		return 'width-' + this.props.width;
 	}
 
+	layoutClass() {
+		return this.props.horizontal ? 'horizontal' : [];
+	}
+
 	classNames() {
 		return classNames(
 			'cards-list-item',
 			this.widthClass(),
+			this.layoutClass(),
 		);
 	}
 
@@ -57,15 +62,19 @@ class CardsListItemView extends Component {
 	render() {
 		return (
 			<li className={this.classNames()}>
-				<Link to={this.props.item.get('href')}>
+				<AdvancedLink to={this.props.item.get('href')}>
 					<div className="logo-container">
 						{this.renderLogo(this.props.item)}
 					</div>
-					<div className="title">
-						{this.props.item.get('name')}
+					<div className="text-container">
+						<div className="title">
+							{this.props.item.get('name')}
+						</div>
+						<div className="contents">
+							{this.props.children}
+						</div>
 					</div>
-					{this.props.children}
-				</Link>
+				</AdvancedLink>
 			</li>
 		);
 	}
