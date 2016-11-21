@@ -40,11 +40,16 @@ export default combineReducers({
 
 function init() {
 	return Immutable.fromJS({
-		selected: 'tabsets',
+		selected: '',
 	});
 }
 
 function selectOverviewItem(state, action) {
+	// Selecting the selected panel deselects all panels
+	if(state.get('selected') === action.payload) {
+		return state.set('selected', '');
+	}
+
 	return state.set('selected', action.payload);
 }
 
