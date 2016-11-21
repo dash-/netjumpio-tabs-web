@@ -64,6 +64,9 @@ class TabsetsItemView extends Component {
 						&nbsp;Open
 					</Button>
 				</TabsetLink>
+				<Button>
+					<Icon name="share-alt" />
+				</Button>
 			</ItemPanelHeader>
 		);
 	}

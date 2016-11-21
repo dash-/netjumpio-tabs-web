@@ -25,6 +25,7 @@ class TabsetLink extends Component {
 	render() {
 		return (
 			<div
+				className="tabset-link"
 				onClick={this.openTabset.bind(this, this.props.tabset)}
 			>
 				{this.props.children}
