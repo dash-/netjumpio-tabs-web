@@ -21,13 +21,13 @@ export default class Icon extends Component {
 	}
 
 	render() {
-		let name = this.getName(this.props.name);
-		let className = this.getClassName(this.props.className);
+		const name = this.getName(this.props.name);
+		const className = this.getClassName(this.props.className);
 
-		let props = _.chain(this.props)
+		const props = _.chain(this.props)
 			.omit(['name', 'className'])
 			.assign({name: name})
-			.assign(className ? {className: className} : {})
+			.assign(className ? {className} : {})
 			.value();
 
 		return React.createElement(FontAwesome, props);
