@@ -7,14 +7,12 @@ import users from '../users/reducers';
 import roles from '../roles/reducers';
 import tabsets from '../tabsets/reducers';
 
-const reducers = {
+export default combineReducers({
 	overview,
 	forms,
 	groups,
 	users,
 	roles,
 	tabsets,
-};
-
-export default combineReducers(reducers);
+});
 
