@@ -9,6 +9,4 @@ function run() {
 	);
 }
 
-const app = {run: run};
-
-export default app;
+export default {run};
