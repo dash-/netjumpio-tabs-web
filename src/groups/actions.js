@@ -2,16 +2,16 @@
 // Action types
 ///
 
-export const GET_GROUPS_LIST_START = 'GET_GROUPS_LIST_START';
-export const GET_GROUPS_LIST_REJECTED = 'GET_GROUPS_LIST_REJECTED';
-export const GET_GROUPS_LIST_FULFILLED = 'GET_GROUPS_LIST_FULFILLED';
+export const GET_LIST_START = 'GROUPS:GET_LIST_START';
+export const GET_LIST_REJECTED = 'GROUPS:GET_LIST_REJECTED';
+export const GET_LIST_FULFILLED = 'GROUPS:GET_LIST_FULFILLED';
 
 
 ///
 // Action creators
 ///
 
-export function getGroupsList() {
-	return {type: GET_GROUPS_LIST_START};
+export function getList() {
+	return {type: GET_LIST_START};
 }
 

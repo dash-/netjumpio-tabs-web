@@ -19,7 +19,7 @@ class GroupsListView extends Component {
 	constructor(props) {
 		super(props);
 
-		this.props.getGroupsList();
+		this.props.getList();
 	}
 
 	renderGroups(groups) {
@@ -50,7 +50,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-		getGroupsList: () => dispatch(actions.getGroupsList()),
+		getList: () => dispatch(actions.getList()),
   };
 }
 
