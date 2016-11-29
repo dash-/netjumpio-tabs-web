@@ -33,7 +33,7 @@ import * as actions from './actions';
 
 class TabsetsItemView extends Component {
 	componentWillMount() {
-		this.props.getTabsetsItem(this.props.params.id);
+		this.props.getItem(this.props.params.id);
 	}
 
 	processTabForCLItem(tab) {
@@ -143,7 +143,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
 	return {
-		getTabsetsItem: (id) => dispatch(actions.getTabsetsItem(id)),
+		getItem: (id) => dispatch(actions.getItem(id)),
 	};
 }
 

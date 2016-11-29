@@ -20,7 +20,7 @@ class TabsetsListView extends Component {
 	constructor(props) {
 		super(props);
 
-		this.props.getTabsetsList();
+		this.props.getList();
 	}
 
 	renderTabsets(tabsets) {
@@ -82,7 +82,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-		getTabsetsList: () => dispatch(actions.getTabsetsList()),
+		getList: () => dispatch(actions.getList()),
   };
 }
 

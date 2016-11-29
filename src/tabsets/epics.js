@@ -10,33 +10,32 @@ import apiConfig from '../app/apiConfig';
 import * as actions from './actions';
 import * as formsActions from '../forms/actions';
 
-console.log(apiConfig());
 
 ///
 // Epics
 ///
 
 const fetchList = (action$, store) => (
-	action$.ofType(actions.GET_TABSETS_LIST_START)
+	action$.ofType(actions.GET_LIST_START)
 		.debounceTime(500)
 		.switchMap(action => (
 			Observable.fromPromise(
 				axios.get('/data/tabsets.json')
 			).map(payload => ({
-				type: actions.GET_TABSETS_LIST_FULFILLED,
+				type: actions.GET_LIST_FULFILLED,
 				payload
 			}))
 		))
 );
 
 const fetchItem = (action$, store) => (
-	action$.ofType(actions.GET_TABSETS_ITEM_START)
+	action$.ofType(actions.GET_ITEM_START)
 		.debounceTime(500)
 		.switchMap(action => (
 			Observable.fromPromise(
 				axios.get('/data/tabsets/' + action.payload + '.json')
 			).map(payload => ({
-				type: actions.GET_TABSETS_ITEM_FULFILLED,
+				type: actions.GET_ITEM_FULFILLED,
 				payload,
 			}))
 		))
@@ -47,10 +46,7 @@ const saveItem = (action$, store) => (
 		.switchMap(action => (
 			Observable.fromPromise(
 				axios.post('/tabsets', action.payload, apiConfig())
-			).map(payload => ({
-				type: formsActions.FORM_SUBMIT_FULFILLED,
-				payload: 'tabsets',
-			}))
+			).map(payload => formsActions.formSubmitFulfilled('tabsets'))
 		))
 );
 

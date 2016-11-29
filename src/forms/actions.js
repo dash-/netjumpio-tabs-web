@@ -45,3 +45,11 @@ export function fieldChanged(formName, fieldName, value) {
 		value: value,
 	}};
 }
+
+export function formSubmitFulfilled(formName) {
+	return {
+		type: FORM_SUBMIT_FULFILLED,
+		payload: formName,
+	};
+}
+

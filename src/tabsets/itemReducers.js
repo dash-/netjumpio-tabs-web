@@ -14,7 +14,7 @@ import * as actions from './actions';
 
 function root(state = Immutable.fromJS({}), action) {
 	const handlers = {
-		[actions.GET_TABSETS_ITEM_FULFILLED]: getTabsetsItemFulfilled,
+		[actions.GET_ITEM_FULFILLED]: getItemFulfilled,
 		default: (state) => state,
 	};
 
@@ -29,7 +29,7 @@ export default root;
 // Delegates
 ///
 
-function getTabsetsItemFulfilled(state, action) {
+function getItemFulfilled(state, action) {
 	return Immutable.fromJS(action.payload.data);
 }
 
