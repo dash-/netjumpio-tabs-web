@@ -12,9 +12,9 @@ import CardsListItem from '../elements/CardsListItem';
 // View
 ///
 
-class UsersListItemView extends Component {
+class PeopleListItemView extends Component {
 	processItem(item) {
-		return item.set('href', '/users/' + this.props.item.get('id'));
+		return item.set('href', '/people/' + this.props.item.get('id'));
 	}
 
 	render() {
@@ -29,5 +29,5 @@ class UsersListItemView extends Component {
 	}
 }
 
-export default UsersListItemView;
+export default PeopleListItemView;
 

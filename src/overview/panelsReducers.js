@@ -35,7 +35,7 @@ function init() {
 		groups: {
 			isExpanded: false,
 		},
-		users: {
+		people: {
 			isExpanded: false,
 		},
 		roles: {

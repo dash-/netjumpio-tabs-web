@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import CardsList from '../elements/CardsList';
-import UsersListItem from './UsersListItem';
+import PeopleListItem from './PeopleListItem';
 import * as actions from './actions';
 
 
@@ -15,23 +15,23 @@ import * as actions from './actions';
 // View
 ///
 
-class UsersListView extends Component {
+class PeopleListView extends Component {
 	constructor(props) {
 		super(props);
 
 		this.props.getList();
 	}
 
-	renderUsers(users) {
-		return users.map((item, key) => (
-			<UsersListItem item={item} key={key} />
+	renderPeople(people) {
+		return people.map((item, key) => (
+			<PeopleListItem item={item} key={key} />
 		));
 	}
 
 	render() {
 		return (
-			<CardsList theme="dark" className="users-list">
-				{this.renderUsers(this.props.users)}
+			<CardsList theme="dark" className="people-list">
+				{this.renderPeople(this.props.people)}
 			</CardsList>
 		);
 	}
@@ -44,7 +44,7 @@ class UsersListView extends Component {
 
 function mapStateToProps(state) {
 	return {
-		users: state.get('users'),
+		people: state.get('people'),
 	};
 }
 
@@ -59,5 +59,5 @@ const connector = connect(
   mapDispatchToProps
 );
 
-export default connector(UsersListView);
+export default connector(PeopleListView);
 

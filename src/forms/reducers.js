@@ -43,7 +43,7 @@ function init() {
 
 	return Immutable.fromJS({
 		groups: _.assign({}, defaultItem),
-		users: _.assign({}, defaultItem),
+		people: _.assign({}, defaultItem),
 		roles: _.assign({}, defaultItem),
 		tabsets: _.assign({}, defaultItem),
 	});
