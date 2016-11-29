@@ -3,15 +3,12 @@
 ///
 
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 
 import FormGroup from 'react-bootstrap/lib/FormGroup';
 import ControlLabel from 'react-bootstrap/lib/ControlLabel';
 import FormControl from '../forms/FormControl';
 
 import Form from '../forms/Form';
-
-import * as actions from './actions';
 
 
 ///
@@ -35,7 +32,7 @@ class TabsetsFormView extends Component {
 					<FormControl
 						name="logoUrl"
 						type="text"
-						placeholder="www.example.com/icon.png"
+						placeholder="https://www.example.com/icon.png"
 					/>
 				</FormGroup>
 			</Form>
@@ -43,27 +40,5 @@ class TabsetsFormView extends Component {
 	}
 }
 
-
-///
-// Container
-///
-
-function mapStateToProps(state) {
-	return {};
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-		submit: (values) => dispatch(
-			actions.submitTabsetsForm(values)
-		),
-  };
-}
-
-const connector = connect(
-  mapStateToProps,
-  mapDispatchToProps
-);
-
-export default connector(TabsetsFormView);
+export default TabsetsFormView;
 
