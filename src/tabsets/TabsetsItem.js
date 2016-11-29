@@ -23,6 +23,7 @@ import CardsListItem from '../elements/CardsListItem';
 import CardsListCategory from '../elements/CardsListCategory';
 import NoWrapEllipse from '../elements/NoWrapEllipse';
 import TabsetLink from './TabsetLink';
+
 import * as actions from './actions';
 
 
@@ -141,14 +142,14 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return {
+	return {
 		getTabsetsItem: (id) => dispatch(actions.getTabsetsItem(id)),
-  };
+	};
 }
 
 const connector = connect(
-  mapStateToProps,
-  mapDispatchToProps
+	mapStateToProps,
+	mapDispatchToProps
 );
 
 export default connector(TabsetsItemView);
