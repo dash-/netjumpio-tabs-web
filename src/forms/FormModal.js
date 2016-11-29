@@ -13,7 +13,7 @@ import * as actions from './actions';
 // View
 ///
 
-class ManagedFormModal extends Component {
+class ManagedFormModalView extends Component {
 	constructor(props) {
 		super(props);
 
@@ -26,14 +26,10 @@ class ManagedFormModal extends Component {
 	}
 
 	saveForm() {
-		this.refs.form.save();
+		this.props.submitForm(this.props.name);
 	}
 
 	render() {
-		const form = React.createElement(this.props.form, {
-			ref: 'form',
-		});
-
 		const isFormVisible = this.props.forms.getIn([
 			this.props.name, 'isVisible'
 		]);
@@ -45,7 +41,7 @@ class ManagedFormModal extends Component {
 				onClose={this.closeForm}
 				onSave={this.saveForm}
 			>
-				{form}
+				{React.createElement(this.props.form)}
 			</FormModal>
 		);
 	}
@@ -65,6 +61,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
 		hideForm: (name) => dispatch(actions.hideForm(name)),
+		submitForm: (name) => dispatch(actions.submitForm(name)),
   };
 }
 
@@ -73,5 +70,5 @@ const connector = connect(
   mapDispatchToProps
 );
 
-export default connector(ManagedFormModal);
+export default connector(ManagedFormModalView);
 

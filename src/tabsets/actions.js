@@ -1,4 +1,11 @@
 ///
+// Dependencies
+///
+
+import * as formsActions from '../forms/actions';
+
+
+///
 // Action types
 ///
 
@@ -9,6 +16,8 @@ export const GET_TABSETS_LIST_FULFILLED = 'GET_TABSETS_LIST_FULFILLED';
 export const GET_TABSETS_ITEM_START = 'GET_TABSETS_ITEM_START';
 export const GET_TABSETS_ITEM_REJECTED = 'GET_TABSETS_ITEM_REJECTED';
 export const GET_TABSETS_ITEM_FULFILLED = 'GET_TABSETS_ITEM_FULFILLED';
+
+export const SUBMIT_FORM = formsActions.FORM_SUBMIT_START + ':tabsets';
 
 
 ///

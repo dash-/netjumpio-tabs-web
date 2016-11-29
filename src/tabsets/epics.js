@@ -1,8 +1,20 @@
+///
+// Dependencies
+///
 
 import { combineEpics } from 'redux-observable';
 import axios from 'axios';
 import { Observable } from 'rxjs';
+
+import apiConfig from '../app/apiConfig';
 import * as actions from './actions';
+import * as formsActions from '../forms/actions';
+
+console.log(apiConfig());
+
+///
+// Epics
+///
 
 const fetchList = (action$, store) => (
 	action$.ofType(actions.GET_TABSETS_LIST_START)
@@ -30,7 +42,24 @@ const fetchItem = (action$, store) => (
 		))
 );
 
+const saveItem = (action$, store) => (
+	action$.ofType(actions.SUBMIT_FORM)
+		.switchMap(action => (
+			Observable.fromPromise(
+				axios.post('/tabsets', action.payload, apiConfig())
+			).map(payload => ({
+				type: formsActions.FORM_SUBMIT_FULFILLED,
+				payload: 'tabsets',
+			}))
+		))
+);
+
+
+///
+// Export
+///
+
 export default combineEpics(
-	fetchList, fetchItem
+	fetchList, fetchItem, saveItem
 );
 

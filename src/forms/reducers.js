@@ -20,6 +20,7 @@ function root(state, action) {
 	const handlers = {
 		[actions.FORM_SHOW]: showForm,
 		[actions.FORM_HIDE]: hideForm,
+		[actions.FORM_FIELD_CHANGED]: fieldChanged,
 		default: (state) => state,
 	};
 
@@ -37,6 +38,7 @@ export default root;
 function init() {
 	const defaultItem = {
 		isVisible: false,
+		values: {},
 	};
 
 	return Immutable.fromJS({
@@ -54,6 +56,19 @@ function showForm(state, action) {
 function hideForm(state, action) {
 	return setVisibility(state, action.payload, false);
 }
+
+function fieldChanged(state, action) {
+	const form = action.payload.form;
+	const field = action.payload.field;
+	const value = action.payload.value;
+
+	return state.setIn([form, 'values', field], value);
+}
+
+
+///
+// Helpers
+///
 
 function setVisibility(state, item, isVisible) {
 	return state.setIn([item, 'isVisible'], isVisible);

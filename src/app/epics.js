@@ -1,14 +1,16 @@
 
 import { combineEpics } from 'redux-observable';
-import groupsEpics from '../groups/epics';
-import usersEpics from '../users/epics';
-import rolesEpics from '../roles/epics';
-import tabsetsEpics from '../tabsets/epics';
+import forms from '../forms/epics';
+import groups from '../groups/epics';
+import users from '../users/epics';
+import roles from '../roles/epics';
+import tabsets from '../tabsets/epics';
 
 export default combineEpics(
-	groupsEpics,
-	usersEpics,
-	rolesEpics,
-	tabsetsEpics
+	forms,
+	groups,
+	users,
+	roles,
+	tabsets
 );
 
