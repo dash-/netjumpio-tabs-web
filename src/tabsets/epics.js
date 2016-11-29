@@ -15,7 +15,7 @@ import * as formsActions from '../forms/actions';
 // Epics
 ///
 
-const fetchList = (action$, store) => (
+const getList = (action$, store) => (
 	action$.ofType(actions.GET_LIST_START)
 		.debounceTime(500)
 		.switchMap(action => (
@@ -28,7 +28,7 @@ const fetchList = (action$, store) => (
 		))
 );
 
-const fetchItem = (action$, store) => (
+const getItem = (action$, store) => (
 	action$.ofType(actions.GET_ITEM_START)
 		.debounceTime(500)
 		.switchMap(action => (
@@ -56,6 +56,6 @@ const saveItem = (action$, store) => (
 ///
 
 export default combineEpics(
-	fetchList, fetchItem, saveItem
+	getList, getItem, saveItem
 );
 
