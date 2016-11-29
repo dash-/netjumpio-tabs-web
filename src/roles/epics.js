@@ -1,7 +1,19 @@
+///
+// Dependencies
+///
 
+import { combineEpics } from 'redux-observable';
 import axios from 'axios';
 import { Observable } from 'rxjs';
+
+import apiConfig from '../app/apiConfig';
 import * as actions from './actions';
+import * as formsActions from '../forms/actions';
+
+
+///
+// Epics
+///
 
 const getList = (action$, store) => (
 	action$.ofType(actions.GET_LIST_START)
@@ -15,5 +27,22 @@ const getList = (action$, store) => (
 		))
 );
 
-export default getList;
+const saveItem = (action$, store) => (
+	action$.ofType(actions.SUBMIT_FORM)
+		.switchMap(action => (
+			Observable.fromPromise(
+				axios.post('/roles', action.payload, apiConfig())
+			).map(payload => formsActions.formSubmitFulfilled('roles'))
+		))
+);
+
+
+///
+// Export
+///
+
+export default combineEpics(
+	getList, saveItem
+);
+
 
