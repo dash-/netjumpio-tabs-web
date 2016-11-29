@@ -54,7 +54,8 @@ function showForm(state, action) {
 }
 
 function hideForm(state, action) {
-	return setVisibility(state, action.payload, false);
+	return setVisibility(state, action.payload, false)
+		.setIn([action.payload, 'values'], Immutable.fromJS({}));
 }
 
 function fieldChanged(state, action) {
