@@ -18,7 +18,11 @@ import Form from '../forms/Form';
 class LoginFormView extends Component {
 	render() {
 		return (
-			<Form name="login" className="login-form">
+			<Form
+				name="login"
+				className="login-form"
+				onSubmit={this.props.onSubmit}
+			>
 				<FormGroup controlId="emailField">
 					<ControlLabel>Email</ControlLabel>
 					<FormControl
