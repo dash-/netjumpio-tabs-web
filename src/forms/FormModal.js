@@ -21,6 +21,10 @@ class ManagedFormModalView extends Component {
 		this.saveForm = this.saveForm.bind(this);
 	}
 
+	componentWillMount() {
+		this.props.initForm(this.props.name);
+	}
+
 	closeForm() {
 		this.props.hideForm(this.props.name);
 	}
@@ -60,6 +64,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
+		initForm: (name) => dispatch(actions.initForm(name)),
 		hideForm: (name) => dispatch(actions.hideForm(name)),
 		submitForm: (name) => dispatch(actions.submitForm(name)),
   };

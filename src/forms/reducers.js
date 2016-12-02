@@ -12,12 +12,9 @@ import * as actions from './actions';
 // Reducers
 ///
 
-function root(state, action) {
-	if(_.isUndefined(state)) {
-		state = init();
-	}
-
+function root(state = Immutable.fromJS({}), action) {
 	const handlers = {
+		[actions.FORM_INIT]: initForm,
 		[actions.FORM_SHOW]: showForm,
 		[actions.FORM_HIDE]: hideForm,
 		[actions.FORM_FIELD_CHANGED]: fieldChanged,
@@ -35,18 +32,17 @@ export default root;
 // Delegates
 ///
 
-function init() {
-	const defaultItem = {
-		isVisible: false,
-		values: {},
-	};
+const defaultItem = {
+	isVisible: false, // Only used by form modals
+	values: {},
+};
 
-	return Immutable.fromJS({
-		groups: _.assign({}, defaultItem),
-		people: _.assign({}, defaultItem),
-		roles: _.assign({}, defaultItem),
-		tabsets: _.assign({}, defaultItem),
-	});
+function initForm(state, action) {
+	if(state.get(action.payload)) {
+		return state;
+	}
+
+	return state.set(action.payload, Immutable.fromJS(defaultItem));
 }
 
 function showForm(state, action) {
