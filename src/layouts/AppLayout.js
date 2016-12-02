@@ -6,10 +6,10 @@ import Col from 'react-bootstrap/lib/Col';
 import Header from './Header';
 import SidePanel from './SidePanel';
 
-class MainLayout extends Component {
+class AppLayout extends Component {
   render() {
     return (
-    	<div>
+    	<div className="app-layout">
     		<Header />
     		<Col md={8} className="main-panel">
 					{this.props.children}
@@ -22,5 +22,5 @@ class MainLayout extends Component {
   }
 }
 
-export default MainLayout;
+export default AppLayout;
 
