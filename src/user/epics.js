@@ -22,11 +22,7 @@ const login = (action$, store) => (
 					email: action.payload.email,
 					password: action.payload.password,
 				}, 'user')
-//			).map(payload => formsActions.formSubmitFulfilled('tabsets'))
-			).map(function(payload) {
-console.log('payload', payload);
-				return formsActions.formSubmitFulfilled('tabsets');
-			})
+			).map(payload => formsActions.formSubmitFulfilled('login', payload))
 		))
 );
 
