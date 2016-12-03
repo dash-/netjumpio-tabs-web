@@ -16,10 +16,6 @@ import * as actions from './actions';
 ///
 
 class PeopleListView extends Component {
-	componentWillMount() {
-		this.props.getList();
-	}
-
 	renderPeople(people) {
 		return people.map((item, key) => (
 			<PeopleListItem item={item} key={key} />

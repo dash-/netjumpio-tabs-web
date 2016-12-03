@@ -17,10 +17,6 @@ import * as actions from './actions';
 ///
 
 class TabsetsListView extends Component {
-	componentWillMount() {
-		this.props.getList();
-	}
-
 	renderTabsets(tabsets) {
 		if(_.isUndefined(tabsets)) return '';
 

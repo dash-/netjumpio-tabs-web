@@ -18,10 +18,6 @@ import * as actions from './actions';
 ///
 
 class RolesListView extends Component {
-	componentWillMount() {
-		this.props.getList();
-	}
-
 	renderRoles(roles) {
 		if(_.isUndefined(roles)) return '';
 

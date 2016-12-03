@@ -16,10 +16,6 @@ import * as actions from './actions';
 ///
 
 class GroupsListView extends Component {
-	componentWillMount() {
-		this.props.getList();
-	}
-
 	renderGroups(groups) {
 		return groups.map((item, key) => (
 			<GroupsListItem item={item} key={key} />

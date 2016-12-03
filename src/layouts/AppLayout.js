@@ -12,6 +12,7 @@ import Col from 'react-bootstrap/lib/Col';
 import Header from './Header';
 import SidePanel from './SidePanel';
 import LoginPage from '../user/LoginPage';
+import Initializer from '../init/Initializer';
 
 
 ///
@@ -43,6 +44,20 @@ class AppLayoutView extends Component {
 		);
 	}
 
+	renderInitializer() {
+		if(! userTools.isLoggedIn(this.props.user)) {
+			return '';
+		}
+
+		if(this.props.init && this.props.init.get('progress') >= 1) {
+			return '';
+		}
+
+		return (
+			<Initializer />
+		);
+	}
+
 	renderLoginPage() {
 		if(userTools.isLoggedIn(this.props.user)) {
 			return '';
@@ -56,6 +71,7 @@ class AppLayoutView extends Component {
     	<div className="app-layout">
     		<Header />
 				{this.renderLoginPage()}
+				{this.renderInitializer()}
 				{this.renderMainPanel()}
 				{this.renderSidePanel()}
 			</div>
@@ -71,6 +87,7 @@ class AppLayoutView extends Component {
 function mapStateToProps(state) {
 	return {
 		user: state.get('user'),
+		init: state.get('init'),
 	};
 }
 
