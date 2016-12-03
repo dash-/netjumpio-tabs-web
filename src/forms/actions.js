@@ -46,10 +46,13 @@ export function fieldChanged(formName, fieldName, value) {
 	}};
 }
 
-export function formSubmitFulfilled(formName) {
+export function formSubmitFulfilled(formName, resData) {
 	return {
 		type: FORM_SUBMIT_FULFILLED,
-		payload: formName,
+		payload: {
+			formName,
+			resData,
+		}
 	};
 }
 
