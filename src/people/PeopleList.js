@@ -16,9 +16,7 @@ import * as actions from './actions';
 ///
 
 class PeopleListView extends Component {
-	constructor(props) {
-		super(props);
-
+	componentWillMount() {
 		this.props.getList();
 	}
 

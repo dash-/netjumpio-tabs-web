@@ -17,9 +17,7 @@ import * as actions from './actions';
 ///
 
 class TabsetsListView extends Component {
-	constructor(props) {
-		super(props);
-
+	componentWillMount() {
 		this.props.getList();
 	}
 
