@@ -5,6 +5,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import * as userTools from '../user/tools';
+
 import Col from 'react-bootstrap/lib/Col';
 
 import Header from './Header';
@@ -18,7 +20,7 @@ import LoginPage from '../user/LoginPage';
 
 class AppLayoutView extends Component {
 	renderMainPanel() {
-		if(! this.props.isLoggedIn) {
+		if(! userTools.isLoggedIn(this.props.user)) {
 			return '';
 		}
 
@@ -30,7 +32,7 @@ class AppLayoutView extends Component {
 	}
 
 	renderSidePanel() {
-		if(! this.props.isLoggedIn) {
+		if(! userTools.isLoggedIn(this.props.user)) {
 			return '';
 		}
 
@@ -42,7 +44,7 @@ class AppLayoutView extends Component {
 	}
 
 	renderLoginPage() {
-		if(this.props.isLoggedIn) {
+		if(userTools.isLoggedIn(this.props.user)) {
 			return '';
 		}
 
@@ -68,7 +70,7 @@ class AppLayoutView extends Component {
 
 function mapStateToProps(state) {
 	return {
-		isLoggedIn: state.getIn(['user', 'isLoggedIn']),
+		user: state.get('user'),
 	};
 }
 
