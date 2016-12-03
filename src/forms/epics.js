@@ -17,7 +17,7 @@ const submitForm = (action$, store) => (
 		.switchMap(action => (Observable.of(
 			actions.delegateFormSubmit(
 				action.payload,
-				store.getState().getIn(['forms', action.payload, 'values'])
+				store.getState().getIn(['forms', action.payload, 'values']).toJS()
 			)
 		)))
 );
@@ -26,7 +26,7 @@ const submitFormFulfilled = (action$, store) => (
 	action$.ofType(actions.FORM_SUBMIT_FULFILLED)
 		.debounceTime(50)
 		.switchMap(action => (Observable.of(
-			actions.hideForm(action.payload)
+			actions.hideForm(action.payload.formName)
 		)))
 );
 
