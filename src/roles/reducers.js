@@ -5,20 +5,18 @@
 import Immutable from 'immutable';
 import _ from 'lodash';
 
-import * as actions from './actions';
+import * as rolesActions from './actions';
+import * as groupsActions from '../groups/actions';
 
 
 ///
 // Reducers
 ///
 
-function root(state, action) {
-	if(_.isUndefined(state)) {
-		state = init();
-	}
-
+function root(state = Immutable.fromJS({}), action) {
 	const handlers = {
-		[actions.GET_LIST_FULFILLED]: getListFulfilled,
+		[rolesActions.GET_LIST_FULFILLED]: getRolesListFulfilled,
+		[groupsActions.GET_LIST_FULFILLED]: getGroupsListFulfilled,
 		default: (state) => state,
 	};
 
@@ -33,11 +31,11 @@ export default root;
 // Delegates
 ///
 
-function init() {
-	return Immutable.fromJS([]);
+function getRolesListFulfilled(state, action) {
+	return state.set('roles', Immutable.fromJS(action.payload));
 }
 
-function getListFulfilled(state, action) {
-	return Immutable.fromJS(action.payload.data);
+function getGroupsListFulfilled(state, action) {
+	return state;
 }
 

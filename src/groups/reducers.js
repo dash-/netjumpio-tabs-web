@@ -38,6 +38,6 @@ function init() {
 }
 
 function getListFulfilled(state, action) {
-	return Immutable.fromJS(action.payload.data);
+	return Immutable.fromJS(action.payload);
 }
 
