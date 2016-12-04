@@ -20,9 +20,7 @@ const getList = (action$, store) => (
 		.debounceTime(500)
 		.switchMap(action => (
 			Observable.fromPromise(
-				api.createClient('tabsets').find({
-					include: ['ownerGroup', 'ownerRole'],
-				})
+				api.createClient('tabsets').find()
 			).map(payload => ({
 				type: actions.GET_LIST_FULFILLED,
 				payload
