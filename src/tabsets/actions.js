@@ -17,6 +17,8 @@ export const GET_ITEM_START = 'TABSETS:GET_ITEM_START';
 export const GET_ITEM_REJECTED = 'TABSETS:GET_ITEM_REJECTED';
 export const GET_ITEM_FULFILLED = 'TABSETS:GET_ITEM_FULFILLED';
 
+export const UPDATE_LIST = 'TABSETS:UPDATE_LIST';
+
 export const SUBMIT_FORM = formsActions.FORM_SUBMIT_START + ':tabsets';
 
 
@@ -30,5 +32,9 @@ export function getList() {
 
 export function getItem(id) {
 	return {type: GET_ITEM_START, payload: id};
+}
+
+export function updateList(item) {
+	return {type: UPDATE_LIST, payload: item};
 }
 

@@ -4,6 +4,7 @@
 
 import Immutable from 'immutable';
 import filter from 'lodash/filter';
+import isUndefined from 'lodash/isUndefined';
 
 import * as tabsetsActions from './actions';
 import * as groupsActions from '../groups/actions';
@@ -19,6 +20,7 @@ function root(state = Immutable.fromJS({}), action) {
 		[tabsetsActions.GET_LIST_FULFILLED]: getTabsetsListFulfilled,
 		[groupsActions.GET_LIST_FULFILLED]: getGroupsListFulfilled,
 		[rolesActions.GET_LIST_FULFILLED]: getRolesListFulfilled,
+		[tabsetsActions.UPDATE_LIST]: updateList,
 		default: (state) => state,
 	};
 
@@ -50,6 +52,19 @@ function getGroupsListFulfilled(state, action) {
 	return state.set('groups', Immutable.fromJS(action.payload).reduce(
 		groupReducer, Immutable.fromJS([])
 	));
+}
+
+function updateList(state, action) {
+	const tabset = Immutable.fromJS(action.payload);
+	const existingKey = state.get('tabsets').findKey(item => (
+		item.get('id') === tabset.get('id')
+	));
+
+	if(! isUndefined(existingKey)) {
+		return state.setIn(['tabsets', existingKey], tabset);
+	}
+
+	return state.set('tabsets', state.get('tabsets').push(tabset));
 }
 
 

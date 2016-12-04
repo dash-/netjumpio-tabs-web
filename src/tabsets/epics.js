@@ -20,7 +20,12 @@ const getList = (action$, store) => (
 		.debounceTime(500)
 		.switchMap(action => (
 			Observable.fromPromise(
-				api.createClient('tabsets').find()
+				api.createRelatedClient({
+					one: 'people',
+					many: 'tabsets',
+					id: store.getState().getIn(['user', 'id']),
+					accessToken: store.getState().getIn(['user', 'accessToken']),
+				}).find()
 			).map(payload => ({
 				type: actions.GET_LIST_FULFILLED,
 				payload
@@ -45,9 +50,16 @@ const saveItem = (action$, store) => (
 	action$.ofType(actions.SUBMIT_FORM)
 		.switchMap(action => (
 			Observable.fromPromise(
-				// TODO - Replace with api.createClient('tabsets')...
-				axios.post('/tabsets', action.payload)
-			).map(payload => formsActions.formSubmitFulfilled('tabsets'))
+				api.createRelatedClient({
+					one: 'people',
+					many: 'tabsets',
+					id: store.getState().getIn(['user', 'id']),
+					accessToken: store.getState().getIn(['user', 'accessToken']),
+				}).create(action.payload)
+			).flatMap(payload => Observable.concat(
+				Observable.of(formsActions.formSubmitFulfilled('tabsets')),
+				Observable.of(actions.updateList(payload))
+			))
 		))
 );
 
