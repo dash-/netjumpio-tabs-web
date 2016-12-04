@@ -47,7 +47,7 @@ class TabsetsListView extends Component {
 				key={key}
 			>
 				{this.renderTabsets(item.get('tabsets'))}
-				{this.renderTabsetsByRole(item.get('byRole'), item.get('name'))}
+				{this.renderTabsetsByRole(item.get('roles'), item.get('name'))}
 			</CardsListCategory>
 		));
 	}
@@ -56,8 +56,8 @@ class TabsetsListView extends Component {
 		return (
 			<CardsList theme="dark" className="tabsets-list">
 				{this.renderTabsets(this.props.tabsets.get('tabsets'))}
-				{this.renderTabsetsByRole(this.props.tabsets.get('byRole'))}
-				{this.renderTabsetsByGroup(this.props.tabsets.get('byGroup'))}
+				{this.renderTabsetsByRole(this.props.tabsets.get('roles'))}
+				{this.renderTabsetsByGroup(this.props.tabsets.get('groups'))}
 			</CardsList>
 		);
 	}
