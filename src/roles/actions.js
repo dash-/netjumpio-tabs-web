@@ -13,6 +13,8 @@ export const GET_LIST_START = 'ROLES:GET_LIST_START';
 export const GET_LIST_REJECTED = 'ROLES:GET_LIST_REJECTED';
 export const GET_LIST_FULFILLED = 'ROLES:GET_LIST_FULFILLED';
 
+export const UPDATE_LIST = 'ROLES:UPDATE_LIST';
+
 export const SUBMIT_FORM = formsActions.FORM_SUBMIT_START + ':roles';
 
 
@@ -22,5 +24,9 @@ export const SUBMIT_FORM = formsActions.FORM_SUBMIT_START + ':roles';
 
 export function getList() {
 	return {type: GET_LIST_START};
+}
+
+export function updateList(item) {
+	return {type: UPDATE_LIST, payload: item};
 }
 
