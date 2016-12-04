@@ -3,7 +3,6 @@
 ///
 
 import { combineEpics } from 'redux-observable';
-import axios from 'axios';
 import { Observable } from 'rxjs';
 
 import api from '../app/api';
@@ -20,8 +19,13 @@ const getList = (action$, store) => (
 		.debounceTime(500)
 		.switchMap(action => (
 			Observable.fromPromise(
-				api.createClient('roles').find({
-					include: ['tabsets'],
+				api.createRelatedClient({
+					one: 'people',
+					many: 'roles',
+					id: store.getState().getIn(['user', 'id']),
+					accessToken: store.getState().getIn(['user', 'accessToken']),
+				}).find({
+					include: ['tabsets', 'group'],
 				})
 			).map(payload => ({
 				type: actions.GET_LIST_FULFILLED,
@@ -34,7 +38,12 @@ const saveItem = (action$, store) => (
 	action$.ofType(actions.SUBMIT_FORM)
 		.switchMap(action => (
 			Observable.fromPromise(
-				axios.post('/roles', action.payload)
+				api.createRelatedClient({
+					one: 'people',
+					many: 'roles',
+					id: store.getState().getIn(['user', 'id']),
+					accessToken: store.getState().getIn(['user', 'accessToken']),
+				}).create(action.payload)
 			).map(payload => formsActions.formSubmitFulfilled('roles'))
 		))
 );
