@@ -44,7 +44,10 @@ const saveItem = (action$, store) => (
 					id: store.getState().getIn(['user', 'id']),
 					accessToken: store.getState().getIn(['user', 'accessToken']),
 				}).create(action.payload)
-			).map(payload => formsActions.formSubmitFulfilled('roles'))
+			).flatMap(payload => Observable.concat(
+				Observable.of(formsActions.formSubmitFulfilled('roles')),
+				Observable.of(actions.updateList(payload))
+			))
 		))
 );
 
