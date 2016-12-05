@@ -31,7 +31,7 @@ export default root;
 ///
 
 function getListFulfilled(state, action) {
-	return Immutable.fromJS(action.payload.data);
+	return Immutable.fromJS(action.payload);
 }
 
 function updateList(state, action) {
