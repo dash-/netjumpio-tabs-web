@@ -27,10 +27,7 @@ const getList = (action$, store) => (
 				}).find({
 					include: ['tabsets', {roles: ['tabsets']}],
 				})
-			).map(payload => ({
-				type: actions.GET_LIST_FULFILLED,
-				payload
-			}))
+			).map(payload => actions.getListFulfilled(payload))
 		))
 );
 
@@ -59,5 +56,4 @@ const saveItem = (action$, store) => (
 export default combineEpics(
 	getList, saveItem
 );
-
 

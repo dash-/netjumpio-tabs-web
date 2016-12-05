@@ -27,10 +27,7 @@ const getList = (action$, store) => (
 				}).find({
 					include: ['tabsets', 'group'],
 				})
-			).map(payload => ({
-				type: actions.GET_LIST_FULFILLED,
-				payload
-			}))
+			).map(payload => actions.getListFulfilled(payload))
 		))
 );
 

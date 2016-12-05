@@ -4,6 +4,9 @@
 
 import { combineEpics } from 'redux-observable';
 import { Observable } from 'rxjs';
+import map from 'lodash/map';
+import reject from 'lodash/reject';
+import includes from 'lodash/includes';
 
 import api from '../app/api';
 import * as actions from './actions';
@@ -18,23 +21,34 @@ const getList = (action$, store) => (
 	action$.ofType(actions.GET_LIST_START)
 		.debounceTime(500)
 		.switchMap(action => (
-			Observable.fromPromise(
+			Observable.forkJoin(
 				api.createRelatedClient({
 					one: 'people',
-					many: 'people',
+					many: 'friendsFrom',
 					id: store.getState().getIn(['user', 'id']),
 					accessToken: store.getState().getIn(['user', 'accessToken']),
-				}).find()
-			).map(payload => ({
-					type: actions.GET_LIST_FULFILLED,
-					payload
-				}))
+				}).find(),
+				api.createRelatedClient({
+					one: 'people',
+					many: 'friendsTo',
+					id: store.getState().getIn(['user', 'id']),
+					accessToken: store.getState().getIn(['user', 'accessToken']),
+				}).find(),
+				(friendsFrom, friendsTo) => {
+					// Create a union
+					const fromIds = map(friendsFrom, 'id');
+					return friendsFrom.concat(reject(friendsTo, person => (
+						includes(fromIds, person.id)
+					)));
+				}
+			).map(payload => actions.getListFulfilled(payload))
 		))
 );
 
 // TODO - This will change drastically later, as adding a friend
 //        should not create a new person, but rather invite them
-//        to be your friend.  But this will work for now.
+//        to be your friend.  So this is basically a placeholder,
+//        and it will not work like that.
 const saveItem = (action$, store) => (
 	action$.ofType(actions.SUBMIT_FORM)
 		.switchMap(action => (
