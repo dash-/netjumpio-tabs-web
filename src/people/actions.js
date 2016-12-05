@@ -26,6 +26,10 @@ export function getList() {
 	return {type: GET_LIST_START};
 }
 
+export function getListFulfilled(payload) {
+	return {type: GET_LIST_FULFILLED, payload};
+}
+
 export function updateList(item) {
 	return {type: UPDATE_LIST, payload: item};
 }
