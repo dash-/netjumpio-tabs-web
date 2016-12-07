@@ -4,9 +4,12 @@
 
 import Immutable from 'immutable';
 import isUndefined from 'lodash/isUndefined';
+import isObject from 'lodash/isObject';
+import filter from 'lodash/filter';
 
-import * as rolesActions from './actions';
-import * as groupsActions from '../groups/actions';
+import { matches, keyIn, init } from '../app/immutableTools';
+
+import * as actions from './actions';
 
 
 ///
@@ -15,9 +18,8 @@ import * as groupsActions from '../groups/actions';
 
 function root(state = Immutable.fromJS({}), action) {
 	const handlers = {
-		[rolesActions.GET_LIST_FULFILLED]: getRolesListFulfilled,
-		[groupsActions.GET_LIST_FULFILLED]: getGroupsListFulfilled,
-		[rolesActions.UPDATE_LIST]: updateList,
+		[actions.GET_LIST_FULFILLED]: getListFulfilled,
+		[actions.UPDATE_LIST]: updateList,
 		default: (state) => state,
 	};
 
@@ -32,12 +34,24 @@ export default root;
 // Delegates
 ///
 
-function getRolesListFulfilled(state, action) {
-	return state.set('roles', Immutable.fromJS(action.payload));
-}
+function getListFulfilled(state, action) {
+	const rolesWithGroup = filter(action.payload, item => (
+		isObject(item.group) && ! isUndefined(item.group.id)
+	));
 
-function getGroupsListFulfilled(state, action) {
-	return state;
+	state = state.set('groups', toGroupRoles(
+		state, rolesWithGroup
+	));
+
+	const roles = Immutable.fromJS(
+		filter(action.payload, item => (
+			! isObject(item.group) || isUndefined(item.group.id)
+		))
+	).map(role => (
+		role.filter(keyIn('id', 'name', 'logoUrl'))
+	));
+
+	return state.set('roles', roles);
 }
 
 function updateList(state, action) {
@@ -51,5 +65,37 @@ function updateList(state, action) {
 	}
 
 	return state.set('roles', state.get('roles').push(role));
+}
+
+
+///
+// Helpers
+///
+
+function toGroupRoles(state, rolesWithGroup) {
+	const roles = Immutable.fromJS(rolesWithGroup);
+
+	return roles.reduce((memo, role) => {
+		const group = role.get('group');
+		let groupKey = getGroupKey(memo, group);
+
+		if(isUndefined(groupKey)) {
+			memo = memo.push(group.filter(keyIn('id', 'name')));
+			groupKey = getGroupKey(memo, group);
+		}
+
+		const rolesPath = [groupKey, 'roles'];
+		memo = init(memo, rolesPath, Immutable.fromJS([]));
+
+		return memo.setIn(rolesPath, memo.getIn(rolesPath).push(
+			role.filter(keyIn('id', 'name', 'logoUrl'))
+		));
+	}, Immutable.fromJS([]));
+}
+
+function getGroupKey(groups, group) {
+	return groups.findKey(matches({
+		id: group.get('id')
+	}));
 }
 
