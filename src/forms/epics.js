@@ -17,7 +17,8 @@ const submitForm = (action$, store) => (
 		.switchMap(action => (Observable.of(
 			actions.delegateFormSubmit(
 				action.payload,
-				store.getState().getIn(['forms', action.payload, 'values']).toJS()
+				store.getState().getIn(['forms', action.payload, 'values']).toJS(),
+				store.getState().getIn(['forms', action.payload, 'aux']).toJS(),
 			)
 		)))
 );

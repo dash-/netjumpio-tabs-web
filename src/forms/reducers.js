@@ -18,6 +18,7 @@ function root(state = Immutable.fromJS({}), action) {
 		[actions.FORM_SHOW]: showForm,
 		[actions.FORM_HIDE]: hideForm,
 		[actions.FORM_FIELD_CHANGED]: fieldChanged,
+		[actions.FORM_AUX_FIELD_CHANGED]: auxFieldChanged,
 		default: (state) => state,
 	};
 
@@ -35,6 +36,7 @@ export default root;
 const defaultItem = {
 	isVisible: false, // Only used by form modals
 	values: {},
+	aux: {},
 };
 
 function initForm(state, action) {
@@ -51,7 +53,8 @@ function showForm(state, action) {
 
 function hideForm(state, action) {
 	return setVisibility(state, action.payload, false)
-		.setIn([action.payload, 'values'], Immutable.fromJS({}));
+		.setIn([action.payload, 'values'], Immutable.fromJS({}))
+		.setIn([action.payload, 'aux'], Immutable.fromJS({}));
 }
 
 function fieldChanged(state, action) {
@@ -60,6 +63,14 @@ function fieldChanged(state, action) {
 	const value = action.payload.value;
 
 	return state.setIn([form, 'values', field], value);
+}
+
+function auxFieldChanged(state, action) {
+	const form = action.payload.form;
+	const field = action.payload.field;
+	const value = action.payload.value;
+
+	return state.setIn([form, 'aux', field], value);
 }
 
 
