@@ -22,7 +22,7 @@ export const UPDATE_LIST = 'TABSETS:UPDATE_LIST';
 export const SUBMIT_FORM = formsActions.FORM_SUBMIT_START + ':tabsets';
 
 export const ADD_TAB = formsActions.FORM_SUBMIT_START + ':tabsetsTabs';
-export const UPDATE_TABS_LIST = 'TABSETS:ADD_TAB';
+export const UPDATE_TABS_LIST = 'TABSETS:UPDATE_TABS_LIST';
 
 
 ///
