@@ -36,6 +36,12 @@ class TabsetsItemView extends Component {
 		this.props.getItem(this.props.params.id);
 	}
 
+	componentWillReceiveProps(nextProps) {
+		if(this.props.params.id !== nextProps.params.id) {
+			nextProps.getItem(nextProps.params.id);
+		}
+	}
+
 	processTabForCLItem(tab) {
 		return tab.set('href', tab.get('url'));
 	}
