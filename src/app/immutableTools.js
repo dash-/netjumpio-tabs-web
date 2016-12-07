@@ -6,7 +6,7 @@ import Immutable from 'immutable';
 
 
 ///
-// Methods
+// Recipes
 ///
 
 export const matches = (searchObj) => (
@@ -29,3 +29,17 @@ export const keyIn = (...keys) => {
 		keySet.has(k)
 	);
 };
+
+
+///
+// Mixins
+///
+
+// TODO - Make this into an immutable mixin
+export const init = (imm, keyPath, value) => {
+	if(typeof imm.getIn(keyPath) !== 'undefined') {
+		return imm;
+	}
+	return imm.setIn(keyPath, value);
+};
+
