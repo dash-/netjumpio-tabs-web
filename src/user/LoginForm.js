@@ -6,9 +6,9 @@ import React, { Component } from 'react';
 
 import FormGroup from 'react-bootstrap/lib/FormGroup';
 import ControlLabel from 'react-bootstrap/lib/ControlLabel';
-import FormControl from '../forms/FormControl';
 
 import Form from '../forms/Form';
+import FormControl from '../forms/FormControl';
 
 
 ///
