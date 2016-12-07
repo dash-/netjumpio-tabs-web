@@ -39,7 +39,10 @@ const getItem = (action$, store) => (
 			Observable.fromPromise(
 				api.createClient('tabsets', {
 					accessToken: store.getState().getIn(['user', 'accessToken']),
-				}).findById(action.payload)
+				}).findOne({
+					where: {id: action.payload},
+					include: ['tabs'],
+				})
 			).map(payload => ({
 				type: actions.GET_ITEM_FULFILLED,
 				payload,
@@ -64,12 +67,29 @@ const saveItem = (action$, store) => (
 		))
 );
 
+const addTab = (action$, store) => (
+	action$.ofType(actions.ADD_TAB)
+		.switchMap(action => (
+			Observable.fromPromise(
+				api.createRelatedClient({
+					one: 'tabsets',
+					many: 'tabs',
+					id: action.aux.tabsetId,
+					accessToken: store.getState().getIn(['user', 'accessToken']),
+				}).create(action.payload)
+			).flatMap(payload => Observable.concat(
+				Observable.of(formsActions.formSubmitFulfilled('tabsetsTabs')),
+				Observable.of(actions.updateTabsList(payload))
+			))
+		))
+);
+
 
 ///
 // Export
 ///
 
 export default combineEpics(
-	getList, getItem, saveItem
+	getList, getItem, saveItem, addTab
 );
 
