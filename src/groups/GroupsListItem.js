@@ -14,7 +14,7 @@ import CardsListItem from '../elements/CardsListItem';
 
 class GroupsListItemView extends Component {
 	processItem(item) {
-		return item.set('href', '/groups/' + this.props.item.get('id'));
+		return item.set('href', '/app/groups/' + this.props.item.get('id'));
 	}
 
 	render() {

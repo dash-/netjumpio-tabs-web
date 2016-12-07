@@ -13,7 +13,7 @@ import CardsListItem from '../elements/CardsListItem';
 
 class RolesListItemView extends Component {
 	processItem(item) {
-		return item.set('href', '/roles/' + this.props.item.get('id'));
+		return item.set('href', '/app/roles/' + this.props.item.get('id'));
 	}
 
 	render() {

@@ -14,7 +14,7 @@ import CardsListItem from '../elements/CardsListItem';
 
 class PeopleListItemView extends Component {
 	processItem(item) {
-		return item.set('href', '/people/' + this.props.item.get('id'));
+		return item.set('href', '/app/people/' + this.props.item.get('id'));
 	}
 
 	render() {
