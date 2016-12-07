@@ -4,7 +4,7 @@
 
 import Immutable from 'immutable';
 
-import * as formActions from '../forms/actions';
+import * as formsActions from '../forms/actions';
 
 
 ///
@@ -13,7 +13,7 @@ import * as formActions from '../forms/actions';
 
 function root(state = Immutable.fromJS({}), action) {
 	const handlers = {
-		[formActions.FORM_SUBMIT_DONE]: onFormSubmitDone, 
+		[formsActions.FORM_SUBMIT_DONE]: onFormSubmitDone, 
 		default: (state) => state,
 	};
 

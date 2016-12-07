@@ -12,7 +12,7 @@ import _ from 'lodash';
 import ExpanderButton from '../elements/ExpanderButton';
 import Icon from '../elements/Icon';
 import * as actions from './actions';
-import * as formActions from '../forms/actions';
+import * as formsActions from '../forms/actions';
 
 
 ///
@@ -116,7 +116,7 @@ function mapDispatchToProps(dispatch) {
   return {
 		toggleItem: (name) => dispatch(actions.toggleItem(name)),
 		selectItem: (name) => dispatch(actions.selectItem(name)),
-		showForm: (name) => dispatch(formActions.showForm(name)),
+		showForm: (name) => dispatch(formsActions.showForm(name)),
   };
 }
 
