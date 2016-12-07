@@ -8,12 +8,13 @@ import _ from 'lodash';
 
 import * as urlUtils from '../lib/urlUtils';
 
-import Form from 'react-bootstrap/lib/Form';
 import FormGroup from 'react-bootstrap/lib/FormGroup';
 import InputGroup from 'react-bootstrap/lib/InputGroup';
-import FormControl from 'react-bootstrap/lib/FormControl';
 import Button from 'react-bootstrap/lib/Button';
 
+import Form from '../forms/Form';
+import FormControl from '../forms/FormControl';
+import AuxData from '../forms/AuxData';
 import Icon from '../elements/Icon';
 import TabSetsLogo from '../elements/TabSetsLogo';
 import ItemPanel from '../elements/ItemPanel';
@@ -32,6 +33,10 @@ import * as actions from './actions';
 ///
 
 class TabsetsItemView extends Component {
+	///
+	// Hooks
+	///
+
 	componentWillMount() {
 		this.props.getItem(this.props.params.id);
 	}
@@ -41,6 +46,11 @@ class TabsetsItemView extends Component {
 			nextProps.getItem(nextProps.params.id);
 		}
 	}
+
+
+	///
+	// Methods
+	///
 
 	processTabForCLItem(tab) {
 		return tab.set('href', tab.get('url'));
@@ -53,6 +63,11 @@ class TabsetsItemView extends Component {
 			)
 		);
 	}
+
+
+	///
+	// Rendering
+	///
 
 	renderHeader() {
 		const defaultLogoIcon = (
@@ -95,17 +110,19 @@ class TabsetsItemView extends Component {
 
 	renderTabsAddForm() {
 		return (
-			<Form inline className="add-tab-form">
+			<Form name="tabsetsTabs" className="add-tab-form form-inline">
+				<AuxData name="tabsetId" value={this.props.params.id} />
 				<FormGroup controlId="websites">
 					<InputGroup>
 						<InputGroup.Addon>Web Address</InputGroup.Addon>
 						<FormControl
 							type="text"
 							placeholder="http://www.example.com/"
+							name="url"
 						/>
 					</InputGroup>
 				</FormGroup>
-				<Button bsStyle="primary">
+				<Button bsStyle="primary" type="submit">
 					<Icon name="plus" />
 				</Button>
 			</Form>
