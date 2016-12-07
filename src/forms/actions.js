@@ -9,6 +9,7 @@ export const FORM_SUBMIT_REJECTED = 'FORMS:FORM_SUBMIT_REJECTED';
 export const FORM_SUBMIT_FULFILLED = 'FORMS:FORM_SUBMIT_FULFILLED';
 export const FORM_INIT = 'FORMS:FORM_INIT';
 export const FORM_FIELD_CHANGED = 'FORMS:FORM_FIELD_CHANGED';
+export const FORM_AUX_FIELD_CHANGED = 'FORMS:FORM_AUX_FIELD_CHANGED';
 
 
 ///
@@ -27,10 +28,11 @@ export function submitForm(name) {
 	return {type: FORM_SUBMIT_START, payload: name};
 }
 
-export function delegateFormSubmit(delegate, payload) {
+export function delegateFormSubmit(delegate, payload, aux) {
 	return {
 		type: [FORM_SUBMIT_START, delegate].join(':'),
-		payload: payload
+		payload,
+		aux,
 	};
 }
 
@@ -40,6 +42,14 @@ export function initForm(name) {
 
 export function fieldChanged(formName, fieldName, value) {
 	return {type: FORM_FIELD_CHANGED, payload: {
+		form: formName,
+		field: fieldName,
+		value: value,
+	}};
+}
+
+export function auxFieldChanged(formName, fieldName, value) {
+	return {type: FORM_AUX_FIELD_CHANGED, payload: {
 		form: formName,
 		field: fieldName,
 		value: value,
