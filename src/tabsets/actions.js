@@ -21,6 +21,9 @@ export const UPDATE_LIST = 'TABSETS:UPDATE_LIST';
 
 export const SUBMIT_FORM = formsActions.FORM_SUBMIT_START + ':tabsets';
 
+export const ADD_TAB = formsActions.FORM_SUBMIT_START + ':tabsetsTabs';
+export const UPDATE_TABS_LIST = 'TABSETS:ADD_TAB';
+
 
 ///
 // Action creators
@@ -36,5 +39,13 @@ export function getItem(id) {
 
 export function updateList(item) {
 	return {type: UPDATE_LIST, payload: item};
+}
+
+export function addTab(tabsetId, tab) {
+	return {type: ADD_TAB, payload: {tabsetId, tab}};
+}
+
+export function updateTabsList(tab) {
+	return {type: UPDATE_TABS_LIST, payload: tab};
 }
 
