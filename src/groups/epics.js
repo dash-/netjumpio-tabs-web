@@ -43,7 +43,7 @@ const saveItem = (action$, store) => (
 				}).create(action.payload)
 			).flatMap(payload => Observable.concat(
 				Observable.of(formsActions.formSubmitDone('groups')),
-				Observable.of(actions.updateList(payload))
+				Observable.of(actions.addItemDone(payload))
 			))
 		))
 );

@@ -24,7 +24,7 @@ function root(state = Immutable.fromJS({}), action) {
 		[tabsetsActions.GET_LIST_DONE]: getTabsetsListDone,
 		[groupsActions.GET_LIST_DONE]: getGroupsListDone,
 		[rolesActions.GET_LIST_DONE]: getRolesListDone,
-		[tabsetsActions.UPDATE_LIST]: updateList,
+		[tabsetsActions.ADD_ITEM_DONE]: addItemDone,
 		default: (state) => state,
 	};
 
@@ -70,7 +70,7 @@ function getRolesListDone(state, action) {
 	return state.set('roles', Immutable.fromJS(roles));
 }
 
-function updateList(state, action) {
+function addItemDone(state, action) {
 	const tabset = Immutable.fromJS(action.payload);
 	const existingKey = state.get('tabsets').findKey(item => (
 		Immutable.is(item.get('id'), tabset.get('id'))

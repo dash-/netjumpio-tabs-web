@@ -13,7 +13,7 @@ export const GET_LIST_START = 'ROLES:GET_LIST_START';
 export const GET_LIST_FAIL = 'ROLES:GET_LIST_FAIL';
 export const GET_LIST_DONE = 'ROLES:GET_LIST_DONE';
 
-export const UPDATE_LIST = 'ROLES:UPDATE_LIST';
+export const ADD_ITEM_DONE = 'ROLES:ADD_ITEM_DONE';
 
 export const SUBMIT_FORM = formsActions.FORM_SUBMIT_START + ':roles';
 
@@ -30,7 +30,7 @@ export function getListDone(payload) {
 	return {type: GET_LIST_DONE, payload};
 }
 
-export function updateList(item) {
-	return {type: UPDATE_LIST, payload: item};
+export function addItemDone(item) {
+	return {type: ADD_ITEM_DONE, payload: item};
 }
 

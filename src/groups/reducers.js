@@ -15,7 +15,7 @@ import * as actions from './actions';
 function root(state=Immutable.fromJS([]), action) {
 	const handlers = {
 		[actions.GET_LIST_DONE]: getListDone,
-		[actions.UPDATE_LIST]: updateList,
+		[actions.ADD_ITEM_DONE]: addItemDone,
 		default: (state) => state,
 	};
 
@@ -34,7 +34,7 @@ function getListDone(state, action) {
 	return Immutable.fromJS(action.payload);
 }
 
-function updateList(state, action) {
+function addItemDone(state, action) {
 	const group = Immutable.fromJS(action.payload);
 	const existingKey = state.findKey(item => (
 		item.get('id') === group.get('id')

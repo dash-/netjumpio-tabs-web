@@ -14,7 +14,7 @@ import * as actions from './actions';
 function root(state = Immutable.fromJS({}), action) {
 	const handlers = {
 		[actions.GET_ITEM_DONE]: getItemDone,
-		[actions.UPDATE_TABS_LIST]: updateTabsList,
+		[actions.ADD_TAB_DONE]: addTabDone,
 		default: (state) => state,
 	};
 
@@ -33,7 +33,7 @@ function getItemDone(state, action) {
 	return Immutable.fromJS(action.payload);
 }
 
-function updateTabsList(state, action) {
+function addTabDone(state, action) {
 	const tabs = state.get('tabs').push(
 		Immutable.fromJS(action.payload)
 	);

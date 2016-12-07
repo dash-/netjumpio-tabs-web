@@ -19,7 +19,7 @@ import * as actions from './actions';
 function root(state = Immutable.fromJS({}), action) {
 	const handlers = {
 		[actions.GET_LIST_DONE]: getListDone,
-		[actions.UPDATE_LIST]: updateList,
+		[actions.ADD_ITEM_DONE]: addItemDone,
 		default: (state) => state,
 	};
 
@@ -54,7 +54,7 @@ function getListDone(state, action) {
 	return state.set('roles', roles);
 }
 
-function updateList(state, action) {
+function addItemDone(state, action) {
 	const role = Immutable.fromJS(action.payload);
 	const existingKey = state.get('roles').findKey(item => (
 		item.get('id') === role.get('id')

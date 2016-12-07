@@ -17,12 +17,12 @@ export const GET_ITEM_START = 'TABSETS:GET_ITEM_START';
 export const GET_ITEM_FAIL = 'TABSETS:GET_ITEM_FAIL';
 export const GET_ITEM_DONE = 'TABSETS:GET_ITEM_DONE';
 
-export const UPDATE_LIST = 'TABSETS:UPDATE_LIST';
+export const ADD_ITEM_DONE = 'TABSETS:ADD_ITEM_DONE';
 
 export const SUBMIT_FORM = formsActions.FORM_SUBMIT_START + ':tabsets';
 
 export const ADD_TAB = formsActions.FORM_SUBMIT_START + ':tabsetsTabs';
-export const UPDATE_TABS_LIST = 'TABSETS:UPDATE_TABS_LIST';
+export const ADD_TAB_DONE = 'TABSETS:ADD_TAB_DONE';
 
 
 ///
@@ -37,15 +37,15 @@ export function getItem(id) {
 	return {type: GET_ITEM_START, payload: id};
 }
 
-export function updateList(item) {
-	return {type: UPDATE_LIST, payload: item};
+export function addItemDone(item) {
+	return {type: ADD_ITEM_DONE, payload: item};
 }
 
 export function addTab(tabsetId, tab) {
 	return {type: ADD_TAB, payload: {tabsetId, tab}};
 }
 
-export function updateTabsList(tab) {
-	return {type: UPDATE_TABS_LIST, payload: tab};
+export function addTabDone(tab) {
+	return {type: ADD_TAB_DONE, payload: tab};
 }
 
