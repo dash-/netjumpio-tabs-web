@@ -21,9 +21,9 @@ import * as rolesActions from '../roles/actions';
 
 function root(state = Immutable.fromJS({}), action) {
 	const handlers = {
-		[tabsetsActions.GET_LIST_FULFILLED]: getTabsetsListFulfilled,
-		[groupsActions.GET_LIST_FULFILLED]: getGroupsListFulfilled,
-		[rolesActions.GET_LIST_FULFILLED]: getRolesListFulfilled,
+		[tabsetsActions.GET_LIST_DONE]: getTabsetsListDone,
+		[groupsActions.GET_LIST_DONE]: getGroupsListDone,
+		[rolesActions.GET_LIST_DONE]: getRolesListDone,
 		[tabsetsActions.UPDATE_LIST]: updateList,
 		default: (state) => state,
 	};
@@ -39,11 +39,11 @@ export default root;
 // Delegates
 ///
 
-function getTabsetsListFulfilled(state, action) {
+function getTabsetsListDone(state, action) {
 	return state.set('tabsets', Immutable.fromJS(action.payload));
 }
 
-function getGroupsListFulfilled(state, action) {
+function getGroupsListDone(state, action) {
 	// Get groups that have tabsets
 	const groups = filter(action.payload, item => (
 		item.tabsets && item.tabsets.length > 0
@@ -52,7 +52,7 @@ function getGroupsListFulfilled(state, action) {
 	return mergeGroups(state, groups);
 }
 
-function getRolesListFulfilled(state, action) {
+function getRolesListDone(state, action) {
 	// Get group-owned roles that have tabsets
 	const groupRoles = filter(action.payload, item => (
 		isObject(item.group) && ! isUndefined(item.group.id) &&

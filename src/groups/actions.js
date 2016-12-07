@@ -10,8 +10,8 @@ import * as formsActions from '../forms/actions';
 ///
 
 export const GET_LIST_START = 'GROUPS:GET_LIST_START';
-export const GET_LIST_REJECTED = 'GROUPS:GET_LIST_REJECTED';
-export const GET_LIST_FULFILLED = 'GROUPS:GET_LIST_FULFILLED';
+export const GET_LIST_FAIL = 'GROUPS:GET_LIST_FAIL';
+export const GET_LIST_DONE = 'GROUPS:GET_LIST_DONE';
 
 export const UPDATE_LIST = 'GROUPS:UPDATE_LIST';
 
@@ -26,8 +26,8 @@ export function getList() {
 	return {type: GET_LIST_START};
 }
 
-export function getListFulfilled(payload) {
-	return {type: GET_LIST_FULFILLED, payload};
+export function getListDone(payload) {
+	return {type: GET_LIST_DONE, payload};
 }
 
 export function updateList(item) {

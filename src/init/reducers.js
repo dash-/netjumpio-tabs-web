@@ -19,10 +19,10 @@ let actionsCount;
 
 function root(state = Immutable.fromJS({progress: 0}), action) {
 	const handlers = {
-		[tabsetsActions.GET_LIST_FULFILLED]: actionFulfilled,
-		[peopleActions.GET_LIST_FULFILLED]: actionFulfilled,
-		[groupsActions.GET_LIST_FULFILLED]: actionFulfilled,
-		[rolesActions.GET_LIST_FULFILLED]: actionFulfilled,
+		[tabsetsActions.GET_LIST_DONE]: actionDone,
+		[peopleActions.GET_LIST_DONE]: actionDone,
+		[groupsActions.GET_LIST_DONE]: actionDone,
+		[rolesActions.GET_LIST_DONE]: actionDone,
 		default: (state) => state,
 	};
 
@@ -39,7 +39,7 @@ export default root;
 // Delegates
 ///
 
-function actionFulfilled(state, action) {
+function actionDone(state, action) {
 	const priorProgress = state.get('progress');
 	return state.set('progress', priorProgress + 1 / actionsCount);
 }

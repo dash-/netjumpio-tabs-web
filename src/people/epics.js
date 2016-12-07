@@ -41,7 +41,7 @@ const getList = (action$, store) => (
 						includes(fromIds, person.id)
 					)));
 				}
-			).map(payload => actions.getListFulfilled(payload))
+			).map(payload => actions.getListDone(payload))
 		))
 );
 
@@ -60,7 +60,7 @@ const saveItem = (action$, store) => (
 					accessToken: store.getState().getIn(['user', 'accessToken']),
 				}).create(action.payload)
 			).flatMap(payload => Observable.concat(
-				Observable.of(formsActions.formSubmitFulfilled('people')),
+				Observable.of(formsActions.formSubmitDone('people')),
 				Observable.of(actions.updateList(payload))
 			))
 		))

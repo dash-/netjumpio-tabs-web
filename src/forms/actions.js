@@ -5,8 +5,8 @@
 export const FORM_SHOW = 'FORMS:FORM_SHOW';
 export const FORM_HIDE = 'FORMS:FORM_HIDE';
 export const FORM_SUBMIT_START = 'FORMS:FORM_SUBMIT_START';
-export const FORM_SUBMIT_REJECTED = 'FORMS:FORM_SUBMIT_REJECTED';
-export const FORM_SUBMIT_FULFILLED = 'FORMS:FORM_SUBMIT_FULFILLED';
+export const FORM_SUBMIT_FAIL = 'FORMS:FORM_SUBMIT_FAIL';
+export const FORM_SUBMIT_DONE = 'FORMS:FORM_SUBMIT_DONE';
 export const FORM_INIT = 'FORMS:FORM_INIT';
 export const FORM_FIELD_CHANGED = 'FORMS:FORM_FIELD_CHANGED';
 export const FORM_AUX_FIELD_CHANGED = 'FORMS:FORM_AUX_FIELD_CHANGED';
@@ -56,9 +56,9 @@ export function auxFieldChanged(formName, fieldName, value) {
 	}};
 }
 
-export function formSubmitFulfilled(formName, resData) {
+export function formSubmitDone(formName, resData) {
 	return {
-		type: FORM_SUBMIT_FULFILLED,
+		type: FORM_SUBMIT_DONE,
 		payload: {
 			formName,
 			resData,

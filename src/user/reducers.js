@@ -13,7 +13,7 @@ import * as formActions from '../forms/actions';
 
 function root(state = Immutable.fromJS({}), action) {
 	const handlers = {
-		[formActions.FORM_SUBMIT_FULFILLED]: onFormSubmitFulfilled, 
+		[formActions.FORM_SUBMIT_DONE]: onFormSubmitDone, 
 		default: (state) => state,
 	};
 
@@ -28,7 +28,7 @@ export default root;
 // Delegates
 ///
 
-function onFormSubmitFulfilled(state, action) {
+function onFormSubmitDone(state, action) {
 	if(action.payload.formName !== 'login') return state;
 
 	const login = action.payload.resData;

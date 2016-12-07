@@ -26,7 +26,7 @@ const getList = (action$, store) => (
 					accessToken: store.getState().getIn(['user', 'accessToken']),
 				}).find()
 			).map(payload => ({
-				type: actions.GET_LIST_FULFILLED,
+				type: actions.GET_LIST_DONE,
 				payload
 			}))
 		))
@@ -44,7 +44,7 @@ const getItem = (action$, store) => (
 					include: ['tabs'],
 				})
 			).map(payload => ({
-				type: actions.GET_ITEM_FULFILLED,
+				type: actions.GET_ITEM_DONE,
 				payload,
 			}))
 		))
@@ -61,7 +61,7 @@ const saveItem = (action$, store) => (
 					accessToken: store.getState().getIn(['user', 'accessToken']),
 				}).create(action.payload)
 			).flatMap(payload => Observable.concat(
-				Observable.of(formsActions.formSubmitFulfilled('tabsets')),
+				Observable.of(formsActions.formSubmitDone('tabsets')),
 				Observable.of(actions.updateList(payload))
 			))
 		))
@@ -78,7 +78,7 @@ const addTab = (action$, store) => (
 					accessToken: store.getState().getIn(['user', 'accessToken']),
 				}).create(action.payload)
 			).flatMap(payload => Observable.concat(
-				Observable.of(formsActions.formSubmitFulfilled('tabsetsTabs')),
+				Observable.of(formsActions.formSubmitDone('tabsetsTabs')),
 				Observable.of(actions.updateTabsList(payload))
 			))
 		))

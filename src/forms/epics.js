@@ -23,20 +23,19 @@ const submitForm = (action$, store) => (
 		)))
 );
 
-const submitFormFulfilled = (action$, store) => (
-	action$.ofType(actions.FORM_SUBMIT_FULFILLED)
+const submitFormDone = (action$, store) => (
+	action$.ofType(actions.FORM_SUBMIT_DONE)
 		.debounceTime(50)
 		.switchMap(action => (Observable.of(
 			actions.hideForm(action.payload.formName)
 		)))
 );
 
-
 ///
 // Export
 ///
 
 export default combineEpics(
-	submitForm, submitFormFulfilled
+	submitForm, submitFormDone
 );
 
