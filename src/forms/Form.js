@@ -18,6 +18,17 @@ class ManagedFormView extends Component {
 		formName: PropTypes.string,
 	};
 
+
+	///
+	// Hooks
+	///
+
+	constructor(props) {
+		super(props);
+
+		this.submitForm = this.submitForm.bind(this);
+	}
+
 	componentWillMount() {
 		this.props.initForm(this.props.name);
 	}
@@ -28,10 +39,27 @@ class ManagedFormView extends Component {
 		};
 	}
 
+
+	///
+	// Methods
+	///
+
+	submitForm(evt) {
+		this.props.submitForm(this.props.name);
+		evt.preventDefault();
+		return false;
+	}
+
+
+	///
+	// Rendering
+	///
+
 	render() {
-		const props = _.omit(this.props, [
-			'initForm'
-		]);
+		const props = _.assign({
+			// Can be overridden by this.props
+			onSubmit: this.submitForm,
+		}, _.omit(this.props, ['initForm', 'submitForm']));
 
 		return React.createElement('form', props, this.props.children);
 	}
@@ -49,6 +77,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
 		initForm: (name) => dispatch(actions.initForm(name)),
+		submitForm: (name) => dispatch(actions.submitForm(name)),
   };
 }
 
