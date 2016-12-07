@@ -31,8 +31,9 @@ const submitFormDone = (action$, store) => (
 		)))
 );
 
+
 ///
-// Export
+// Exports
 ///
 
 export default combineEpics(

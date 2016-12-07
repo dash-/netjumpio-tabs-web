@@ -1,11 +1,20 @@
+///
+// Dependencies
+///
+
 import React from 'react';
-import {IndexRoute, Route} from 'react-router';
+import { IndexRoute, Route } from 'react-router';
 
 import GlobalLayout from '../layouts/GlobalLayout.js';
 import AppLayout from '../layouts/AppLayout.js';
 import Landing from '../landing/Landing';
 
 import TabsetsItem from '../tabsets/TabsetsItem';
+
+
+///
+// Routes
+///
 
 const routes = (
 	<Route path="/" component={GlobalLayout}>

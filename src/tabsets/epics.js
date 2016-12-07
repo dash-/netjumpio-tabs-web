@@ -86,7 +86,7 @@ const addTab = (action$, store) => (
 
 
 ///
-// Export
+// Exports
 ///
 
 export default combineEpics(

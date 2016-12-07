@@ -28,7 +28,7 @@ const login = (action$, store) => (
 
 
 ///
-// Export
+// Exports
 ///
 
 export default combineEpics(

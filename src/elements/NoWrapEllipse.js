@@ -1,4 +1,13 @@
+///
+// Dependencies
+///
+
 import React, { Component } from 'react';
+
+
+///
+// View
+///
 
 export default class Icon extends Component {
 	render() {

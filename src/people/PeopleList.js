@@ -10,7 +10,6 @@ import PeopleListItem from './PeopleListItem';
 import * as actions from './actions';
 
 
-
 ///
 // View
 ///

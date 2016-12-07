@@ -50,11 +50,10 @@ const saveItem = (action$, store) => (
 
 
 ///
-// Export
+// Exports
 ///
 
 export default combineEpics(
 	getList, saveItem
 );
-
 

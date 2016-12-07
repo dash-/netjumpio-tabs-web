@@ -1,3 +1,11 @@
+///
+// Dependencies
+///
+
+
+///
+// Exports
+///
 
 export function stripProtocol(url) {
 	return url.replace(/^[a-zA-Z]*:\/\//, '');

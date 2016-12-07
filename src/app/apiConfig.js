@@ -1,6 +1,14 @@
+///
+// Dependencies
+///
+
 import assign from 'lodash/assign';
 import omit from 'lodash/omit';
 
+
+///
+// Configuration
+///
 
 // TODO - All variables should be moved to server side ENV vars
 //        and passed to client
@@ -11,6 +19,11 @@ const defaultConfig = {
 		'x-ibm-client-secret': 'SECRET',
 	},
 }
+
+
+///
+// Methods
+///
 
 function apiConfig(config = {}) {
 	const headers = assign(

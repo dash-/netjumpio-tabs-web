@@ -10,7 +10,6 @@ import GroupsListItem from './GroupsListItem';
 import * as actions from './actions';
 
 
-
 ///
 // View
 ///

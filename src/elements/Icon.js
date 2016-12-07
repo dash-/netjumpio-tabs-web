@@ -1,3 +1,7 @@
+///
+// Dependencies
+///
+
 import React, { Component } from 'react';
 import classNames from 'classnames';
 import FontAwesome from 'react-fontawesome';
@@ -5,6 +9,11 @@ import isObject from 'lodash/isObject';
 import flow from 'lodash/fp/flow';
 import omit from 'lodash/fp/omit';
 import assign from 'lodash/fp/assign';
+
+
+///
+// View
+///
 
 export default class Icon extends Component {
 	getName(name) {

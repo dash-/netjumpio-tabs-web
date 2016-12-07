@@ -1,3 +1,6 @@
+///
+// Dependencies
+///
 
 import { combineReducers } from 'redux-immutable';
 import user from '../user/reducers';
@@ -8,6 +11,11 @@ import groups from '../groups/reducers';
 import people from '../people/reducers';
 import roles from '../roles/reducers';
 import tabsets from '../tabsets/reducers';
+
+
+///
+// Exports
+///
 
 export default combineReducers({
 	user,

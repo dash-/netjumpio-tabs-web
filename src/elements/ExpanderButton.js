@@ -1,5 +1,14 @@
+///
+// Dependencies
+///
+
 import React, { Component } from 'react';
 import Icon from './Icon';
+
+
+///
+// View
+///
 
 class ExpanderButton extends Component {
 	render() {

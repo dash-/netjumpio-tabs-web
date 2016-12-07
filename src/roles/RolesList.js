@@ -12,7 +12,6 @@ import RolesListItem from './RolesListItem';
 import * as actions from './actions';
 
 
-
 ///
 // View
 ///

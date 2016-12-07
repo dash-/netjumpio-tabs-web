@@ -1,9 +1,18 @@
+///
+// Dependencies
+///
+
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import { Router, hashHistory } from 'react-router';
 import store from './store';
 import routes from './routes';
 
+
+///
+// View
+///
+	
 class Root extends Component {
 	render() {
 		return (

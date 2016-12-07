@@ -13,7 +13,6 @@ import rootEpic from './epics';
 import rootReducer from './reducers';
 
 
-
 ///
 // Initialization
 ///
