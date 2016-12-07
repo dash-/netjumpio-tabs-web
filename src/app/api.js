@@ -3,7 +3,7 @@
 ///
 
 import Loopback from 'loopback-promised';
-import _ from 'lodash';
+import pick from 'lodash/pick';
 
 import apiConfig from './apiConfig';
 
@@ -13,7 +13,7 @@ import apiConfig from './apiConfig';
 ///
 
 const instance = Loopback.createInstance(
-	_.pick(apiConfig(), ['baseURL'])
+	pick(apiConfig(), ['baseURL'])
 );
 
 export default instance;

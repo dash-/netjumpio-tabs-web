@@ -1,4 +1,5 @@
-import _ from 'lodash';
+import assign from 'lodash/assign';
+import omit from 'lodash/omit';
 
 
 // TODO - All variables should be moved to server side ENV vars
@@ -12,14 +13,14 @@ const defaultConfig = {
 }
 
 function apiConfig(config = {}) {
-	const headers = _.assign(
+	const headers = assign(
 		{}, defaultConfig.headers, config.headers
 	);
 
-	return _.assign(
+	return assign(
 		{headers},
-		_.omit(defaultConfig, ['headers']), 
-		_.omit(config, ['baseURL', 'headers'])
+		omit(defaultConfig, ['headers']), 
+		omit(config, ['baseURL', 'headers'])
 	);
 };
 

@@ -7,7 +7,7 @@ import Panel from 'react-bootstrap/lib/Panel';
 import Button from 'react-bootstrap/lib/Button';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
-import _ from 'lodash';
+import isString from 'lodash/isString';
 
 import ExpanderButton from '../elements/ExpanderButton';
 import Icon from '../elements/Icon';
@@ -43,7 +43,7 @@ class OverviewPanelItemView extends Component {
 	renderIcon(icon) {
 		if(! icon) return '';
 
-		if(_.isString(icon)) {
+		if(isString(icon)) {
 			icon = (
 				<Icon name={icon} />
 			);

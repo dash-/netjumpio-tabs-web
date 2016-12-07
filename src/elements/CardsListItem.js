@@ -4,7 +4,7 @@
 
 import React, { Component } from 'react';
 import classNames from 'classnames';
-import _ from 'lodash';
+import isString from 'lodash/isString';
 
 import AdvancedLink from './AdvancedLink';
 import Icon from './Icon';
@@ -46,7 +46,7 @@ class CardsListItemView extends Component {
 
 		const defLogoIcon = this.props.defaultLogoIcon || 'question-circle';
 
-		if(_.isString(defLogoIcon)) {
+		if(isString(defLogoIcon)) {
 			return (
 				<Icon
 					name={this.props.defaultLogoIcon}

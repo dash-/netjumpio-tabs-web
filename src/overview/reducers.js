@@ -4,7 +4,7 @@
 
 import Immutable from 'immutable';
 import { combineReducers } from 'redux-immutable';
-import _ from 'lodash';
+import isUndefined from 'lodash/isUndefined';
 
 import * as actions from './actions';
 import panels from './panelsReducers';
@@ -15,7 +15,7 @@ import panels from './panelsReducers';
 ///
 
 function root(state, action) {
-	if(_.isUndefined(state)) {
+	if(isUndefined(state)) {
 		state = init();
 	}
 

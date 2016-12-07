@@ -4,7 +4,8 @@
 
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import _ from 'lodash';
+import assign from 'lodash/assign';
+import omit from 'lodash/omit';
 
 import FormControl from 'react-bootstrap/lib/FormControl';
 
@@ -37,10 +38,10 @@ class ManagedFormControlView extends Component {
 	render() {
 		const form = this.props.forms.get(this.context.formName);
 
-		const props = _.assign({
+		const props = assign({
 			value: form.getIn(['values', this.props.name], ''),
 			onChange: this.onChange,
-		}, _.omit(this.props, ['fieldChanged', 'forms']));
+		}, omit(this.props, ['fieldChanged', 'forms']));
 
 		return React.createElement(FormControl, props);
 	}

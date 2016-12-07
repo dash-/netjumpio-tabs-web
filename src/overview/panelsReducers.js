@@ -3,7 +3,7 @@
 ///
 
 import Immutable from 'immutable';
-import _ from 'lodash';
+import isUndefined from 'lodash/isUndefined';
 import * as actions from './actions';
 
 
@@ -12,7 +12,7 @@ import * as actions from './actions';
 ///
 
 export default function panels(state, action) {
-	if(_.isUndefined(state)) {
+	if(isUndefined(state)) {
 		state = init();
 	}
 

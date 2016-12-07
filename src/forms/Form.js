@@ -4,7 +4,8 @@
 
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import _ from 'lodash';
+import assign from 'lodash/assign';
+import omit from 'lodash/omit';
 
 import * as actions from './actions';
 
@@ -56,10 +57,10 @@ class ManagedFormView extends Component {
 	///
 
 	render() {
-		const props = _.assign({
+		const props = assign({
 			// Can be overridden by this.props
 			onSubmit: this.submitForm,
-		}, _.omit(this.props, ['initForm', 'submitForm']));
+		}, omit(this.props, ['initForm', 'submitForm']));
 
 		return React.createElement('form', props, this.props.children);
 	}

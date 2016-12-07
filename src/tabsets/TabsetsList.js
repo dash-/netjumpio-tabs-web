@@ -4,7 +4,7 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import _ from 'lodash';
+import isUndefined from 'lodash/isUndefined';
 
 import CardsList from '../elements/CardsList';
 import CardsListCategory from '../elements/CardsListCategory';
@@ -18,7 +18,7 @@ import * as actions from './actions';
 
 class TabsetsListView extends Component {
 	renderTabsets(tabsets) {
-		if(_.isUndefined(tabsets)) return '';
+		if(isUndefined(tabsets)) return '';
 
 		return tabsets.map((item, key) => (
 			<TabsetsListItem item={item} key={key} />
@@ -26,7 +26,7 @@ class TabsetsListView extends Component {
 	}
 
 	renderTabsetsByRole(roles, groupName) {
-		if(_.isUndefined(roles)) return '';
+		if(isUndefined(roles)) return '';
 
 		return roles.map((item, key) => (
 			<CardsListCategory
@@ -39,7 +39,7 @@ class TabsetsListView extends Component {
 	}
 
 	renderTabsetsByGroup(groups) {
-		if(_.isUndefined(groups)) return '';
+		if(isUndefined(groups)) return '';
 
 		return groups.map((item, key) => (
 			<CardsListCategory

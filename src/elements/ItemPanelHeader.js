@@ -3,7 +3,7 @@
 ///
 
 import React, { Component } from 'react';
-import _ from 'lodash';
+import isString from 'lodash/isString';
 
 import Icon from './Icon';
 
@@ -26,7 +26,7 @@ class ItemPanelHeaderView extends Component {
 
 		const defLogoIcon = this.props.defaultLogoIcon || 'question-circle';
 
-		if(_.isString(defLogoIcon)) {
+		if(isString(defLogoIcon)) {
 			return (
 				<Icon
 					name={this.props.defaultLogoIcon}
