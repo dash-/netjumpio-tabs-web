@@ -3,8 +3,9 @@
 ///
 
 import Immutable from 'immutable';
-import filter from 'lodash/filter';
 import isUndefined from 'lodash/isUndefined';
+import isObject from 'lodash/isObject';
+import filter from 'lodash/filter';
 import pick from 'lodash/pick';
 
 import { matches, keyIn } from '../app/immutableTools';
@@ -54,14 +55,16 @@ function getGroupsListFulfilled(state, action) {
 function getRolesListFulfilled(state, action) {
 	// Get group-owned roles that have tabsets
 	const groupRoles = filter(action.payload, item => (
-		item.ownerGroupId && item.tabsets && item.tabsets.length > 0
+		isObject(item.group) && ! isUndefined(item.group.id) &&
+		item.tabsets && item.tabsets.length > 0
 	));
 
 	state = mergeGroupRoles(state, groupRoles);
 
 	// Get groupless roles that have tabsets
 	const roles = filter(action.payload, item => (
-		! item.ownerGroupId && item.tabsets && item.tabsets.length > 0
+		(! isObject(item.group) || isUndefined(item.group.id)) &&
+		item.tabsets && item.tabsets.length > 0
 	));
 
 	return state.set('roles', Immutable.fromJS(roles));
