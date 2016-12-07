@@ -21,7 +21,6 @@ class LoginFormView extends Component {
 			<Form
 				name="login"
 				className="login-form"
-				onSubmit={this.props.onSubmit}
 			>
 				<FormGroup controlId="emailField">
 					<ControlLabel>Email</ControlLabel>
