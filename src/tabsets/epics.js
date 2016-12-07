@@ -3,7 +3,6 @@
 ///
 
 import { combineEpics } from 'redux-observable';
-import axios from 'axios';
 import { Observable } from 'rxjs';
 
 import api from '../app/api';
@@ -38,7 +37,9 @@ const getItem = (action$, store) => (
 		.debounceTime(500)
 		.switchMap(action => (
 			Observable.fromPromise(
-				axios.get('/data/tabsets/' + action.payload + '.json')
+				api.createClient('tabsets', {
+					accessToken: store.getState().getIn(['user', 'accessToken']),
+				}).findById(action.payload)
 			).map(payload => ({
 				type: actions.GET_ITEM_FULFILLED,
 				payload,

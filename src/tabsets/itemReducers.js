@@ -29,6 +29,6 @@ export default root;
 ///
 
 function getItemFulfilled(state, action) {
-	return Immutable.fromJS(action.payload.data);
+	return Immutable.fromJS(action.payload);
 }
 
