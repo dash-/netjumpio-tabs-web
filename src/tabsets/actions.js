@@ -19,10 +19,15 @@ export const GET_ITEM_DONE = 'TABSETS:GET_ITEM_DONE';
 
 export const ADD_ITEM_DONE = 'TABSETS:ADD_ITEM_DONE';
 
+export const EDIT_ITEM_START = 'TABSETS:EDIT_ITEM_START';
+
+export const REMOVE_ITEM_START = 'TABSETS:REMOVE_ITEM_START';
+
 export const SUBMIT_FORM = formsActions.FORM_SUBMIT_START + ':tabsets';
 
 export const ADD_TAB = formsActions.FORM_SUBMIT_START + ':tabsetsTabs';
 export const ADD_TAB_DONE = 'TABSETS:ADD_TAB_DONE';
+
 
 
 ///
@@ -39,6 +44,14 @@ export function getItem(id) {
 
 export function addItemDone(item) {
 	return {type: ADD_ITEM_DONE, payload: item};
+}
+
+export function editItemStart(item) {
+	return {type: EDIT_ITEM_START, payload: item};
+}
+
+export function removeItemStart(item) {
+	return {type: REMOVE_ITEM_START, payload: item};
 }
 
 export function addTab(tabsetId, tab) {

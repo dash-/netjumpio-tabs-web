@@ -5,7 +5,11 @@
 import React, { Component } from 'react';
 
 import CardsListItem from '../elements/CardsListItem';
+import ButtonsList from '../elements/ButtonsList';
+import ButtonsListItem from '../elements/ButtonsListItem';
 import TabSetsLogo from '../elements/TabSetsLogo';
+
+import * as actions from './actions';
 
 
 ///
@@ -28,7 +32,18 @@ class TabsetsListItemView extends Component {
 				defaultLogoIcon={defaultLogoIcon}
 				width="2x"
 				horizontal
-			></CardsListItem>
+			>
+				<ButtonsList>
+					<ButtonsListItem
+						icon="pencil"
+						action={actions.editItemStart(this.props.item.toJS())}
+					/>
+					<ButtonsListItem
+						icon="times"
+						action={actions.removeItemStart(this.props.item.toJS())}
+					/>
+				</ButtonsList>
+			</CardsListItem>
 		);
 	}
 }
