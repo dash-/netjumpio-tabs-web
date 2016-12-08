@@ -139,7 +139,7 @@ class TabsetsItemView extends Component {
 		return (
 			<ItemPanel className="tabsets-item-panel" item={this.props.item}>
 				{this.renderHeader()}
-				<CardsList theme="dark" className="tabsets-list">
+				<CardsList className="tabsets-list">
 					<CardsListCategory
 						name="Tabs (Websites)"
 					>
