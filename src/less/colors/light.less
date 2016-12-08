@@ -3,22 +3,111 @@
 ///
 
 @lightTheme1: white;
-@lightTheme2: #bbb;
-@lightTheme3: #999;
-@lightTheme4: #666;
+@lightTheme2: #eee;
+@lightTheme3: #bbb;
+@lightTheme4: #888;
 @lightTheme5: #000;
+
 
 
 ///
 // Variables
 ///
 
-@lightThemeItemBorder: @lightTheme2;
+@lightThemeBg: @lightTheme4;
+@lightThemeFg: @lightTheme1;
+@lightThemeLogoFg: @lightTheme2;
+@lightThemeHeaderBg: @lightTheme5;
+@lightThemeHeaderFg: @lightTheme2;
+@lightThemeHeaderLinks: @lightTheme3;
+@lightThemeItemBorder: @lightTheme3;
+@lightThemeContentBg: @lightTheme4;
+@lightThemeContentFg: @lightTheme1;
+
+@lightThemeListItemBg: @lightTheme2;
+@lightThemeListItemFg: @lightTheme5;
+@lightThemeListItemBorder: @lightTheme3;
+@lightThemeListItemBtnBg: rgba(255, 255, 255, .8);
+@lightThemeListItemBtnFg: @lightTheme4;
+@lightThemeListItemLogoBg: @lightTheme1;
+@lightThemeListItemLogoFg: @lightTheme4;
+@lightThemeListItemTSLogoBorder: @lightTheme3;
+
+@lightThemeAltBg: @lightTheme3;
+@lightThemeAltFg: @lightTheme3;
+@lightThemeAltBorder: @lightTheme3;
+
 
 ///
-// Light theme namespace
+// Dark theme namespace
 ///
 
 #light-theme {
-}
+	.bg {
+		background: @lightThemeBg;
+	}
 
+	.fg {
+		color: @lightThemeFg;
+	}
+
+	.alt-bg {
+		background: @lightThemeAltBg;
+	}
+
+	.alt-fg {
+		color: @lightThemeAltFg;
+	}
+
+	.header-bg {
+		background: @lightThemeHeaderBg;
+	}
+
+	.header-fg {
+		color: @lightThemeHeaderFg;
+	}
+
+	.header-links {
+		color: @lightThemeHeaderLinks;
+	}
+
+	.content-bg {
+		background: @lightThemeContentBg;
+	}
+
+	.content-fg {
+		color: @lightThemeContentFg;
+	}
+
+	.list-item-bg {
+		background: @lightThemeListItemBg;
+	}
+
+	.list-item-fg {
+		color: @lightThemeListItemFg;
+	}
+
+	.list-item-border {
+		border: 1px solid @lightThemeListItemBorder;
+	}
+
+	.list-item-btn-bg {
+		background: @lightThemeListItemBtnBg;
+	}
+
+	.list-item-btn-fg {
+		color: @lightThemeListItemBtnFg;
+	}
+
+	.list-item-logo-bg {
+		background: @lightThemeListItemLogoBg;
+	}
+
+	.list-item-logo-fg {
+		color: @lightThemeListItemLogoFg;
+	}
+
+	.list-item-ts-logo-border {
+		border-color: @lightThemeListItemTSLogoBorder;
+	}
+}
