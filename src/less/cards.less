@@ -109,6 +109,29 @@
 	}
 }
 
+.cards-list .cards-list-item .buttons-list {
+	display: none;
+}
+
+.cards-list .cards-list-item:hover .buttons-list {
+	position: absolute;
+	top: 4px;
+	right: 4px;
+	display: block;
+	padding: 0;
+	padding-left: 10px;
+	border-radius: 6px;
+	text-align: right;
+
+	.buttons-list-item {
+		display: inline-block;
+		padding: 4px;
+		padding-left: 0;
+		padding-right: 10px;
+		list-style-type: none;
+	}
+}
+
 .cards-list.theme-dark {
 	.cards-list-item {
 		& > a {
@@ -121,7 +144,11 @@
 				#dark-theme.list-item-logo-fg;
 			}
 		}
+
+		.buttons-list {
+			#dark-theme.list-item-btn-bg;
+			#dark-theme.list-item-btn-fg;
+		}
 	}
 }
-
 
