@@ -3,6 +3,7 @@
 ///
 
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import Icon from './Icon';
 
@@ -18,8 +19,11 @@ class ButtonsListItem extends Component {
 		this.onClick = this.onClick.bind(this);
 	}
 
-	onClick() {
-		console.log('clicked');
+	onClick(evt) {
+		if(this.props.onClick) {
+			return this.props.onClick(evt, this.props);
+		}
+		return this.props.dispatchAction(this.props.action);
 	}
 
 	render() {
@@ -32,4 +36,27 @@ class ButtonsListItem extends Component {
 	}
 }
 
-export default ButtonsListItem;
+
+///
+// Container
+///
+
+function mapStateToProps(state) {
+	return {
+		tabsets: state.get('tabsets').get('list'),
+	};
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+		dispatchAction: (action) => dispatch(action),
+  };
+}
+
+const connector = connect(
+  mapStateToProps,
+  mapDispatchToProps
+);
+
+export default connector(ButtonsListItem);
+
