@@ -93,7 +93,12 @@ class TabsetsItemView extends Component {
 	}
 
 	renderTabsListItems() {
-		return this.props.item.get('tabs').map((tab, key) => (
+		const item = this.props.item;
+		if(! (item && item.get && item.get('tabs'))) {
+			return '';
+		}
+
+		return item.get('tabs').map((tab, key) => (
 			<CardsListItem
 				item={this.processTabForCLItem(tab)}
 				defaultLogoIcon="link"
@@ -129,13 +134,6 @@ class TabsetsItemView extends Component {
 	}
 
 	render() {
-		let tabsListItems = '';
-
-		const item = this.props.item;
-		if(item && item.get && item.get('tabs')) {
-			tabsListItems = this.renderTabsListItems();
-		}
-
 		return (
 			<ItemPanel className="tabsets-item-panel" item={this.props.item}>
 				{this.renderHeader()}
@@ -143,7 +141,7 @@ class TabsetsItemView extends Component {
 					<CardsListCategory
 						name="Tabs (Websites)"
 					>
-						{tabsListItems}
+						{this.renderTabsListItems()}
 					</CardsListCategory>
 				</CardsList>
 				{this.renderTabsAddForm()}
