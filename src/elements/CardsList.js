@@ -14,7 +14,10 @@ class CardsListView extends Component {
 	render() {
 		const className = classNames(
 			'cards-list',
-			{'theme-dark': this.props.theme === 'dark'},
+			{
+				'theme-dark': this.props.theme === 'dark',
+				'theme-light': this.props.theme !== 'dark',
+			},
 			this.props.className
 		);
 
