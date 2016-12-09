@@ -15,6 +15,8 @@ function root(state = Immutable.fromJS({}), action) {
 	const handlers = {
 		[actions.GET_ITEM_DONE]: getItemDone,
 		[actions.ADD_TAB_DONE]: addTabDone,
+		[actions.EDIT_TAB_PROMPT]: editTabPrompt,
+		[actions.REMOVE_TAB_PROMPT]: removeTabPrompt,
 		default: (state) => state,
 	};
 
@@ -39,3 +41,13 @@ function addTabDone(state, action) {
 	);
 	return state.set('tabs', tabs);
 }
+
+// TODO: This is a stub. feat/cr13 (depends on feat/cr19)
+function editTabPrompt(state, action) {
+	return state;
+}
+
+function removeTabPrompt(state, action) {
+	return state;
+}
+
