@@ -28,6 +28,16 @@ export const SUBMIT_FORM = formsActions.FORM_SUBMIT_START + ':tabsets';
 export const ADD_TAB = formsActions.FORM_SUBMIT_START + ':tabsetsTabs';
 export const ADD_TAB_DONE = 'TABSETS:ADD_TAB_DONE';
 
+export const EDIT_TAB_PROMPT = 'TABSETS:EDIT_TAB_PROMPT';
+export const EDIT_TAB_START = 'TABSETS:EDIT_TAB_START';
+export const EDIT_TAB_FAIL = 'TABSETS:EDIT_TAB_FAIL';
+export const EDIT_TAB_DONE = 'TABSETS:EDIT_TAB_DONE';
+
+export const REMOVE_TAB_PROMPT = 'TABSETS:REMOVE_TAB_PROMPT';
+export const REMOVE_TAB_START = 'TABSETS:REMOVE_TAB_START';
+export const REMOVE_TAB_FAIL = 'TABSETS:REMOVE_TAB_FAIL';
+export const REMOVE_TAB_DONE = 'TABSETS:REMOVE_TAB_DONE';
+
 
 
 ///
@@ -60,5 +70,37 @@ export function addTab(tabsetId, tab) {
 
 export function addTabDone(tab) {
 	return {type: ADD_TAB_DONE, payload: tab};
+}
+
+export function editTabPrompt(tab) {
+	return {type: EDIT_TAB_PROMPT, payload: tab};
+}
+
+export function editTabStart(tab) {
+	return {type: EDIT_TAB_START, payload: tab};
+}
+
+export function editTabFail(err) {
+	return {type: EDIT_TAB_FAIL, payload: err};
+}
+
+export function editTabDone(tab) {
+	return {type: EDIT_TAB_DONE, payload: tab};
+}
+
+export function removeTabPrompt(tab) {
+	return {type: REMOVE_TAB_PROMPT, payload: tab};
+}
+
+export function removeTabStart(tab) {
+	return {type: REMOVE_TAB_START, payload: tab};
+}
+
+export function removeTabFail(err) {
+	return {type: REMOVE_TAB_FAIL, payload: err};
+}
+
+export function removeTabDone(tab) {
+	return {type: REMOVE_TAB_DONE, payload: tab};
 }
 
