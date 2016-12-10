@@ -5,14 +5,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import Icon from './Icon';
+import Icon from 'react-fontawesome';
 
 
 ///
 // View
 ///
 
-class ButtonsListItem extends Component {
+class ButtonsListItemView extends Component {
 	constructor(props) {
 		super(props);
 
@@ -58,5 +58,5 @@ const connector = connect(
   mapDispatchToProps
 );
 
-export default connector(ButtonsListItem);
+export default connector(ButtonsListItemView);
 
