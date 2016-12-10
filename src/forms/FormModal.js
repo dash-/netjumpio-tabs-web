@@ -33,6 +33,14 @@ class ManagedFormModalView extends Component {
 		this.props.submitForm(this.props.name);
 	}
 
+	renderForm() {
+		if(this.props.form) {
+			return React.createElement(this.props.form);
+		}
+
+		return this.props.children;
+	}
+
 	render() {
 		const isFormVisible = this.props.forms.getIn([
 			this.props.name, 'isVisible'
@@ -45,7 +53,7 @@ class ManagedFormModalView extends Component {
 				onClose={this.closeForm}
 				onSave={this.saveForm}
 			>
-				{React.createElement(this.props.form)}
+				{this.renderForm()}
 			</FormModal>
 		);
 	}
