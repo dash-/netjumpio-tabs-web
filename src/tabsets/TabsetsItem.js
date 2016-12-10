@@ -114,12 +114,12 @@ class TabsetsItemView extends Component {
 				</NoWrapEllipse>
 				<ButtonsList>
 					<ButtonsListItem
-						icon="pencil"
-						action={actions.editTabPrompt(tab.toJS())}
-					/>
-					<ButtonsListItem
 						icon="times"
 						action={actions.removeTabStart(tab.toJS())}
+					/>
+					<ButtonsListItem
+						icon="pencil"
+						action={actions.editTabPrompt(tab.toJS())}
 					/>
 				</ButtonsList>
 			</CardsListItem>
