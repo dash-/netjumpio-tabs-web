@@ -33,7 +33,6 @@ export const EDIT_TAB_START = 'TABSETS:EDIT_TAB_START';
 export const EDIT_TAB_FAIL = 'TABSETS:EDIT_TAB_FAIL';
 export const EDIT_TAB_DONE = 'TABSETS:EDIT_TAB_DONE';
 
-export const REMOVE_TAB_PROMPT = 'TABSETS:REMOVE_TAB_PROMPT';
 export const REMOVE_TAB_START = 'TABSETS:REMOVE_TAB_START';
 export const REMOVE_TAB_FAIL = 'TABSETS:REMOVE_TAB_FAIL';
 export const REMOVE_TAB_DONE = 'TABSETS:REMOVE_TAB_DONE';
@@ -86,10 +85,6 @@ export function editTabFail(err) {
 
 export function editTabDone(tab) {
 	return {type: EDIT_TAB_DONE, payload: tab};
-}
-
-export function removeTabPrompt(tab) {
-	return {type: REMOVE_TAB_PROMPT, payload: tab};
 }
 
 export function removeTabStart(tab) {

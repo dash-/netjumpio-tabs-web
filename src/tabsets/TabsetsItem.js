@@ -12,6 +12,7 @@ import InputGroup from 'react-bootstrap/lib/InputGroup';
 import Button from 'react-bootstrap/lib/Button';
 
 import Form from '../forms/Form';
+import FormModal from '../forms/FormModal';
 import FormControl from '../forms/FormControl';
 import AuxData from '../forms/AuxData';
 import Icon from '../elements/Icon';
@@ -22,9 +23,10 @@ import CardsList from '../elements/CardsList';
 import CardsListItem from '../elements/CardsListItem';
 import CardsListCategory from '../elements/CardsListCategory';
 import NoWrapEllipse from '../elements/NoWrapEllipse';
-import TabsetLink from './TabsetLink';
 import ButtonsList from '../elements/ButtonsList';
 import ButtonsListItem from '../elements/ButtonsListItem';
+import TabsetLink from './TabsetLink';
+import TabsForm from './TabsForm';
 
 import * as actions from './actions';
 
@@ -117,7 +119,7 @@ class TabsetsItemView extends Component {
 					/>
 					<ButtonsListItem
 						icon="times"
-						action={actions.removeTabPrompt(tab.toJS())}
+						action={actions.removeTabStart(tab.toJS())}
 					/>
 				</ButtonsList>
 			</CardsListItem>
@@ -145,6 +147,17 @@ class TabsetsItemView extends Component {
 		);
 	}
 
+	renderTabsFormModal() {
+		// TODO Stubbed
+		return (
+			<FormModal
+				name="tabsetsTabsPrompt"
+				title="TBD"
+				form={TabsForm}
+			/>
+		);
+	}
+
 	render() {
 		return (
 			<ItemPanel className="tabsets-item-panel" item={this.props.item}>
@@ -157,6 +170,7 @@ class TabsetsItemView extends Component {
 					</CardsListCategory>
 				</CardsList>
 				{this.renderTabsAddForm()}
+				{this.renderTabsFormModal()}
 			</ItemPanel>
 		);
 	}

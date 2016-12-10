@@ -84,12 +84,25 @@ const addTab = (action$, store) => (
 		))
 );
 
+const removeTab = (action$, store) => (
+	action$.ofType(actions.REMOVE_TAB_START)
+		.switchMap(action => (
+			Observable.fromPromise(
+				api.createClient('tabs', {
+					accessToken: store.getState().getIn(['user', 'accessToken']),
+				}).destroyById(action.payload.id)
+			).flatMap(payload => Observable.of(
+				actions.removeTabDone(action.payload)
+			))
+		))
+);
+
 
 ///
 // Exports
 ///
 
 export default combineEpics(
-	getList, getItem, saveItem, addTab
+	getList, getItem, saveItem, addTab, removeTab
 );
 
