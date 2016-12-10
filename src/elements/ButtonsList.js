@@ -9,13 +9,7 @@ import React, { Component } from 'react';
 // View
 ///
 
-class ButtonsList extends Component {
-	constructor(props) {
-		super(props);
-
-		this.onClick = this.onClick.bind(this);
-	}
-
+class ButtonsListView extends Component {
 	onClick(evt) {
 		evt.preventDefault();
 		evt.stopPropagation();
@@ -34,4 +28,4 @@ class ButtonsList extends Component {
 	}
 }
 
-export default ButtonsList;
+export default ButtonsListView;
