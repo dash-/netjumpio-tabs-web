@@ -24,7 +24,8 @@ import CardsListItem from '../elements/CardsListItem';
 import CardsListCategory from '../elements/CardsListCategory';
 import NoWrapEllipse from '../elements/NoWrapEllipse';
 import ButtonsList from '../elements/ButtonsList';
-import ButtonsListItem from '../elements/ButtonsListItem';
+import ButtonsListMenu from '../elements/ButtonsListMenu';
+import ButtonsListMenuItem from '../elements/ButtonsListMenuItem';
 import TabsetLink from './TabsetLink';
 import TabsForm from './TabsForm';
 
@@ -113,14 +114,18 @@ class TabsetsItemView extends Component {
 					{this.processTabUrlForDisplay(tab.get('url'))}
 				</NoWrapEllipse>
 				<ButtonsList>
-					<ButtonsListItem
-						icon="times"
-						action={actions.removeTabStart(tab.toJS())}
-					/>
-					<ButtonsListItem
-						icon="pencil"
-						action={actions.editTabPrompt(tab.toJS())}
-					/>
+					<ButtonsListMenu>
+						<ButtonsListMenuItem
+							icon="times"
+							title="Delete"
+							action={actions.removeTabStart(tab.toJS())}
+						/>
+						<ButtonsListMenuItem
+							icon="pencil"
+							title="Edit"
+							action={actions.editTabPrompt(tab.toJS())}
+						/>
+					</ButtonsListMenu>
 				</ButtonsList>
 			</CardsListItem>
 		));
