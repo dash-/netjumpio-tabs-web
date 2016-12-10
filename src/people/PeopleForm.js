@@ -20,11 +20,11 @@ class PeopleFormView extends Component {
 		return (
 			<Form name="people" className="people-form">
 				<FormGroup controlId="nameField">
-					<ControlLabel>Name</ControlLabel>
+					<ControlLabel>Full Name</ControlLabel>
 					<FormControl
 						name="name"
 						type="text"
-						placeholder="Tabset Name"
+						placeholder="John L.M. Doe Jr."
 					/>
 				</FormGroup>
 				<FormGroup controlId="logoUrlField">
