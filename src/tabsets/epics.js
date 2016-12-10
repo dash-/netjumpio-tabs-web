@@ -79,6 +79,7 @@ const addTab = (action$, store) => (
 				}).create(action.payload)
 			).flatMap(payload => Observable.concat(
 				Observable.of(formsActions.formSubmitDone('tabsetsTabs')),
+				Observable.of(formsActions.clearFormValues('tabsetsTabs')),
 				Observable.of(actions.addTabDone(payload))
 			))
 		))
