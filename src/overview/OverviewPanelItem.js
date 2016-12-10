@@ -37,6 +37,7 @@ class OverviewPanelItemView extends Component {
 	}
 
 	onShowForm() {
+		this.props.clearForm(this.props.name);
 		this.props.showForm(this.props.name);
 	}
 
@@ -113,16 +114,17 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return {
+	return {
 		toggleItem: (name) => dispatch(actions.toggleItem(name)),
 		selectItem: (name) => dispatch(actions.selectItem(name)),
+		clearForm: (name) => dispatch(formsActions.clearForm(name)),
 		showForm: (name) => dispatch(formsActions.showForm(name)),
-  };
+	};
 }
 
 const connector = connect(
-  mapStateToProps,
-  mapDispatchToProps
+	mapStateToProps,
+	mapDispatchToProps
 );
 
 export default connector(OverviewPanelItemView);
