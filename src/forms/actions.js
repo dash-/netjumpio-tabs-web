@@ -4,6 +4,7 @@
 
 export const FORM_INIT = 'FORMS:FORM_INIT';
 export const FORM_CLEAR = 'FORMS:FORM_CLEAR';
+export const FORM_CLEAR_VALUES = 'FORMS:FORM_CLEAR_VALUES';
 export const FORM_SHOW = 'FORMS:FORM_SHOW';
 export const FORM_HIDE = 'FORMS:FORM_HIDE';
 export const FORM_SUBMIT_START = 'FORMS:FORM_SUBMIT_START';
@@ -23,6 +24,10 @@ export function initForm(name, options={}) {
 
 export function clearForm(name) {
 	return {type: FORM_CLEAR, payload: name};
+}
+
+export function clearFormValues(name) {
+	return {type: FORM_CLEAR_VALUES, payload: name};
 }
 
 export function showForm(name) {
