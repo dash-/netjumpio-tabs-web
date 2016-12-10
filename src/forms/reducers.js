@@ -16,6 +16,7 @@ function root(state = Immutable.fromJS({}), action) {
 	const handlers = {
 		[actions.FORM_INIT]: initForm,
 		[actions.FORM_CLEAR]: clearForm,
+		[actions.FORM_CLEAR_VALUES]: clearFormValues,
 		[actions.FORM_SHOW]: showForm,
 		[actions.FORM_HIDE]: hideForm,
 		[actions.FORM_FIELD_CHANGED]: fieldChanged,
@@ -78,6 +79,18 @@ function clearForm(state, action) {
 	return (state
 		.setIn([action.payload, 'values'], Immutable.fromJS({}))
 		.setIn([action.payload, 'aux'], Immutable.fromJS({}))
+	);
+}
+
+function clearFormValues(state, action) {
+	const formName = action.payload;
+
+	if(! state.getIn([formName, 'allowClear'])) {
+		return state;
+	}
+
+	return (state
+		.setIn([action.payload, 'values'], Immutable.fromJS({}))
 	);
 }
 
