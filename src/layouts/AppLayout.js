@@ -10,6 +10,7 @@ import * as userTools from '../user/tools';
 import Col from 'react-bootstrap/lib/Col';
 
 import Header from './Header';
+import Notifications from './Notifications';
 import OverviewPanel from '../overview/OverviewPanel';
 import LoginPage from '../user/LoginPage';
 import Initializer from '../init/Initializer';
@@ -39,6 +40,7 @@ class AppLayoutView extends Component {
 
 		return (
 			<Col md={4} className="side-panel">
+				<Notifications />
 				<OverviewPanel />
 			</Col>
 		);
