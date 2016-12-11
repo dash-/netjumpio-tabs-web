@@ -3,6 +3,7 @@
 ///
 
 import { combineReducers } from 'redux-immutable';
+import {reducer as notifications} from 'react-notification-system-redux';
 import user from '../user/reducers';
 import init from '../init/reducers';
 import overview from '../overview/reducers';
@@ -18,6 +19,7 @@ import tabsets from '../tabsets/reducers';
 ///
 
 export default combineReducers({
+	notifications,
 	user,
 	init,
 	overview,
