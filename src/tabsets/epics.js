@@ -5,6 +5,8 @@
 import { combineEpics } from 'redux-observable';
 import { Observable } from 'rxjs';
 
+import Notifications from 'react-notification-system-redux';
+
 import api from '../app/api';
 import * as actions from './actions';
 import * as formsActions from '../forms/actions';
@@ -92,8 +94,17 @@ const removeTab = (action$, store) => (
 				api.createClient('tabs', {
 					accessToken: store.getState().getIn(['user', 'accessToken']),
 				}).destroyById(action.payload.id)
-			).flatMap(payload => Observable.of(
-				actions.removeTabDone(action.payload)
+			).flatMap(payload => Observable.concat(
+				Observable.of(actions.removeTabDone(action.payload)),
+				Observable.of(Notifications.success({
+					title: 'Success!',
+					message: 'The tab has been removed.',
+					autoDismiss: 8,
+					action: {
+						label: 'Undo',
+						callback: () => console.log('TODO'),
+					},
+				}))
 			))
 		))
 );
