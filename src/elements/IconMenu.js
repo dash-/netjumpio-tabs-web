@@ -26,7 +26,7 @@ class IconMenuView extends Component {
 			bsStyle: 'default',
 			title: icon,
 			className: 'icon-menu',
-		}, omit(['icon'], this.props));
+		}, omit(this.props, ['icon']));
 
 		return React.createElement(DropdownButton, props, this.props.children);
 	}

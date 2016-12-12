@@ -114,7 +114,7 @@ class TabsetsItemView extends Component {
 					{this.processTabUrlForDisplay(tab.get('url'))}
 				</NoWrapEllipse>
 				<ButtonsList>
-					<ButtonsListMenu>
+					<ButtonsListMenu id="tabsMenu">
 						<ButtonsListMenuItem
 							icon="times"
 							title="Delete"
