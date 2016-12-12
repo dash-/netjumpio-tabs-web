@@ -22,12 +22,21 @@
 		}
 	}
 
-	.cards-list-item {
+	.cards-list-item-outer {
+		position: relative;
 		display: inline-block;
 		width: 25%;
 		list-style-type: none;
 
 		& > a {
+			position: absolute;
+			width: ~"calc(100% - 26px)";
+			height: 90px;
+			z-index: 2;
+			text-decoration: none;
+		}
+
+		.cards-list-item-inner {
 			display: inline-block;
 			position: relative;
 			width: ~"calc(100% - 10px)";
@@ -74,6 +83,10 @@
 		&.horizontal {
 			& > a {
 				height: 72px;
+			}
+
+			.cards-list-item-inner {
+				height: 72px;
 				text-align: left;
 
 				.logo-container {
@@ -109,7 +122,7 @@
 	}
 }
 
-.cards-list .cards-list-item .buttons-list {
+.cards-list .cards-list-item-outer .buttons-list {
 	position: absolute;
 	top: 4px;
 	right: 4px;
@@ -118,6 +131,7 @@
 	padding: 0;
 	border-radius: 6px;
 	text-align: right;
+	z-index: 3;
 
 	.buttons-list-item {
 		display: inline-block;
@@ -151,8 +165,8 @@
 }
 
 .cards-list.theme-dark {
-	.cards-list-item {
-		& > a {
+	.cards-list-item-outer {
+		.cards-list-item-inner {
 			#dark-theme.list-item-fg;
 			#dark-theme.list-item-bg;
 			#dark-theme.list-item-border;
@@ -171,8 +185,8 @@
 }
 
 .cards-list.theme-light {
-	.cards-list-item {
-		& > a {
+	.cards-list-item-outer {
+		.cards-list-item-inner {
 			#light-theme.list-item-fg;
 			#light-theme.list-item-bg;
 			#light-theme.list-item-border;

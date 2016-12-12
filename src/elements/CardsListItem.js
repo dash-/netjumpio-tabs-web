@@ -27,7 +27,7 @@ class CardsListItemView extends Component {
 
 	classNames() {
 		return classNames(
-			'cards-list-item',
+			'cards-list-item-outer',
 			this.widthClass(),
 			this.layoutClass(),
 		);
@@ -63,6 +63,9 @@ class CardsListItemView extends Component {
 		return (
 			<li className={this.classNames()}>
 				<AdvancedLink to={this.props.item.get('href')}>
+					&nbsp;
+				</AdvancedLink>
+				<div className="cards-list-item-inner">
 					<div className="logo-container">
 						{this.renderLogo(this.props.item)}
 					</div>
@@ -74,7 +77,7 @@ class CardsListItemView extends Component {
 							{this.props.children}
 						</div>
 					</div>
-				</AdvancedLink>
+				</div>
 			</li>
 		);
 	}

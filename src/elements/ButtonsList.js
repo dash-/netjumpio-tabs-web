@@ -10,18 +10,9 @@ import React, { Component } from 'react';
 ///
 
 class ButtonsListView extends Component {
-	onClick(evt) {
-		evt.preventDefault();
-		evt.stopPropagation();
-		return false;
-	}
-
 	render() {
 		return (
-			<ul
-				className="buttons-list"
-				onClick={this.onClick}
-			>
+			<ul className="buttons-list">
 				{this.props.children}
 			</ul>
 		);
