@@ -6,7 +6,8 @@ import React, { Component } from 'react';
 
 import CardsListItem from '../elements/CardsListItem';
 import ButtonsList from '../elements/ButtonsList';
-import ButtonsListItem from '../elements/ButtonsListItem';
+import ButtonsListMenu from '../elements/ButtonsListMenu';
+import ButtonsListMenuItem from '../elements/ButtonsListMenuItem';
 import TabSetsLogo from '../elements/TabSetsLogo';
 
 import * as actions from './actions';
@@ -34,14 +35,18 @@ class TabsetsListItemView extends Component {
 				horizontal
 			>
 				<ButtonsList>
-					<ButtonsListItem
-						icon="pencil"
-						action={actions.editItemStart(this.props.item.toJS())}
-					/>
-					<ButtonsListItem
-						icon="times"
-						action={actions.removeItemStart(this.props.item.toJS())}
-					/>
+					<ButtonsListMenu id="tabsetsItemMenu">
+						<ButtonsListMenuItem
+							icon="times"
+							title="Delete"
+							action={actions.removeItemStart(this.props.item.toJS())}
+						/>
+						<ButtonsListMenuItem
+							icon="pencil"
+							title="Edit"
+							action={actions.editItemStart(this.props.item.toJS())}
+						/>
+					</ButtonsListMenu>
 				</ButtonsList>
 			</CardsListItem>
 		);
