@@ -26,7 +26,7 @@ import NoWrapEllipse from '../elements/NoWrapEllipse';
 import ButtonsList from '../elements/ButtonsList';
 import ButtonsListMenu from '../elements/ButtonsListMenu';
 import ButtonsListMenuItem from '../elements/ButtonsListMenuItem';
-import InlineNotification from '../elements/InlineNotification';
+import Notification from '../elements/Notification';
 import NotificationButtons from '../elements/NotificationButtons';
 import TabsetLink from './TabsetLink';
 import TabsForm from './TabsForm';
@@ -209,12 +209,12 @@ class TabsetsItemView extends Component {
 		return (
 			<ItemPanel className="tabsets-item-panel" item={this.props.item}>
 				{this.renderHeader()}
-				<InlineNotification
+				<Notification
 					type="success"
 					triggeredBy={actions.ADD_TAB_DONE}
 					renderMessage={this.renderTabAddedMessage}
 				/>
-				<InlineNotification
+				<Notification
 					type="success"
 					triggeredBy={actions.REMOVE_TAB_DONE}
 					hideAfter={0}

@@ -18,7 +18,7 @@ import Alert from 'react-bootstrap/lib/Alert';
 // View
 ///
 
-class InlineNotificationView extends Component {
+class NotificationView extends Component {
 	///
 	// Construction / hooks
 	///
@@ -128,7 +128,7 @@ class InlineNotificationView extends Component {
 		//   renderNotification: function(notifications)
 		//   renderContainer: function(notifications)
 		//
-		// elements/InlineNotifications component properties:
+		// elements/Notifications component properties:
 		//
 		//   (All of the above, except...)
 		//   showDismiss (always present)
@@ -164,4 +164,4 @@ class InlineNotificationView extends Component {
 	}
 }
 
-export default InlineNotificationView;
+export default NotificationView;
