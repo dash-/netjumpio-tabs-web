@@ -37,6 +37,9 @@ export const REMOVE_TAB_START = 'TABSETS:REMOVE_TAB_START';
 export const REMOVE_TAB_FAIL = 'TABSETS:REMOVE_TAB_FAIL';
 export const REMOVE_TAB_DONE = 'TABSETS:REMOVE_TAB_DONE';
 
+export const RESTORE_TAB_START = 'TABSETS:RESTORE_TAB_START';
+export const RESTORE_TAB_FAIL = 'TABSETS:RESTORE_TAB_FAIL';
+export const RESTORE_TAB_DONE = 'TABSETS:RESTORE_TAB_DONE';
 
 
 ///
@@ -97,5 +100,17 @@ export function removeTabFail(err) {
 
 export function removeTabDone(tab) {
 	return {type: REMOVE_TAB_DONE, payload: tab};
+}
+
+export function restoreTabStart(tab) {
+	return {type: RESTORE_TAB_START, payload: tab};
+}
+
+export function restoreTabFail(err) {
+	return {type: RESTORE_TAB_FAIL, payload: err};
+}
+
+export function restoreTabDone(tab) {
+	return {type: RESTORE_TAB_DONE, payload: tab};
 }
 

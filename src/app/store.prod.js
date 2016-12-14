@@ -5,6 +5,7 @@
 import Immutable from 'immutable';
 import { applyMiddleware, createStore, compose } from 'redux';
 import { createEpicMiddleware } from 'redux-observable';
+import { middleware as NotificationMiddleware } from 'react-redux-notifications-immutable';
 
 import { loadState, saveState } from './localStorage';
 import rootEpic from './epics';
@@ -18,7 +19,7 @@ import rootReducer from './reducers';
 const initialState = loadState();
 const epicMiddleware = createEpicMiddleware(rootEpic);
 const middleware = compose(applyMiddleware(
-	epicMiddleware
+	epicMiddleware, NotificationMiddleware
 ));
 
 const store = createStore(

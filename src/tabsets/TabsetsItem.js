@@ -26,6 +26,8 @@ import NoWrapEllipse from '../elements/NoWrapEllipse';
 import ButtonsList from '../elements/ButtonsList';
 import ButtonsListMenu from '../elements/ButtonsListMenu';
 import ButtonsListMenuItem from '../elements/ButtonsListMenuItem';
+import InlineNotification from '../elements/InlineNotification';
+import NotificationButtons from '../elements/NotificationButtons';
 import TabsetLink from './TabsetLink';
 import TabsForm from './TabsForm';
 
@@ -40,6 +42,13 @@ class TabsetsItemView extends Component {
 	///
 	// Hooks
 	///
+	constructor(props) {
+		super(props);
+
+		this.restoreTab = this.restoreTab.bind(this);
+		this.renderTabRemovedMessage = this.renderTabRemovedMessage.bind(this);
+		this.renderTabAddedMessage = this.renderTabAddedMessage.bind(this);
+	}
 
 	componentWillMount() {
 		this.props.getItem(this.props.params.id);
@@ -65,6 +74,12 @@ class TabsetsItemView extends Component {
 			urlUtils.stripWWW(
 				urlUtils.stripProtocol(url)
 			)
+		);
+	}
+
+	restoreTab(tab) {
+		return () => (
+			this.props.restoreTab(tab)
 		);
 	}
 
@@ -163,13 +178,51 @@ class TabsetsItemView extends Component {
 		);
 	}
 
+	renderTabRemovedMessage(notification) {
+		const name = notification.trigger.payload.url;
+		const tab = notification.trigger.payload;
+		return (
+			<span>
+				Tab "{name}" removed.
+				<NotificationButtons>
+					<Button
+						bsStyle="success"
+						onClick={this.restoreTab(tab)}
+					>
+						Undo
+					</Button>
+				</NotificationButtons>
+			</span>
+		);
+	}
+
+	renderTabAddedMessage(notification) {
+		const name = notification.trigger.payload.url;
+		return (
+			<span>
+				Tab "{name}" added.
+			</span>
+		);
+	}
+
 	render() {
 		return (
 			<ItemPanel className="tabsets-item-panel" item={this.props.item}>
 				{this.renderHeader()}
+				<InlineNotification
+					type="success"
+					triggeredBy={actions.ADD_TAB_DONE}
+					renderMessage={this.renderTabAddedMessage}
+				/>
+				<InlineNotification
+					type="success"
+					triggeredBy={actions.REMOVE_TAB_DONE}
+					hideAfter={0}
+					renderMessage={this.renderTabRemovedMessage}
+				/>
 				<CardsList className="tabsets-list">
 					<CardsListCategory
-						name="Tabs (Websites)"
+						name="Tabs"
 					>
 						{this.renderTabsListItems()}
 					</CardsListCategory>
@@ -195,6 +248,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
 	return {
 		getItem: (id) => dispatch(actions.getItem(id)),
+		restoreTab: (tab) => dispatch(actions.restoreTabStart(tab)),
 	};
 }
 
