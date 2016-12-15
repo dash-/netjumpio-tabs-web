@@ -217,7 +217,6 @@ class TabsetsItemView extends Component {
 				<Notification
 					type="success"
 					triggeredBy={actions.REMOVE_TAB_DONE}
-					hideAfter={0}
 					renderMessage={this.renderTabRemovedMessage}
 				/>
 				<CardsList className="tabsets-list">
