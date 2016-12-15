@@ -3,6 +3,7 @@
 ///
 
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import includes from 'lodash/includes';
 import isUndefined from 'lodash/isUndefined';
 import isFunction from 'lodash/isFunction';
@@ -11,7 +12,9 @@ import omit from 'lodash/omit';
 
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { InlineNotification } from 'react-redux-notifications-immutable';
+import { hide } from 'react-redux-notifications-immutable/dist-modules/notifications.redux';
 import Alert from 'react-bootstrap/lib/Alert';
+import Icon from 'react-fontawesome';
 
 
 ///
@@ -26,6 +29,7 @@ class NotificationView extends Component {
 	constructor(props) {
 		super(props);
 
+		this.dismiss = this.dismiss.bind(this);
 		this.renderContainer = this.renderContainer.bind(this);
 		this.renderNotification = this.renderNotification.bind(this);
 	}
@@ -71,6 +75,12 @@ class NotificationView extends Component {
 		return typeBsClassMap[type];
 	}
 
+	dismiss(trigger, key) {
+		return () => (
+			this.props.dismiss(trigger.type, key)
+		);
+	}
+
 
 	///
 	// Rendering
@@ -98,7 +108,8 @@ class NotificationView extends Component {
 	}
 
 	renderNotification(notification) {
-		// TODO Need to add dismiss button: feat/25
+		const trigger = notification.trigger;
+		const key = notification.key;
 		const type = this.getValidType(this.props.type);
 		return (
 			<Alert
@@ -112,6 +123,11 @@ class NotificationView extends Component {
 				&nbsp;
 				{this.renderMessage(notification)}
 				{this.props.children}
+				<span className="dismiss">
+					<button onClick={this.dismiss(trigger, key)}>
+						<Icon name="times" />
+					</button>
+				</span>
 			</Alert>
 		);
 	}
@@ -164,4 +180,25 @@ class NotificationView extends Component {
 	}
 }
 
-export default NotificationView;
+
+///
+// Container
+///
+
+function mapStateToProps(state) {
+	return { };
+}
+
+function mapDispatchToProps(dispatch) {
+	return {
+		dismiss: (trigger, key) => dispatch(hide(trigger, key)),
+	};
+}
+
+const connector = connect(
+	mapStateToProps,
+	mapDispatchToProps
+);
+
+export default connector(NotificationView);
+
