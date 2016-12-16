@@ -2,8 +2,8 @@
 // Action types
 ///
 
-export const TOGGLE_PROFILE_PANEL = 'USER:TOGGLE_PROFILE_PANEL';
-export const DISMISS_PROFILE_PANEL = 'USER:DISMISS_PROFILE_PANEL';
+export const PROFILE_PANEL_TOGGLE = 'PROFILE:PROFILE_PANEL_TOGGLE';
+export const PROFILE_PANEL_DISMISS = 'PROFILE:PROFILE_PANEL_DISMISS';
 
 
 ///
@@ -11,9 +11,10 @@ export const DISMISS_PROFILE_PANEL = 'USER:DISMISS_PROFILE_PANEL';
 ///
 
 export function toggleProfilePanel() {
-	return {type: TOGGLE_PROFILE_PANEL};
+	return {type: PROFILE_PANEL_TOGGLE};
 }
 
-export function dismiss() {
-	return {type: DISMISS_PROFILE_PANEL};
+export function dismissProfilePanel() {
+	return {type: PROFILE_PANEL_DISMISS};
 }
+

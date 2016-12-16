@@ -26,12 +26,23 @@ const login = (action$, store) => (
 		))
 );
 
+const logout = (action$, store) => (
+	action$.ofType(actions.LOGOUT_START)
+		.switchMap(action => (
+			Observable.fromPromise(
+				api.createUserClient('people').logout(
+					store.getState().getIn(['user', 'accessToken']),
+				)
+			).map(payload => actions.logoutDone(payload))
+		))
+);
+
 
 ///
 // Exports
 ///
 
 export default combineEpics(
-	login
+	login, logout
 );
 

@@ -4,6 +4,7 @@
 
 import Immutable from 'immutable';
 
+import * as actions from './actions';
 import * as formsActions from '../forms/actions';
 
 
@@ -14,6 +15,7 @@ import * as formsActions from '../forms/actions';
 function root(state = Immutable.fromJS({}), action) {
 	const handlers = {
 		[formsActions.FORM_SUBMIT_DONE]: onFormSubmitDone, 
+		[actions.LOGOUT_DONE]: onLogoutDone, 
 		default: (state) => state,
 	};
 
@@ -44,5 +46,9 @@ function onFormSubmitDone(state, action) {
 		.set('name', user.name)
 		.set('username', user.username)
 	);
+}
+
+function onLogoutDone(state, action) {
+	return Immutable.fromJS({});
 }
 

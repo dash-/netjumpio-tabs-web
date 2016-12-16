@@ -11,6 +11,7 @@ import Button from 'react-bootstrap/lib/Button';
 import Dismissible from '../elements/Dismissible';
 
 import * as actions from './actions';
+import * as userActions from '../user/actions';
 
 
 ///
@@ -18,6 +19,27 @@ import * as actions from './actions';
 ///
 
 class ProfilePanelView extends Component {
+	///
+	// Construction
+	///
+
+	constructor(props) {
+		super(props);
+
+		this.signOut = this.signOut.bind(this);
+	}
+
+
+	///
+	// Event handling
+	///
+
+	signOut() {
+		this.props.signOut();
+		this.props.dismiss();
+	}
+
+
 	///
 	// Rendering
 	///
@@ -38,6 +60,10 @@ class ProfilePanelView extends Component {
 	}
 
 	render() {
+		if(! this.props.user.get('id')) {
+			return null;
+		}
+
 		if(! this.props.profile.get('showPanel')) {
 			return null;
 		}
@@ -45,7 +71,7 @@ class ProfilePanelView extends Component {
 		return (
 			<Dismissible onDismiss={this.props.dismiss}>
 				<div className="profile-panel">
-					<div className="info-section">
+					<div className="profile-section">
 						<div className="logo">
 							{this.renderLogo()}
 						</div>
@@ -56,13 +82,15 @@ class ProfilePanelView extends Component {
 							<div className="email">
 								{this.props.user.get('email')}
 							</div>
+							<div className="actions">
+								<Button bsStyle="primary">
+									Edit profile
+								</Button>
+							</div>
 						</div>
 					</div>
-					<div className="actions-section">
-						<Button
-							icon="sign-out"
-							onClick={() => (console.log('clicked'))}
-						>
+					<div className="aux-actions-section">
+						<Button onClick={this.signOut}>
 							Sign out
 						</Button>
 					</div>
@@ -86,7 +114,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
 	return {
-		dismiss: () => dispatch(actions.dismiss()),
+		dismiss: () => dispatch(actions.dismissProfilePanel()),
+		signOut: () => dispatch(userActions.logoutStart()),
 	};
 }
 

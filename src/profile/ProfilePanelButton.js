@@ -55,6 +55,10 @@ class ProfilePanelButtonView extends Component {
 	}
 
 	render() {
+		if(! this.props.user.get('id')) {
+			return null;
+		}
+
 		return (
 			<div className="profile-panel-button">
 				<button onClick={this.handleClick}>
