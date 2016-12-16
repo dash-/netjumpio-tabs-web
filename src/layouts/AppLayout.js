@@ -11,6 +11,7 @@ import Col from 'react-bootstrap/lib/Col';
 
 import Header from './Header';
 import OverviewPanel from '../overview/OverviewPanel';
+import ProfilePanel from '../profile/ProfilePanel';
 import LoginPage from '../user/LoginPage';
 import Initializer from '../init/Initializer';
 
@@ -72,6 +73,7 @@ class AppLayoutView extends Component {
     		<Header />
 				{this.renderLoginPage()}
 				{this.renderInitializer()}
+				<ProfilePanel />
 				{this.renderMainPanel()}
 				{this.renderSidePanel()}
 			</div>

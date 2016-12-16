@@ -5,6 +5,7 @@
 import { combineReducers } from 'redux-immutable';
 import {reducer as notifications} from 'react-redux-notifications-immutable';
 import user from '../user/reducers';
+import profile from '../profile/reducers';
 import init from '../init/reducers';
 import overview from '../overview/reducers';
 import forms from '../forms/reducers';
@@ -21,6 +22,7 @@ import tabsets from '../tabsets/reducers';
 export default combineReducers({
 	notifications,
 	user,
+	profile,
 	init,
 	overview,
 	forms,

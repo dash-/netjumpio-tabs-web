@@ -3,9 +3,9 @@
 ///
 
 import React, { Component } from 'react';
-import { Link } from 'react-router';
 
 import TabSetsLogo from '../elements/TabSetsLogo';
+import ProfilePanelButton from '../profile/ProfilePanelButton';
 
 
 ///
@@ -19,8 +19,9 @@ class Header extends Component {
 				<div className="app-header">
 					<TabSetsLogo />
 					<h3 className="title">TabSets</h3>
-					<div className="links">
-						<Link to="/tabsets/">Example Link</Link>
+
+					<div className="extras">
+						<ProfilePanelButton />
 					</div>
 				</div>
 				<div className="app-header-spacer"></div>

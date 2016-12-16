@@ -1,0 +1,30 @@
+.profile-panel-button {
+	button {
+		width: 30px;
+		height: 30px;
+		padding: 1px;
+		border-radius: 15px;
+		border: 0;
+
+		#dark-theme.profile-panel-btn-bg;
+		#dark-theme.profile-panel-btn-fg;
+
+		.no-glow;
+	}
+}
+
+.profile-panel {
+	position: fixed;
+	top: 47px;
+	right: 15px;
+	z-index: 20;
+	width: 300px;
+	padding: 14px;
+	border-bottom-left-radius: 14px;
+	border-bottom-right-radius: 14px;
+
+	#light-theme.panel-fg;
+	#light-theme.panel-bg;
+
+	.drop-shadow(0px, 0px, 10px, 0px, 0.75);
+}
