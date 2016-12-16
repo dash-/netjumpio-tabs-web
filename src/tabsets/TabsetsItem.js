@@ -121,7 +121,6 @@ class TabsetsItemView extends Component {
 					type="success"
 					triggeredBy={actions.REMOVE_TAB_DONE}
 					renderMessage={this.renderTabRemovedMessage}
-					hideAfter={0}
 				/>
 			</ItemPanelNotifications>
 		);
