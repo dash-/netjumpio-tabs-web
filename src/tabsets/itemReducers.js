@@ -17,6 +17,7 @@ function root(state = Immutable.fromJS({}), action) {
 		[actions.ADD_TAB_DONE]: addTabDone,
 		[actions.EDIT_TAB_PROMPT]: editTabPrompt,
 		[actions.REMOVE_TAB_DONE]: removeTabDone,
+		[actions.RESTORE_TAB_DONE]: restoreTabDone,
 		default: (state) => state,
 	};
 
@@ -53,5 +54,11 @@ function removeTabDone(state, action) {
 	});
 
 	return state.deleteIn(['tabs', tabKey]);
+}
+
+function restoreTabDone(state, action) {
+	return state.set('tabs', state.get('tabs').push(
+		Immutable.fromJS(action.payload)
+	));
 }
 

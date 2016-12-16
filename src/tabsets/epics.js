@@ -98,12 +98,28 @@ const removeTab = (action$, store) => (
 		))
 );
 
+const restoreTab = (action$, store) => (
+	action$.ofType(actions.RESTORE_TAB_START)
+		.switchMap(action => (
+			Observable.fromPromise(
+				api.createRelatedClient({
+					one: 'tabs',
+					many: 'restore',
+					id: action.payload.id,
+					accessToken: store.getState().getIn(['user', 'accessToken']),
+				}).create({})
+			).flatMap(payload => Observable.of(
+				actions.restoreTabDone(payload))
+			)
+		))
+);
+
 
 ///
 // Exports
 ///
 
 export default combineEpics(
-	getList, getItem, saveItem, addTab, removeTab
+	getList, getItem, saveItem, addTab, removeTab, restoreTab
 );
 
