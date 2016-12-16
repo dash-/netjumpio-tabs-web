@@ -21,7 +21,7 @@ import Icon from 'react-fontawesome';
 // View
 ///
 
-class NotificationView extends Component {
+class NotificationsListItemView extends Component {
 	///
 	// Construction / hooks
 	///
@@ -115,7 +115,7 @@ class NotificationView extends Component {
 			<Alert
 				key={notification.key}
 				bsStyle={this.getBootstrapClass(type)}
-				className="notification"
+				className="notifications-list-item"
 			>
 				<strong>
 					{this.getTitle(this.props.title, type)}
@@ -200,5 +200,5 @@ const connector = connect(
 	mapDispatchToProps
 );
 
-export default connector(NotificationView);
+export default connector(NotificationsListItemView);
 

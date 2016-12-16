@@ -1,30 +1,39 @@
-.alert.notification {
-	position: relative;
+.notifications-list {
+	.notifications-list-item {
+		padding: 6px;
+		position: relative;
+		font-size: 14px;
 
-	.notification-buttons {
-		position: absolute;
-		top: 8px;
-		right: 30px;
-	}
+		.notification-buttons {
+			position: absolute;
+			top: 2px;
+			right: 30px;
 
-	.dismiss {
-		position: absolute;
-		top: 4px;
-		right: 4px;
-
-		button {
-			border: 0;
-			margin: 0;
-			padding: 0;
-			background: inherit;
-			opacity: 0.5;
-
-			& > span {
-				vertical-align: top;
+			button {
+				font-size: 12px;
+				padding: 4px 6px;
 			}
+		}
 
-			&:hover {
-				opacity: 1;
+		.dismiss {
+			position: absolute;
+			top: 4px;
+			right: 4px;
+
+			button {
+				border: 0;
+				margin: 0;
+				padding: 0;
+				background: inherit;
+				opacity: 0.5;
+
+				& > span {
+					vertical-align: top;
+				}
+
+				&:hover {
+					opacity: 1;
+				}
 			}
 		}
 	}

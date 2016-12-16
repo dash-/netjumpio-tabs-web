@@ -19,14 +19,17 @@ import Icon from '../elements/Icon';
 import TabSetsLogo from '../elements/TabSetsLogo';
 import ItemPanel from '../elements/ItemPanel';
 import ItemPanelHeader from '../elements/ItemPanelHeader';
+import ItemPanelNotifications from '../elements/ItemPanelNotifications';
+import ItemPanelSection from '../elements/ItemPanelSection';
+import SectionHeader from '../elements/SectionHeader';
+import SectionBody from '../elements/SectionBody';
 import CardsList from '../elements/CardsList';
 import CardsListItem from '../elements/CardsListItem';
-import CardsListCategory from '../elements/CardsListCategory';
 import NoWrapEllipse from '../elements/NoWrapEllipse';
 import ButtonsList from '../elements/ButtonsList';
 import ButtonsListMenu from '../elements/ButtonsListMenu';
 import ButtonsListMenuItem from '../elements/ButtonsListMenuItem';
-import Notification from '../elements/Notification';
+import NotificationsListItem from '../elements/NotificationsListItem';
 import NotificationButtons from '../elements/NotificationButtons';
 import TabsetLink from './TabsetLink';
 import TabsForm from './TabsForm';
@@ -47,7 +50,6 @@ class TabsetsItemView extends Component {
 
 		this.restoreTab = this.restoreTab.bind(this);
 		this.renderTabRemovedMessage = this.renderTabRemovedMessage.bind(this);
-		this.renderTabAddedMessage = this.renderTabAddedMessage.bind(this);
 	}
 
 	componentWillMount() {
@@ -109,6 +111,34 @@ class TabsetsItemView extends Component {
 					<Icon name="share-alt" />
 				</Button>
 			</ItemPanelHeader>
+		);
+	}
+
+	renderNotifications() {
+		return (
+			<ItemPanelNotifications>
+				<NotificationsListItem
+					type="success"
+					triggeredBy={actions.REMOVE_TAB_DONE}
+					renderMessage={this.renderTabRemovedMessage}
+					hideAfter={0}
+				/>
+			</ItemPanelNotifications>
+		);
+	}
+
+	renderTabsSection() {
+		return (
+			<ItemPanelSection>
+				<SectionHeader>Tabs</SectionHeader>
+				<SectionBody>
+					<CardsList className="tabsets-list">
+						{this.renderTabsListItems()}
+					</CardsList>
+					{this.renderTabsAddForm()}
+					{this.renderTabsFormModal()}
+				</SectionBody>
+			</ItemPanelSection>
 		);
 	}
 
@@ -196,38 +226,12 @@ class TabsetsItemView extends Component {
 		);
 	}
 
-	renderTabAddedMessage(notification) {
-		const name = notification.trigger.payload.url;
-		return (
-			<span>
-				Tab "{name}" added.
-			</span>
-		);
-	}
-
 	render() {
 		return (
 			<ItemPanel className="tabsets-item-panel" item={this.props.item}>
 				{this.renderHeader()}
-				<Notification
-					type="success"
-					triggeredBy={actions.ADD_TAB_DONE}
-					renderMessage={this.renderTabAddedMessage}
-				/>
-				<Notification
-					type="success"
-					triggeredBy={actions.REMOVE_TAB_DONE}
-					renderMessage={this.renderTabRemovedMessage}
-				/>
-				<CardsList className="tabsets-list">
-					<CardsListCategory
-						name="Tabs"
-					>
-						{this.renderTabsListItems()}
-					</CardsListCategory>
-				</CardsList>
-				{this.renderTabsAddForm()}
-				{this.renderTabsFormModal()}
+				{this.renderNotifications()}
+				{this.renderTabsSection()}
 			</ItemPanel>
 		);
 	}
