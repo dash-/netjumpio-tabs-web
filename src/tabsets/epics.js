@@ -102,12 +102,12 @@ const restoreTab = (action$, store) => (
 	action$.ofType(actions.RESTORE_TAB_START)
 		.switchMap(action => (
 			Observable.fromPromise(
-				api.createRelatedClient({
-					one: 'tabs',
-					many: 'restore',
-					id: action.payload.id,
+				api.request('tabs', [
+					'', action.payload.id,
+					'restore',
+				].join('/'), {}, 'POST', {
 					accessToken: store.getState().getIn(['user', 'accessToken']),
-				}).create({})
+				})
 			).flatMap(payload => Observable.of(
 				actions.restoreTabDone(payload))
 			)
