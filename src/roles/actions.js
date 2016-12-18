@@ -15,7 +15,7 @@ export const GET_LIST_DONE = 'ROLES:GET_LIST_DONE';
 
 export const ADD_ITEM_DONE = 'ROLES:ADD_ITEM_DONE';
 
-export const SUBMIT_FORM = formsActions.FORM_SUBMIT_START + ':roles';
+export const FORM_SUBMIT = formsActions.FORM_SUBMIT_START + ':roles';
 
 
 ///

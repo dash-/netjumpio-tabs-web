@@ -32,7 +32,7 @@ const getList = (action$, store) => (
 );
 
 const saveItem = (action$, store) => (
-	action$.ofType(actions.SUBMIT_FORM)
+	action$.ofType(actions.FORM_SUBMIT)
 		.switchMap(action => (
 			Observable.fromPromise(
 				api.createRelatedClient({

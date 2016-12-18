@@ -4,6 +4,7 @@
 
 import Immutable from 'immutable';
 
+import * as tabsActions from '../tabs/actions';
 import * as actions from './actions';
 
 
@@ -14,10 +15,10 @@ import * as actions from './actions';
 function root(state = Immutable.fromJS({}), action) {
 	const handlers = {
 		[actions.GET_ITEM_DONE]: getItemDone,
-		[actions.ADD_TAB_DONE]: addTabDone,
-		[actions.EDIT_TAB_PROMPT]: editTabPrompt,
-		[actions.REMOVE_TAB_DONE]: removeTabDone,
-		[actions.RESTORE_TAB_DONE]: restoreTabDone,
+		[tabsActions.ADD_TAB_DONE]: addTabDone,
+		[tabsActions.EDIT_TAB_PROMPT]: editTabPrompt,
+		[tabsActions.REMOVE_TAB_DONE]: removeTabDone,
+		[tabsActions.RESTORE_TAB_DONE]: restoreTabDone,
 		default: (state) => state,
 	};
 

@@ -15,7 +15,7 @@ export const GET_LIST_DONE = 'PEOPLE:GET_LIST_DONE';
 
 export const ADD_ITEM_DONE = 'PEOPLE:ADD_ITEM_DONE';
 
-export const SUBMIT_FORM = formsActions.FORM_SUBMIT_START + ':people';
+export const FORM_SUBMIT = formsActions.FORM_SUBMIT_START + ':people';
 
 
 ///

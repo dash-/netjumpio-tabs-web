@@ -6,8 +6,9 @@ import { combineEpics } from 'redux-observable';
 import { Observable } from 'rxjs';
 
 import api from '../app/api';
-import * as actions from './actions';
 import * as formsActions from '../forms/actions';
+import * as tabsActions from '../tabs/actions';
+import * as actions from './actions';
 
 
 ///
@@ -51,7 +52,7 @@ const getItem = (action$, store) => (
 );
 
 const saveItem = (action$, store) => (
-	action$.ofType(actions.SUBMIT_FORM)
+	action$.ofType(actions.FORM_SUBMIT)
 		.switchMap(action => (
 			Observable.fromPromise(
 				api.createRelatedClient({
@@ -67,8 +68,33 @@ const saveItem = (action$, store) => (
 		))
 );
 
+const urlFormSubmit = (action$, store) => (
+	action$.ofType(tabsActions.URL_FORM_SUBMIT)
+		.switchMap(action => Observable.concat(
+			Observable.of(formsActions.formSubmitDone('tabsUrl')),
+			Observable.of(formsActions.clearFormValues('tabsUrl')),
+			Observable.of(formsActions.showForm('tabs')),
+			Observable.of(tabsActions.getWebpageInfoStart(action.payload)),
+		))
+);
+
+const getWebpageInfo = (action$, store) => (
+	action$.ofType(tabsActions.GET_WEBPAGE_INFO_START)
+		.switchMap(action => (
+			Observable.fromPromise(
+				api.request('tabs', '/webpage', {
+					url: action.payload,
+				}, 'GET', {
+					accessToken: store.getState().getIn(['user', 'accessToken']),
+				})
+			).flatMap(payload => Observable.of(
+				tabsActions.restoreTabDone(payload))
+			)
+		))
+);
+
 const addTab = (action$, store) => (
-	action$.ofType(actions.ADD_TAB)
+	action$.ofType(tabsActions.ADD_TAB_START)
 		.switchMap(action => (
 			Observable.fromPromise(
 				api.createRelatedClient({
@@ -78,28 +104,26 @@ const addTab = (action$, store) => (
 					accessToken: store.getState().getIn(['user', 'accessToken']),
 				}).create(action.payload)
 			).flatMap(payload => Observable.concat(
-				Observable.of(formsActions.formSubmitDone('tabsetsTabs')),
-				Observable.of(formsActions.clearFormValues('tabsetsTabs')),
-				Observable.of(actions.addTabDone(payload))
+				Observable.of(tabsActions.addTabDone(payload))
 			))
 		))
 );
 
 const removeTab = (action$, store) => (
-	action$.ofType(actions.REMOVE_TAB_START)
+	action$.ofType(tabsActions.REMOVE_TAB_START)
 		.switchMap(action => (
 			Observable.fromPromise(
 				api.createClient('tabs', {
 					accessToken: store.getState().getIn(['user', 'accessToken']),
 				}).destroyById(action.payload.id)
 			).flatMap(payload => Observable.of(
-				actions.removeTabDone(action.payload))
+				tabsActions.removeTabDone(action.payload))
 			)
 		))
 );
 
 const restoreTab = (action$, store) => (
-	action$.ofType(actions.RESTORE_TAB_START)
+	action$.ofType(tabsActions.RESTORE_TAB_START)
 		.switchMap(action => (
 			Observable.fromPromise(
 				api.request('tabs', [
@@ -109,7 +133,7 @@ const restoreTab = (action$, store) => (
 					accessToken: store.getState().getIn(['user', 'accessToken']),
 				})
 			).flatMap(payload => Observable.of(
-				actions.restoreTabDone(payload))
+				tabsActions.restoreTabDone(payload))
 			)
 		))
 );
@@ -120,6 +144,7 @@ const restoreTab = (action$, store) => (
 ///
 
 export default combineEpics(
-	getList, getItem, saveItem, addTab, removeTab, restoreTab
+	getList, getItem, saveItem, urlFormSubmit,
+	getWebpageInfo, addTab, removeTab, restoreTab
 );
 

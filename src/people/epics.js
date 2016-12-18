@@ -50,7 +50,7 @@ const getList = (action$, store) => (
 //        to be your friend.  So this is basically a placeholder,
 //        and it will not work like that.
 const saveItem = (action$, store) => (
-	action$.ofType(actions.SUBMIT_FORM)
+	action$.ofType(actions.FORM_SUBMIT)
 		.switchMap(action => (
 			Observable.fromPromise(
 				api.createRelatedClient({

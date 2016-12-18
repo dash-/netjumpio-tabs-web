@@ -15,7 +15,7 @@ export const GET_LIST_DONE = 'GROUPS:GET_LIST_DONE';
 
 export const ADD_ITEM_DONE = 'GROUPS:ADD_ITEM_DONE';
 
-export const SUBMIT_FORM = formsActions.FORM_SUBMIT_START + ':groups';
+export const FORM_SUBMIT = formsActions.FORM_SUBMIT_START + ':groups';
 
 
 ///
