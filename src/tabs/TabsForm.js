@@ -15,10 +15,10 @@ import Form from '../forms/Form';
 // View
 ///
 
-class TabsetsFormView extends Component {
+class TabsFormView extends Component {
 	render() {
 		return (
-			<Form name="tabsets" className="tabsets-form">
+			<Form name="tabs" className="tabsets-form">
 				<FormGroup controlId="nameField">
 					<ControlLabel>Name</ControlLabel>
 					<FormControl
@@ -30,7 +30,7 @@ class TabsetsFormView extends Component {
 				<FormGroup controlId="urlField">
 					<ControlLabel>Web Address</ControlLabel>
 					<FormControl
-						name="name"
+						name="url"
 						type="text"
 						placeholder="http://www.example.com/"
 					/>
@@ -43,10 +43,11 @@ class TabsetsFormView extends Component {
 						placeholder="https://www.example.com/icon.png"
 					/>
 				</FormGroup>
+				{this.props.children}
 			</Form>
 		);
 	}
 }
 
-export default TabsetsFormView;
+export default TabsFormView;
 

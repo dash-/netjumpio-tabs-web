@@ -4,6 +4,7 @@
 
 import Immutable from 'immutable';
 import isUndefined from 'lodash/isUndefined';
+import isObject from 'lodash/isObject';
 
 import * as actions from './actions';
 
@@ -15,6 +16,7 @@ import * as actions from './actions';
 function root(state = Immutable.fromJS({}), action) {
 	const handlers = {
 		[actions.FORM_INIT]: initForm,
+		[actions.FORM_INIT_DATA]: initFormData,
 		[actions.FORM_CLEAR]: clearForm,
 		[actions.FORM_CLEAR_VALUES]: clearFormValues,
 		[actions.FORM_SHOW]: showForm,
@@ -39,6 +41,7 @@ const defaultItem = {
 	isVisible: false, // Only used by form modals
 	allowClear: true,
 	allowHide: true,
+	dataHasInitialized: false,
 	values: {},
 	aux: {},
 };
@@ -67,6 +70,33 @@ function initForm(state, action) {
 	}
 
 	return state;
+}
+
+function initFormData(state, action) {
+	state = initForm(state, action);
+
+	const formName = action.payload;
+	const data = action.data;
+
+	if(! isObject(data)) {
+		return state;
+	}
+
+	if(isObject(data.values)) {
+		state = state.setIn(
+			[formName, 'values'],
+			Immutable.fromJS(data.values)
+		);
+	}
+
+	if(isObject(data.aux)) {
+		state = state.setIn(
+			[formName, 'aux'],
+			Immutable.fromJS(data.aux)
+		);
+	}
+
+	return state.setIn([formName, 'dataHasInitialized'], true);
 }
 
 function clearForm(state, action) {

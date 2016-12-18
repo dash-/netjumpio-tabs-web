@@ -100,8 +100,11 @@ class TabsetsItemView extends Component {
 					<FormModal
 						name="tabs"
 						title="TBD"
-						form={TabsForm}
-					/>
+					>
+						<TabsForm>
+							<AuxData name="tabsetId" value={this.props.params.id} />
+						</TabsForm>
+					</FormModal>
 				</SectionBody>
 			</ItemPanelSection>
 		);

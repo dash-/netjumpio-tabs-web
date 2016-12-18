@@ -3,6 +3,7 @@
 ///
 
 export const FORM_INIT = 'FORMS:FORM_INIT';
+export const FORM_INIT_DATA = 'FORMS:FORM_INIT_DATA';
 export const FORM_CLEAR = 'FORMS:FORM_CLEAR';
 export const FORM_CLEAR_VALUES = 'FORMS:FORM_CLEAR_VALUES';
 export const FORM_SHOW = 'FORMS:FORM_SHOW';
@@ -20,6 +21,10 @@ export const FORM_AUX_FIELD_CHANGED = 'FORMS:FORM_AUX_FIELD_CHANGED';
 
 export function initForm(name, options={}) {
 	return {type: FORM_INIT, payload: name, options: options};
+}
+
+export function initFormData(name, data) {
+	return {type: FORM_INIT_DATA, payload: name, data: data};
 }
 
 export function clearForm(name) {

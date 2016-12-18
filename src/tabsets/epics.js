@@ -4,6 +4,7 @@
 
 import { combineEpics } from 'redux-observable';
 import { Observable } from 'rxjs';
+import isUndefined from 'lodash/isUndefined';
 
 import api from '../app/api';
 import * as formsActions from '../forms/actions';
@@ -74,7 +75,7 @@ const urlFormSubmit = (action$, store) => (
 			Observable.of(formsActions.formSubmitDone('tabsUrl')),
 			Observable.of(formsActions.clearFormValues('tabsUrl')),
 			Observable.of(formsActions.showForm('tabs')),
-			Observable.of(tabsActions.getWebpageInfoStart(action.payload)),
+			Observable.of(tabsActions.getWebpageInfoStart(action.payload.url)),
 		))
 );
 
@@ -88,9 +89,26 @@ const getWebpageInfo = (action$, store) => (
 					accessToken: store.getState().getIn(['user', 'accessToken']),
 				})
 			).flatMap(payload => Observable.of(
-				tabsActions.restoreTabDone(payload))
-			)
+				formsActions.initFormData('tabs', {
+					values: payload,
+				})
+			))
 		))
+);
+
+const tabsFormSubmit = (action$, store) => (
+	action$.ofType(tabsActions.TABS_FORM_SUBMIT)
+		.switchMap(action => {
+			if(isUndefined(action.payload.id)) {
+				return Observable.of(tabsActions.addTabStart(
+					action.aux.tabsetId, action.payload
+				));
+			}
+
+			return Observable.of(tabsActions.editTabStart(
+				action.payload
+			));
+		})
 );
 
 const addTab = (action$, store) => (
@@ -104,8 +122,22 @@ const addTab = (action$, store) => (
 					accessToken: store.getState().getIn(['user', 'accessToken']),
 				}).create(action.payload)
 			).flatMap(payload => Observable.concat(
+				Observable.of(formsActions.formSubmitDone('tabs')),
+				Observable.of(formsActions.clearFormValues('tabs')),
 				Observable.of(tabsActions.addTabDone(payload))
 			))
+		))
+);
+
+const editTabPrompt = (action$, store) => (
+	action$.ofType(tabsActions.EDIT_TAB_PROMPT)
+		.switchMap(action => Observable.concat(
+			Observable.of(formsActions.showForm('tabs')),
+			Observable.of(
+				formsActions.initFormData('tabs', {
+					values: action.payload,
+				})
+			)
 		))
 );
 
@@ -145,6 +177,7 @@ const restoreTab = (action$, store) => (
 
 export default combineEpics(
 	getList, getItem, saveItem, urlFormSubmit,
-	getWebpageInfo, addTab, removeTab, restoreTab
+	getWebpageInfo, tabsFormSubmit,
+	addTab, editTabPrompt, removeTab, restoreTab
 );
 

@@ -14,6 +14,8 @@ export const URL_FORM_SUBMIT = formsActions.FORM_SUBMIT_START + ':tabsUrl';
 export const GET_WEBPAGE_INFO_START = 'TABSETS:GET_WEBPAGE_INFO_START';
 export const GET_WEBPAGE_INFO_FAIL = 'TABSETS:GET_WEBPAGE_INFO_FAIL';
 
+export const TABS_FORM_SUBMIT = formsActions.FORM_SUBMIT_START + ':tabs';
+
 // TODO - These will be refactored (feat/cr14 - Rework add tab flow)
 export const ADD_TAB_START = 'TABSETS:ADD_TAB_START';
 export const ADD_TAB_DONE = 'TABSETS:ADD_TAB_DONE';
@@ -45,14 +47,16 @@ export function getWebpageInfoFail(err) {
 	return {type: GET_WEBPAGE_INFO_FAIL, payload: err};
 }
 
-export function addTab(tabsetId, tab) {
-	return {type: ADD_TAB_START, payload: {tabsetId, tab}};
+// TODO - These will be refactored (feat/cr14 - Rework add tab flow)
+export function addTabStart(tabsetId, tab) {
+	return {type: ADD_TAB_START, payload: tab, aux: {tabsetId}};
 }
 
 export function addTabDone(tab) {
 	return {type: ADD_TAB_DONE, payload: tab};
 }
 
+// TODO - These will be refactored (feat/cr13 - Ability to edit tabs)
 export function editTabPrompt(tab) {
 	return {type: EDIT_TAB_PROMPT, payload: tab};
 }
