@@ -25,7 +25,7 @@ class FormModalView extends Component {
 						<Icon name="close" /> &nbsp;Close
 					</Button>
 					<Button bsStyle="primary" onClick={this.props.onSave}>
-						<Icon name="floppy-o" /> &nbsp;Save
+						<Icon name="check" /> &nbsp;Save
 					</Button>
 				</Modal.Footer>
 			</Modal>
