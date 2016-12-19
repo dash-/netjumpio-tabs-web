@@ -61,7 +61,7 @@ class ManagedFormView extends Component {
 			'form', props, this.props.children.concat(
 				<button
 					type="submit" className="hidden"
-					key="hiddenSubmitButton"
+					key="hiddenSubmitButton-9a3209b5-35ad-4a35-ae4b-1729eeb8d7cf"
 				/>
 			)
 		);
