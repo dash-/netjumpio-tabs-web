@@ -141,6 +141,21 @@ const editTabPrompt = (action$, store) => (
 		))
 );
 
+const editTab = (action$, store) => (
+	action$.ofType(tabsActions.EDIT_TAB_START)
+		.switchMap(action => (
+			Observable.fromPromise(
+				api.createClient('tabs', {
+					accessToken: store.getState().getIn(['user', 'accessToken']),
+				}).upsert(action.payload)
+			).flatMap(payload => Observable.concat(
+				Observable.of(formsActions.formSubmitDone('tabs')),
+				Observable.of(formsActions.clearFormValues('tabs')),
+				Observable.of(tabsActions.editTabDone(payload))
+			))
+		))
+);
+
 const removeTab = (action$, store) => (
 	action$.ofType(tabsActions.REMOVE_TAB_START)
 		.switchMap(action => (
@@ -178,6 +193,6 @@ const restoreTab = (action$, store) => (
 export default combineEpics(
 	getList, getItem, saveItem, urlFormSubmit,
 	getWebpageInfo, tabsFormSubmit,
-	addTab, editTabPrompt, removeTab, restoreTab
+	addTab, editTabPrompt, editTab, removeTab, restoreTab
 );
 
