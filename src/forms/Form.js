@@ -15,11 +15,6 @@ import * as actions from './actions';
 ///
 
 class ManagedFormView extends Component {
-	static childContextTypes = {
-		formName: PropTypes.string,
-	};
-
-
 	///
 	// Hooks
 	///
@@ -62,9 +57,22 @@ class ManagedFormView extends Component {
 			onSubmit: this.submitForm,
 		}, omit(this.props, ['initForm', 'submitForm']));
 
-		return React.createElement('form', props, this.props.children);
+		return React.createElement(
+			'form', props, this.props.children.concat(
+				<button
+					type="submit" className="hidden"
+					key="hiddenSubmitButton"
+				/>
+			)
+		);
 	}
 }
+
+ManagedFormView.childContextTypes = {
+	formName: PropTypes.string,
+};
+
+
 
 
 ///
