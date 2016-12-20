@@ -23,6 +23,7 @@ function root(state = Immutable.fromJS({}), action) {
 		[actions.FORM_HIDE]: hideForm,
 		[actions.FORM_FIELD_CHANGED]: fieldChanged,
 		[actions.FORM_AUX_FIELD_CHANGED]: auxFieldChanged,
+		[actions.FORM_IMAGE_SELECT_START]: imageSelectStart,
 		default: (state) => state,
 	};
 
@@ -42,6 +43,7 @@ const defaultItem = {
 	allowClear: true,
 	allowHide: true,
 	dataHasInitialized: false,
+	imageSelects: {},
 	values: {},
 	aux: {},
 };
@@ -152,6 +154,19 @@ function auxFieldChanged(state, action) {
 	const value = action.payload.value;
 
 	return state.setIn([form, 'aux', field], value);
+}
+
+function imageSelectStart(state, action) {
+	const form = action.payload.form;
+	const field = action.payload.field;
+
+	return state.setIn(
+		[form, 'imageSelects', field],
+		Immutable.fromJS({
+			image: null,
+			isUploaded: false,
+		})
+	);
 }
 
 
