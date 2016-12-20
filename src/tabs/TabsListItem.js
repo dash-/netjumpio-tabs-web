@@ -54,14 +54,14 @@ class TabsListItemView extends Component {
 				<ButtonsList>
 					<ButtonsListMenu id="tabsItemMenu">
 						<ButtonsListMenuItem
-							icon="times"
-							title="Delete"
-							action={actions.removeTabStart(this.props.tab.toJS())}
-						/>
-						<ButtonsListMenuItem
 							icon="pencil"
 							title="Edit"
 							action={actions.editTabPrompt(this.props.tab.toJS())}
+						/>
+						<ButtonsListMenuItem
+							icon="times"
+							title="Delete"
+							action={actions.removeTabStart(this.props.tab.toJS())}
 						/>
 					</ButtonsListMenu>
 				</ButtonsList>

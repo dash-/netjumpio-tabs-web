@@ -17,10 +17,6 @@ import * as actions from './actions';
 ///
 
 class ManagedFormControlView extends Component {
-	static contextTypes = {
-		formName: PropTypes.string.isRequired,
-	};
-
 	constructor(props) {
 		super(props);
 
@@ -46,6 +42,11 @@ class ManagedFormControlView extends Component {
 		return React.createElement(FormControl, props);
 	}
 }
+
+ManagedFormControlView.contextTypes = {
+	formName: PropTypes.string.isRequired,
+};
+
 
 
 ///

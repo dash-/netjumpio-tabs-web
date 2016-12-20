@@ -9,6 +9,7 @@ import ControlLabel from 'react-bootstrap/lib/ControlLabel';
 import FormControl from '../forms/FormControl';
 
 import Form from '../forms/Form';
+import FormImagicon from '../forms/FormImagicon';
 
 
 ///
@@ -18,31 +19,43 @@ import Form from '../forms/Form';
 class TabsFormView extends Component {
 	render() {
 		return (
-			<Form name="tabs" className="tabsets-form">
-				<FormGroup controlId="nameField">
-					<ControlLabel>Name</ControlLabel>
-					<FormControl
-						name="name"
-						type="text"
-						placeholder="Tabset Name"
-					/>
-				</FormGroup>
-				<FormGroup controlId="urlField">
-					<ControlLabel>Web Address</ControlLabel>
-					<FormControl
-						name="url"
-						type="text"
-						placeholder="http://www.example.com/"
-					/>
-				</FormGroup>
-				<FormGroup controlId="logoUrlField">
-					<ControlLabel>Logo URL</ControlLabel>
-					<FormControl
+			<Form name="tabs" className="tabs-form">
+				<div className="logo-section">
+					<FormImagicon
 						name="logoUrl"
-						type="text"
-						placeholder="https://www.example.com/icon.png"
+						alt="Site Logo"
+						altIcon="link"
+						size="l"
 					/>
-				</FormGroup>
+					{/*
+					<FormGroup controlId="logoUrlField">
+						<ControlLabel>Logo URL</ControlLabel>
+						<FormControl
+							name="logoUrl"
+							type="text"
+							placeholder="https://www.example.com/icon.png"
+						/>
+					</FormGroup>
+					*/}
+				</div>
+				<div className="info-section">
+					<FormGroup controlId="nameField">
+						<ControlLabel>Name</ControlLabel>
+						<FormControl
+							name="name"
+							type="text"
+							placeholder="Tabset Name"
+						/>
+					</FormGroup>
+					<FormGroup controlId="urlField">
+						<ControlLabel>Web Address</ControlLabel>
+						<FormControl
+							name="url"
+							type="text"
+							placeholder="http://www.example.com/"
+						/>
+					</FormGroup>
+				</div>
 				{this.props.children}
 			</Form>
 		);
