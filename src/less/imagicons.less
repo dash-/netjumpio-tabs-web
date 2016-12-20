@@ -15,13 +15,14 @@
 			bottom: 0;
 			left: 0;
 			width: 100%;
+			padding: 6px;
 		}
 	}
 
 	&.has-title {
 		border-radius: 15px;
 
-		#light-theme.list-item-border;
+		#light-theme.imagicon-border;
 
 		.title {
 			border-bottom-left-radius: 15px;
@@ -29,8 +30,8 @@
 			text-align: center;
 			font-size: 10px;
 
-			#light-theme.list-item-fg;
-			#light-theme.list-item-bg;
+			#light-theme.imagicon-fg;
+			#light-theme.imagicon-bg;
 			.sans-font;
 		}
 	}
@@ -42,14 +43,24 @@
 	}
 
 	&.size-m {
+		width: 100%;
+		height: 56px;
+
 		.icon {
-			font-size: 14px;
+			font-size: 38px;
+			text-align: center;
+			padding-top: 5px;
 		}
 	}
 
 	&.size-l {
+		width: 100%;
+		height: 160px;
+
 		.icon {
-			font-size: 14px;
+			font-size: 120px;
+			text-align: center;
+			padding-top: 20px;
 		}
 	}
 
@@ -71,3 +82,18 @@
 		}
 	}
 }
+
+.imagicon {
+	.fa-user-circle {
+		padding-top: 1px!important;
+	}
+
+	.fa-id-card {
+		padding-top: 1px!important;
+	}
+
+	.fa-user-secret {
+		padding-top: 1px!important;
+	}
+}
+
