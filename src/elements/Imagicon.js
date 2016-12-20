@@ -5,6 +5,7 @@
 import React, { Component } from 'react';
 import assign from 'lodash/assign';
 import omit from 'lodash/omit';
+import isString from 'lodash/isString';
 import classNames from 'classnames';
 
 import Icon from 'react-fontawesome';
@@ -47,7 +48,7 @@ class ImagiconView extends Component {
 			);
 		}
 
-		if(this.props.altIcon) {
+		if(isString(this.props.altIcon)) {
 			return (
 				<Icon
 					name={this.props.altIcon}
@@ -55,6 +56,8 @@ class ImagiconView extends Component {
 				/>
 			);
 		}
+
+		return this.props.altIcon;
 	}
 
 	renderText() {
