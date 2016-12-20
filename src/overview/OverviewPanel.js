@@ -30,6 +30,7 @@ class OverviewPanelView extends Component {
 			{
 				name: 'tabsets',
 				title: 'TabSets',
+				modalTitle: 'Add a TabSet',
 				list: TabsetsList,
 				form: TabsetsForm,
 				icon: <TabSetsLogo />
@@ -37,6 +38,7 @@ class OverviewPanelView extends Component {
 			{
 				name: 'people',
 				title: 'Friends',
+				modalTitle: 'Invite a Friend',
 				list: PeopleList,
 				form: PeopleForm,
 				icon: 'user-circle',
@@ -44,6 +46,7 @@ class OverviewPanelView extends Component {
 			{
 				name: 'groups',
 				title: 'Groups',
+				modalTitle: 'Add a Group',
 				list: GroupsList,
 				form: GroupsForm,
 				icon: 'id-card',
@@ -51,6 +54,7 @@ class OverviewPanelView extends Component {
 			{
 				name: 'roles',
 				title: 'Roles',
+				modalTitle: 'Add a Role',
 				list: RolesList,
 				form: RolesForm,
 				icon: 'user-secret',
@@ -75,7 +79,7 @@ class OverviewPanelView extends Component {
 		return items.map((item) => (
 			<FormModal
 				name={item.name}
-				title={item.title}
+				title={item.modalTitle}
 				form={item.form}
 				key={item.name}
 			/>

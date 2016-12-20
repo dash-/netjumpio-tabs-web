@@ -48,7 +48,7 @@ class ManagedFormModalView extends Component {
 
 		return (
 			<FormModal
-				title={'Add ' + this.props.title}
+				title={this.props.title}
 				show={isFormVisible}
 				onClose={this.closeForm}
 				onSave={this.saveForm}
