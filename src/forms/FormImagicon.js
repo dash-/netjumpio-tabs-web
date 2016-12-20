@@ -9,11 +9,9 @@ import omit from 'lodash/omit';
 import classNames from 'classnames';
 
 import Dropzone from 'react-dropzone';
+import Clickable from '../forms/Clickable';
 
 import Imagicon from '../elements/Imagicon';
-import Clickable from './Clickable';
-
-import * as actions from './actions';
 
 
 ///
@@ -28,17 +26,13 @@ class FormImagiconView extends Component {
 	constructor(props) {
 		super(props);
 
-		this.handleClick = this.handleClick.bind(this);
+		this.handleDrop = this.handleDrop.bind(this);
 	}
 
 
 	///
 	// Event handling
 	///
-
-	handleClick(evt) {
-		this.props.selectImage(this.context.formName, this.props.name);
-	}
 
 	handleDrop(files) {
 		// TODO
@@ -49,22 +43,6 @@ console.log('files', files);
 	///
 	// Rendering
 	///
-
-	renderImageSelect(imageSelect) {
-		const className = classNames(
-			'form-image-select', this.props.className
-		);
-
-		return (
-			<div className={className}>
-				<Dropzone onDrop={this.handleDrop}>
-					Drop image here, or click to select an image
-					from your computer.
-					(TODO Save &amp; Cancel)
-				</Dropzone>
-			</div>
-		);
-	}
 
 	renderImagicon() {
 		const form = this.props.forms.get(this.context.formName);
@@ -77,29 +55,32 @@ console.log('files', files);
 		// - text
 		const props = assign({
 			src: form.getIn(['values', this.props.name], ''),
-			text: 'Change',
+			text: 'Drop image here, or click to select an image from your computer.',
 		}, omit(this.props, ['forms']));
 
-		const contents = React.createElement(
+		return React.createElement(
 			Imagicon, props, this.props.children
-		);
-
-		return (
-			<Clickable onClick={this.handleClick}>
-				{contents}
-			</Clickable>
 		);
 	}
 
 	render() {
-		const form = this.props.forms.get(this.context.formName);
+		const className = classNames(
+			'form-imagicon', this.props.className
+		);
 
-		const imageSelect = form.getIn(['imageSelects', this.props.name]);
-		if(imageSelect) {
-			return this.renderImageSelect(imageSelect);
-		}
-
-		return this.renderImagicon();
+		return (
+			<Clickable className={className}>
+				<Dropzone
+					className="dropzone"
+					multiple={false}
+					maxSize={10000000}
+					accept="image/*"
+					onDrop={this.handleDrop}
+				>
+					{this.renderImagicon()}
+				</Dropzone>
+			</Clickable>
+		);
 	}
 }
 
@@ -120,11 +101,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-	return {
-		selectImage: (formName, fieldName) => (
-			dispatch(actions.selectImageStart(formName, fieldName))
-		)
-	};
+	return {};
 }
 
 const connector = connect(

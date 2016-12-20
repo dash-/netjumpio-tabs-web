@@ -13,9 +13,9 @@ export const FORM_SUBMIT_FAIL = 'FORMS:FORM_SUBMIT_FAIL';
 export const FORM_SUBMIT_DONE = 'FORMS:FORM_SUBMIT_DONE';
 export const FORM_FIELD_CHANGED = 'FORMS:FORM_FIELD_CHANGED';
 export const FORM_AUX_FIELD_CHANGED = 'FORMS:FORM_AUX_FIELD_CHANGED';
-export const FORM_IMAGE_SELECT_START = 'FORMS:FORM_IMAGE_SELECT_START';
-export const FORM_IMAGE_SELECT_CANCEL = 'FORMS:FORM_IMAGE_SELECT_CANCEL';
-export const FORM_IMAGE_SELECT_DONE = 'FORMS:FORM_IMAGE_SELECT_DONE';
+export const FORM_IMAGE_UPLOAD_START = 'FORMS:FORM_IMAGE_UPLOAD_START';
+export const FORM_IMAGE_UPLOAD_CANCEL = 'FORMS:FORM_IMAGE_UPLOAD_CANCEL';
+export const FORM_IMAGE_UPLOAD_DONE = 'FORMS:FORM_IMAGE_UPLOAD_DONE';
 
 
 ///
@@ -84,25 +84,26 @@ export function formSubmitDone(formName, resData) {
 	};
 }
 
-export function selectImageStart(formName, fieldName) {
-	return {type: FORM_IMAGE_SELECT_START, payload: {
+export function uploadImageStart(formName, fieldName, image) {
+	return {type: FORM_IMAGE_UPLOAD_START, payload: {
 		form: formName,
 		field: fieldName,
 	}};
 }
 
-export function selectImageCancel(formName, fieldName) {
-	return {type: FORM_IMAGE_SELECT_CANCEL, payload: {
+// TODO - Don't know about this action (unnecessary?)
+export function uploadImageCancel(formName, fieldName) {
+	return {type: FORM_IMAGE_UPLOAD_CANCEL, payload: {
 		form: formName,
 		field: fieldName,
 	}};
 }
 
-export function selectImageDone(formName, fieldName, image) {
-	return {type: FORM_IMAGE_SELECT_DONE, payload: {
+export function uploadImageDone(formName, fieldName, logoUrl) {
+	return {type: FORM_IMAGE_UPLOAD_DONE, payload: {
 		form: formName,
 		field: fieldName,
-		image
+		logoUrl
 	}};
 }
 
