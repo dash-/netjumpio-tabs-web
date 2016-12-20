@@ -37,6 +37,10 @@
 @lightThemeAltFg: @lightTheme4;
 @lightThemeAltBorder: @lightTheme4;
 
+@lightThemeImagiconBg: rgba(238, 238, 238, 0.7);
+@lightThemeImagiconFg: @lightTheme5;
+@lightThemeImagiconBorder: @lightTheme3;
+
 
 ///
 // Dark theme namespace
@@ -113,5 +117,17 @@
 
 	.list-item-ts-logo-border {
 		border-color: @lightThemeListItemTSLogoBorder;
+	}
+
+	.imagicon-bg {
+		background: @lightThemeImagiconBg;
+	}
+
+	.imagicon-fg {
+		color: @lightThemeImagiconFg;
+	}
+
+	.imagicon-border {
+		border: 1px solid @lightThemeImagiconBorder;
 	}
 }
