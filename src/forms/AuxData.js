@@ -13,11 +13,6 @@ import * as actions from './actions';
 ///
 
 class ManagedHiddenFormControlView extends Component {
-	static contextTypes = {
-		formName: PropTypes.string.isRequired,
-	};
-
-
 	///
 	// Hooks
 	///
@@ -65,6 +60,10 @@ class ManagedHiddenFormControlView extends Component {
 		);
 	}
 }
+
+ManagedHiddenFormControlView.contextTypes = {
+	formName: PropTypes.string.isRequired,
+};
 
 
 ///
