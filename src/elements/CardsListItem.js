@@ -4,10 +4,9 @@
 
 import React, { Component } from 'react';
 import classNames from 'classnames';
-import isString from 'lodash/isString';
 
 import AdvancedLink from './AdvancedLink';
-import Icon from './Icon';
+import Imagicon from './Imagicon';
 
 
 ///
@@ -33,32 +32,6 @@ class CardsListItemView extends Component {
 		);
 	}
 
-	renderLogo(item) {
-		if(item.get('logoUrl')) {
-			return (
-				<img
-					className="logo"
-					src={this.props.item.get('logoUrl')}
-					role="presentation"
-				/>
-			);
-		} 
-
-		const defLogoIcon = this.props.defaultLogoIcon || 'question-circle';
-
-		if(isString(defLogoIcon)) {
-			return (
-				<Icon
-					name={this.props.defaultLogoIcon}
-					className="blank-logo"
-					size="3x"
-				/>
-			);
-		}
-
-		return defLogoIcon;
-	}
-
 	render() {
 		return (
 			<li className={this.classNames()}>
@@ -67,7 +40,13 @@ class CardsListItemView extends Component {
 				</AdvancedLink>
 				<div className="cards-list-item-inner">
 					<div className="logo-container">
-						{this.renderLogo(this.props.item)}
+						<Imagicon
+							className="logo"
+							src={this.props.item.get('logoUrl')}
+							alt={this.props.alt || "Logo"}
+							altIcon={this.props.defaultLogoIcon || 'question-circle'}
+							size="m"
+						/>
 					</div>
 					<div className="text-container">
 						<div className="title">
