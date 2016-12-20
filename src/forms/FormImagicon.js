@@ -6,9 +6,14 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import assign from 'lodash/assign';
 import omit from 'lodash/omit';
+import classNames from 'classnames';
+
+import Dropzone from 'react-dropzone';
 
 import Imagicon from '../elements/Imagicon';
 import Clickable from './Clickable';
+
+import * as actions from './actions';
 
 
 ///
@@ -32,7 +37,12 @@ class FormImagiconView extends Component {
 	///
 
 	handleClick(evt) {
-		console.log('clicked');
+		this.props.selectImage(this.context.formName, this.props.name);
+	}
+
+	handleDrop(files) {
+		// TODO
+console.log('files', files);
 	}
 
 
@@ -40,7 +50,23 @@ class FormImagiconView extends Component {
 	// Rendering
 	///
 
-	render() {
+	renderImageSelect(imageSelect) {
+		const className = classNames(
+			'form-image-select', this.props.className
+		);
+
+		return (
+			<div className={className}>
+				<Dropzone onDrop={this.handleDrop}>
+					Drop image here, or click to select an image
+					from your computer.
+					(TODO Save &amp; Cancel)
+				</Dropzone>
+			</div>
+		);
+	}
+
+	renderImagicon() {
 		const form = this.props.forms.get(this.context.formName);
 
 		// Props:
@@ -64,6 +90,17 @@ class FormImagiconView extends Component {
 			</Clickable>
 		);
 	}
+
+	render() {
+		const form = this.props.forms.get(this.context.formName);
+
+		const imageSelect = form.getIn(['imageSelects', this.props.name]);
+		if(imageSelect) {
+			return this.renderImageSelect(imageSelect);
+		}
+
+		return this.renderImagicon();
+	}
 }
 
 FormImagiconView.contextTypes = {
@@ -83,7 +120,11 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return {};
+	return {
+		selectImage: (formName, fieldName) => (
+			dispatch(actions.selectImageStart(formName, fieldName))
+		)
+	};
 }
 
 const connector = connect(
