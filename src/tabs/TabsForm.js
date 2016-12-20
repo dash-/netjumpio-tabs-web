@@ -27,16 +27,6 @@ class TabsFormView extends Component {
 						altIcon="link"
 						size="l"
 					/>
-					{/*
-					<FormGroup controlId="logoUrlField">
-						<ControlLabel>Logo URL</ControlLabel>
-						<FormControl
-							name="logoUrl"
-							type="text"
-							placeholder="https://www.example.com/icon.png"
-						/>
-					</FormGroup>
-					*/}
 				</div>
 				<div className="info-section">
 					<FormGroup controlId="nameField">
