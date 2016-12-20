@@ -7,7 +7,6 @@ import { connect } from 'react-redux';
 
 import Button from 'react-bootstrap/lib/Button';
 
-import FormModal from '../forms/FormModal';
 import AuxData from '../forms/AuxData';
 import Icon from '../elements/Icon';
 import TabSetsLogo from '../elements/TabSetsLogo';
@@ -18,6 +17,7 @@ import ItemPanelSection from '../elements/ItemPanelSection';
 import SectionHeader from '../elements/SectionHeader';
 import SectionBody from '../elements/SectionBody';
 import TabsForm from '../tabs/TabsForm';
+import TabsFormModal from '../tabs/TabsFormModal';
 import TabsList from '../tabs/TabsList';
 import TabsUrlForm from '../tabs/TabsUrlForm';
 import TabRemovedNotif from '../tabs/TabRemovedNotif';
@@ -97,14 +97,11 @@ class TabsetsItemView extends Component {
 					<TabsUrlForm>
 						<AuxData name="tabsetId" value={this.props.params.id} />
 					</TabsUrlForm>
-					<FormModal
-						name="tabs"
-						title="TBD"
-					>
+					<TabsFormModal>
 						<TabsForm>
 							<AuxData name="tabsetId" value={this.props.params.id} />
 						</TabsForm>
-					</FormModal>
+					</TabsFormModal>
 				</SectionBody>
 			</ItemPanelSection>
 		);
