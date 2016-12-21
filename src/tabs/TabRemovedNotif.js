@@ -67,7 +67,7 @@ class TabRemovedNotifView extends Component {
 		return (
 			<NotificationsListItem
 				type="success"
-				triggeredBy={actions.REMOVE_TAB_DONE}
+				triggeredBy={actions.REMOVE_ITEM_DONE}
 				renderMessage={this.renderMessage}
 			/>
 		);
@@ -85,7 +85,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
 	return {
-		restoreTab: (tab) => dispatch(actions.restoreTabStart(tab)),
+		restoreTab: (tab) => dispatch(actions.restoreItemStart(tab)),
 	};
 }
 

@@ -27,10 +27,7 @@ const getList = (action$, store) => (
 					id: store.getState().getIn(['user', 'id']),
 					accessToken: store.getState().getIn(['user', 'accessToken']),
 				}).find()
-			).map(payload => ({
-				type: actions.GET_LIST_DONE,
-				payload
-			}))
+			).map(payload => actions.getListDone(payload))
 		))
 );
 
@@ -45,10 +42,7 @@ const getItem = (action$, store) => (
 					where: {id: action.payload},
 					include: ['tabs'],
 				})
-			).map(payload => ({
-				type: actions.GET_ITEM_DONE,
-				payload,
-			}))
+			).map(payload => actions.getItemDone(payload))
 		))
 );
 
@@ -100,19 +94,19 @@ const tabsFormSubmit = (action$, store) => (
 	action$.ofType(tabsActions.TABS_FORM_SUBMIT)
 		.switchMap(action => {
 			if(isUndefined(action.payload.id)) {
-				return Observable.of(tabsActions.addTabStart(
+				return Observable.of(tabsActions.addItemStart(
 					action.aux.tabsetId, action.payload
 				));
 			}
 
-			return Observable.of(tabsActions.editTabStart(
+			return Observable.of(tabsActions.editItemStart(
 				action.payload
 			));
 		})
 );
 
 const addTab = (action$, store) => (
-	action$.ofType(tabsActions.ADD_TAB_START)
+	action$.ofType(tabsActions.ADD_ITEM_START)
 		.switchMap(action => (
 			Observable.fromPromise(
 				api.createRelatedClient({
@@ -124,13 +118,13 @@ const addTab = (action$, store) => (
 			).flatMap(payload => Observable.concat(
 				Observable.of(formsActions.formSubmitDone('tabs')),
 				Observable.of(formsActions.clearFormValues('tabs')),
-				Observable.of(tabsActions.addTabDone(payload))
+				Observable.of(tabsActions.addItemDone(payload))
 			))
 		))
 );
 
 const editTabPrompt = (action$, store) => (
-	action$.ofType(tabsActions.EDIT_TAB_PROMPT)
+	action$.ofType(tabsActions.EDIT_ITEM_PROMPT)
 		.switchMap(action => Observable.concat(
 			Observable.of(formsActions.showForm('tabs')),
 			Observable.of(
@@ -142,7 +136,7 @@ const editTabPrompt = (action$, store) => (
 );
 
 const editTab = (action$, store) => (
-	action$.ofType(tabsActions.EDIT_TAB_START)
+	action$.ofType(tabsActions.EDIT_ITEM_START)
 		.switchMap(action => (
 			Observable.fromPromise(
 				api.createClient('tabs', {
@@ -151,26 +145,26 @@ const editTab = (action$, store) => (
 			).flatMap(payload => Observable.concat(
 				Observable.of(formsActions.formSubmitDone('tabs')),
 				Observable.of(formsActions.clearFormValues('tabs')),
-				Observable.of(tabsActions.editTabDone(payload))
+				Observable.of(tabsActions.editItemDone(payload))
 			))
 		))
 );
 
 const removeTab = (action$, store) => (
-	action$.ofType(tabsActions.REMOVE_TAB_START)
+	action$.ofType(tabsActions.REMOVE_ITEM_START)
 		.switchMap(action => (
 			Observable.fromPromise(
 				api.createClient('tabs', {
 					accessToken: store.getState().getIn(['user', 'accessToken']),
 				}).destroyById(action.payload.id)
 			).flatMap(payload => Observable.of(
-				tabsActions.removeTabDone(action.payload))
+				tabsActions.removeItemDone(action.payload))
 			)
 		))
 );
 
 const restoreTab = (action$, store) => (
-	action$.ofType(tabsActions.RESTORE_TAB_START)
+	action$.ofType(tabsActions.RESTORE_ITEM_START)
 		.switchMap(action => (
 			Observable.fromPromise(
 				api.request('tabs', [
@@ -180,7 +174,7 @@ const restoreTab = (action$, store) => (
 					accessToken: store.getState().getIn(['user', 'accessToken']),
 				})
 			).flatMap(payload => Observable.of(
-				tabsActions.restoreTabDone(payload))
+				tabsActions.restoreItemDone(payload))
 			)
 		))
 );

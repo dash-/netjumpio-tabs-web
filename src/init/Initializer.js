@@ -44,10 +44,10 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
 	return {
-		getTabsets: () => dispatch(tabsetsActions.getList()),
-		getPeople: () => dispatch(peopleActions.getList()),
-		getGroups: () => dispatch(groupsActions.getList()),
-		getRoles: () => dispatch(rolesActions.getList()),
+		getTabsets: () => dispatch(tabsetsActions.getListStart()),
+		getPeople: () => dispatch(peopleActions.getListStart()),
+		getGroups: () => dispatch(groupsActions.getListStart()),
+		getRoles: () => dispatch(rolesActions.getListStart()),
 	};
 }
 

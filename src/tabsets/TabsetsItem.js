@@ -131,7 +131,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
 	return {
-		getItem: (id) => dispatch(actions.getItem(id)),
+		getItem: (id) => dispatch(actions.getItemStart(id)),
 	};
 }
 

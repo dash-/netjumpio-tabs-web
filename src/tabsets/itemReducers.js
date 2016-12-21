@@ -15,10 +15,10 @@ import * as actions from './actions';
 function root(state = Immutable.fromJS({}), action) {
 	const handlers = {
 		[actions.GET_ITEM_DONE]: getItemDone,
-		[tabsActions.ADD_TAB_DONE]: addTabDone,
-		[tabsActions.EDIT_TAB_DONE]: editTabDone,
-		[tabsActions.REMOVE_TAB_DONE]: removeTabDone,
-		[tabsActions.RESTORE_TAB_DONE]: restoreTabDone,
+		[tabsActions.ADD_ITEM_DONE]: addTabDone,
+		[tabsActions.EDIT_ITEM_DONE]: editTabDone,
+		[tabsActions.REMOVE_ITEM_DONE]: removeTabDone,
+		[tabsActions.RESTORE_ITEM_DONE]: restoreTabDone,
 		default: (state) => state,
 	};
 
