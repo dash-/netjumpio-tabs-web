@@ -52,6 +52,7 @@
     "whatwg-fetch": "1.0.0"
   },
   "dependencies": {
+    "axios": "^0.15.3",
     "bootstrap": "^3.3.7",
     "classnames": "^2.2.5",
     "exports-loader": "^0.6.3",
@@ -70,6 +71,7 @@
     "react-redux": "^4.4.5",
     "react-redux-notifications-immutable": "^0.2.2",
     "react-router": "^3.0.0",
+    "react-spinner": "^0.2.6",
     "redux": "^3.6.0",
     "redux-immutable": "^3.0.8",
     "redux-logger": "^2.7.4",
