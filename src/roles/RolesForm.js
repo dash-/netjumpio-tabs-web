@@ -9,6 +9,7 @@ import ControlLabel from 'react-bootstrap/lib/ControlLabel';
 import FormControl from '../forms/FormControl';
 
 import Form from '../forms/Form';
+import FormImagicon from '../forms/FormImagicon';
 
 
 ///
@@ -19,22 +20,24 @@ class RolesFormView extends Component {
 	render() {
 		return (
 			<Form name="roles" className="roles-form">
-				<FormGroup controlId="nameField">
-					<ControlLabel>Name</ControlLabel>
-					<FormControl
-						name="name"
-						type="text"
-						placeholder="Role Name"
-					/>
-				</FormGroup>
-				<FormGroup controlId="logoUrlField">
-					<ControlLabel>Logo URL</ControlLabel>
-					<FormControl
+				<div className="logo-section">
+					<FormImagicon
 						name="logoUrl"
-						type="text"
-						placeholder="https://www.example.com/icon.png"
+						alt="Role Logo"
+						altIcon="user-secret"
+						size="l"
 					/>
-				</FormGroup>
+				</div>
+				<div className="info-section">
+					<FormGroup controlId="nameField">
+						<ControlLabel>Name</ControlLabel>
+						<FormControl
+							name="name"
+							type="text"
+							placeholder="Role Name"
+						/>
+					</FormGroup>
+				</div>
 			</Form>
 		);
 	}
