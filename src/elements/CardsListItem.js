@@ -7,6 +7,7 @@ import classNames from 'classnames';
 
 import AdvancedLink from './AdvancedLink';
 import Imagicon from './Imagicon';
+import NoWrapEllipse from './NoWrapEllipse';
 
 
 ///
@@ -50,7 +51,9 @@ class CardsListItemView extends Component {
 					</div>
 					<div className="text-container">
 						<div className="title">
-							{this.props.item.get('name')}
+							<NoWrapEllipse>
+								{this.props.item.get('name')}
+							</NoWrapEllipse>
 						</div>
 						<div className="contents">
 							{this.props.children}
