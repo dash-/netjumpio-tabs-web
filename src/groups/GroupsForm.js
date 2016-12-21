@@ -9,6 +9,7 @@ import ControlLabel from 'react-bootstrap/lib/ControlLabel';
 import FormControl from '../forms/FormControl';
 
 import Form from '../forms/Form';
+import FormImagicon from '../forms/FormImagicon';
 
 
 ///
@@ -19,30 +20,32 @@ class GroupsFormView extends Component {
 	render() {
 		return (
 			<Form name="groups" className="groups-form">
-				<FormGroup controlId="nameField">
-					<ControlLabel>Name</ControlLabel>
-					<FormControl
-						name="name"
-						type="text"
-						placeholder="Group Name"
-					/>
-				</FormGroup>
-				<FormGroup controlId="urlField">
-					<ControlLabel>Website</ControlLabel>
-					<FormControl
-						name="url"
-						type="text"
-						placeholder="https://www.example.com"
-					/>
-				</FormGroup>
-				<FormGroup controlId="logoUrlField">
-					<ControlLabel>Logo URL</ControlLabel>
-					<FormControl
+				<div className="logo-section">
+					<FormImagicon
 						name="logoUrl"
-						type="text"
-						placeholder="https://www.example.com/icon.png"
+						alt="Group Logo"
+						altIcon="id-card"
+						size="l"
 					/>
-				</FormGroup>
+				</div>
+				<div className="info-section">
+					<FormGroup controlId="nameField">
+						<ControlLabel>Name</ControlLabel>
+						<FormControl
+							name="name"
+							type="text"
+							placeholder="Group Name"
+						/>
+					</FormGroup>
+					<FormGroup controlId="urlField">
+						<ControlLabel>Website</ControlLabel>
+						<FormControl
+							name="url"
+							type="text"
+							placeholder="https://www.example.com"
+						/>
+					</FormGroup>
+				</div>
 			</Form>
 		);
 	}

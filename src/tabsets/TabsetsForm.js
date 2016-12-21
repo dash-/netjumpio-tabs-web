@@ -7,8 +7,10 @@ import React, { Component } from 'react';
 import FormGroup from 'react-bootstrap/lib/FormGroup';
 import ControlLabel from 'react-bootstrap/lib/ControlLabel';
 import FormControl from '../forms/FormControl';
+import TabSetsLogo from '../elements/TabSetsLogo';
 
 import Form from '../forms/Form';
+import FormImagicon from '../forms/FormImagicon';
 
 
 ///
@@ -17,24 +19,31 @@ import Form from '../forms/Form';
 
 class TabsetsFormView extends Component {
 	render() {
+		const altIcon = (
+			<TabSetsLogo />
+		);
+
 		return (
 			<Form name="tabsets" className="tabsets-form">
-				<FormGroup controlId="nameField">
-					<ControlLabel>Name</ControlLabel>
-					<FormControl
-						name="name"
-						type="text"
-						placeholder="Tabset Name"
-					/>
-				</FormGroup>
-				<FormGroup controlId="logoUrlField">
-					<ControlLabel>Logo URL</ControlLabel>
-					<FormControl
+				<div className="logo-section">
+					<FormImagicon
 						name="logoUrl"
-						type="text"
-						placeholder="https://www.example.com/icon.png"
+						alt="Tabset Logo"
+						altIcon={altIcon}
+						size="l"
 					/>
-				</FormGroup>
+				</div>
+				<div className="info-section">
+					<FormGroup controlId="nameField">
+						<ControlLabel>Name</ControlLabel>
+						<FormControl
+							name="name"
+							type="text"
+							placeholder="Tabset Name"
+						/>
+					</FormGroup>
+				</div>
+				{this.props.children}
 			</Form>
 		);
 	}
