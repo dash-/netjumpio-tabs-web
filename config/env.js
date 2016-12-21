@@ -22,9 +22,9 @@ function getClientEnvironment(publicUrl) {
       // images into the `src` and `import` them in code to get their paths.
 			'PUBLIC_URL': JSON.stringify(publicUrl),
 			// API Configuration
-			'API_BASE_URL': JSON.stringify(process.env[
-				'API_BASE_URL'
-			]),
+			'API_BASE_URL': JSON.stringify(process.env.API_BASE_URL),
+			'IMAGE_UPLOAD_URL': JSON.stringify(process.env.IMAGE_UPLOAD_URL),
+			'IMAGE_UPLOAD_PRESET': JSON.stringify(process.env.IMAGE_UPLOAD_PRESET),
     });
   return {'process.env': processEnv};
 }
