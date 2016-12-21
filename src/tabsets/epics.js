@@ -27,10 +27,7 @@ const getList = (action$, store) => (
 					id: store.getState().getIn(['user', 'id']),
 					accessToken: store.getState().getIn(['user', 'accessToken']),
 				}).find()
-			).map(payload => ({
-				type: actions.GET_LIST_DONE,
-				payload
-			}))
+			).map(payload => actions.getListDone(payload))
 		))
 );
 
@@ -45,10 +42,7 @@ const getItem = (action$, store) => (
 					where: {id: action.payload},
 					include: ['tabs'],
 				})
-			).map(payload => ({
-				type: actions.GET_ITEM_DONE,
-				payload,
-			}))
+			).map(payload => actions.getItemDone(payload))
 		))
 );
 

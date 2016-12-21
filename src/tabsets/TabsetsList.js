@@ -9,7 +9,6 @@ import isUndefined from 'lodash/isUndefined';
 import CardsList from '../elements/CardsList';
 import CardsListCategory from '../elements/CardsListCategory';
 import TabsetsListItem from './TabsetsListItem';
-import * as actions from './actions';
 
 
 ///
@@ -75,9 +74,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return {
-		getList: () => dispatch(actions.getList()),
-  };
+  return {};
 }
 
 const connector = connect(

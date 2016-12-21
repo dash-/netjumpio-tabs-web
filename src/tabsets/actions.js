@@ -9,6 +9,8 @@ import * as formsActions from '../forms/actions';
 // Action types
 ///
 
+export const FORM_SUBMIT = formsActions.FORM_SUBMIT_START + ':tabsets';
+
 export const GET_LIST_START = 'TABSETS:GET_LIST_START';
 export const GET_LIST_FAIL = 'TABSETS:GET_LIST_FAIL';
 export const GET_LIST_DONE = 'TABSETS:GET_LIST_DONE';
@@ -34,19 +36,33 @@ export const RESTORE_ITEM_START = 'TABSETS:RESTORE_ITEM_START';
 export const RESTORE_ITEM_FAIL = 'TABSETS:RESTORE_ITEM_FAIL';
 export const RESTORE_ITEM_DONE = 'TABSETS:RESTORE_ITEM_DONE';
 
-export const FORM_SUBMIT = formsActions.FORM_SUBMIT_START + ':tabsets';
-
 
 ///
 // Action creators
 ///
 
-export function getList() {
+export function getListStart() {
 	return {type: GET_LIST_START};
 }
 
-export function getItem(id) {
+export function getListFail(err) {
+	return {type: GET_LIST_FAIL, payload: err};
+}
+
+export function getListDone(list) {
+	return {type: GET_LIST_DONE, payload: list};
+}
+
+export function getItemStart(id) {
 	return {type: GET_ITEM_START, payload: id};
+}
+
+export function getItemFail(err) {
+	return {type: GET_ITEM_FAIL, payload: err};
+}
+
+export function getItemDone(item) {
+	return {type: GET_ITEM_DONE, payload: item};
 }
 
 export function addItemStart(item) {

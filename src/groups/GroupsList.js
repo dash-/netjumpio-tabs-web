@@ -7,7 +7,6 @@ import { connect } from 'react-redux';
 
 import CardsList from '../elements/CardsList';
 import GroupsListItem from './GroupsListItem';
-import * as actions from './actions';
 
 
 ///
@@ -42,9 +41,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return {
-		getList: () => dispatch(actions.getList()),
-  };
+  return {};
 }
 
 const connector = connect(

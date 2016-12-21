@@ -14,15 +14,25 @@ import * as formsActions from '../forms/actions';
 // Epics
 ///
 
+const loginFormSubmit = (action$, store) => (
+	action$.ofType(actions.LOGIN_FORM_SUBMIT)
+		.switchMap(action => (
+			Observable.of(actions.loginStart(action.payload))
+		))
+);
+
 const login = (action$, store) => (
-	action$.ofType(actions.SUBMIT_LOGIN_FORM)
+	action$.ofType(actions.LOGIN_START)
 		.switchMap(action => (
 			Observable.fromPromise(
 				api.createUserClient('people').login({
 					email: action.payload.email,
 					password: action.payload.password,
 				}, 'user')
-			).map(payload => formsActions.formSubmitDone('login', payload))
+			).flatMap(payload => Observable.concat(
+				Observable.of(formsActions.formSubmitDone('login', payload)),
+				Observable.of(actions.loginDone(payload))
+			))
 		))
 );
 
@@ -43,6 +53,6 @@ const logout = (action$, store) => (
 ///
 
 export default combineEpics(
-	login, logout
+	loginFormSubmit, login, logout
 );
 

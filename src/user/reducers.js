@@ -5,7 +5,6 @@
 import Immutable from 'immutable';
 
 import * as actions from './actions';
-import * as formsActions from '../forms/actions';
 
 
 ///
@@ -14,8 +13,8 @@ import * as formsActions from '../forms/actions';
 
 function root(state = Immutable.fromJS({}), action) {
 	const handlers = {
-		[formsActions.FORM_SUBMIT_DONE]: onFormSubmitDone, 
-		[actions.LOGOUT_DONE]: onLogoutDone, 
+		[actions.LOGIN_DONE]: loginDone, 
+		[actions.LOGOUT_DONE]: logoutDone, 
 		default: (state) => state,
 	};
 
@@ -30,10 +29,8 @@ export default root;
 // Delegates
 ///
 
-function onFormSubmitDone(state, action) {
-	if(action.payload.formName !== 'login') return state;
-
-	const login = action.payload.resData;
+function loginDone(state, action) {
+	const login = action.payload;
 	const user = login.user;
 
 	return (state
@@ -48,7 +45,7 @@ function onFormSubmitDone(state, action) {
 	);
 }
 
-function onLogoutDone(state, action) {
+function logoutDone(state, action) {
 	return Immutable.fromJS({});
 }
 
