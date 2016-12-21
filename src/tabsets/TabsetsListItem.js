@@ -37,14 +37,14 @@ class TabsetsListItemView extends Component {
 				<ButtonsList>
 					<ButtonsListMenu id="tabsetsItemMenu">
 						<ButtonsListMenuItem
-							icon="times"
-							title="Delete"
-							action={actions.removeItemStart(this.props.item.toJS())}
-						/>
-						<ButtonsListMenuItem
 							icon="pencil"
 							title="Edit"
 							action={actions.editItemStart(this.props.item.toJS())}
+						/>
+						<ButtonsListMenuItem
+							icon="times"
+							title="Delete"
+							action={actions.removeItemStart(this.props.item.toJS())}
 						/>
 					</ButtonsListMenu>
 				</ButtonsList>
