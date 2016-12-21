@@ -4,6 +4,11 @@
 
 import { combineEpics } from 'redux-observable';
 import { Observable } from 'rxjs';
+import axios from 'axios';
+
+import imageUploadConfig from '../app/imageUploadConfig';
+import { toFormData } from '../lib/uploadUtils';
+
 import * as actions from './actions';
 
 
@@ -31,12 +36,33 @@ const submitFormDone = (action$, store) => (
 		)))
 );
 
+const uploadImageStart = (action$, store) => (
+	action$.ofType(actions.FORM_IMAGE_UPLOAD_START)
+		.debounceTime(50)
+		.switchMap(action => {
+			return Observable.fromPromise(
+				axios.post(imageUploadConfig.url, toFormData({
+					upload_preset: imageUploadConfig.preset,
+					file: action.payload.image,
+				}))
+			).flatMap(payload => (
+				Observable.of(actions.uploadImageDone(
+					action.payload.form,
+					action.payload.field,
+					payload.data.secure_url
+				))
+			))
+		})
+);
+
+
+
 
 ///
 // Exports
 ///
 
 export default combineEpics(
-	submitForm, submitFormDone
+	submitForm, submitFormDone, uploadImageStart
 );
 

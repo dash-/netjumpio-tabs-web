@@ -14,7 +14,7 @@ export const FORM_SUBMIT_DONE = 'FORMS:FORM_SUBMIT_DONE';
 export const FORM_FIELD_CHANGED = 'FORMS:FORM_FIELD_CHANGED';
 export const FORM_AUX_FIELD_CHANGED = 'FORMS:FORM_AUX_FIELD_CHANGED';
 export const FORM_IMAGE_UPLOAD_START = 'FORMS:FORM_IMAGE_UPLOAD_START';
-export const FORM_IMAGE_UPLOAD_CANCEL = 'FORMS:FORM_IMAGE_UPLOAD_CANCEL';
+export const FORM_IMAGE_UPLOAD_FAIL = 'FORMS:FORM_IMAGE_UPLOAD_FAIL';
 export const FORM_IMAGE_UPLOAD_DONE = 'FORMS:FORM_IMAGE_UPLOAD_DONE';
 
 
@@ -88,22 +88,24 @@ export function uploadImageStart(formName, fieldName, image) {
 	return {type: FORM_IMAGE_UPLOAD_START, payload: {
 		form: formName,
 		field: fieldName,
+		image,
 	}};
 }
 
 // TODO - Don't know about this action (unnecessary?)
-export function uploadImageCancel(formName, fieldName) {
-	return {type: FORM_IMAGE_UPLOAD_CANCEL, payload: {
+export function uploadImageFail(formName, fieldName, err) {
+	return {type: FORM_IMAGE_UPLOAD_FAIL, payload: {
 		form: formName,
 		field: fieldName,
+		error: err,
 	}};
 }
 
-export function uploadImageDone(formName, fieldName, logoUrl) {
+export function uploadImageDone(formName, fieldName, imageUrl) {
 	return {type: FORM_IMAGE_UPLOAD_DONE, payload: {
 		form: formName,
 		field: fieldName,
-		logoUrl
+		imageUrl
 	}};
 }
 

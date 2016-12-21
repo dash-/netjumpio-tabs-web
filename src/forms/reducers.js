@@ -23,6 +23,8 @@ function root(state = Immutable.fromJS({}), action) {
 		[actions.FORM_HIDE]: hideForm,
 		[actions.FORM_FIELD_CHANGED]: fieldChanged,
 		[actions.FORM_AUX_FIELD_CHANGED]: auxFieldChanged,
+		[actions.FORM_IMAGE_UPLOAD_START]: imageUploadStart,
+		[actions.FORM_IMAGE_UPLOAD_DONE]: imageUploadDone,
 		default: (state) => state,
 	};
 
@@ -42,7 +44,7 @@ const defaultItem = {
 	allowClear: true,
 	allowHide: true,
 	dataHasInitialized: false,
-	imageSelects: {},
+	uploads: {},
 	values: {},
 	aux: {},
 };
@@ -153,6 +155,27 @@ function auxFieldChanged(state, action) {
 	const value = action.payload.value;
 
 	return state.setIn([form, 'aux', field], value);
+}
+
+function imageUploadStart(state, action) {
+	const form = action.payload.form;
+	const field = action.payload.field;
+
+	return state.setIn(
+		[form, 'uploads', field, 'isUploading'],
+		true
+	);
+}
+
+function imageUploadDone(state, action) {
+	const form = action.payload.form;
+	const field = action.payload.field;
+	const imageUrl = action.payload.imageUrl;
+
+	return (state
+		.setIn([form, 'values', field], imageUrl)
+		.deleteIn([form, 'uploads', field])
+	);
 }
 
 

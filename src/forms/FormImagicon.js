@@ -6,12 +6,16 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import assign from 'lodash/assign';
 import omit from 'lodash/omit';
+import isUndefined from 'lodash/isUndefined';
 import classNames from 'classnames';
 
 import Dropzone from 'react-dropzone';
-import Clickable from '../forms/Clickable';
+import Spinner from 'react-spinner';
 
+import Clickable from '../forms/Clickable';
 import Imagicon from '../elements/Imagicon';
+
+import * as actions from './actions';
 
 
 ///
@@ -35,14 +39,34 @@ class FormImagiconView extends Component {
 	///
 
 	handleDrop(files) {
-		// TODO
-console.log('files', files);
+		const form = this.context.formName;
+		const field = this.props.name;
+
+		this.props.uploadImage(form, field, files[0]);
 	}
 
 
 	///
 	// Rendering
 	///
+
+	renderSpinner() {
+		const uploads = this.props.forms.getIn([
+			this.context.formName,
+			'uploads',
+			this.props.name,
+		]);
+
+		if(isUndefined(uploads)) {
+			return '';
+		}
+
+		return (
+			<div className="spinner-container">
+				<Spinner />
+			</div>
+		);
+	}
 
 	renderImagicon() {
 		const form = this.props.forms.get(this.context.formName);
@@ -56,7 +80,7 @@ console.log('files', files);
 		const props = assign({
 			src: form.getIn(['values', this.props.name], ''),
 			text: 'Drop image here, or click to select an image from your computer.',
-		}, omit(this.props, ['forms']));
+		}, omit(this.props, ['forms', 'uploadImage', 'name']));
 
 		return React.createElement(
 			Imagicon, props, this.props.children
@@ -78,6 +102,7 @@ console.log('files', files);
 					onDrop={this.handleDrop}
 				>
 					{this.renderImagicon()}
+					{this.renderSpinner()}
 				</Dropzone>
 			</Clickable>
 		);
@@ -101,7 +126,11 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-	return {};
+	return {
+		uploadImage: (form, field, image) => (
+			dispatch(actions.uploadImageStart(form, field, image))
+		),
+	};
 }
 
 const connector = connect(
