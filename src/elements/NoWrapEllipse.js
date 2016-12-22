@@ -9,7 +9,7 @@ import React, { Component } from 'react';
 // View
 ///
 
-export default class Icon extends Component {
+export default class NoWrapEllipseView extends Component {
 	render() {
 		return (
 			<div className="text-nowrap overflow-ellipse">
