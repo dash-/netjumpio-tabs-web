@@ -7,7 +7,6 @@ import classNames from 'classnames';
 
 import AdvancedLink from './AdvancedLink';
 import Imagicon from './Imagicon';
-import NoWrapEllipse from './NoWrapEllipse';
 
 
 ///
@@ -15,6 +14,10 @@ import NoWrapEllipse from './NoWrapEllipse';
 ///
 
 class CardsListItemView extends Component {
+	///
+	// Methods
+	///
+
 	widthClass() {
 		if(! this.props.width) return [];
 
@@ -30,6 +33,25 @@ class CardsListItemView extends Component {
 			'cards-list-item-outer',
 			this.widthClass(),
 			this.layoutClass(),
+		);
+	}
+
+
+	///
+	// Rendering
+	///
+
+	renderTitle() {
+		const title = this.props.item.get('name');
+
+		if(! title) {
+			return '';
+		}
+
+		return (
+			<div className="title">
+				{title}
+			</div>
 		);
 	}
 
@@ -50,11 +72,7 @@ class CardsListItemView extends Component {
 						/>
 					</div>
 					<div className="text-container">
-						<div className="title">
-							<NoWrapEllipse>
-								{this.props.item.get('name')}
-							</NoWrapEllipse>
-						</div>
+						{this.renderTitle()}
 						<div className="contents">
 							{this.props.children}
 						</div>
