@@ -4,9 +4,11 @@
 
 import React, { Component } from 'react';
 
-import * as urlUtils from '../lib/urlUtils';
+import { keyIn } from '../utils/immutableUtils';
+import * as urlUtils from '../utils/urlUtils';
 
 import CardsListItem from '../elements/CardsListItem';
+import CardsListItemTitle from '../elements/CardsListItemTitle';
 import NoWrapEllipse from '../elements/NoWrapEllipse';
 import ButtonsList from '../elements/ButtonsList';
 import ButtonsListMenu from '../elements/ButtonsListMenu';
@@ -25,7 +27,10 @@ class TabsListItemView extends Component {
 	///
 
 	processTabForCLItem(tab) {
-		return tab.set('href', tab.get('url'));
+		return (tab
+			.filterNot(keyIn('name'))
+			.set('href', tab.get('url'))
+		);
 	}
 
 	processTabUrlForDisplay(url) {
@@ -48,6 +53,9 @@ class TabsListItemView extends Component {
 				defaultLogoIcon="link"
 				horizontal
 			>
+				<CardsListItemTitle lines="2">
+					{this.props.tab.get('name')}
+				</CardsListItemTitle>
 				<NoWrapEllipse>
 					{this.processTabUrlForDisplay(this.props.tab.get('url'))}
 				</NoWrapEllipse>

@@ -26,6 +26,7 @@
 @darkThemeContentFg: @darkTheme1;
 
 @darkThemeListItemBg: @darkTheme3;
+@darkThemeListItemBgClear: rgba(50, 140, 193, 0);
 @darkThemeListItemFg: @darkTheme1;
 @darkThemeListItemBorder: @darkTheme5;
 @darkThemeListItemBtnBg: inherit;
@@ -118,5 +119,9 @@
 
 	.list-item-ts-logo-border {
 		border-color: @darkThemeListItemTSLogoBorder;
+	}
+
+	.multiline-ellipse (@lines:3, @lineHeight:16) {
+		.multiline-ellipsis(@lines, @lineHeight, @darkThemeListItemBgClear, @darkThemeListItemBg);
 	}
 }

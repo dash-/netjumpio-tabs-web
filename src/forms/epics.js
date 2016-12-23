@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 import axios from 'axios';
 
 import imageUploadConfig from '../app/imageUploadConfig';
-import { toFormData } from '../lib/uploadUtils';
+import { toFormData } from '../utils/uploadUtils';
 
 import * as actions from './actions';
 

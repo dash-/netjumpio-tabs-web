@@ -25,6 +25,7 @@
 @lightThemeContentFg: @lightTheme1;
 
 @lightThemeListItemBg: @lightTheme2;
+@lightThemeListItemBgClear: rgba(238, 238, 238, 0);
 @lightThemeListItemFg: @lightTheme5;
 @lightThemeListItemBorder: @lightTheme3;
 @lightThemeListItemBtnBg: inherit;
@@ -133,5 +134,9 @@
 
 	.imagicon-spinner {
 		background: @lightThemeImagiconFg;
+	}
+
+	.multiline-ellipse (@lines:3, @lineHeight:16) {
+		.multiline-ellipsis(@lines, @lineHeight, @lightThemeListItemBgClear, @lightThemeListItemBg);
 	}
 }

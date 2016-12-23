@@ -5,6 +5,7 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
 
+import CardsListItemTitle from './CardsListItemTitle';
 import AdvancedLink from './AdvancedLink';
 import Imagicon from './Imagicon';
 
@@ -41,20 +42,6 @@ class CardsListItemView extends Component {
 	// Rendering
 	///
 
-	renderTitle() {
-		const title = this.props.item.get('name');
-
-		if(! title) {
-			return '';
-		}
-
-		return (
-			<div className="title">
-				{title}
-			</div>
-		);
-	}
-
 	render() {
 		return (
 			<li className={this.classNames()}>
@@ -72,7 +59,9 @@ class CardsListItemView extends Component {
 						/>
 					</div>
 					<div className="text-container">
-						{this.renderTitle()}
+						<CardsListItemTitle>
+							{this.props.item.get('name')}
+						</CardsListItemTitle>
 						<div className="contents">
 							{this.props.children}
 						</div>

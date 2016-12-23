@@ -8,7 +8,7 @@ import isObject from 'lodash/isObject';
 import filter from 'lodash/filter';
 import pick from 'lodash/pick';
 
-import { matches, keyIn } from '../lib/immutableUtils';
+import { matches, keyIn } from '../utils/immutableUtils';
 
 import * as tabsetsActions from './actions';
 import * as groupsActions from '../groups/actions';

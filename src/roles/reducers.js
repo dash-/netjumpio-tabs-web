@@ -7,7 +7,7 @@ import isUndefined from 'lodash/isUndefined';
 import isObject from 'lodash/isObject';
 import filter from 'lodash/filter';
 
-import { matches, keyIn, init } from '../lib/immutableUtils';
+import { matches, keyIn, init } from '../utils/immutableUtils';
 
 import * as actions from './actions';
 

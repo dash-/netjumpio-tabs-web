@@ -4,7 +4,7 @@
 
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import { hasProtocol } from '../lib/urlUtils';
+import { hasProtocol } from '../utils/urlUtils';
 
 
 ///
