@@ -8,7 +8,6 @@ import isUndefined from 'lodash/isUndefined';
 
 import api from '../app/api';
 import * as formsActions from '../forms/actions';
-import * as tabsActions from '../tabs/actions';
 import * as actions from './actions';
 
 
@@ -46,8 +45,23 @@ const getItem = (action$, store) => (
 		))
 );
 
-const saveItem = (action$, store) => (
+const formSubmit = (action$, store) => (
 	action$.ofType(actions.FORM_SUBMIT)
+		.switchMap(action => {
+			if(isUndefined(action.payload.id)) {
+				return Observable.of(actions.addItemStart(
+					action.payload
+				));
+			}
+
+			return Observable.of(actions.editItemStart(
+				action.payload
+			));
+		})
+);
+
+const addItem = (action$, store) => (
+	action$.ofType(actions.ADD_ITEM_START)
 		.switchMap(action => (
 			Observable.fromPromise(
 				api.createRelatedClient({
@@ -58,124 +72,9 @@ const saveItem = (action$, store) => (
 				}).create(action.payload)
 			).flatMap(payload => Observable.concat(
 				Observable.of(formsActions.formSubmitDone('tabsets')),
+				Observable.of(formsActions.clearFormValues('tabsets')),
 				Observable.of(actions.addItemDone(payload))
 			))
-		))
-);
-
-const urlFormSubmit = (action$, store) => (
-	action$.ofType(tabsActions.URL_FORM_SUBMIT)
-		.switchMap(action => Observable.concat(
-			Observable.of(formsActions.formSubmitDone('tabsUrl')),
-			Observable.of(formsActions.clearFormValues('tabsUrl')),
-			Observable.of(formsActions.showForm('tabs')),
-			Observable.of(tabsActions.getWebpageInfoStart(action.payload.url)),
-		))
-);
-
-const getWebpageInfo = (action$, store) => (
-	action$.ofType(tabsActions.GET_WEBPAGE_INFO_START)
-		.switchMap(action => (
-			Observable.fromPromise(
-				api.request('tabs', '/webpage', {
-					url: action.payload,
-				}, 'GET', {
-					accessToken: store.getState().getIn(['user', 'accessToken']),
-				})
-			).flatMap(payload => Observable.of(
-				formsActions.initFormData('tabs', {
-					values: payload,
-				})
-			))
-		))
-);
-
-const tabsFormSubmit = (action$, store) => (
-	action$.ofType(tabsActions.TABS_FORM_SUBMIT)
-		.switchMap(action => {
-			if(isUndefined(action.payload.id)) {
-				return Observable.of(tabsActions.addItemStart(
-					action.aux.tabsetId, action.payload
-				));
-			}
-
-			return Observable.of(tabsActions.editItemStart(
-				action.payload
-			));
-		})
-);
-
-const addTab = (action$, store) => (
-	action$.ofType(tabsActions.ADD_ITEM_START)
-		.switchMap(action => (
-			Observable.fromPromise(
-				api.createRelatedClient({
-					one: 'tabsets',
-					many: 'tabs',
-					id: action.aux.tabsetId,
-					accessToken: store.getState().getIn(['user', 'accessToken']),
-				}).create(action.payload)
-			).flatMap(payload => Observable.concat(
-				Observable.of(formsActions.formSubmitDone('tabs')),
-				Observable.of(formsActions.clearFormValues('tabs')),
-				Observable.of(tabsActions.addItemDone(payload))
-			))
-		))
-);
-
-const editTabPrompt = (action$, store) => (
-	action$.ofType(tabsActions.EDIT_ITEM_PROMPT)
-		.switchMap(action => Observable.concat(
-			Observable.of(formsActions.showForm('tabs')),
-			Observable.of(
-				formsActions.initFormData('tabs', {
-					values: action.payload,
-				})
-			)
-		))
-);
-
-const editTab = (action$, store) => (
-	action$.ofType(tabsActions.EDIT_ITEM_START)
-		.switchMap(action => (
-			Observable.fromPromise(
-				api.createClient('tabs', {
-					accessToken: store.getState().getIn(['user', 'accessToken']),
-				}).upsert(action.payload)
-			).flatMap(payload => Observable.concat(
-				Observable.of(formsActions.formSubmitDone('tabs')),
-				Observable.of(formsActions.clearFormValues('tabs')),
-				Observable.of(tabsActions.editItemDone(payload))
-			))
-		))
-);
-
-const removeTab = (action$, store) => (
-	action$.ofType(tabsActions.REMOVE_ITEM_START)
-		.switchMap(action => (
-			Observable.fromPromise(
-				api.createClient('tabs', {
-					accessToken: store.getState().getIn(['user', 'accessToken']),
-				}).destroyById(action.payload.id)
-			).flatMap(payload => Observable.of(
-				tabsActions.removeItemDone(action.payload))
-			)
-		))
-);
-
-const restoreTab = (action$, store) => (
-	action$.ofType(tabsActions.RESTORE_ITEM_START)
-		.switchMap(action => (
-			Observable.fromPromise(
-				api.request('tabs', [
-					'', action.payload.id,
-					'restore',
-				].join('/'), {}, 'POST', {
-					accessToken: store.getState().getIn(['user', 'accessToken']),
-				})
-			).flatMap(payload => Observable.of(
-				tabsActions.restoreItemDone(payload))
-			)
 		))
 );
 
@@ -185,8 +84,6 @@ const restoreTab = (action$, store) => (
 ///
 
 export default combineEpics(
-	getList, getItem, saveItem, urlFormSubmit,
-	getWebpageInfo, tabsFormSubmit,
-	addTab, editTabPrompt, editTab, removeTab, restoreTab
+	getList, getItem, formSubmit, addItem
 );
 
