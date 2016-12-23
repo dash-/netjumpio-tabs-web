@@ -114,7 +114,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
 	return {
-		dismiss: () => dispatch(actions.dismissProfilePanel()),
+		dismiss: () => dispatch(actions.toggleProfilePanel()),
 		signOut: () => dispatch(userActions.logoutStart()),
 	};
 }

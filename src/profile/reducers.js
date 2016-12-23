@@ -13,7 +13,7 @@ import * as actions from './actions';
 
 function root(state = Immutable.fromJS({}), action) {
 	const handlers = {
-		[actions.PROFILE_PANEL_TOGGLE]: togglePanel,
+		[actions.PROFILE_PANEL_SHOW]: showPanel,
 		[actions.PROFILE_PANEL_DISMISS]: dismissPanel,
 		default: (state) => state,
 	};
@@ -29,8 +29,8 @@ export default root;
 // Delegates
 ///
 
-function togglePanel(state, action) {
-	return state.set('showPanel', ! state.get('showPanel'));
+function showPanel(state, action) {
+	return state.set('showPanel', true);
 }
 
 function dismissPanel(state, action) {
