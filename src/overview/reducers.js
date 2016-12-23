@@ -14,9 +14,9 @@ import panels from './panelsReducers';
 // Reducers
 ///
 
-function root(state, action) {
-	if(isUndefined(state)) {
-		state = init();
+function root(state = Immutable.fromJS({}), action) {
+	if(isUndefined(state.get('selected'))) {
+		state = state.set('selected', '');
 	}
 
 	const handlers = {
@@ -37,12 +37,6 @@ export default combineReducers({
 ///
 // Delegates
 ///
-
-function init() {
-	return Immutable.fromJS({
-		selected: '',
-	});
-}
 
 function selectOverviewItem(state, action) {
 	// Selecting the selected panel deselects all panels
