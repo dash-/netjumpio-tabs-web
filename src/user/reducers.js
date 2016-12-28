@@ -2,7 +2,7 @@
 // Dependencies
 ///
 
-import Immutable from 'immutable';
+import { fromJS } from 'immutable';
 
 import * as actions from './actions';
 
@@ -11,7 +11,7 @@ import * as actions from './actions';
 // Reducers
 ///
 
-function root(state = Immutable.fromJS({}), action) {
+function root(state = fromJS({}), action) {
 	const handlers = {
 		[actions.LOGIN_DONE]: loginDone, 
 		[actions.LOGOUT_DONE]: logoutDone, 
@@ -46,6 +46,6 @@ function loginDone(state, action) {
 }
 
 function logoutDone(state, action) {
-	return Immutable.fromJS({});
+	return fromJS({});
 }
 

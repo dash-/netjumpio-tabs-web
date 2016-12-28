@@ -2,7 +2,7 @@
 // Dependencies
 ///
 
-import Immutable from 'immutable';
+import { fromJS, is } from 'immutable';
 import isUndefined from 'lodash/isUndefined';
 import isObject from 'lodash/isObject';
 import filter from 'lodash/filter';
@@ -16,7 +16,7 @@ import * as actions from './actions';
 // Reducers
 ///
 
-function root(state = Immutable.fromJS({}), action) {
+function root(state = fromJS({}), action) {
 	const handlers = {
 		[actions.GET_LIST_DONE]: getListDone,
 		[actions.ADD_ITEM_DONE]: addItemDone,
@@ -43,7 +43,7 @@ function getListDone(state, action) {
 		state, rolesWithGroup
 	));
 
-	const roles = Immutable.fromJS(
+	const roles = fromJS(
 		filter(action.payload, item => (
 			! isObject(item.group) || isUndefined(item.group.id)
 		))
@@ -55,16 +55,16 @@ function getListDone(state, action) {
 }
 
 function addItemDone(state, action) {
-	const role = Immutable.fromJS(action.payload);
+	const role = fromJS(action.payload);
 	const existingKey = state.get('roles').findKey(item => (
-		item.get('id') === role.get('id')
+		is(item.get('id'), role.get('id'))
 	));
 
 	if(! isUndefined(existingKey)) {
 		return state.setIn(['roles', existingKey], role);
 	}
 
-	return state.set('roles', state.get('roles').push(role));
+	return state.update('roles', roles => roles.push(role));
 }
 
 
@@ -73,24 +73,28 @@ function addItemDone(state, action) {
 ///
 
 function toGroupRoles(state, rolesWithGroup) {
-	const roles = Immutable.fromJS(rolesWithGroup);
+	const roles = fromJS(rolesWithGroup);
 
-	return roles.reduce((memo, role) => {
+	return roles.reduce((reduction, role) => {
 		const group = role.get('group');
-		let groupKey = getGroupKey(memo, group);
+		let groupKey = getGroupKey(reduction, group);
 
 		if(isUndefined(groupKey)) {
-			memo = memo.push(group.filter(keyIn('id', 'name')));
-			groupKey = getGroupKey(memo, group);
+			reduction = reduction.push(
+				group.filter(keyIn('id', 'name'))
+			);
+			groupKey = getGroupKey(reduction, group);
 		}
 
 		const rolesPath = [groupKey, 'roles'];
-		memo = init(memo, rolesPath, Immutable.fromJS([]));
+		reduction = init(reduction, rolesPath, fromJS([]));
 
-		return memo.setIn(rolesPath, memo.getIn(rolesPath).push(
-			role.filter(keyIn('id', 'name', 'logoUrl'))
+		return reduction.updateIn(rolesPath, roles => (
+			roles.push(
+				role.filter(keyIn('id', 'name', 'logoUrl'))
+			)
 		));
-	}, Immutable.fromJS([]));
+	}, fromJS([]));
 }
 
 function getGroupKey(groups, group) {

@@ -2,7 +2,7 @@
 // Dependencies
 ///
 
-import Immutable from 'immutable';
+import { fromJS } from 'immutable';
 import isUndefined from 'lodash/isUndefined';
 import * as actions from './actions';
 
@@ -31,7 +31,7 @@ export default function panels(state, action) {
 ///
 
 function init() {
-	return Immutable.fromJS({
+	return fromJS({
 		groups: {
 			isExpanded: false,
 		},

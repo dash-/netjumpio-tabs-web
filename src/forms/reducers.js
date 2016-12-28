@@ -2,7 +2,7 @@
 // Dependencies
 ///
 
-import Immutable from 'immutable';
+import { fromJS } from 'immutable';
 import isUndefined from 'lodash/isUndefined';
 import isObject from 'lodash/isObject';
 
@@ -13,7 +13,7 @@ import * as actions from './actions';
 // Reducers
 ///
 
-function root(state = Immutable.fromJS({}), action) {
+function root(state = fromJS({}), action) {
 	const handlers = {
 		[actions.FORM_INIT]: initForm,
 		[actions.FORM_INIT_DATA]: initFormData,
@@ -53,7 +53,7 @@ function initForm(state, action) {
 	const formName = action.payload;
 
 	if(! state.get(formName)) {
-		state = state.set(formName, Immutable.fromJS(defaultItem));
+		state = state.set(formName, fromJS(defaultItem));
 	}
 
 	if(action.options) {
@@ -88,14 +88,14 @@ function initFormData(state, action) {
 	if(isObject(data.values)) {
 		state = state.setIn(
 			[formName, 'values'],
-			Immutable.fromJS(data.values)
+			fromJS(data.values)
 		);
 	}
 
 	if(isObject(data.aux)) {
 		state = state.setIn(
 			[formName, 'aux'],
-			Immutable.fromJS(data.aux)
+			fromJS(data.aux)
 		);
 	}
 
@@ -110,8 +110,8 @@ function clearForm(state, action) {
 	}
 
 	return (state
-		.setIn([action.payload, 'values'], Immutable.fromJS({}))
-		.setIn([action.payload, 'aux'], Immutable.fromJS({}))
+		.setIn([action.payload, 'values'], fromJS({}))
+		.setIn([action.payload, 'aux'], fromJS({}))
 	);
 }
 
@@ -123,7 +123,7 @@ function clearFormValues(state, action) {
 	}
 
 	return (state
-		.setIn([action.payload, 'values'], Immutable.fromJS({}))
+		.setIn([action.payload, 'values'], fromJS({}))
 	);
 }
 

@@ -2,7 +2,7 @@
 // Dependencies
 ///
 
-import Immutable from 'immutable';
+import { fromJS } from 'immutable';
 import size from 'lodash/size';
 
 import * as tabsetsActions from '../tabsets/actions';
@@ -17,7 +17,7 @@ import * as rolesActions from '../roles/actions';
 
 let actionsCount;
 
-function root(state = Immutable.fromJS({progress: 0}), action) {
+function root(state = fromJS({progress: 0}), action) {
 	const handlers = {
 		[tabsetsActions.GET_LIST_DONE]: actionDone,
 		[peopleActions.GET_LIST_DONE]: actionDone,

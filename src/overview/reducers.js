@@ -2,7 +2,7 @@
 // Dependencies
 ///
 
-import Immutable from 'immutable';
+import { fromJS } from 'immutable';
 import { combineReducers } from 'redux-immutable';
 import isUndefined from 'lodash/isUndefined';
 
@@ -14,7 +14,7 @@ import panels from './panelsReducers';
 // Reducers
 ///
 
-function root(state = Immutable.fromJS({}), action) {
+function root(state = fromJS({}), action) {
 	if(isUndefined(state.get('selected'))) {
 		state = state.set('selected', '');
 	}

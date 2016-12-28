@@ -2,7 +2,7 @@
 // Dependencies
 ///
 
-import Immutable from 'immutable';
+import { fromJS, is } from 'immutable';
 import isUndefined from 'lodash/isUndefined';
 
 import * as actions from './actions';
@@ -12,7 +12,7 @@ import * as actions from './actions';
 // Reducers
 ///
 
-function root(state=Immutable.fromJS([]), action) {
+function root(state = fromJS([]), action) {
 	const handlers = {
 		[actions.GET_LIST_DONE]: getListDone,
 		[actions.ADD_ITEM_DONE]: addItemDone,
@@ -31,13 +31,13 @@ export default root;
 ///
 
 function getListDone(state, action) {
-	return Immutable.fromJS(action.payload);
+	return fromJS(action.payload);
 }
 
 function addItemDone(state, action) {
-	const group = Immutable.fromJS(action.payload);
+	const group = fromJS(action.payload);
 	const existingKey = state.findKey(item => (
-		item.get('id') === group.get('id')
+		is(item.get('id'), group.get('id'))
 	));
 
 	if(! isUndefined(existingKey)) {
