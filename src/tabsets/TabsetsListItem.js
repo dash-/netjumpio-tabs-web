@@ -39,7 +39,7 @@ class TabsetsListItemView extends Component {
 						<ButtonsListMenuItem
 							icon="pencil"
 							title="Edit"
-							action={actions.editItemStart(this.props.item.toJS())}
+							action={actions.editItemPrompt(this.props.item.toJS())}
 						/>
 						<ButtonsListMenuItem
 							icon="times"
