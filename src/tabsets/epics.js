@@ -78,12 +78,69 @@ const addItem = (action$, store) => (
 		))
 );
 
+const editItemPrompt = (action$, store) => (
+	action$.ofType(actions.EDIT_ITEM_PROMPT)
+		.switchMap(action => Observable.concat(
+			Observable.of(formsActions.showForm('tabsets')),
+			Observable.of(
+				formsActions.initFormData('tabsets', {
+					values: action.payload,
+				})
+			)
+		))
+);
+
+const editItem = (action$, store) => (
+	action$.ofType(actions.EDIT_ITEM_START)
+		.switchMap(action => (
+			Observable.fromPromise(
+				api.createClient('tabsets', {
+					accessToken: store.getState().getIn(['user', 'accessToken']),
+				}).upsert(action.payload)
+			).flatMap(payload => Observable.concat(
+				Observable.of(formsActions.formSubmitDone('tabsets')),
+				Observable.of(formsActions.clearFormValues('tabsets')),
+				Observable.of(actions.editItemDone(payload))
+			))
+		))
+);
+
+const removeItem = (action$, store) => (
+	action$.ofType(actions.REMOVE_ITEM_START)
+		.switchMap(action => (
+			Observable.fromPromise(
+				api.createClient('tabsets', {
+					accessToken: store.getState().getIn(['user', 'accessToken']),
+				}).destroyById(action.payload.id)
+			).flatMap(payload => Observable.of(
+				actions.removeItemDone(action.payload))
+			)
+		))
+);
+
+const restoreItem = (action$, store) => (
+	action$.ofType(actions.RESTORE_ITEM_START)
+		.switchMap(action => (
+			Observable.fromPromise(
+				api.request('tabsets', [
+					'', action.payload.id,
+					'restore',
+				].join('/'), {}, 'POST', {
+					accessToken: store.getState().getIn(['user', 'accessToken']),
+				})
+			).flatMap(payload => Observable.of(
+				actions.restoreItemDone(payload))
+			)
+		))
+);
+
 
 ///
 // Exports
 ///
 
 export default combineEpics(
-	getList, getItem, formSubmit, addItem
+	getList, getItem, formSubmit, addItem,
+	editItemPrompt, editItem, removeItem, restoreItem
 );
 
