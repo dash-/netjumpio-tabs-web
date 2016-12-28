@@ -2,7 +2,7 @@
 // Dependencies
 ///
 
-import Immutable from 'immutable';
+import { fromJS, is } from 'immutable';
 import isUndefined from 'lodash/isUndefined';
 import isObject from 'lodash/isObject';
 import filter from 'lodash/filter';
@@ -19,12 +19,15 @@ import * as rolesActions from '../roles/actions';
 // Reducers
 ///
 
-function root(state = Immutable.fromJS({}), action) {
+function root(state = fromJS({}), action) {
 	const handlers = {
 		[tabsetsActions.GET_LIST_DONE]: getTabsetsListDone,
 		[groupsActions.GET_LIST_DONE]: getGroupsListDone,
 		[rolesActions.GET_LIST_DONE]: getRolesListDone,
 		[tabsetsActions.ADD_ITEM_DONE]: addItemDone,
+		[tabsetsActions.EDIT_ITEM_DONE]: editItemDone,
+		[tabsetsActions.REMOVE_ITEM_DONE]: removeItemDone,
+		[tabsetsActions.RESTORE_ITEM_DONE]: restoreItemDone,
 		default: (state) => state,
 	};
 
@@ -40,7 +43,7 @@ export default root;
 ///
 
 function getTabsetsListDone(state, action) {
-	return state.set('tabsets', Immutable.fromJS(action.payload));
+	return state.set('tabsets', fromJS(action.payload));
 }
 
 function getGroupsListDone(state, action) {
@@ -67,20 +70,38 @@ function getRolesListDone(state, action) {
 		item.tabsets && item.tabsets.length > 0
 	));
 
-	return state.set('roles', Immutable.fromJS(roles));
+	return state.set('roles', fromJS(roles));
 }
 
 function addItemDone(state, action) {
-	const tabset = Immutable.fromJS(action.payload);
-	const existingKey = state.get('tabsets').findKey(item => (
-		Immutable.is(item.get('id'), tabset.get('id'))
+	return state.update('tabsets', tabsets => (
+		tabsets.push(fromJS(action.payload))
+	));
+}
+
+function editItemDone(state, action) {
+	const itemKey = state.get('tabsets').findKey(item => (
+		is(item.get('id'), action.payload.id)
 	));
 
-	if(isUndefined(existingKey)) {
-		return state.set('tabsets', state.get('tabsets').push(tabset));
-	}
+	return state.setIn(
+		['tabsets', itemKey],
+		fromJS(action.payload)
+	);
+}
 
-	return state.setIn(['tabsets', existingKey], tabset);
+function removeItemDone(state, action) {
+	const itemKey = state.get('tabsets').findKey(item => (
+		is(item.get('id'), action.payload.id)
+	));
+
+	return state.deleteIn(['tabsets', itemKey]);
+}
+
+function restoreItemDone(state, action) {
+	return state.update('tabsets', tabsets => (
+		tabsets.push(fromJS(action.payload))
+	));
 }
 
 
@@ -136,7 +157,7 @@ function mergeGroupRoles(state, roles) {
 
 function initGroups(state) {
 	if(state.get('groups')) return state;
-	return state.set('groups', Immutable.fromJS([]));
+	return state.set('groups', fromJS([]));
 }
 
 function deleteGroupsKeys(state, ...keysToDelete) {
@@ -152,8 +173,8 @@ function getGroupKey(state, group) {
 }
 
 function createGroup(state, group) {
-	return state.set('groups', state.get('groups').push(
-		Immutable.fromJS(group)
+	return state.update('groups', groups => (
+		groups.push(fromJS(group))
 	));
 }
 
@@ -162,7 +183,7 @@ function updateGroup(state, groupKey, group) {
 		.setIn(['groups', groupKey, 'name'], group.name)
 		.setIn(
 			['groups', groupKey, 'tabsets'],
-			Immutable.fromJS(group.tabsets)
+			fromJS(group.tabsets)
 		)
 	);
 }
@@ -170,7 +191,7 @@ function updateGroup(state, groupKey, group) {
 function initGroupRoles(state, groupKey) {
 	if(state.getIn(['groups', groupKey, 'roles'])) return state;
 	return state.setIn(
-		['groups', groupKey, 'roles'], Immutable.fromJS([])
+		['groups', groupKey, 'roles'], fromJS([])
 	);
 }
 
@@ -184,13 +205,13 @@ function getGroupRoleKey(state, groupKey, role) {
 
 function createGroupRole(state, groupKey, role) {
 	const keyPath = ['groups', groupKey, 'roles'];
-	return state.setIn(
-		keyPath, state.getIn(keyPath).push(Immutable.fromJS(role))
-	);
+	return state.updateIn(keyPath, roles => (
+		roles.push(fromJS(role))
+	));
 }
 
 function updateGroupRole(state, groupKey, roleKey, role) {
 	const keyPath = ['groups', groupKey, 'roles', roleKey];
-	return state.setIn(keyPath, Immutable.fromJS(role));
+	return state.setIn(keyPath, fromJS(role));
 }
 
