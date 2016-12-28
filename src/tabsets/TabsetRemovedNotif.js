@@ -17,7 +17,7 @@ import * as actions from './actions';
 // View
 ///
 
-class TabRemovedNotifView extends Component {
+class TabsetRemovedNotifView extends Component {
 	///
 	// Construction
 	///
@@ -50,7 +50,7 @@ class TabRemovedNotifView extends Component {
 		const item = notification.trigger.payload;
 		return (
 			<span>
-				Tab "{name}" removed.
+				TabSet "{name}" removed.
 				<NotificationButtons>
 					<Button
 						bsStyle="success"
@@ -94,5 +94,5 @@ const connector = connect(
 	mapDispatchToProps
 );
 
-export default connector(TabRemovedNotifView);
+export default connector(TabsetRemovedNotifView);
 

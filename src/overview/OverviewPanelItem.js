@@ -94,6 +94,7 @@ class OverviewPanelItemView extends Component {
 					collapsible expanded={isExpanded}
 					className="item-content"
 				>
+					{this.props.notifications}
 					{this.props.children}
 				</Panel>
 			</div>

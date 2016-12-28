@@ -19,6 +19,10 @@ import PeopleForm from '../people/PeopleForm';
 import RolesForm from '../roles/RolesForm';
 import TabsetsForm from '../tabsets/TabsetsForm';
 
+import TabsetsListNotifs from '../tabsets/TabsetsListNotifs';
+import PeopleListNotifs from '../people/PeopleListNotifs';
+import GroupsListNotifs from '../groups/GroupsListNotifs';
+import RolesListNotifs from '../roles/RolesListNotifs';
 
 ///
 // View
@@ -33,6 +37,7 @@ class OverviewPanelView extends Component {
 				modalTitle: 'Add a TabSet',
 				list: TabsetsList,
 				form: TabsetsForm,
+				notifications: <TabsetsListNotifs />,
 				icon: <TabSetsLogo />
 			},
 			{
@@ -41,6 +46,7 @@ class OverviewPanelView extends Component {
 				modalTitle: 'Invite a Friend',
 				list: PeopleList,
 				form: PeopleForm,
+				notifications: <PeopleListNotifs />,
 				icon: 'user-circle',
 			},
 			{
@@ -49,6 +55,7 @@ class OverviewPanelView extends Component {
 				modalTitle: 'Add a Group',
 				list: GroupsList,
 				form: GroupsForm,
+				notifications: <GroupsListNotifs />,
 				icon: 'id-card',
 			},
 			{
@@ -57,6 +64,7 @@ class OverviewPanelView extends Component {
 				modalTitle: 'Add a Role',
 				list: RolesList,
 				form: RolesForm,
+				notifications: <RolesListNotifs />,
 				icon: 'user-secret',
 			},
 		];
@@ -69,6 +77,7 @@ class OverviewPanelView extends Component {
 				title={item.title}
 				key={item.name}
 				icon={item.icon}
+				notifications={item.notifications}
 			>
 				{React.createElement(item.list, {})}
 			</OverviewPanelItem>
