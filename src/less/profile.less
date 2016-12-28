@@ -6,9 +6,6 @@
 		border-radius: 15px;
 		border: 0;
 
-		#dark-theme.profile-panel-btn-bg;
-		#dark-theme.profile-panel-btn-fg;
-
 		.no-glow;
 	}
 }
@@ -22,14 +19,10 @@
 	border-bottom-left-radius: 14px;
 	border-bottom-right-radius: 14px;
 
-	#light-theme.fg;
-
 	.drop-shadow(0px, 0px, 10px, 0px, 0.75);
 
 	.profile-section {
 		padding: 14px;
-
-		#light-theme.bg;
 
 		.logo {
 			display: inline-block;
@@ -79,9 +72,36 @@
 		padding-left: 22px;
 		border-bottom-left-radius: 14px;
 		border-bottom-right-radius: 14px;
-
-		#light-theme.alt-bg;
 	}
-
 }
 
+
+///
+// Dark theme
+///
+
+.dark-theme {
+	.profile-panel-button button {
+		#dark-theme.profile-panel-btn-bg;
+		#dark-theme.profile-panel-btn-fg;
+	}
+}
+
+
+///
+// Light theme
+///
+
+.light-theme {
+	.profile-panel {
+		#light-theme.fg;
+
+		.profile-section {
+			#light-theme.bg;
+		}
+
+		.aux-actions-section {
+			#light-theme.alt-bg;
+		}
+	}
+}

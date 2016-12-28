@@ -12,10 +12,12 @@ import classNames from 'classnames';
 
 class ItemPanelView extends Component {
 	render() {
-		const outerClassName = this.props.className ? [this.props.className] : [];
+		const className = classNames(
+			'item-panel', 'light-theme', this.props.className
+		);
 
 		return (
-			<div className={classNames('item-panel', outerClassName)}>
+			<div className={className}>
 				{this.props.item ? this.props.children : ''}
 			</div>
 		);

@@ -39,7 +39,7 @@ class RolesListView extends Component {
 
 	render() {
 		return (
-			<CardsList theme="dark" className="roles-list">
+			<CardsList className="roles-list">
 				{this.renderRoles(this.props.roles.get('roles'))}
 				{this.renderRolesByGroup(this.props.roles.get('groups'))}
 			</CardsList>

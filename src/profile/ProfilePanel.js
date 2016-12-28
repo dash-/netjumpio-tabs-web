@@ -70,29 +70,31 @@ class ProfilePanelView extends Component {
 
 		return (
 			<Dismissible onDismiss={this.props.dismiss}>
-				<div className="profile-panel">
-					<div className="profile-section">
-						<div className="logo">
-							{this.renderLogo()}
+				<div className="light-theme">
+					<div className="profile-panel">
+						<div className="profile-section">
+							<div className="logo">
+								{this.renderLogo()}
+							</div>
+							<div className="contact-info">
+								<div className="name">
+									{this.props.user.get('name')}
+								</div>
+								<div className="email">
+									{this.props.user.get('email')}
+								</div>
+								<div className="actions">
+									<Button bsStyle="primary">
+										Edit profile
+									</Button>
+								</div>
+							</div>
 						</div>
-						<div className="contact-info">
-							<div className="name">
-								{this.props.user.get('name')}
-							</div>
-							<div className="email">
-								{this.props.user.get('email')}
-							</div>
-							<div className="actions">
-								<Button bsStyle="primary">
-									Edit profile
-								</Button>
-							</div>
+						<div className="aux-actions-section">
+							<Button onClick={this.signOut}>
+								Sign out
+							</Button>
 						</div>
-					</div>
-					<div className="aux-actions-section">
-						<Button onClick={this.signOut}>
-							Sign out
-						</Button>
 					</div>
 				</div>
 			</Dismissible>

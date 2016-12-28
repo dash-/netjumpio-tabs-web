@@ -1,9 +1,12 @@
 .item-panel {
 	.item-panel-header {
 		position: relative;
-		border-bottom: 1px solid @lightThemeItemBorder;
+		border-bottom-width: 1px;
+		border-bottom-style: solid;
 		padding-bottom: 10px;
 		margin-bottom: 0;
+
+		#light-theme.item-border;
 
 		.logo-container {
 			display: inline-block;
@@ -68,3 +71,11 @@
 	}
 }
 
+
+///
+// Light theme
+///
+
+.item-panel .item-panel-header {
+	#light-theme.item-border;
+}

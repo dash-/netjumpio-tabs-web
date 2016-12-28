@@ -22,7 +22,7 @@ class GroupsListView extends Component {
 
 	render() {
 		return (
-			<CardsList theme="dark" className="groups-list">
+			<CardsList className="groups-list">
 				{this.renderGroups(this.props.groups)}
 			</CardsList>
 		);

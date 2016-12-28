@@ -39,7 +39,7 @@ class AppLayoutView extends Component {
 		}
 
 		return (
-			<Col md={4} className="side-panel">
+			<Col md={4} className="side-panel dark-theme">
 				<OverviewPanel />
 			</Col>
 		);

@@ -53,7 +53,7 @@ class TabsetsListView extends Component {
 
 	render() {
 		return (
-			<CardsList theme="dark" className="tabsets-list">
+			<CardsList className="tabsets-list">
 				{this.renderTabsets(this.props.tabsets.get('tabsets'))}
 				{this.renderTabsetsByRole(this.props.tabsets.get('roles'))}
 				{this.renderTabsetsByGroup(this.props.tabsets.get('groups'))}

@@ -15,7 +15,7 @@ import ProfilePanelButton from '../profile/ProfilePanelButton';
 class Header extends Component {
   render() {
     return (
-    	<div className="app-header-container">
+    	<div className="app-header-container dark-theme">
 				<div className="app-header">
 					<TabSetsLogo />
 					<h3 className="title">TabSets</h3>

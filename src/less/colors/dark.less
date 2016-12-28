@@ -15,7 +15,6 @@
 
 @darkThemeBg: @darkTheme4;
 @darkThemeFg: @darkTheme1;
-@darkThemeLogoFg: @darkTheme2;
 @darkThemeHeaderBg: @darkTheme5;
 @darkThemeHeaderFg: @darkTheme2;
 @darkThemeHeaderLinks: @darkTheme3;
@@ -39,6 +38,10 @@
 @darkThemeAltFg: @darkTheme3;
 @darkThemeAltBorder: @darkTheme3;
 
+@darkThemeImagiconBg: rgba(238, 238, 238, 0.7);
+@darkThemeImagiconFg: @darkTheme5;
+@darkThemeImagiconBorder: @darkTheme3;
+
 
 ///
 // Dark theme namespace
@@ -61,6 +64,10 @@
 		color: @darkThemeAltFg;
 	}
 
+	.alt-border {
+		border-color: @darkThemeAltBorder;
+	}
+
 	.header-bg {
 		background: @darkThemeHeaderBg;
 	}
@@ -81,6 +88,10 @@
 		color: @darkThemeProfilePanelBtnFg;
 	}
 
+	.item-border {
+		border-color: @darkThemeItemBorder;
+	}
+
 	.content-bg {
 		background: @darkThemeContentBg;
 	}
@@ -98,7 +109,7 @@
 	}
 
 	.list-item-border {
-		border: 1px solid @darkThemeListItemBorder;
+		border-color: @darkThemeListItemBorder;
 	}
 
 	.list-item-btn-bg {
@@ -119,6 +130,22 @@
 
 	.list-item-ts-logo-border {
 		border-color: @darkThemeListItemTSLogoBorder;
+	}
+
+	.imagicon-bg {
+		background: @darkThemeImagiconBg;
+	}
+
+	.imagicon-fg {
+		color: @darkThemeImagiconFg;
+	}
+
+	.imagicon-border {
+		border-color: @darkThemeImagiconBorder;
+	}
+
+	.imagicon-spinner {
+		background: @darkThemeImagiconFg;
 	}
 
 	.multiline-ellipse (@lines:3, @lineHeight:16) {

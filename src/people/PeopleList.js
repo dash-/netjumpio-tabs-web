@@ -22,7 +22,7 @@ class PeopleListView extends Component {
 
 	render() {
 		return (
-			<CardsList theme="dark" className="people-list">
+			<CardsList className="people-list">
 				{this.renderPeople(this.props.people)}
 			</CardsList>
 		);
