@@ -160,8 +160,7 @@ class NotificationsListItemView extends Component {
 		//
 		///
 		let props = assign({
-			// hideAfter: 4000,
-			hideAfter: 4000000,
+			hideAfter: 4000,
 			renderNotification: this.renderNotification,
 			renderContainer: this.renderContainer,
 		}, omit(this.props, [
