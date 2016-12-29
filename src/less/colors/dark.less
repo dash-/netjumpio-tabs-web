@@ -24,6 +24,8 @@
 @darkThemeContentBg: @darkTheme4;
 @darkThemeContentFg: @darkTheme1;
 
+@darkThemeListButtonBorder: @darkTheme5;
+
 @darkThemeListItemBg: @darkTheme3;
 @darkThemeListItemBgClear: rgba(50, 140, 193, 0);
 @darkThemeListItemFg: @darkTheme1;
@@ -41,6 +43,9 @@
 @darkThemeImagiconBg: rgba(238, 238, 238, 0.7);
 @darkThemeImagiconFg: @darkTheme5;
 @darkThemeImagiconBorder: @darkTheme3;
+
+@darkThemeAlertSuccessBg: @darkTheme1;
+@darkThemeAlertSuccessFg: @darkTheme5;
 
 
 ///
@@ -100,6 +105,10 @@
 		color: @darkThemeContentFg;
 	}
 
+	.list-button-border {
+		border-color: @darkThemeListButtonBorder;
+	}
+
 	.list-item-bg {
 		background: @darkThemeListItemBg;
 	}
@@ -150,5 +159,10 @@
 
 	.multiline-ellipse (@lines:3, @lineHeight:16) {
 		.multiline-ellipsis(@lines, @lineHeight, @darkThemeListItemBgClear, @darkThemeListItemBg);
+	}
+
+	.alert-success {
+		background: @darkThemeAlertSuccessBg;
+		color: @darkThemeAlertSuccessFg;
 	}
 }

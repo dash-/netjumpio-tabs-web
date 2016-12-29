@@ -56,7 +56,6 @@
 				padding-bottom: 2px;
 				padding-left: 8px;
 				padding-right: 8px;
-				border-color: black; // TODO - Move to theme
 			}
 		}
 
@@ -72,13 +71,15 @@
 			}
 		}
 
-		.panel-notifications {
-			margin-left: 5px;
-			margin-right: 5px;
+		.panel-notifications .notifications-list {
+			position: relative;
+			height: 26px;
 
-			.alert.alert-success {
-				background: white;
-				color: black;
+			.notifications-list-item {
+				position: absolute;
+				top: -15px;
+				left: -15px;
+				width: ~"calc(100% + 30px)";
 			}
 		}
 	}
@@ -88,28 +89,36 @@
 		}
 	}
 
-	.cards-list .cards-list-item-outer .logo-container {
-		.fa-user-circle {
-			margin-top: 3px;
+	.cards-list {
+		margin-bottom: 16px;
+
+		.cards-list-category {
+			margin-top: 26px;
 		}
 
-		.fa-id-card {
-			margin-top: 3px;
-		}
+		.cards-list-item-outer .logo-container {
+			.fa-user-circle {
+				margin-top: 3px;
+			}
 
-		.fa-user-secret {
-			display: inline-block;
-			margin-left: 2px;
-			margin-top: 4px;
-		}
+			.fa-id-card {
+				margin-top: 3px;
+			}
 
-		.tabsets-logo {
-			font-size: 22px;
-			margin: 0;
-			margin-top: 6px;
-			border-left-width: 2px;
-			border-top-width: 2px;
-			border-right-width: 2px;
+			.fa-user-secret {
+				display: inline-block;
+				margin-left: 2px;
+				margin-top: 4px;
+			}
+
+			.tabsets-logo {
+				font-size: 22px;
+				margin: 0;
+				margin-top: 6px;
+				border-left-width: 2px;
+				border-top-width: 2px;
+				border-right-width: 2px;
+			}
 		}
 	}
 }
@@ -123,7 +132,7 @@
 	#dark-theme.bg;
 }
 
-.overview-panel {
+.dark-theme .overview-panel {
 	.overview-panel-item {
 		.item-header {
 			#dark-theme.fg;
@@ -140,6 +149,7 @@
 			.add-button {
 				#dark-theme.alt-bg;
 				#dark-theme.fg;
+				#dark-theme.list-button-border;
 			}
 		}
 
@@ -149,6 +159,12 @@
 
 			.panel-body {
 				#dark-theme.item-border;
+			}
+		}
+
+		.panel-notifications .notifications-list {
+			.notifications-list-item.alert-success {
+				#dark-theme.alert-success;
 			}
 		}
 	}
