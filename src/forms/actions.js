@@ -92,7 +92,6 @@ export function uploadImageStart(formName, fieldName, image) {
 	}};
 }
 
-// TODO - Don't know about this action (unnecessary?)
 export function uploadImageFail(formName, fieldName, err) {
 	return {type: FORM_IMAGE_UPLOAD_FAIL, payload: {
 		form: formName,
