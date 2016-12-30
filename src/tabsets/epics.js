@@ -5,6 +5,7 @@
 import { combineEpics } from 'redux-observable';
 import { Observable } from 'rxjs';
 import isUndefined from 'lodash/isUndefined';
+import omit from 'lodash/omit';
 
 import api from '../app/api';
 import * as formsActions from '../forms/actions';
@@ -96,11 +97,11 @@ const editItem = (action$, store) => (
 			Observable.fromPromise(
 				api.createClient('tabsets', {
 					accessToken: store.getState().getIn(['user', 'accessToken']),
-				}).upsert(action.payload)
+				}).upsert(omit(action.payload, ['_meta']))
 			).flatMap(payload => Observable.concat(
 				Observable.of(formsActions.formSubmitDone('tabsets')),
 				Observable.of(formsActions.clearFormValues('tabsets')),
-				Observable.of(actions.editItemDone(payload))
+				Observable.of(actions.editItemDone(action.payload))
 			))
 		))
 );
@@ -129,7 +130,7 @@ const restoreItem = (action$, store) => (
 					accessToken: store.getState().getIn(['user', 'accessToken']),
 				})
 			).flatMap(payload => Observable.of(
-				actions.restoreItemDone(payload))
+				actions.restoreItemDone(action.payload))
 			)
 		))
 );
