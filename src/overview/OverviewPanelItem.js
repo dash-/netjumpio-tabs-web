@@ -3,11 +3,12 @@
 ///
 
 import React, { Component } from 'react';
-import Panel from 'react-bootstrap/lib/Panel';
-import Button from 'react-bootstrap/lib/Button';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 import isString from 'lodash/isString';
+
+import Panel from 'react-bootstrap/lib/Panel';
+import Button from 'react-bootstrap/lib/Button';
 
 import ExpanderButton from '../elements/ExpanderButton';
 import Icon from '../elements/Icon';
@@ -20,6 +21,10 @@ import * as formsActions from '../forms/actions';
 ///
 
 class OverviewPanelItemView extends Component {
+	///
+	// Construction / Hooks
+	///
+
 	constructor(props) {
 		super(props);
 
@@ -27,6 +32,11 @@ class OverviewPanelItemView extends Component {
 		this.onSelect = this.onSelect.bind(this);
 		this.onShowForm = this.onShowForm.bind(this);
 	}
+
+
+	///
+	// Event handling
+	///
 
 	onToggle() {
 		this.props.toggleItem(this.props.name);
@@ -40,6 +50,11 @@ class OverviewPanelItemView extends Component {
 		this.props.clearForm(this.props.name);
 		this.props.showForm(this.props.name);
 	}
+
+
+	///
+	// Rendering
+	///
 
 	renderIcon(icon) {
 		if(! icon) return '';
