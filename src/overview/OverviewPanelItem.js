@@ -12,6 +12,8 @@ import Button from 'react-bootstrap/lib/Button';
 
 import ExpanderButton from '../elements/ExpanderButton';
 import Icon from '../elements/Icon';
+import Scrollable from '../elements/Scrollable';
+
 import * as actions from './actions';
 import * as formsActions from '../forms/actions';
 
@@ -110,7 +112,9 @@ class OverviewPanelItemView extends Component {
 					className="item-content"
 				>
 					{this.props.notifications}
-					{this.props.children}
+					<Scrollable>
+						{this.props.children}
+					</Scrollable>
 				</Panel>
 			</div>
 		);
