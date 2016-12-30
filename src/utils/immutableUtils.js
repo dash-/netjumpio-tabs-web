@@ -2,7 +2,7 @@
 // Dependencies
 ///
 
-import Immutable from 'immutable';
+import { fromJS, is, Set } from 'immutable';
 
 
 ///
@@ -11,8 +11,8 @@ import Immutable from 'immutable';
 
 export const matches = (searchObj) => (
 	item => (
-		Immutable.fromJS(searchObj).reduce((memo, value, key) => (
-			memo && Immutable.is(item.get(key), value)
+		fromJS(searchObj).reduce((memo, value, key) => (
+			memo && is(item.get(key), value)
 		), true)
 	)
 );
@@ -24,7 +24,7 @@ export const not = (predicate) => (
 );
 
 export const keyIn = (...keys) => {
-	var keySet = Immutable.Set(keys); 
+	var keySet = Set(keys); 
 	return (v, k) => (
 		keySet.has(k)
 	);
@@ -33,9 +33,9 @@ export const keyIn = (...keys) => {
 
 ///
 // Mixins
+// TODO - Make these into immutable mixins
 ///
 
-// TODO - Make this into an immutable mixin
 export const init = (imm, keyPath, value) => {
 	if(typeof imm.getIn(keyPath) !== 'undefined') {
 		return imm;
