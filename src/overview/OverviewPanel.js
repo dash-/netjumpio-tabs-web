@@ -3,6 +3,8 @@
 ///
 
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import classNames from 'classnames';
 
 import TabSetsLogo from '../elements/TabSetsLogo';
 
@@ -24,11 +26,16 @@ import PeopleListNotifs from '../people/PeopleListNotifs';
 import GroupsListNotifs from '../groups/GroupsListNotifs';
 import RolesListNotifs from '../roles/RolesListNotifs';
 
+
 ///
 // View
 ///
 
 class OverviewPanelView extends Component {
+	///
+	// Processing
+	///
+
 	getItems() {
 		return [
 			{
@@ -70,6 +77,25 @@ class OverviewPanelView extends Component {
 		];
 	}
 
+	getExpandedCount() {
+		const overview = this.props.overview;
+		const selected = overview.getIn(['root', 'selected']);
+		return overview.get('panels').reduce((reducer, panel, name) => {
+			if(name === selected) {
+				return reducer + 1;
+			}
+			if(panel.get('isExpanded')) {
+				return reducer + 1;
+			}
+			return reducer;
+		}, 0);
+	}
+
+
+	///
+	// Rendering
+	///
+
 	renderItems(items) {
 		return items.map((item) => (
 			<OverviewPanelItem
@@ -97,9 +123,13 @@ class OverviewPanelView extends Component {
 
 	render() {
 		const items = this.getItems();
+		const className = classNames(
+			'overview-panel',
+			'panel-height-' + this.getExpandedCount()
+		);
 
 		return (
-			<div className="overview-panel">
+			<div className={className}>
 				{this.renderItems(items)}
 				{this.renderFormModals(items)}
 			</div>
@@ -107,5 +137,25 @@ class OverviewPanelView extends Component {
 	}
 }
 
-export default OverviewPanelView;
+
+///
+// Container
+///
+
+function mapStateToProps(state) {
+	return {
+		overview: state.get('overview'),
+	};
+}
+
+function mapDispatchToProps(dispatch) {
+	return {};
+}
+
+const connector = connect(
+	mapStateToProps,
+	mapDispatchToProps
+);
+
+export default connector(OverviewPanelView);
 

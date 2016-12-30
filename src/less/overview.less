@@ -3,7 +3,6 @@
 	position: fixed;
 	right: 0;
 	top: 47px;
-	overflow: auto;
 }
 
 .overview-panel {
@@ -66,6 +65,8 @@
 			margin-bottom: 0;
 
 			.panel-body {
+				overflow: auto;
+				height: ~"calc(100vh - 47px - 4 * 46px)";
 				border-bottom-width: 1px;
 				border-bottom-style: solid;
 			}
@@ -119,6 +120,32 @@
 				border-top-width: 2px;
 				border-right-width: 2px;
 			}
+		}
+	}
+
+	&.panel-height-0 {
+		.item-content .panel-body {
+			height: 0;
+		}
+	}
+	&.panel-height-1 {
+		.item-content .panel-body {
+			height: ~"calc(100vh - 47px - 4 * 46px)";
+		}
+	}
+	&.panel-height-2 {
+		.item-content .panel-body {
+			height: ~"calc((100vh - 47px - 4 * 46px) / 2)";
+		}
+	}
+	&.panel-height-3 {
+		.item-content .panel-body {
+			height: ~"calc((100vh - 47px - 4 * 46px) / 3)";
+		}
+	}
+	&.panel-height-4 {
+		.item-content .panel-body {
+			height: ~"calc((100vh - 47px - 4 * 46px) / 4)";
 		}
 	}
 }
