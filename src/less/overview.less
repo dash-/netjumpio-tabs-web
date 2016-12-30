@@ -65,8 +65,14 @@
 			margin-bottom: 0;
 
 			.panel-body {
+				padding-left: 0;
+				padding-right: 0;
 				border-bottom-width: 1px;
 				border-bottom-style: solid;
+
+				.cards-list {
+					width: ~"calc(100% - 20px)";
+				}
 			}
 		}
 
@@ -77,8 +83,7 @@
 			.notifications-list-item {
 				position: absolute;
 				top: -15px;
-				left: -15px;
-				width: ~"calc(100% + 30px)";
+				width: 100%;
 			}
 		}
 	}
