@@ -6,6 +6,7 @@ import { fromJS } from 'immutable';
 import isUndefined from 'lodash/isUndefined';
 
 import { matches, keyIn } from '../utils/immutableUtils';
+import addMeta, { ARRAY_INDICATOR } from '../utils/meta';
 
 import * as actions from './actions';
 import * as groupsActions from '../groups/actions';
@@ -87,7 +88,7 @@ function editItemDone(state, action) {
 }
 
 function removeItemDone(state, action) {
-	return addMeta(
+	return addMetaToAll(
 		state.deleteIn(action.payload._meta.keyPath)
 	);
 }
@@ -97,7 +98,7 @@ function restoreItemDone(state, action) {
 	const key = keyPath.last();
 	const listPath = keyPath.skipLast(1).toJS();
 
-	return addMeta(state.updateIn(listPath, list => (
+	return addMetaToAll(state.updateIn(listPath, list => (
 		list.splice(key, 0, fromJS(action.payload))
 	)));
 }
@@ -107,7 +108,7 @@ function restoreItemDone(state, action) {
 // Helpers
 ///
 
-function addMeta(state) {
+function addMetaToAll(state) {
 	return addMetaToTabsets(
 		addMetaToGroups(
 			addMetaToGroupRoles(
@@ -118,61 +119,31 @@ function addMeta(state) {
 }
 
 function addMetaToTabsets(state) {
-	return state.update('tabsets', tabsets => (
-		tabsets.map((tabset, key) => (
-			tabset.set('_meta', fromJS({keyPath: ['tabsets', key]}))
-		))
-	));
+	return addMeta(state, [
+		'tabsets', ARRAY_INDICATOR,
+	]);
 }
 
 function addMetaToGroups(state) {
-	return state.update('groups', groups => (
-		groups.map((group, groupKey) => (
-			group.update('tabsets', tabsets => (
-				tabsets.map((tabset, tabsetKey) => (
-					tabset.set('_meta', fromJS({keyPath: [
-						'groups', groupKey,
-						'tabsets', tabsetKey
-					]}))
-				))
-			))
-		))
-	));
+	return addMeta(state, [
+		'groups', ARRAY_INDICATOR, 
+		'tabsets', ARRAY_INDICATOR,
+	]);
 }
 
 function addMetaToGroupRoles(state) {
-	return state.update('groups', groups => (
-		groups.map((group, groupKey) => (
-			group.update('roles', roles => (
-				roles.map((role, roleKey) => (
-					role.update('tabsets', tabsets => (
-						tabsets.map((tabset, tabsetKey) => (
-							tabset.set('_meta', fromJS({keyPath: [
-								'groups', groupKey,
-								'roles', roleKey,
-								'tabsets', tabsetKey
-							]}))
-						))
-					))
-				))
-			))
-		))
-	));
+	return addMeta(state, [
+		'groups', ARRAY_INDICATOR, 
+		'roles', ARRAY_INDICATOR,
+		'tabsets', ARRAY_INDICATOR
+	]);
 }
 
 function addMetaToRoles(state) {
-	return state.update('roles', roles => (
-		roles.map((role, roleKey) => (
-			role.update('tabsets', tabsets => (
-				tabsets.map((tabset, tabsetKey) => (
-					tabset.set('_meta', fromJS({keyPath: [
-						'roles', roleKey,
-						'tabsets', tabsetKey
-					]}))
-				))
-			))
-		))
-	));
+	return addMeta(state, [
+		'roles', ARRAY_INDICATOR, 
+		'tabsets', ARRAY_INDICATOR,
+	]);
 }
 
 function mergeGroups(state, groups) {
