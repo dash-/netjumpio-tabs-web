@@ -54,7 +54,7 @@ class RolesListView extends Component {
 
 function mapStateToProps(state) {
 	return {
-		roles: state.get('roles'),
+		roles: state.getIn(['roles', 'list']),
 	};
 }
 
