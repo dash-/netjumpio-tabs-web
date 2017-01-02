@@ -36,7 +36,7 @@ class GroupsListView extends Component {
 
 function mapStateToProps(state) {
 	return {
-		groups: state.get('groups'),
+		groups: state.getIn(['groups', 'list']),
 	};
 }
 
