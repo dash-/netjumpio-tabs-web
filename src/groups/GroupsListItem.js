@@ -5,7 +5,11 @@
 import React, { Component } from 'react';
 
 import CardsListItem from '../elements/CardsListItem';
+import ButtonsList from '../elements/ButtonsList';
+import ButtonsListMenu from '../elements/ButtonsListMenu';
+import ButtonsListMenuItem from '../elements/ButtonsListMenuItem';
 
+import * as actions from './actions';
 
 ///
 // View
@@ -23,7 +27,22 @@ class GroupsListItemView extends Component {
 				defaultLogoIcon="id-card"
 				width="2x"
 				horizontal
-			/>
+			>
+				<ButtonsList>
+					<ButtonsListMenu id="groupsItemMenu">
+						<ButtonsListMenuItem
+							icon="pencil"
+							title="Edit"
+							action={actions.editItemPrompt(this.props.item.toJS())}
+						/>
+						<ButtonsListMenuItem
+							icon="times"
+							title="Delete"
+							action={actions.removeItemStart(this.props.item.toJS())}
+						/>
+					</ButtonsListMenu>
+				</ButtonsList>
+			</CardsListItem>
 		);
 	}
 }
