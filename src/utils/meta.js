@@ -4,6 +4,7 @@
 
 import { fromJS } from 'immutable';
 import isArray from 'lodash/isArray';
+import isUndefined from 'lodash/isUndefined';
 import first from 'lodash/first';
 import tail from 'lodash/tail';
 
@@ -26,6 +27,10 @@ const isArrayIndicator = item => (
 const addMeta = (state, pathDescriptor, keyPath=[]) => {
 	if(! isArray(pathDescriptor)) {
 		throw new Error('pathDescriptor must be an array');
+	}
+
+	if(isUndefined(state)) {
+		return state;
 	}
 
 	if(pathDescriptor.length < 1) {
