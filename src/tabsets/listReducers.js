@@ -86,9 +86,11 @@ function getRolesListDone(state, action) {
 }
 
 function addItemDone(state, action) {
-	return addMetaToTabsets(state.update('tabsets', tabsets => (
-		tabsets.push(fromJS(action.payload))
-	)));
+	return addMetaToTabsets(
+		state.update('tabsets', tabsets => (
+			tabsets.push(fromJS(action.payload))
+		))
+	);
 }
 
 function editItemDone(state, action) {
