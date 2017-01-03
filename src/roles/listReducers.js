@@ -2,21 +2,30 @@
 // Dependencies
 ///
 
-import { fromJS, is } from 'immutable';
+import { fromJS } from 'immutable';
 import isUndefined from 'lodash/isUndefined';
-import isObject from 'lodash/isObject';
-import filter from 'lodash/filter';
 
-import { matches, keyIn, init } from '../utils/immutableUtils';
+import { matches, keyIn } from '../utils/immutableUtils';
+import addMeta, { ARRAY_INDICATOR } from '../utils/meta';
 
 import * as actions from './actions';
+
+
+///
+// Default state
+///
+
+const defaultState = fromJS({
+	roles: [],
+	groups: [],
+});
 
 
 ///
 // Reducers
 ///
 
-function root(state = fromJS({}), action) {
+function root(state = defaultState, action) {
 	const handlers = {
 		[actions.GET_LIST_DONE]: getListDone,
 		[actions.ADD_ITEM_DONE]: addItemDone,
@@ -35,36 +44,21 @@ export default root;
 ///
 
 function getListDone(state, action) {
-	const rolesWithGroup = filter(action.payload, item => (
-		isObject(item.group) && ! isUndefined(item.group.id)
-	));
+	const allRoles = fromJS(action.payload);
 
-	state = state.set('groups', toGroupRoles(
-		state, rolesWithGroup
+	return state.set('roles', addMetaToRoles(
+		buildRoles(allRoles)
+	)).set('groups', addMetaToGroups(
+		buildGroups(allRoles)
 	));
-
-	const roles = fromJS(
-		filter(action.payload, item => (
-			! isObject(item.group) || isUndefined(item.group.id)
-		))
-	).map(role => (
-		role.filter(keyIn('id', 'name', 'logoUrl'))
-	));
-
-	return state.set('roles', roles);
 }
 
 function addItemDone(state, action) {
-	const role = fromJS(action.payload);
-	const existingKey = state.get('roles').findKey(item => (
-		is(item.get('id'), role.get('id'))
-	));
-
-	if(! isUndefined(existingKey)) {
-		return state.setIn(['roles', existingKey], role);
-	}
-
-	return state.update('roles', roles => roles.push(role));
+	return addMetaToRoles(
+		state.update('roles', roles => (
+			roles.push(fromJS(action.payload))
+		))
+	);
 }
 
 
@@ -72,29 +66,57 @@ function addItemDone(state, action) {
 // Helpers
 ///
 
-function toGroupRoles(state, rolesWithGroup) {
-	const roles = fromJS(rolesWithGroup);
+function addMetaToRoles(state) {
+	return addMeta(state, [
+		'roles', ARRAY_INDICATOR,
+	]);
+}
 
-	return roles.reduce((reduction, role) => {
-		const group = role.get('group');
-		let groupKey = getGroupKey(reduction, group);
+function addMetaToGroups(state) {
+	return addMeta(state, [
+		'groups', ARRAY_INDICATOR,
+		'roles', ARRAY_INDICATOR,
+	]);
+}
 
-		if(isUndefined(groupKey)) {
-			reduction = reduction.push(
-				group.filter(keyIn('id', 'name'))
-			);
-			groupKey = getGroupKey(reduction, group);
-		}
+function buildRoles(allRoles) {
+	return allRoles.filter(item => (
+		isUndefined(item.getIn(['group', 'id']))
+	)).map(role => (
+		role.filter(keyIn('id', 'name', 'logoUrl'))
+	))
+}
 
-		const rolesPath = [groupKey, 'roles'];
-		reduction = init(reduction, rolesPath, fromJS([]));
+function buildGroups(allRoles) {
+	return allRoles.filter(item => (
+		! isUndefined(item.getIn(['group', 'id']))
+	)).reduce(groupRoleReducer, fromJS([]));
+}
 
-		return reduction.updateIn(rolesPath, roles => (
-			roles.push(
-				role.filter(keyIn('id', 'name', 'logoUrl'))
-			)
-		));
-	}, fromJS([]));
+function groupRoleReducer(reduction, role) {
+	const group = role.get('group');
+	let groupKey = getGroupKey(reduction, group);
+
+	if(isUndefined(groupKey)) {
+		reduction = createGroup(reduction, group);
+		groupKey = getGroupKey(reduction, group);
+	}
+
+	const rolesPath = [groupKey, 'roles'];
+
+	return reduction.updateIn(rolesPath, roles => (
+		roles.push(
+			role.filter(keyIn('id', 'name', 'logoUrl'))
+		)
+	));
+}
+
+function createGroup(state, group) {
+	return state.push(
+		group
+			.filter(keyIn('id', 'name'))
+			.set('roles', fromJS([]))
+	);
 }
 
 function getGroupKey(groups, group) {

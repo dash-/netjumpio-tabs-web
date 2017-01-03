@@ -4,7 +4,6 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import isUndefined from 'lodash/isUndefined';
 
 import CardsList from '../elements/CardsList';
 import CardsListCategory from '../elements/CardsListCategory';
@@ -17,16 +16,12 @@ import RolesListItem from './RolesListItem';
 
 class RolesListView extends Component {
 	renderRoles(roles) {
-		if(isUndefined(roles)) return '';
-
 		return roles.map((item, key) => (
 			<RolesListItem item={item} key={key} />
 		));
 	}
 
 	renderRolesByGroup(groups) {
-		if(isUndefined(groups)) return '';
-
 		return groups.map((item, key) => (
 			<CardsListCategory
 				name={item.get('name')}
