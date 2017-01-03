@@ -2,17 +2,27 @@
 // Dependencies
 ///
 
-import { fromJS, is } from 'immutable';
-import isUndefined from 'lodash/isUndefined';
+import { fromJS } from 'immutable';
+
+import addMeta, { ARRAY_INDICATOR } from '../utils/meta';
 
 import * as actions from './actions';
+
+
+///
+// Default state
+///
+
+const defaultState = fromJS({
+	groups: [],
+});
 
 
 ///
 // Reducers
 ///
 
-function root(state = fromJS([]), action) {
+function root(state = defaultState, action) {
 	const handlers = {
 		[actions.GET_LIST_DONE]: getListDone,
 		[actions.ADD_ITEM_DONE]: addItemDone,
@@ -31,19 +41,26 @@ export default root;
 ///
 
 function getListDone(state, action) {
-	return fromJS(action.payload);
+	const groups = fromJS(action.payload);
+
+	return addMetaToGroups(state.set('groups', groups));
 }
 
 function addItemDone(state, action) {
-	const group = fromJS(action.payload);
-	const existingKey = state.findKey(item => (
-		is(item.get('id'), group.get('id'))
-	));
-
-	if(! isUndefined(existingKey)) {
-		return state.set(existingKey, group);
-	}
-
-	return state.push(group);
+	return addMetaToGroups(
+		state.update('groups', groups => (
+			groups.push(fromJS(action.payload))
+		))
+	);
 }
 
+
+///
+// Helpers
+///
+
+function addMetaToGroups(state) {
+	return addMeta(state, [
+		ARRAY_INDICATOR
+	]);
+}
