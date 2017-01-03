@@ -14,10 +14,21 @@ import * as rolesActions from '../roles/actions';
 
 
 ///
+// Default state
+///
+
+const defaultState = fromJS({
+	tabsets: [],
+	groups: [],
+	roles: [],
+});
+
+
+///
 // Reducers
 ///
 
-function root(state = fromJS({}), action) {
+function root(state = defaultState, action) {
 	const handlers = {
 		[actions.GET_LIST_DONE]: getListDone,
 		[groupsActions.GET_LIST_DONE]: getGroupsListDone,
@@ -147,7 +158,6 @@ function addMetaToRoles(state) {
 }
 
 function mergeGroups(state, groups) {
-	state = initGroups(state);
 	state = deleteGroupsKeys(state, 'tabsets');
 
 	groups.forEach(group => {
@@ -166,7 +176,6 @@ function mergeGroups(state, groups) {
 }
 
 function mergeGroupRoles(state, roles) {
-	state = initGroups(state);
 	state = deleteGroupsKeys(state, 'roles');
 
 	roles.forEach(role => {
@@ -180,8 +189,6 @@ function mergeGroupRoles(state, roles) {
 			groupKey = getGroupKey(state, group);
 		}
 
-		state = initGroupRoles(state, groupKey);
-
 		let roleKey = getGroupRoleKey(state, groupKey, role);
 
 		if(roleKey) {
@@ -192,11 +199,6 @@ function mergeGroupRoles(state, roles) {
 	});
 
 	return state;
-}
-
-function initGroups(state) {
-	if(state.get('groups')) return state;
-	return state.set('groups', fromJS([]));
 }
 
 function deleteGroupsKeys(state, ...keysToDelete) {
@@ -213,7 +215,11 @@ function getGroupKey(state, group) {
 
 function createGroup(state, group) {
 	return state.update('groups', groups => (
-		groups.push(group)
+		groups.push(
+			group
+				.set('roles', fromJS([]))
+				.set('tabsets', fromJS([]))
+		)
 	));
 }
 
@@ -224,13 +230,6 @@ function updateGroup(state, groupKey, group) {
 			['groups', groupKey, 'tabsets'],
 			group.get('tabsets')
 		)
-	);
-}
-
-function initGroupRoles(state, groupKey) {
-	if(state.getIn(['groups', groupKey, 'roles'])) return state;
-	return state.setIn(
-		['groups', groupKey, 'roles'], fromJS([])
 	);
 }
 

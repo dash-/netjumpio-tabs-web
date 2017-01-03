@@ -4,7 +4,6 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import isUndefined from 'lodash/isUndefined';
 
 import CardsList from '../elements/CardsList';
 import CardsListCategory from '../elements/CardsListCategory';
@@ -17,16 +16,12 @@ import TabsetsListItem from './TabsetsListItem';
 
 class TabsetsListView extends Component {
 	renderTabsets(tabsets) {
-		if(isUndefined(tabsets)) return '';
-
 		return tabsets.map((item, key) => (
 			<TabsetsListItem item={item} key={key} />
 		));
 	}
 
 	renderTabsetsByRole(roles, groupName) {
-		if(isUndefined(roles)) return '';
-
 		return roles.map((item, key) => (
 			<CardsListCategory
 				name={(groupName ? groupName + ' - ' : '') + item.get('name')}
@@ -38,13 +33,12 @@ class TabsetsListView extends Component {
 	}
 
 	renderTabsetsByGroup(groups) {
-		if(isUndefined(groups)) return '';
-
 		return groups.map((item, key) => (
 			<CardsListCategory
 				name={item.get('name')}
 				key={key}
 			>
+				{console.log(item.toJS())}
 				{this.renderTabsets(item.get('tabsets'))}
 				{this.renderTabsetsByRole(item.get('roles'), item.get('name'))}
 			</CardsListCategory>
@@ -69,7 +63,7 @@ class TabsetsListView extends Component {
 
 function mapStateToProps(state) {
 	return {
-		tabsets: state.get('tabsets').get('list'),
+		tabsets: state.getIn(['tabsets', 'list']),
 	};
 }
 
