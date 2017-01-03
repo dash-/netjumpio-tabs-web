@@ -146,7 +146,7 @@ function addMetaToGroupRoles(state) {
 	return addMeta(state, [
 		'groups', ARRAY_INDICATOR, 
 		'roles', ARRAY_INDICATOR,
-		'tabsets', ARRAY_INDICATOR
+		'tabsets', ARRAY_INDICATOR,
 	]);
 }
 
@@ -158,15 +158,17 @@ function addMetaToRoles(state) {
 }
 
 function mergeGroups(state, groups) {
-	state = deleteGroupsKeys(state, 'tabsets');
+	state = state.update('groups', groups => (
+		groups.map(group => (
+			group.set('tabsets', fromJS([]))
+		))
+	));
 
 	groups.forEach(group => {
 		const groupKey = getGroupKey(state, group);
 
 		if(isUndefined(groupKey)) {
-			state = createGroup(
-				state, group.filter(keyIn('id', 'name', 'tabsets'))
-			);
+			state = createGroup(state, group);
 		} else {
 			state = updateGroup(state, groupKey, group);
 		}
@@ -176,16 +178,18 @@ function mergeGroups(state, groups) {
 }
 
 function mergeGroupRoles(state, roles) {
-	state = deleteGroupsKeys(state, 'roles');
+	state = state.update('groups', groups => (
+		groups.map(group => (
+			group.set('roles', fromJS([]))
+		))
+	));
 
 	roles.forEach(role => {
 		const group = role.get('group');
 		let groupKey = getGroupKey(state, group);
 
 		if(isUndefined(groupKey)) {
-			state = createGroup(
-				state, group.filter(keyIn('id', 'name'))
-			);
+			state = createGroup(state, group);
 			groupKey = getGroupKey(state, group);
 		}
 
@@ -201,12 +205,6 @@ function mergeGroupRoles(state, roles) {
 	return state;
 }
 
-function deleteGroupsKeys(state, ...keysToDelete) {
-	return state.set('groups', state.get('groups').map(group => (
-		group.filterNot(keyIn.apply({}, keysToDelete))
-	)));
-}
-
 function getGroupKey(state, group) {
 	return state.get('groups').findKey(matches({
 		id: group.get('id')
@@ -214,12 +212,15 @@ function getGroupKey(state, group) {
 }
 
 function createGroup(state, group) {
+	group = group
+		.filter(keyIn('id', 'name', 'tabsets'))
+		.set('roles', fromJS([]))
+		.update('tabsets', tabsets => (
+			isUndefined(tabsets) ? fromJS([]) : tabsets
+		));
+
 	return state.update('groups', groups => (
-		groups.push(
-			group
-				.set('roles', fromJS([]))
-				.set('tabsets', fromJS([]))
-		)
+		groups.push(group)
 	));
 }
 
@@ -227,8 +228,7 @@ function updateGroup(state, groupKey, group) {
 	return (state
 		.setIn(['groups', groupKey, 'name'], group.get('name'))
 		.setIn(
-			['groups', groupKey, 'tabsets'],
-			group.get('tabsets')
+			['groups', groupKey, 'tabsets'], group.get('tabsets')
 		)
 	);
 }

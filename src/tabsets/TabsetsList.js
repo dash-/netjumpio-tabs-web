@@ -38,7 +38,6 @@ class TabsetsListView extends Component {
 				name={item.get('name')}
 				key={key}
 			>
-				{console.log(item.toJS())}
 				{this.renderTabsets(item.get('tabsets'))}
 				{this.renderTabsetsByRole(item.get('roles'), item.get('name'))}
 			</CardsListCategory>
