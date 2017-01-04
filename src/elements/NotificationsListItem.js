@@ -10,7 +10,6 @@ import isFunction from 'lodash/isFunction';
 import assign from 'lodash/assign';
 import omit from 'lodash/omit';
 
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { InlineNotification } from 'react-redux-notifications-immutable';
 import { hide } from 'react-redux-notifications-immutable/dist-modules/notifications.redux';
 import Alert from 'react-bootstrap/lib/Alert';
@@ -30,7 +29,6 @@ class NotificationsListItemView extends Component {
 		super(props);
 
 		this.dismiss = this.dismiss.bind(this);
-		this.renderContainer = this.renderContainer.bind(this);
 		this.renderNotification = this.renderNotification.bind(this);
 	}
 
@@ -92,31 +90,20 @@ class NotificationsListItemView extends Component {
 	// Rendering
 	///
 
-	renderMessage(notification) {
+	renderMessage(notification, dismiss) {
 		if(isFunction(this.props.renderMessage)) {
-			return this.props.renderMessage(notification);
+			return this.props.renderMessage(notification, dismiss);
 		}
 
 		return this.props.message || this.props.defaultMessage || '';
-	}
-
-	renderContainer(notifications) {
-		// TODO Does not work right: feat/cr-26
-		return (
-			<ReactCSSTransitionGroup
-				transitionName='alert'
-				transitionEnterTimeout={200}
-				transitionLeaveTimeout={500}
-			>
-				{notifications}
-			</ReactCSSTransitionGroup>
-		);
 	}
 
 	renderNotification(notification) {
 		const trigger = notification.trigger;
 		const key = notification.key;
 		const type = this.getValidType(this.props.type);
+		const dismiss = this.dismiss(trigger, key);
+
 		return (
 			<Alert
 				key={notification.key}
@@ -127,10 +114,10 @@ class NotificationsListItemView extends Component {
 					{this.getTitle(this.props.title, type)}
 				</strong>
 				&nbsp;
-				{this.renderMessage(notification)}
+				{this.renderMessage(notification, dismiss)}
 				{this.props.children}
 				<span className="dismiss">
-					<button onClick={this.dismiss(trigger, key)}>
+					<button onClick={dismiss}>
 						<Icon name="times" />
 					</button>
 				</span>
@@ -168,7 +155,6 @@ class NotificationsListItemView extends Component {
 		let props = assign({
 			hideAfter: 4000,
 			renderNotification: this.renderNotification,
-			renderContainer: this.renderContainer,
 		}, omit(this.props, [
 			'defaultMessage', 'message', 'showDismiss',
 			'renderNotification', 'renderContainer',

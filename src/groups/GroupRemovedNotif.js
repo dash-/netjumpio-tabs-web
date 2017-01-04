@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import Button from 'react-bootstrap/lib/Button';
 
 import NotificationsListItem from '../elements/NotificationsListItem';
+import NotificationMessage from '../elements/NotificationMessage';
 import NotificationButtons from '../elements/NotificationButtons';
 
 import * as actions from './actions';
@@ -34,10 +35,11 @@ class GroupRemovedNotifView extends Component {
 	// Event handlers
 	///
 
-	restoreItem(item) {
-		return () => (
-			this.props.restoreItem(item)
-		);
+	restoreItem(item, dismiss) {
+		return () => {
+			this.props.restoreItem(item);
+			dismiss();
+		};
 	}
 
 
@@ -45,21 +47,21 @@ class GroupRemovedNotifView extends Component {
 	// Rendering
 	///
 
-	renderMessage(notification) {
+	renderMessage(notification, dismiss) {
 		const name = notification.trigger.payload.name;
 		const item = notification.trigger.payload;
 		return (
-			<span>
+			<NotificationMessage>
 				Group "{name}" removed.
 				<NotificationButtons>
 					<Button
 						bsStyle="success"
-						onClick={this.restoreItem(item)}
+						onClick={this.restoreItem(item, dismiss)}
 					>
 						Undo
 					</Button>
 				</NotificationButtons>
-			</span>
+			</NotificationMessage>
 		);
 	}
 
