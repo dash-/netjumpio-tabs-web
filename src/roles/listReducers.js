@@ -29,6 +29,9 @@ function root(state = defaultState, action) {
 	const handlers = {
 		[actions.GET_LIST_DONE]: getListDone,
 		[actions.ADD_ITEM_DONE]: addItemDone,
+		[actions.EDIT_ITEM_DONE]: editItemDone,
+		[actions.REMOVE_ITEM_DONE]: removeItemDone,
+		[actions.RESTORE_ITEM_DONE]: restoreItemDone,
 		default: (state) => state,
 	};
 
@@ -46,11 +49,11 @@ export default root;
 function getListDone(state, action) {
 	const allRoles = fromJS(action.payload);
 
-	return state.set('roles', addMetaToRoles(
-		buildRoles(allRoles)
-	)).set('groups', addMetaToGroups(
-		buildGroups(allRoles)
-	));
+	return addMetaToAll(
+		state
+			.set('roles', buildRoles(allRoles))
+			.set('groups', buildGroups(allRoles))
+	);
 }
 
 function addItemDone(state, action) {
@@ -61,10 +64,39 @@ function addItemDone(state, action) {
 	);
 }
 
+function editItemDone(state, action) {
+	return state.setIn(
+		action.payload._meta.keyPath,
+		fromJS(action.payload)
+	);
+}
+
+function removeItemDone(state, action) {
+	return addMetaToAll(
+		state.deleteIn(action.payload._meta.keyPath)
+	);
+}
+
+function restoreItemDone(state, action) {
+	const keyPath = fromJS(action.payload._meta.keyPath);
+	const key = keyPath.last();
+	const listPath = keyPath.skipLast(1).toJS();
+
+	return addMetaToAll(state.updateIn(listPath, list => (
+		list.splice(key, 0, fromJS(action.payload))
+	)));
+}
+
 
 ///
 // Helpers
 ///
+
+function addMetaToAll(state) {
+	return addMetaToRoles(
+		addMetaToGroups(state)
+	);
+}
 
 function addMetaToRoles(state) {
 	return addMeta(state, [

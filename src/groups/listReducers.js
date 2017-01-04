@@ -26,6 +26,9 @@ function root(state = defaultState, action) {
 	const handlers = {
 		[actions.GET_LIST_DONE]: getListDone,
 		[actions.ADD_ITEM_DONE]: addItemDone,
+		[actions.EDIT_ITEM_DONE]: editItemDone,
+		[actions.REMOVE_ITEM_DONE]: removeItemDone,
+		[actions.RESTORE_ITEM_DONE]: restoreItemDone,
 		default: (state) => state,
 	};
 
@@ -54,13 +57,40 @@ function addItemDone(state, action) {
 	);
 }
 
+function editItemDone(state, action) {
+	return state.setIn(
+		action.payload._meta.keyPath,
+		fromJS(action.payload)
+	);
+}
+
+function removeItemDone(state, action) {
+	return addMetaToAll(
+		state.deleteIn(action.payload._meta.keyPath)
+	);
+}
+
+function restoreItemDone(state, action) {
+	const keyPath = fromJS(action.payload._meta.keyPath);
+	const key = keyPath.last();
+	const listPath = keyPath.skipLast(1).toJS();
+
+	return addMetaToAll(state.updateIn(listPath, list => (
+		list.splice(key, 0, fromJS(action.payload))
+	)));
+}
+
 
 ///
 // Helpers
 ///
 
+function addMetaToAll(state) {
+	return addMetaToGroups(state);
+}
+
 function addMetaToGroups(state) {
 	return addMeta(state, [
-		ARRAY_INDICATOR
+		'groups', ARRAY_INDICATOR,
 	]);
 }
