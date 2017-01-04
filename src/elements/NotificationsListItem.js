@@ -34,6 +34,7 @@ class NotificationsListItemView extends Component {
 		this.renderNotification = this.renderNotification.bind(this);
 	}
 
+
 	///
 	// Methods
 	///
@@ -74,6 +75,11 @@ class NotificationsListItemView extends Component {
 
 		return typeBsClassMap[type];
 	}
+
+
+	///
+	// Event handlers
+	///
 
 	dismiss(trigger, key) {
 		return () => (
