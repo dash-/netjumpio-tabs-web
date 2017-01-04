@@ -46,7 +46,7 @@ class RoleRemovedNotifView extends Component {
 	///
 
 	renderMessage(notification) {
-		const name = notification.trigger.payload.url;
+		const name = notification.trigger.payload.name;
 		const item = notification.trigger.payload;
 		return (
 			<span>
