@@ -2,9 +2,8 @@
 // Dependencies
 ///
 
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import includes from 'lodash/includes';
 import isUndefined from 'lodash/isUndefined';
 import isFunction from 'lodash/isFunction';
 import assign from 'lodash/assign';
@@ -36,17 +35,6 @@ class NotificationsListItemView extends Component {
 	///
 	// Methods
 	///
-
-	getValidType(type) {
-		const validTypes = ['success', 'info', 'warning', 'error'];
-		const defaultType = 'info';
-
-		if(includes(validTypes, type)) {
-			return type;
-		}
-
-		return defaultType;
-	}
 
 	getTitle(title, type) {
 		if(! isUndefined(title)) {
@@ -101,7 +89,7 @@ class NotificationsListItemView extends Component {
 	renderNotification(notification) {
 		const trigger = notification.trigger;
 		const key = notification.key;
-		const type = this.getValidType(this.props.type);
+		const type = this.props.type || 'info';
 		const dismiss = this.dismiss(trigger, key);
 
 		return (
@@ -171,6 +159,20 @@ class NotificationsListItemView extends Component {
 		);
 	}
 }
+
+NotificationsListItemView.propTypes = assign(
+	{}, InlineNotification.propTypes, {
+		renderMessage: PropTypes.func,
+		message: PropTypes.node,
+		defaultMessage: PropTypes.node,
+		type: PropTypes.oneOf([
+			'success', 'info', 'warning', 'error'
+		]),
+		title: PropTypes.node,
+		dismiss: PropTypes.func.isRequired,
+		children: PropTypes.node,
+	}
+);
 
 
 ///

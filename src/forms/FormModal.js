@@ -2,8 +2,10 @@
 // Dependencies
 ///
 
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+
+import * as types from './types';
 
 import FormModal from '../elements/FormModal';
 import * as actions from './actions';
@@ -58,6 +60,17 @@ class ManagedFormModalView extends Component {
 		);
 	}
 }
+
+ManagedFormModalView.propTypes = {
+	name: PropTypes.string.isRequired,
+	initForm: PropTypes.func.isRequired,
+	hideForm: PropTypes.func.isRequired,
+	submitForm: PropTypes.func.isRequired,
+	forms: types.Forms,
+	title: PropTypes.string,
+	form: PropTypes.func,
+	children: PropTypes.node,
+};
 
 
 ///

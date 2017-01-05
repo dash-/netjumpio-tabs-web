@@ -2,7 +2,8 @@
 // Dependencies
 ///
 
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
+import ImmutablePropTypes from 'react-immutable-proptypes';
 import isString from 'lodash/isString';
 
 import Icon from './Icon';
@@ -60,6 +61,16 @@ class ItemPanelHeaderView extends Component {
 		);
 	}
 }
+
+ItemPanelHeaderView.propTypes = {
+	defaultLogoIcon: PropTypes.node,
+	category: PropTypes.node,
+	item: ImmutablePropTypes.contains({
+		logoUrl: PropTypes.string,
+		name: PropTypes.string,
+	}).isRequired,
+	children: PropTypes.node,
+};
 
 export default ItemPanelHeaderView;
 

@@ -2,14 +2,14 @@
 // Dependencies
 ///
 
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 
 ///
 // View
 ///
 
-export default class NoWrapEllipseView extends Component {
+class NoWrapEllipseView extends Component {
 	render() {
 		return (
 			<div className="text-nowrap overflow-ellipse">
@@ -19,3 +19,8 @@ export default class NoWrapEllipseView extends Component {
 	}
 }
 
+NoWrapEllipseView.propTypes = {
+	children: PropTypes.node,
+};
+
+export default NoWrapEllipseView;

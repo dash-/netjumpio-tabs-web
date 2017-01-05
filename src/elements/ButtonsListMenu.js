@@ -25,4 +25,6 @@ class ButtonsListMenuView extends Component {
 	}
 }
 
+ButtonsListMenuView.propTypes = IconMenu.propTypes;
+
 export default ButtonsListMenuView;

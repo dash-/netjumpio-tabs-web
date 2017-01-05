@@ -2,8 +2,9 @@
 // Dependencies
 ///
 
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
+import * as types from './types';
 
 ///
 // View
@@ -32,5 +33,10 @@ class TabsetLink extends Component {
 		);
 	}
 }
+
+TabsetLink.propTypes = {
+	tabset: types.Item.isRequired,
+	children: PropTypes.node,
+};
 
 export default TabsetLink;

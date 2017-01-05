@@ -5,6 +5,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import * as types from './types';
+
 import CardsList from '../elements/CardsList';
 import PeopleListItem from './PeopleListItem';
 
@@ -28,6 +30,10 @@ class PeopleListView extends Component {
 		);
 	}
 }
+
+PeopleListView.propTypes = {
+	people: types.List.isRequired,
+};
 
 
 ///

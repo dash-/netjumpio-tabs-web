@@ -2,7 +2,7 @@
 // Dependencies
 ///
 
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
 
 
@@ -37,6 +37,18 @@ class CardsListItemTitleView extends Component {
 		);
 	}
 }
+
+CardsListItemTitleView.propTypes = {
+	lines: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.number,
+	]),
+	className: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.object,
+	]),
+	children: PropTypes.node,
+};
 
 export default CardsListItemTitleView;
 

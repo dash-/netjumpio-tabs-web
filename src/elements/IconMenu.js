@@ -2,7 +2,7 @@
 // Dependencies
 ///
 
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import Icon from 'react-fontawesome';
 import assign from 'lodash/assign';
 import omit from 'lodash/omit';
@@ -31,5 +31,10 @@ class IconMenuView extends Component {
 		return React.createElement(DropdownButton, props, this.props.children);
 	}
 }
+
+IconMenuView.propTypes = assign({}, DropdownButton.propTypes, {
+	icon: PropTypes.string,
+  title: PropTypes.node,
+});
 
 export default IconMenuView;

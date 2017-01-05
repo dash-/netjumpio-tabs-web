@@ -5,6 +5,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import * as types from './types';
+
 import CardsList from '../elements/CardsList';
 import CardsListCategory from '../elements/CardsListCategory';
 import RolesListItem from './RolesListItem';
@@ -41,6 +43,10 @@ class RolesListView extends Component {
 		);
 	}
 }
+
+RolesListView.propTypes = {
+	roles: types.List.isRequired,
+};
 
 
 ///

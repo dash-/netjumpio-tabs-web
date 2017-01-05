@@ -2,7 +2,7 @@
 // Dependencies
 ///
 
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 import * as tabsetsActions from '../tabsets/actions';
@@ -30,6 +30,13 @@ class InitializerView extends Component {
 		);
 	}
 }
+
+InitializerView.propTypes = {
+	getTabsets: PropTypes.func.isRequired,
+	getPeople: PropTypes.func.isRequired,
+	getGroups: PropTypes.func.isRequired,
+	getRoles: PropTypes.func.isRequired,
+};
 
 
 ///

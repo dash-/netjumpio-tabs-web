@@ -2,7 +2,7 @@
 // Dependencies
 ///
 
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 
 ///
@@ -22,5 +22,9 @@ class ScrollableView extends Component {
 		);
 	}
 }
+
+ScrollableView.propTypes = {
+	children: PropTypes.node.isRequired,
+};
 
 export default ScrollableView;

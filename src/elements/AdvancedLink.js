@@ -2,7 +2,7 @@
 // Dependencies
 ///
 
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import { hasProtocol } from '../utils/urlUtils';
 
@@ -37,5 +37,11 @@ class AdvancedLink extends Component {
 		return this.renderRouterLink(this.props.to);
 	}
 }
+
+AdvancedLink.propTypes = {
+	target: PropTypes.string,
+	to: PropTypes.string.isRequired,
+	children: PropTypes.node.isRequired,
+};
 
 export default AdvancedLink;

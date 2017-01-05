@@ -2,8 +2,11 @@
 // Dependencies
 ///
 
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { fromJS } from 'immutable';
+
+import * as types from './types';
 
 import Button from 'react-bootstrap/lib/Button';
 
@@ -82,7 +85,7 @@ class TabsetsItemView extends Component {
 	}
 
 	renderTabsSection() {
-		let tabs = [];
+		let tabs = fromJS([]);
 		const item = this.props.item;
 
 		if(item && item.get && item.get('tabs')) {
@@ -118,6 +121,17 @@ class TabsetsItemView extends Component {
 	}
 }
 
+TabsetsItemView.propTypes = {
+	item: types.Item.isRequired,
+	params: PropTypes.shape({
+		id: PropTypes.oneOfType([
+			PropTypes.string,
+			PropTypes.number,
+		]).isRequired,
+	}).isRequired,
+	getItem: PropTypes.func.isRequired,
+};
+
 
 ///
 // Container
@@ -125,7 +139,7 @@ class TabsetsItemView extends Component {
 
 function mapStateToProps(state) {
 	return {
-		item: state.get('tabsets').get('item'),
+		item: state.getIn(['tabsets', 'item']),
 	};
 }
 

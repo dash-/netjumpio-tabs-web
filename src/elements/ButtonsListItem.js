@@ -2,7 +2,7 @@
 // Dependencies
 ///
 
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 import Icon from 'react-fontawesome';
@@ -36,6 +36,14 @@ class ButtonsListItemView extends Component {
 	}
 }
 
+ButtonsListItemView.propTypes = {
+	onClick: PropTypes.func,
+	dispatchAction: PropTypes.func,
+	action: PropTypes.object,
+	icon: PropTypes.string,
+	children: PropTypes.node,
+};
+
 
 ///
 // Container
@@ -43,7 +51,7 @@ class ButtonsListItemView extends Component {
 
 function mapStateToProps(state) {
 	return {
-		tabsets: state.get('tabsets').get('list'),
+		tabsets: state.getIn(['tabsets', 'list']),
 	};
 }
 

@@ -2,9 +2,11 @@
 // Dependencies
 ///
 
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import isUndefined from 'lodash/isUndefined';
+
+import * as formsTypes from '../forms/types';
 
 import FormModal from '../forms/FormModal';
 
@@ -48,6 +50,11 @@ class TabsFormModalView extends Component {
 		);
 	}
 }
+
+TabsFormModalView.propTypes = {
+	forms: formsTypes.Forms.isRequired,
+	children: PropTypes.node,
+};
 
 
 ///

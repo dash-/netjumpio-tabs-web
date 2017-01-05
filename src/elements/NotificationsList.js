@@ -2,7 +2,7 @@
 // Dependencies
 ///
 
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 
 ///
@@ -18,5 +18,9 @@ class NotificationsListView extends Component {
 		);
 	}
 }
+
+NotificationsListView.propTypes = {
+	children: PropTypes.node,
+};
 
 export default NotificationsListView;

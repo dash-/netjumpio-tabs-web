@@ -2,20 +2,21 @@
 // Dependencies
 ///
 
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
 import FontAwesome from 'react-fontawesome';
 import isObject from 'lodash/isObject';
 import flow from 'lodash/fp/flow';
-import omit from 'lodash/fp/omit';
-import assign from 'lodash/fp/assign';
+import flowOmit from 'lodash/fp/omit';
+import flowAssign from 'lodash/fp/assign';
+import assign from 'lodash/assign';
 
 
 ///
 // View
 ///
 
-export default class Icon extends Component {
+class IconView extends Component {
 	getName(name) {
 		if(! isObject(name)) {
 			return name;
@@ -37,12 +38,24 @@ export default class Icon extends Component {
 		const className = this.getClassName(this.props.className);
 
 		const props = flow(
-			omit(['name', 'className']),
-			assign({name: name}),
-			assign(className ? {className} : {})
+			flowOmit(['name', 'className']),
+			flowAssign({name: name}),
+			flowAssign(className ? {className} : {})
 		)(this.props);
 		
 		return React.createElement(FontAwesome, props);
 	}
 }
 
+IconView.propTypes = assign({}, FontAwesome.propTypes, {
+	name: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.object,
+	]).isRequired,
+	className: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.object,
+	]),
+});
+
+export default IconView;

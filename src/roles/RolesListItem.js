@@ -4,6 +4,8 @@
 
 import React, { Component } from 'react';
 
+import * as types from './types';
+
 import CardsListItem from '../elements/CardsListItem';
 import ButtonsList from '../elements/ButtonsList';
 import ButtonsListMenu from '../elements/ButtonsListMenu';
@@ -46,6 +48,10 @@ class RolesListItemView extends Component {
 		);
 	}
 }
+
+RolesListItemView.propTypes = {
+	item: types.ListItem,
+};
 
 export default RolesListItemView;
 

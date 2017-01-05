@@ -4,6 +4,8 @@
 
 import React, { Component } from 'react';
 
+import * as types from './types';
+
 import CardsListItem from '../elements/CardsListItem';
 
 
@@ -27,6 +29,10 @@ class PeopleListItemView extends Component {
 		);
 	}
 }
+
+PeopleListItemView.propTypes = {
+	item: types.ListItem,
+};
 
 export default PeopleListItemView;
 

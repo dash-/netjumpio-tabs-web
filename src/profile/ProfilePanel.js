@@ -2,8 +2,11 @@
 // Dependencies
 ///
 
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+
+import * as types from './types';
+import * as userTypes from '../user/types';
 
 import Icon from 'react-fontawesome';
 import Button from 'react-bootstrap/lib/Button';
@@ -101,6 +104,13 @@ class ProfilePanelView extends Component {
 		);
 	}
 }
+
+ProfilePanelView.propTypes = {
+		user: userTypes.User.isRequired,
+		profile: types.Profile.isRequired,
+		signOut: PropTypes.func.isRequired,
+		dismiss: PropTypes.func.isRequired,
+};
 
 
 ///

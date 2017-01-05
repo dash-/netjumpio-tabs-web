@@ -7,6 +7,8 @@ import { connect } from 'react-redux';
 import assign from 'lodash/assign';
 import omit from 'lodash/omit';
 
+import * as types from './types';
+
 import FormControl from 'react-bootstrap/lib/FormControl';
 
 import * as actions from './actions';
@@ -47,6 +49,13 @@ ManagedFormControlView.contextTypes = {
 	formName: PropTypes.string.isRequired,
 };
 
+ManagedFormControlView.propTypes = assign(
+	{}, FormControl.propTypes, {
+		name: PropTypes.string.isRequired,
+		fieldChanged: PropTypes.func.isRequired,
+		forms: types.Forms.isRequired,
+	}
+);
 
 
 ///

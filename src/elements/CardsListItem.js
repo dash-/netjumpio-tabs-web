@@ -2,7 +2,8 @@
 // Dependencies
 ///
 
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
+import ImmutablePropTypes from 'react-immutable-proptypes';
 import classNames from 'classnames';
 
 import CardsListItemTitle from './CardsListItemTitle';
@@ -71,6 +72,22 @@ class CardsListItemView extends Component {
 		);
 	}
 }
+
+CardsListItemView.propTypes = {
+	width: PropTypes.oneOfType([
+		PropTypes.number,
+		PropTypes.string,
+	]),
+	horizontal: PropTypes.bool,
+	alt: PropTypes.string,
+	altIcon: PropTypes.node,
+	item: ImmutablePropTypes.contains({
+		href: PropTypes.string.isRequired,
+		logoUrl: PropTypes.string,
+		name: PropTypes.string,
+	}).isRequired,
+	children: PropTypes.node,
+};
 
 export default CardsListItemView;
 

@@ -2,7 +2,7 @@
 // Dependencies
 ///
 
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 import Icon from 'react-fontawesome';
@@ -54,6 +54,15 @@ class ButtonsListMenuItemView extends Component {
 		);
 	}
 }
+
+ButtonsListMenuItemView.propTypes = {
+	onClick: PropTypes.func,
+	dispatchAction: PropTypes.func,
+	action: PropTypes.object,
+	icon: PropTypes.string,
+	eventKey: PropTypes.string,
+	title: PropTypes.string,
+};
 
 
 ///

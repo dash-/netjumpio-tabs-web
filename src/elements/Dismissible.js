@@ -2,7 +2,7 @@
 // Dependencies
 ///
 
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 
 ///
@@ -58,5 +58,11 @@ class Dismissible extends Component {
 		);
 	}
 }
+
+Dismissible.propTypes = {
+	rootId: PropTypes.string,
+	onDismiss: PropTypes.func.isRequired,
+	children: PropTypes.node.isRequired,
+};
 
 export default Dismissible;

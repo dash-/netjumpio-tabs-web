@@ -2,7 +2,7 @@
 // Dependencies
 ///
 
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import Icon from './Icon';
 
 
@@ -29,5 +29,10 @@ class ExpanderButton extends Component {
 	}
 }
 
+ExpanderButton.propTypes = {
+	expanded: PropTypes.bool,
+	disabled: PropTypes.bool,
+	onClick: PropTypes.func.isRequired,
+};
 
 export default ExpanderButton;

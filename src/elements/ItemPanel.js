@@ -2,7 +2,7 @@
 // Dependencies
 ///
 
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
 
 
@@ -23,6 +23,15 @@ class ItemPanelView extends Component {
 		);
 	}
 }
+
+ItemPanelView.propTypes = {
+	className: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.object,
+	]),
+	item: PropTypes.node,
+	children: PropTypes.node,
+};
 
 export default ItemPanelView;
 

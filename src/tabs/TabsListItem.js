@@ -4,6 +4,8 @@
 
 import React, { Component } from 'react';
 
+import * as types from './types';
+
 import { keyIn } from '../utils/immutableUtils';
 import * as urlUtils from '../utils/urlUtils';
 
@@ -77,6 +79,10 @@ class TabsListItemView extends Component {
 		);
 	}
 }
+
+TabsListItemView.propTypes = {
+	tab: types.ListItem.isRequired,
+};
 
 export default TabsListItemView;
 

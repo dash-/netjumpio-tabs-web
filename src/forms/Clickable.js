@@ -2,7 +2,7 @@
 // Dependencies
 ///
 
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import assign from 'lodash/assign';
 import classNames from 'classnames';
 
@@ -26,6 +26,14 @@ class ClickableView extends Component {
 		);
 	}
 }
+
+ClickableView.propTypes = {
+	className: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.object,
+	]),
+	children: PropTypes.node.isRequired,
+};
 
 export default ClickableView;
 

@@ -2,7 +2,7 @@
 // Dependencies
 ///
 
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 
 ///
@@ -18,5 +18,9 @@ class ItemPanelSectionView extends Component {
 		);
 	}
 }
+
+ItemPanelSectionView.propTypes = {
+	children: PropTypes.node.isRequired,
+};
 
 export default ItemPanelSectionView;

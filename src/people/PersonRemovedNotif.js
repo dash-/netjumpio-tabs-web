@@ -2,7 +2,7 @@
 // Dependencies
 ///
 
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 import Button from 'react-bootstrap/lib/Button';
@@ -73,6 +73,10 @@ class PersonRemovedNotifView extends Component {
 		);
 	}
 }
+
+PersonRemovedNotifView.propTypes = {
+	restoreItem: PropTypes.func.isRequired,
+};
 
 
 ///

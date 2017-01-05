@@ -5,6 +5,8 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
+import * as types from './types';
+
 import * as actions from './actions';
 
 
@@ -63,6 +65,20 @@ class ManagedHiddenFormControlView extends Component {
 
 ManagedHiddenFormControlView.contextTypes = {
 	formName: PropTypes.string.isRequired,
+};
+
+ManagedHiddenFormControlView.propTypes = {
+	value: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.bool,
+		PropTypes.func,
+		PropTypes.number,
+		PropTypes.object,
+		PropTypes.string,
+	]),
+	name: PropTypes.string.isRequired,
+	fieldChanged: PropTypes.func.isRequired,
+	forms: types.Forms,
 };
 
 

@@ -4,6 +4,8 @@
 
 import React, { Component } from 'react';
 
+import * as types from './types';
+
 import CardsList from '../elements/CardsList';
 
 import TabsListItem from './TabsListItem';
@@ -19,7 +21,7 @@ class TabsListView extends Component {
 	///
 
 	renderTabsListItems() {
-		const tabs = this.props.tabs || [];
+		const tabs = this.props.tabs;
 
 		return tabs.map((tab, key) => (
 			<TabsListItem tab={tab} key={key} />
@@ -34,6 +36,10 @@ class TabsListView extends Component {
 		);
 	}
 }
+
+TabsListView.propTypes = {
+	tabs: types.List.isRequired,
+};
 
 export default TabsListView;
 

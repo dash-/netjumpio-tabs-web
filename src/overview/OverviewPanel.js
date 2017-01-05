@@ -6,6 +6,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 
+import * as types from './types';
+
 import TabSetsLogo from '../elements/TabSetsLogo';
 
 import OverviewPanelItem from './OverviewPanelItem';
@@ -136,6 +138,10 @@ class OverviewPanelView extends Component {
 		);
 	}
 }
+
+OverviewPanelView.propTypes = {
+	overview: types.Overview,
+};
 
 
 ///

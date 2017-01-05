@@ -9,6 +9,8 @@ import omit from 'lodash/omit';
 import isUndefined from 'lodash/isUndefined';
 import classNames from 'classnames';
 
+import * as types from './types';
+
 import Dropzone from 'react-dropzone';
 import Spinner from 'react-spinner';
 
@@ -113,6 +115,18 @@ FormImagiconView.contextTypes = {
 	formName: PropTypes.string.isRequired,
 };
 
+FormImagiconView.propTypes = assign(
+	{}, Imagicon.propTypes, {
+		name: PropTypes.string.isRequired,
+		uploadImage: PropTypes.func.isRequired,
+		className: PropTypes.oneOfType([
+			PropTypes.string,
+			PropTypes.object,
+		]),
+		forms: types.Forms,
+		children: PropTypes.node,
+	}
+);
 
 
 ///

@@ -75,7 +75,16 @@ ManagedFormView.childContextTypes = {
 	formName: PropTypes.string,
 };
 
-
+ManagedFormView.propTypes = {
+	name: PropTypes.string.isRequired,
+	initForm: PropTypes.func.isRequired,
+	submitForm: PropTypes.func.isRequired,
+	className: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.object,
+	]),
+	children: PropTypes.node.isRequired,
+};
 
 
 ///

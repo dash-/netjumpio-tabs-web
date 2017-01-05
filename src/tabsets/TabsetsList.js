@@ -5,6 +5,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import * as types from './types';
+
 import CardsList from '../elements/CardsList';
 import CardsListCategory from '../elements/CardsListCategory';
 import TabsetsListItem from './TabsetsListItem';
@@ -54,6 +56,10 @@ class TabsetsListView extends Component {
 		);
 	}
 }
+
+TabsetsListView.propTypes = {
+	tabsets: types.List.isRequired,
+};
 
 
 ///

@@ -2,7 +2,7 @@
 // Dependencies
 ///
 
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 
 ///
@@ -21,6 +21,11 @@ class CardsListCategoryView extends Component {
 		);
 	}
 }
+
+CardsListCategoryView.propTypes = {
+	name: PropTypes.node.isRequired,
+	children: PropTypes.node,
+};
 
 export default CardsListCategoryView;
 

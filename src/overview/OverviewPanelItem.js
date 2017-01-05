@@ -2,10 +2,12 @@
 // Dependencies
 ///
 
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 import isString from 'lodash/isString';
+
+import * as types from './types';
 
 import Panel from 'react-bootstrap/lib/Panel';
 import Button from 'react-bootstrap/lib/Button';
@@ -120,6 +122,20 @@ class OverviewPanelItemView extends Component {
 		);
 	}
 }
+
+OverviewPanelItemView.propTypes = {
+	name: PropTypes.string.isRequired,
+	icon: PropTypes.node,
+	title: PropTypes.node.isRequired,
+	selected: PropTypes.string,
+	notifications: PropTypes.node,
+	overview: types.Overview,
+	toggleItem: PropTypes.func.isRequired,
+	selectItem:  PropTypes.func.isRequired,
+	clearForm:  PropTypes.func.isRequired,
+	showForm:  PropTypes.func.isRequired,
+	children: PropTypes.node,
+};
 
 
 ///

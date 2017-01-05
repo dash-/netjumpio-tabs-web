@@ -2,7 +2,7 @@
 // Dependencies
 ///
 
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 import NotificationsList from './NotificationsList';
 
@@ -22,5 +22,9 @@ class PanelNotificationsView extends Component {
 		);
 	}
 }
+
+PanelNotificationsView.propTypes = {
+	children: PropTypes.node,
+};
 
 export default PanelNotificationsView;

@@ -2,7 +2,7 @@
 // Dependencies
 ///
 
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import assign from 'lodash/assign';
 import omit from 'lodash/omit';
 import isString from 'lodash/isString';
@@ -99,6 +99,16 @@ class ImagiconView extends Component {
 		return React.createElement('div', props, this.renderContents());
 	}
 }
+
+ImagiconView.propTypes = {
+	size: PropTypes.string,
+	text: PropTypes.node,
+	className: PropTypes.string,
+	src: PropTypes.string,
+	alt: PropTypes.string,
+	altIcon: PropTypes.node,
+	children: PropTypes.node,
+};
 
 export default ImagiconView;
 

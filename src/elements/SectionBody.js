@@ -2,7 +2,7 @@
 // Dependencies
 ///
 
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 
 ///
@@ -18,5 +18,9 @@ class SectionBodyView extends Component {
 		);
 	}
 }
+
+SectionBodyView.propTypes = {
+	children: PropTypes.node.isRequired,
+};
 
 export default SectionBodyView;

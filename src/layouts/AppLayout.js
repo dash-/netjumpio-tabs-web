@@ -2,10 +2,12 @@
 // Dependencies
 ///
 
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 import * as userTools from '../user/tools';
+import * as userTypes from '../user/types';
+import * as initTypes from '../init/types';
 
 import Col from 'react-bootstrap/lib/Col';
 
@@ -80,6 +82,12 @@ class AppLayoutView extends Component {
     );
   }
 }
+
+AppLayoutView.propTypes = {
+	user: userTypes.User.isRequired,
+	init: initTypes.Init.isRequired,
+	children: PropTypes.node,
+};
 
 
 ///

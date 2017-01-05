@@ -2,7 +2,7 @@
 // Dependencies
 ///
 
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 import FormGroup from 'react-bootstrap/lib/FormGroup';
 import ControlLabel from 'react-bootstrap/lib/ControlLabel';
@@ -51,6 +51,10 @@ class TabsFormView extends Component {
 		);
 	}
 }
+
+TabsFormView.propTypes = {
+	children: PropTypes.node,
+};
 
 export default TabsFormView;
 
