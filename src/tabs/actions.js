@@ -41,16 +41,20 @@ export function getWebpageInfoStart(url) {
 	return {type: GET_WEBPAGE_INFO_START, payload: url};
 }
 
-export function getWebpageInfoFail(err) {
-	return {type: GET_WEBPAGE_INFO_FAIL, payload: err};
+export function getWebpageInfoFail(error, action) {
+	return {type: GET_WEBPAGE_INFO_FAIL, payload: {
+		error, action
+	}};
 }
 
 export function addItemStart(tabsetId, tab) {
 	return {type: ADD_ITEM_START, payload: tab, aux: {tabsetId}};
 }
 
-export function addItemFail(err) {
-	return {type: ADD_ITEM_FAIL, payload: err};
+export function addItemFail(error, action) {
+	return {type: ADD_ITEM_FAIL, payload: {
+		error, action
+	}};
 }
 
 export function addItemDone(tab) {
@@ -65,8 +69,10 @@ export function editItemStart(tab) {
 	return {type: EDIT_ITEM_START, payload: tab};
 }
 
-export function editItemFail(err) {
-	return {type: EDIT_ITEM_FAIL, payload: err};
+export function editItemFail(error, action) {
+	return {type: EDIT_ITEM_FAIL, payload: {
+		error, action
+	}};
 }
 
 export function editItemDone(tab) {
@@ -77,8 +83,10 @@ export function removeItemStart(tab) {
 	return {type: REMOVE_ITEM_START, payload: tab};
 }
 
-export function removeItemFail(err) {
-	return {type: REMOVE_ITEM_FAIL, payload: err};
+export function removeItemFail(error, action) {
+	return {type: REMOVE_ITEM_FAIL, payload: {
+		error, action
+	}};
 }
 
 export function removeItemDone(tab) {
@@ -89,8 +97,10 @@ export function restoreItemStart(tab) {
 	return {type: RESTORE_ITEM_START, payload: tab};
 }
 
-export function restoreItemFail(err) {
-	return {type: RESTORE_ITEM_FAIL, payload: err};
+export function restoreItemFail(error, action) {
+	return {type: RESTORE_ITEM_FAIL, payload: {
+		error, action
+	}};
 }
 
 export function restoreItemDone(tab) {

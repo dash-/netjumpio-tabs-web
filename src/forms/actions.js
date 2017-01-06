@@ -92,11 +92,9 @@ export function uploadImageStart(formName, fieldName, image) {
 	}};
 }
 
-export function uploadImageFail(formName, fieldName, err) {
+export function uploadImageFail(error, action) {
 	return {type: FORM_IMAGE_UPLOAD_FAIL, payload: {
-		form: formName,
-		field: fieldName,
-		error: err,
+		error, action
 	}};
 }
 

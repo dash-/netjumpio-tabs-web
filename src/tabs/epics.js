@@ -38,6 +38,8 @@ const getWebpageInfo = (action$, store) => (
 				formsActions.initFormData('tabs', {
 					values: payload,
 				})
+			)).catch(error => (
+				Observable.of(actions.getWebpageInfoFail(error, action))
 			))
 		))
 );
@@ -71,6 +73,8 @@ const addItem = (action$, store) => (
 				Observable.of(formsActions.formSubmitDone('tabs')),
 				Observable.of(formsActions.clearFormValues('tabs')),
 				Observable.of(actions.addItemDone(payload))
+			)).catch(error => (
+				Observable.of(actions.addItemFail(error, action))
 			))
 		))
 );
@@ -98,6 +102,8 @@ const editItem = (action$, store) => (
 				Observable.of(formsActions.formSubmitDone('tabs')),
 				Observable.of(formsActions.clearFormValues('tabs')),
 				Observable.of(actions.editItemDone(payload))
+			)).catch(error => (
+				Observable.of(actions.editItemFail(error, action))
 			))
 		))
 );
@@ -110,8 +116,10 @@ const removeItem = (action$, store) => (
 					accessToken: store.getState().getIn(['user', 'accessToken']),
 				}).destroyById(action.payload.id)
 			).flatMap(payload => Observable.of(
-				actions.removeItemDone(action.payload))
-			)
+				actions.removeItemDone(action.payload)
+			)).catch(error => (
+				Observable.of(actions.removeItemFail(error, action))
+			))
 		))
 );
 
@@ -126,8 +134,10 @@ const restoreItem = (action$, store) => (
 					accessToken: store.getState().getIn(['user', 'accessToken']),
 				})
 			).flatMap(payload => Observable.of(
-				actions.restoreItemDone(payload))
-			)
+				actions.restoreItemDone(payload)
+			)).catch(error => (
+				Observable.of(actions.restoretemFail(error, action))
+			))
 		))
 );
 

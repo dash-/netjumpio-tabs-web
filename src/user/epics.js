@@ -32,6 +32,8 @@ const login = (action$, store) => (
 			).flatMap(payload => Observable.concat(
 				Observable.of(formsActions.formSubmitDone('login', payload)),
 				Observable.of(actions.loginDone(payload))
+			)).catch(error => (
+				Observable.of(actions.loginFail(error, action))
 			))
 		))
 );
@@ -43,7 +45,11 @@ const logout = (action$, store) => (
 				api.createUserClient('people').logout(
 					store.getState().getIn(['user', 'accessToken']),
 				)
-			).map(payload => actions.logoutDone(payload))
+			).map(payload => (
+				actions.logoutDone(payload)
+			)).catch(error => (
+				Observable.of(actions.logoutFail(error, action))
+			))
 		))
 );
 

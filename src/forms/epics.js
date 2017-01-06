@@ -19,13 +19,13 @@ import * as actions from './actions';
 const submitForm = (action$, store) => (
 	action$.ofType(actions.FORM_SUBMIT_START)
 		.debounceTime(50)
-		.switchMap(action => (Observable.of(
-			actions.delegateFormSubmit(
+		.switchMap(action => (
+			Observable.of(actions.delegateFormSubmit(
 				action.payload,
 				store.getState().getIn(['forms', action.payload, 'values']).toJS(),
 				store.getState().getIn(['forms', action.payload, 'aux']).toJS(),
-			)
-		)))
+			))
+		))
 );
 
 const submitFormDone = (action$, store) => (
@@ -39,8 +39,8 @@ const submitFormDone = (action$, store) => (
 const uploadImageStart = (action$, store) => (
 	action$.ofType(actions.FORM_IMAGE_UPLOAD_START)
 		.debounceTime(50)
-		.switchMap(action => {
-			return Observable.fromPromise(
+		.switchMap(action => (
+			Observable.fromPromise(
 				axios.post(imageUploadConfig.url, toFormData({
 					upload_preset: imageUploadConfig.preset,
 					file: action.payload.image,
@@ -51,8 +51,13 @@ const uploadImageStart = (action$, store) => (
 					action.payload.field,
 					payload.data.secure_url
 				))
+			)).catch(error => (
+				Observable.of(actions.uploadImageFail(
+					error,
+					action,
+				))
 			))
-		})
+		))
 );
 
 

@@ -28,8 +28,10 @@ export function loginStart(credentials) {
 	return {type: LOGIN_START, payload: credentials};
 }
 
-export function loginFail(err) {
-	return {type: LOGIN_FAIL, payload: err};
+export function loginFail(error, action) {
+	return {type: LOGIN_FAIL, payload: {
+		error, action
+	}};
 }
 
 export function loginDone(login) {
@@ -40,8 +42,10 @@ export function logoutStart() {
 	return {type: LOGOUT_START};
 }
 
-export function logoutFail(err) {
-	return {type: LOGOUT_FAIL, payload: err};
+export function logoutFail(error, action) {
+	return {type: LOGOUT_FAIL, payload: {
+		error, action
+	}};
 }
 
 export function logoutDone() {

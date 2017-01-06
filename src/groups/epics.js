@@ -29,7 +29,11 @@ const getList = (action$, store) => (
 				}).find({
 					include: ['tabsets', {roles: ['tabsets']}],
 				})
-			).map(payload => actions.getListDone(payload))
+			).map(payload => (
+				actions.getListDone(payload)
+			)).catch(error => (
+				Observable.of(actions.getListFail(error, action))
+			))
 		))
 );
 
@@ -62,6 +66,8 @@ const addItem = (action$, store) => (
 				Observable.of(formsActions.formSubmitDone('groups')),
 				Observable.of(formsActions.clearFormValues('groups')),
 				Observable.of(actions.addItemDone(payload))
+			)).catch(error => (
+				Observable.of(actions.addItemFail(error, action))
 			))
 		))
 );
@@ -89,6 +95,8 @@ const editItem = (action$, store) => (
 				Observable.of(formsActions.formSubmitDone('groups')),
 				Observable.of(formsActions.clearFormValues('groups')),
 				Observable.of(actions.editItemDone(action.payload))
+			)).catch(error => (
+				Observable.of(actions.editItemFail(error, action))
 			))
 		))
 );
@@ -101,8 +109,10 @@ const removeItem = (action$, store) => (
 					accessToken: store.getState().getIn(['user', 'accessToken']),
 				}).destroyById(action.payload.id)
 			).flatMap(payload => Observable.of(
-				actions.removeItemDone(action.payload))
-			)
+				actions.removeItemDone(action.payload)
+			)).catch(error => (
+				Observable.of(actions.removeItemFail(error, action))
+			))
 		))
 );
 
@@ -117,8 +127,10 @@ const restoreItem = (action$, store) => (
 					accessToken: store.getState().getIn(['user', 'accessToken']),
 				})
 			).flatMap(payload => Observable.of(
-				actions.restoreItemDone(action.payload))
-			)
+				actions.restoreItemDone(action.payload)
+			)).catch(error => (
+				Observable.of(actions.restoreItemFail(error, action))
+			))
 		))
 );
 

@@ -45,8 +45,10 @@ export function getListStart() {
 	return {type: GET_LIST_START};
 }
 
-export function getListFail(err) {
-	return {type: GET_LIST_FAIL, payload: err};
+export function getListFail(error, action) {
+	return {type: GET_LIST_FAIL, payload: {
+		error, action
+	}};
 }
 
 export function getListDone(list) {
@@ -57,8 +59,10 @@ export function getItemStart(id) {
 	return {type: GET_ITEM_START, payload: id};
 }
 
-export function getItemFail(err) {
-	return {type: GET_ITEM_FAIL, payload: err};
+export function getItemFail(error, action) {
+	return {type: GET_ITEM_FAIL, payload: {
+		error, action
+	}};
 }
 
 export function getItemDone(item) {
@@ -69,8 +73,10 @@ export function addItemStart(item) {
 	return {type: ADD_ITEM_START, payload: item};
 }
 
-export function addItemFail(err) {
-	return {type: ADD_ITEM_FAIL, payload: err};
+export function addItemFail(error, action) {
+	return {type: ADD_ITEM_FAIL, payload: {
+		error, action
+	}};
 }
 
 export function addItemDone(item) {
@@ -85,8 +91,10 @@ export function editItemStart(item) {
 	return {type: EDIT_ITEM_START, payload: item};
 }
 
-export function editItemFail(err) {
-	return {type: EDIT_ITEM_FAIL, payload: err};
+export function editItemFail(error, action) {
+	return {type: EDIT_ITEM_FAIL, payload: {
+		error, action
+	}};
 }
 
 export function editItemDone(item) {
@@ -97,8 +105,10 @@ export function removeItemStart(item) {
 	return {type: REMOVE_ITEM_START, payload: item};
 }
 
-export function removeItemFail(err) {
-	return {type: REMOVE_ITEM_FAIL, payload: err};
+export function removeItemFail(error, action) {
+	return {type: REMOVE_ITEM_FAIL, payload: {
+		error, action
+	}};
 }
 
 export function removeItemDone(item) {
@@ -109,8 +119,10 @@ export function restoreItemStart(item) {
 	return {type: RESTORE_ITEM_START, payload: item};
 }
 
-export function restoreItemFail(err) {
-	return {type: RESTORE_ITEM_FAIL, payload: err};
+export function restoreItemFail(error, action) {
+	return {type: RESTORE_ITEM_FAIL, payload: {
+		error, action
+	}};
 }
 
 export function restoreItemDone(item) {

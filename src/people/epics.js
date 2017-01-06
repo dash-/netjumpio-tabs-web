@@ -41,7 +41,11 @@ const getList = (action$, store) => (
 						includes(fromIds, person.id)
 					)));
 				}
-			).map(payload => actions.getListDone(payload))
+			).map(payload => (
+				actions.getListDone(payload)
+			)).catch(error => (
+				Observable.of(actions.getListFail(error, action))
+			))
 		))
 );
 
@@ -62,6 +66,8 @@ const saveItem = (action$, store) => (
 			).flatMap(payload => Observable.concat(
 				Observable.of(formsActions.formSubmitDone('people')),
 				Observable.of(actions.addItemDone(payload))
+			)).catch(error => (
+				Observable.of(actions.addItemFail(error, action))
 			))
 		))
 );
