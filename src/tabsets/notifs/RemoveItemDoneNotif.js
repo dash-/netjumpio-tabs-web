@@ -7,18 +7,18 @@ import { connect } from 'react-redux';
 
 import Button from 'react-bootstrap/lib/Button';
 
-import NotificationsListItem from '../elements/NotificationsListItem';
-import NotificationMessage from '../elements/NotificationMessage';
-import NotificationButtons from '../elements/NotificationButtons';
+import NotificationsListItem from '../../elements/NotificationsListItem';
+import NotificationMessage from '../../elements/NotificationMessage';
+import NotificationButtons from '../../elements/NotificationButtons';
 
-import * as actions from './actions';
+import * as actions from '../actions';
 
 
 ///
 // View
 ///
 
-class TabsetRemovedNotifView extends Component {
+class RemoveItemDoneNotifView extends Component {
 	///
 	// Construction
 	///
@@ -76,7 +76,7 @@ class TabsetRemovedNotifView extends Component {
 	}
 }
 
-TabsetRemovedNotifView.propTypes = {
+RemoveItemDoneNotifView.propTypes = {
 	restoreItem: PropTypes.func.isRequired,
 };
 
@@ -100,5 +100,5 @@ const connector = connect(
 	mapDispatchToProps
 );
 
-export default connector(TabsetRemovedNotifView);
+export default connector(RemoveItemDoneNotifView);
 

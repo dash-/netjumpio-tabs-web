@@ -4,8 +4,8 @@
 
 import React, { Component } from 'react';
 
-import PanelNotifications from '../elements/PanelNotifications';
-import TabsetRemovedNotif from './TabsetRemovedNotif';
+import PanelNotifications from '../../elements/PanelNotifications';
+import RemoveItemDoneNotif from './RemoveItemDoneNotif';
 
 
 ///
@@ -20,7 +20,7 @@ class TabsetsListNotifsView extends Component {
 	render() {
 		return (
 			<PanelNotifications>
-				<TabsetRemovedNotif />
+				<RemoveItemDoneNotif />
 			</PanelNotifications>
 		);
 	}

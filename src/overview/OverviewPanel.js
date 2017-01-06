@@ -23,10 +23,10 @@ import PeopleForm from '../people/PeopleForm';
 import RolesForm from '../roles/RolesForm';
 import TabsetsForm from '../tabsets/TabsetsForm';
 
-import TabsetsListNotifs from '../tabsets/TabsetsListNotifs';
-import PeopleListNotifs from '../people/PeopleListNotifs';
-import GroupsListNotifs from '../groups/GroupsListNotifs';
-import RolesListNotifs from '../roles/RolesListNotifs';
+import TabsetsListNotifs from '../tabsets/notifs/TabsetsListNotifs';
+import PeopleListNotifs from '../people/notifs/PeopleListNotifs';
+import GroupsListNotifs from '../groups/notifs/GroupsListNotifs';
+import RolesListNotifs from '../roles/notifs/RolesListNotifs';
 
 
 ///

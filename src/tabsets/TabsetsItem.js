@@ -15,7 +15,6 @@ import Icon from '../elements/Icon';
 import TabSetsLogo from '../elements/TabSetsLogo';
 import ItemPanel from '../elements/ItemPanel';
 import ItemPanelHeader from '../elements/ItemPanelHeader';
-import ItemPanelNotifications from '../elements/ItemPanelNotifications';
 import ItemPanelSection from '../elements/ItemPanelSection';
 import SectionHeader from '../elements/SectionHeader';
 import SectionBody from '../elements/SectionBody';
@@ -23,7 +22,7 @@ import TabsForm from '../tabs/TabsForm';
 import TabsFormModal from '../tabs/TabsFormModal';
 import TabsList from '../tabs/TabsList';
 import TabsUrlForm from '../tabs/TabsUrlForm';
-import TabRemovedNotif from '../tabs/TabRemovedNotif';
+import TabsetsItemNotifs from './notifs/TabsetsItemNotifs';
 import TabsetLink from './TabsetLink';
 
 import * as actions from './actions';
@@ -76,14 +75,6 @@ class TabsetsItemView extends Component {
 		);
 	}
 
-	renderNotifications() {
-		return (
-			<ItemPanelNotifications>
-				<TabRemovedNotif />
-			</ItemPanelNotifications>
-		);
-	}
-
 	renderTabsSection() {
 		let tabs = fromJS([]);
 		const item = this.props.item;
@@ -114,7 +105,7 @@ class TabsetsItemView extends Component {
 		return (
 			<ItemPanel className="tabsets-item-panel" item={this.props.item}>
 				{this.renderHeader()}
-				{this.renderNotifications()}
+				<TabsetsItemNotifs />
 				{this.renderTabsSection()}
 			</ItemPanel>
 		);

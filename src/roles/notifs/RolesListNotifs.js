@@ -4,8 +4,8 @@
 
 import React, { Component } from 'react';
 
-import PanelNotifications from '../elements/PanelNotifications';
-import RoleRemovedNotif from './RoleRemovedNotif';
+import PanelNotifications from '../../elements/PanelNotifications';
+import RemoveItemDoneNotif from './RemoveItemDoneNotif';
 
 
 ///
@@ -20,7 +20,7 @@ class RolesListNotifsView extends Component {
 	render() {
 		return (
 			<PanelNotifications>
-				<RoleRemovedNotif />
+				<RemoveItemDoneNotif />
 			</PanelNotifications>
 		);
 	}

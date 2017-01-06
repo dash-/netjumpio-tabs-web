@@ -7,17 +7,18 @@ import { connect } from 'react-redux';
 
 import Button from 'react-bootstrap/lib/Button';
 
-import NotificationsListItem from '../elements/NotificationsListItem';
-import NotificationButtons from '../elements/NotificationButtons';
+import NotificationsListItem from '../../elements/NotificationsListItem';
+import NotificationMessage from '../../elements/NotificationMessage';
+import NotificationButtons from '../../elements/NotificationButtons';
 
-import * as actions from './actions';
+import * as actions from '../actions';
 
 
 ///
 // View
 ///
 
-class PersonRemovedNotifView extends Component {
+class RemoveItemDoneNotifView extends Component {
 	///
 	// Construction
 	///
@@ -34,10 +35,11 @@ class PersonRemovedNotifView extends Component {
 	// Event handlers
 	///
 
-	restoreItem(item) {
-		return () => (
-			this.props.restoreItem(item)
-		);
+	restoreItem(item, dismiss) {
+		return () => {
+			this.props.restoreItem(item);
+			dismiss();
+		};
 	}
 
 
@@ -45,21 +47,21 @@ class PersonRemovedNotifView extends Component {
 	// Rendering
 	///
 
-	renderMessage(notification) {
-		const name = notification.trigger.payload.url;
+	renderMessage(notification, dismiss) {
+		const name = notification.trigger.payload.name;
 		const item = notification.trigger.payload;
 		return (
-			<span>
-				Person "{name}" removed.
+			<NotificationMessage>
+				Group "{name}" removed.
 				<NotificationButtons>
 					<Button
 						bsStyle="success"
-						onClick={this.restoreItem(item)}
+						onClick={this.restoreItem(item, dismiss)}
 					>
 						Undo
 					</Button>
 				</NotificationButtons>
-			</span>
+			</NotificationMessage>
 		);
 	}
 
@@ -74,7 +76,7 @@ class PersonRemovedNotifView extends Component {
 	}
 }
 
-PersonRemovedNotifView.propTypes = {
+RemoveItemDoneNotifView.propTypes = {
 	restoreItem: PropTypes.func.isRequired,
 };
 
@@ -98,5 +100,5 @@ const connector = connect(
 	mapDispatchToProps
 );
 
-export default connector(PersonRemovedNotifView);
+export default connector(RemoveItemDoneNotifView);
 

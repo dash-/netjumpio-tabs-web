@@ -4,8 +4,8 @@
 
 import React, { Component } from 'react';
 
-import PanelNotifications from '../elements/PanelNotifications';
-import GroupRemovedNotif from './GroupRemovedNotif';
+import PanelNotifications from '../../elements/PanelNotifications';
+import RemoveItemDoneNotif from './RemoveItemDoneNotif';
 
 
 ///
@@ -20,7 +20,7 @@ class GroupsListNotifsView extends Component {
 	render() {
 		return (
 			<PanelNotifications>
-				<GroupRemovedNotif />
+				<RemoveItemDoneNotif />
 			</PanelNotifications>
 		);
 	}
