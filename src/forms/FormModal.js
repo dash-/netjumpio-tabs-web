@@ -54,6 +54,7 @@ class ManagedFormModalView extends Component {
 				show={isFormVisible}
 				onClose={this.closeForm}
 				onSave={this.saveForm}
+				className={this.props.className}
 			>
 				{this.renderForm()}
 			</FormModal>
@@ -63,12 +64,16 @@ class ManagedFormModalView extends Component {
 
 ManagedFormModalView.propTypes = {
 	name: PropTypes.string.isRequired,
+	title: PropTypes.string,
+	className: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.object,
+	]),
+	form: PropTypes.func,
 	initForm: PropTypes.func.isRequired,
 	hideForm: PropTypes.func.isRequired,
 	submitForm: PropTypes.func.isRequired,
 	forms: types.Forms,
-	title: PropTypes.string,
-	form: PropTypes.func,
 	children: PropTypes.node,
 };
 
