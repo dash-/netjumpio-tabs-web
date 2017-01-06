@@ -2,7 +2,7 @@
 // Dependencies
 ///
 
-import React, { Component, PropTypes } from 'react';
+import { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 import * as types from './types';
@@ -14,7 +14,7 @@ import * as actions from './actions';
 // View
 ///
 
-class ManagedHiddenFormControlView extends Component {
+class AuxDataView extends Component {
 	///
 	// Hooks
 	///
@@ -38,14 +38,7 @@ class ManagedHiddenFormControlView extends Component {
 		const formName = this.context.formName;
 		const fieldName = this.props.name;
 
-		this.props.fieldChanged(formName, fieldName, value);
-	}
-
-	getStateValue() {
-		const keyPath = [
-			this.context.formName, 'auxValues', this.props.name
-		];
-		return this.props.forms.getIn(keyPath, '');
+		this.props.auxFieldChanged(formName, fieldName, value);
 	}
 
 
@@ -54,20 +47,15 @@ class ManagedHiddenFormControlView extends Component {
 	///
 
 	render() {
-		return (
-			<input
-				type="hidden" 
-				value={this.getStateValue()}
-			/>
-		);
+		return null;
 	}
 }
 
-ManagedHiddenFormControlView.contextTypes = {
+AuxDataView.contextTypes = {
 	formName: PropTypes.string.isRequired,
 };
 
-ManagedHiddenFormControlView.propTypes = {
+AuxDataView.propTypes = {
 	value: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.bool,
@@ -77,7 +65,7 @@ ManagedHiddenFormControlView.propTypes = {
 		PropTypes.string,
 	]),
 	name: PropTypes.string.isRequired,
-	fieldChanged: PropTypes.func.isRequired,
+	auxFieldChanged: PropTypes.func.isRequired,
 	forms: types.Forms,
 };
 
@@ -94,7 +82,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-		fieldChanged: (form, field, value) => dispatch(
+		auxFieldChanged: (form, field, value) => dispatch(
 			actions.auxFieldChanged(form, field, value)
 		),
   };
@@ -105,5 +93,5 @@ const connector = connect(
   mapDispatchToProps
 );
 
-export default connector(ManagedHiddenFormControlView);
+export default connector(AuxDataView);
 
