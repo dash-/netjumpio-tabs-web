@@ -123,6 +123,8 @@ TabsetsItemView.propTypes = {
 	getItem: PropTypes.func.isRequired,
 };
 
+export { TabsetsItemView };
+
 
 ///
 // Container

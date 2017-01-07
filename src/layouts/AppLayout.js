@@ -89,6 +89,8 @@ AppLayoutView.propTypes = {
 	children: PropTypes.node,
 };
 
+export { AppLayoutView };
+
 
 ///
 // Container

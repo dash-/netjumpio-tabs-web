@@ -15,7 +15,7 @@ import * as actions from './actions';
 // View
 ///
 
-class ManagedFormView extends Component {
+class FormView extends Component {
 	///
 	// Hooks
 	///
@@ -71,11 +71,11 @@ class ManagedFormView extends Component {
 	}
 }
 
-ManagedFormView.childContextTypes = {
+FormView.childContextTypes = {
 	formName: PropTypes.string,
 };
 
-ManagedFormView.propTypes = {
+FormView.propTypes = {
 	name: PropTypes.string.isRequired,
 	initForm: PropTypes.func.isRequired,
 	submitForm: PropTypes.func.isRequired,
@@ -85,6 +85,8 @@ ManagedFormView.propTypes = {
 	]),
 	children: PropTypes.node.isRequired,
 };
+
+export { FormView };
 
 
 ///
@@ -107,5 +109,5 @@ const connector = connect(
   mapDispatchToProps
 );
 
-export default connector(ManagedFormView);
+export default connector(FormView);
 

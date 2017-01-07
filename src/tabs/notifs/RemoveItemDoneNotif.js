@@ -80,6 +80,8 @@ RemoveItemDoneNotifView.propTypes = {
 	restoreItem: PropTypes.func.isRequired,
 };
 
+export { RemoveItemDoneNotifView };
+
 
 ///
 // Container

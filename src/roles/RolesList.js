@@ -48,6 +48,8 @@ RolesListView.propTypes = {
 	roles: types.List.isRequired,
 };
 
+export { RolesListView };
+
 
 ///
 // Container

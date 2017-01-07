@@ -128,6 +128,8 @@ FormImagiconView.propTypes = assign(
 	}
 );
 
+export { FormImagiconView };
+
 
 ///
 // Container

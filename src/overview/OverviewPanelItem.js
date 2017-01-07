@@ -137,6 +137,8 @@ OverviewPanelItemView.propTypes = {
 	children: PropTypes.node,
 };
 
+export { OverviewPanelItemView };
+
 
 ///
 // Container

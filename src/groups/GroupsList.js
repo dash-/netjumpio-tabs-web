@@ -35,6 +35,8 @@ GroupsListView.propTypes = {
 	groups: types.List.isRequired,
 };
 
+export { GroupsListView };
+
 
 ///
 // Container

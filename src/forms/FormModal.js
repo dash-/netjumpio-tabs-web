@@ -15,7 +15,7 @@ import * as actions from './actions';
 // View
 ///
 
-class ManagedFormModalView extends Component {
+class FormModalView extends Component {
 	constructor(props) {
 		super(props);
 
@@ -62,7 +62,7 @@ class ManagedFormModalView extends Component {
 	}
 }
 
-ManagedFormModalView.propTypes = {
+FormModalView.propTypes = {
 	name: PropTypes.string.isRequired,
 	title: PropTypes.string,
 	className: PropTypes.oneOfType([
@@ -76,6 +76,8 @@ ManagedFormModalView.propTypes = {
 	forms: types.Forms,
 	children: PropTypes.node,
 };
+
+export { FormModalView };
 
 
 ///
@@ -101,5 +103,5 @@ const connector = connect(
   mapDispatchToProps
 );
 
-export default connector(ManagedFormModalView);
+export default connector(FormModalView);
 

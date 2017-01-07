@@ -61,6 +61,8 @@ TabsetsListView.propTypes = {
 	tabsets: types.List.isRequired,
 };
 
+export { TabsetsListView };
+
 
 ///
 // Container

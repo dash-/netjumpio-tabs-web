@@ -35,6 +35,8 @@ InitializerView.propTypes = {
 	dispatch: PropTypes.func.isRequired,
 };
 
+export { InitializerView };
+
 
 ///
 // Container

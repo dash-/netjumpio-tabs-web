@@ -35,6 +35,8 @@ PeopleListView.propTypes = {
 	people: types.List.isRequired,
 };
 
+export { PeopleListView };
+
 
 ///
 // Container

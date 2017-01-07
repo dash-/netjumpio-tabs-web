@@ -18,7 +18,7 @@ import * as actions from './actions';
 // View
 ///
 
-class ManagedFormControlView extends Component {
+class FormControlView extends Component {
 	constructor(props) {
 		super(props);
 
@@ -45,17 +45,19 @@ class ManagedFormControlView extends Component {
 	}
 }
 
-ManagedFormControlView.contextTypes = {
+FormControlView.contextTypes = {
 	formName: PropTypes.string.isRequired,
 };
 
-ManagedFormControlView.propTypes = assign(
+FormControlView.propTypes = assign(
 	{}, FormControl.propTypes, {
 		name: PropTypes.string.isRequired,
 		fieldChanged: PropTypes.func.isRequired,
 		forms: types.Forms.isRequired,
 	}
 );
+
+export { FormControlView };
 
 
 ///
@@ -81,5 +83,5 @@ const connector = connect(
   mapDispatchToProps
 );
 
-export default connector(ManagedFormControlView);
+export default connector(FormControlView);
 

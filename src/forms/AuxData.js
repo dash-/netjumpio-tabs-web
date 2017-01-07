@@ -69,6 +69,8 @@ AuxDataView.propTypes = {
 	forms: types.Forms,
 };
 
+export { AuxDataView };
+
 
 ///
 // Container

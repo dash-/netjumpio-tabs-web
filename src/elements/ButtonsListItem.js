@@ -44,6 +44,8 @@ ButtonsListItemView.propTypes = {
 	children: PropTypes.node,
 };
 
+export { ButtonsListItemView };
+
 
 ///
 // Container

@@ -64,6 +64,8 @@ ButtonsListMenuItemView.propTypes = {
 	title: PropTypes.string,
 };
 
+export { ButtonsListMenuItemView };
+
 
 ///
 // Container

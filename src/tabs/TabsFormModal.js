@@ -56,6 +56,8 @@ TabsFormModalView.propTypes = {
 	children: PropTypes.node,
 };
 
+export { TabsFormModalView };
+
 
 ///
 // Container

@@ -93,6 +93,8 @@ FailRetryNotifView.defaultProps = {
 	hideAfter: 15000,
 };
 
+export { FailRetryNotifView };
+
 
 ///
 // Container

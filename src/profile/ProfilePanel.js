@@ -112,6 +112,8 @@ ProfilePanelView.propTypes = {
 		dismiss: PropTypes.func.isRequired,
 };
 
+export { ProfilePanelView };
+
 
 ///
 // Container

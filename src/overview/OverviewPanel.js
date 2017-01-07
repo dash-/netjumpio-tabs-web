@@ -143,6 +143,8 @@ OverviewPanelView.propTypes = {
 	overview: types.Overview,
 };
 
+export { OverviewPanelView };
+
 
 ///
 // Container

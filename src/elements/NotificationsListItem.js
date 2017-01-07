@@ -174,6 +174,8 @@ NotificationsListItemView.propTypes = assign(
 	}
 );
 
+export { NotificationsListItemView };
+
 
 ///
 // Container

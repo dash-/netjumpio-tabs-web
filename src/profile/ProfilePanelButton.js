@@ -76,6 +76,8 @@ ProfilePanelButtonView.propTypes = {
 	toggleProfilePanel: PropTypes.func.isRequired,
 };
 
+export { ProfilePanelButtonView };
+
 
 ///
 // Container
