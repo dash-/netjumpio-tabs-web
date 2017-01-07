@@ -9,6 +9,9 @@ import ControlLabel from 'react-bootstrap/lib/ControlLabel';
 import FormControl from '../forms/FormControl';
 
 import Form from '../forms/Form';
+import FormBody from '../forms/FormBody';
+
+import PeopleFormNotifs from './notifs/PeopleFormNotifs';
 
 
 ///
@@ -18,24 +21,27 @@ import Form from '../forms/Form';
 class PeopleFormView extends Component {
 	render() {
 		return (
-			<Form name="people" className="people-form">
-				<FormGroup controlId="nameField">
-					<ControlLabel>Full Name</ControlLabel>
-					<FormControl
-						name="name"
-						type="text"
-						placeholder="John L.M. Doe Jr."
-					/>
-				</FormGroup>
-				<FormGroup controlId="logoUrlField">
-					<ControlLabel>Logo URL</ControlLabel>
-					<FormControl
-						name="logoUrl"
-						type="text"
-						placeholder="https://www.example.com/icon.png"
-					/>
-				</FormGroup>
-			</Form>
+			<FormBody>
+				<PeopleFormNotifs />
+				<Form name="people" className="people-form">
+					<FormGroup controlId="nameField">
+						<ControlLabel>Full Name</ControlLabel>
+						<FormControl
+							name="name"
+							type="text"
+							placeholder="John L.M. Doe Jr."
+						/>
+					</FormGroup>
+					<FormGroup controlId="logoUrlField">
+						<ControlLabel>Logo URL</ControlLabel>
+						<FormControl
+							name="logoUrl"
+							type="text"
+							placeholder="https://www.example.com/icon.png"
+						/>
+					</FormGroup>
+				</Form>
+			</FormBody>
 		);
 	}
 }
