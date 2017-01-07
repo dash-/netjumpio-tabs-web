@@ -16,6 +16,37 @@ import * as formsActions from '../forms/actions';
 // Epics
 ///
 
+// Example with delayed retries for epic failure
+
+/*
+const getList = (action$, store) => (
+	action$.ofType(actions.GET_LIST_START)
+		.debounceTime(500)
+		.switchMap(action => (
+			Observable.defer(() => (
+				api.createRelatedClient({
+					one: 'people',
+					many: 'groups',
+					id: store.getState().getIn(['user', 'id']),
+					accessToken: store.getState().getIn(['user', 'accessToken']),
+				}).find({
+					include: ['tabsets', {roles: ['tabsets']}],
+				})
+			)).retryWhen(attempts => (
+				attempts
+					.zip(Observable.range(1, 3), (_, i) => i)
+					.flatMap(i => (
+						Observable.timer(i * 1000)
+					))
+			)).map(payload => (
+				actions.getListDone(payload)
+			)).catch(error => (
+				Observable.of(actions.getListFail(error, action))
+			))
+		))
+);
+*/
+
 const getList = (action$, store) => (
 	action$.ofType(actions.GET_LIST_START)
 		.debounceTime(500)
