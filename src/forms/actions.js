@@ -9,7 +9,6 @@ export const CLEAR_FORM_VALUES = 'FORMS:CLEAR_FORM_VALUES';
 export const SHOW_FORM = 'FORMS:SHOW_FORM';
 export const HIDE_FORM = 'FORMS:HIDE_FORM';
 export const SUBMIT_FORM_START = 'FORMS:SUBMIT_FORM_START';
-export const SUBMIT_FORM_FAIL = 'FORMS:SUBMIT_FORM_FAIL';
 export const SUBMIT_FORM_DONE = 'FORMS:SUBMIT_FORM_DONE';
 export const FIELD_CHANGED = 'FORMS:FIELD_CHANGED';
 export const AUX_FIELD_CHANGED = 'FORMS:AUX_FIELD_CHANGED';
@@ -46,15 +45,25 @@ export function hideForm(name) {
 	return {type: HIDE_FORM, payload: name};
 }
 
-export function submitForm(name) {
+export function submitFormStart(name) {
 	return {type: SUBMIT_FORM_START, payload: name};
 }
 
-export function delegateSubmitForm(delegate, payload, aux) {
+export function delegateFormSubmit(delegate, payload, aux) {
 	return {
 		type: [SUBMIT_FORM_START, delegate].join(':'),
 		payload,
 		aux,
+	};
+}
+
+export function submitFormDone(formName, resData) {
+	return {
+		type: SUBMIT_FORM_DONE,
+		payload: {
+			formName,
+			resData,
+		}
 	};
 }
 
@@ -72,16 +81,6 @@ export function auxFieldChanged(formName, fieldName, value) {
 		field: fieldName,
 		value: value,
 	}};
-}
-
-export function submitFormDone(formName, resData) {
-	return {
-		type: SUBMIT_FORM_DONE,
-		payload: {
-			formName,
-			resData,
-		}
-	};
 }
 
 export function uploadImageStart(formName, fieldName, image) {

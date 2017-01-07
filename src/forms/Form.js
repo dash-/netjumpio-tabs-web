@@ -98,7 +98,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
 		initForm: (name) => dispatch(actions.initForm(name)),
-		submitForm: (name) => dispatch(actions.submitForm(name)),
+		submitForm: (name) => dispatch(actions.submitFormStart(name)),
   };
 }
 

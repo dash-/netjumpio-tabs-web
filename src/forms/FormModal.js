@@ -92,7 +92,7 @@ function mapDispatchToProps(dispatch) {
   return {
 		initForm: (name) => dispatch(actions.initForm(name)),
 		hideForm: (name) => dispatch(actions.hideForm(name)),
-		submitForm: (name) => dispatch(actions.submitForm(name)),
+		submitForm: (name) => dispatch(actions.submitFormStart(name)),
   };
 }
 

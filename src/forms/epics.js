@@ -16,11 +16,11 @@ import * as actions from './actions';
 // Epics
 ///
 
-const submitForm = (action$, store) => (
+const submitFormStart = (action$, store) => (
 	action$.ofType(actions.SUBMIT_FORM_START)
 		.debounceTime(50)
 		.switchMap(action => (
-			Observable.of(actions.delegateSubmitForm(
+			Observable.of(actions.delegateFormSubmit(
 				action.payload,
 				store.getState().getIn(['forms', action.payload, 'values']).toJS(),
 				store.getState().getIn(['forms', action.payload, 'aux']).toJS(),
@@ -68,6 +68,6 @@ const uploadImageStart = (action$, store) => (
 ///
 
 export default combineEpics(
-	submitForm, submitFormDone, uploadImageStart
+	submitFormStart, submitFormDone, uploadImageStart
 );
 
