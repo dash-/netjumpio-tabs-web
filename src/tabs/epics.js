@@ -15,10 +15,10 @@ import * as actions from './actions';
 // Epics
 ///
 
-const urlFormSubmit = (action$, store) => (
-	action$.ofType(actions.URL_FORM_SUBMIT)
+const submitUrlForm = (action$, store) => (
+	action$.ofType(actions.SUBMIT_URL_FORM)
 		.switchMap(action => Observable.concat(
-			Observable.of(formsActions.formSubmitDone('tabsUrl')),
+			Observable.of(formsActions.submitFormDone('tabsUrl')),
 			Observable.of(formsActions.clearFormValues('tabsUrl')),
 			Observable.of(formsActions.showForm('tabs')),
 			Observable.of(actions.getWebpageInfoStart(action.payload.url)),
@@ -44,8 +44,8 @@ const getWebpageInfo = (action$, store) => (
 		))
 );
 
-const tabsFormSubmit = (action$, store) => (
-	action$.ofType(actions.TABS_FORM_SUBMIT)
+const submitTabsForm = (action$, store) => (
+	action$.ofType(actions.SUBMIT_TABS_FORM)
 		.switchMap(action => {
 			if(isUndefined(action.payload.id)) {
 				return Observable.of(actions.addItemStart(
@@ -70,7 +70,7 @@ const addItem = (action$, store) => (
 					accessToken: store.getState().getIn(['user', 'accessToken']),
 				}).create(action.payload)
 			).flatMap(payload => Observable.concat(
-				Observable.of(formsActions.formSubmitDone('tabs')),
+				Observable.of(formsActions.submitFormDone('tabs')),
 				Observable.of(formsActions.clearFormValues('tabs')),
 				Observable.of(actions.addItemDone(payload))
 			)).catch(error => (
@@ -99,7 +99,7 @@ const editItem = (action$, store) => (
 					accessToken: store.getState().getIn(['user', 'accessToken']),
 				}).upsert(action.payload)
 			).flatMap(payload => Observable.concat(
-				Observable.of(formsActions.formSubmitDone('tabs')),
+				Observable.of(formsActions.submitFormDone('tabs')),
 				Observable.of(formsActions.clearFormValues('tabs')),
 				Observable.of(actions.editItemDone(payload))
 			)).catch(error => (
@@ -147,7 +147,7 @@ const restoreItem = (action$, store) => (
 ///
 
 export default combineEpics(
-	urlFormSubmit, getWebpageInfo, tabsFormSubmit,
+	submitUrlForm, getWebpageInfo, submitTabsForm,
 	addItem, editItemPrompt, editItem, removeItem, restoreItem
 );
 

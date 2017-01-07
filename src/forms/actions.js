@@ -2,20 +2,20 @@
 // Action types
 ///
 
-export const FORM_INIT = 'FORMS:FORM_INIT';
-export const FORM_INIT_DATA = 'FORMS:FORM_INIT_DATA';
-export const FORM_CLEAR = 'FORMS:FORM_CLEAR';
-export const FORM_CLEAR_VALUES = 'FORMS:FORM_CLEAR_VALUES';
-export const FORM_SHOW = 'FORMS:FORM_SHOW';
-export const FORM_HIDE = 'FORMS:FORM_HIDE';
-export const FORM_SUBMIT_START = 'FORMS:FORM_SUBMIT_START';
-export const FORM_SUBMIT_FAIL = 'FORMS:FORM_SUBMIT_FAIL';
-export const FORM_SUBMIT_DONE = 'FORMS:FORM_SUBMIT_DONE';
-export const FORM_FIELD_CHANGED = 'FORMS:FORM_FIELD_CHANGED';
-export const FORM_AUX_FIELD_CHANGED = 'FORMS:FORM_AUX_FIELD_CHANGED';
-export const FORM_IMAGE_UPLOAD_START = 'FORMS:FORM_IMAGE_UPLOAD_START';
-export const FORM_IMAGE_UPLOAD_FAIL = 'FORMS:FORM_IMAGE_UPLOAD_FAIL';
-export const FORM_IMAGE_UPLOAD_DONE = 'FORMS:FORM_IMAGE_UPLOAD_DONE';
+export const INIT_FORM = 'FORMS:INIT_FORM';
+export const INIT_FORM_DATA = 'FORMS:INIT_FORM_DATA';
+export const CLEAR_FORM = 'FORMS:CLEAR_FORM';
+export const CLEAR_FORM_VALUES = 'FORMS:CLEAR_FORM_VALUES';
+export const SHOW_FORM = 'FORMS:SHOW_FORM';
+export const HIDE_FORM = 'FORMS:HIDE_FORM';
+export const SUBMIT_FORM_START = 'FORMS:SUBMIT_FORM_START';
+export const SUBMIT_FORM_FAIL = 'FORMS:SUBMIT_FORM_FAIL';
+export const SUBMIT_FORM_DONE = 'FORMS:SUBMIT_FORM_DONE';
+export const FIELD_CHANGED = 'FORMS:FIELD_CHANGED';
+export const AUX_FIELD_CHANGED = 'FORMS:AUX_FIELD_CHANGED';
+export const UPLOAD_IMAGE_START = 'FORMS:UPLOAD_IMAGE_START';
+export const UPLOAD_IMAGE_FAIL = 'FORMS:UPLOAD_IMAGE_FAIL';
+export const UPLOAD_IMAGE_DONE = 'FORMS:UPLOAD_IMAGE_DONE';
 
 
 ///
@@ -23,43 +23,43 @@ export const FORM_IMAGE_UPLOAD_DONE = 'FORMS:FORM_IMAGE_UPLOAD_DONE';
 ///
 
 export function initForm(name, options={}) {
-	return {type: FORM_INIT, payload: name, options: options};
+	return {type: INIT_FORM, payload: name, options: options};
 }
 
 export function initFormData(name, data) {
-	return {type: FORM_INIT_DATA, payload: name, data: data};
+	return {type: INIT_FORM_DATA, payload: name, data: data};
 }
 
 export function clearForm(name) {
-	return {type: FORM_CLEAR, payload: name};
+	return {type: CLEAR_FORM, payload: name};
 }
 
 export function clearFormValues(name) {
-	return {type: FORM_CLEAR_VALUES, payload: name};
+	return {type: CLEAR_FORM_VALUES, payload: name};
 }
 
 export function showForm(name) {
-	return {type: FORM_SHOW, payload: name};
+	return {type: SHOW_FORM, payload: name};
 }
 
 export function hideForm(name) {
-	return {type: FORM_HIDE, payload: name};
+	return {type: HIDE_FORM, payload: name};
 }
 
 export function submitForm(name) {
-	return {type: FORM_SUBMIT_START, payload: name};
+	return {type: SUBMIT_FORM_START, payload: name};
 }
 
-export function delegateFormSubmit(delegate, payload, aux) {
+export function delegateSubmitForm(delegate, payload, aux) {
 	return {
-		type: [FORM_SUBMIT_START, delegate].join(':'),
+		type: [SUBMIT_FORM_START, delegate].join(':'),
 		payload,
 		aux,
 	};
 }
 
 export function fieldChanged(formName, fieldName, value) {
-	return {type: FORM_FIELD_CHANGED, payload: {
+	return {type: FIELD_CHANGED, payload: {
 		form: formName,
 		field: fieldName,
 		value: value,
@@ -67,16 +67,16 @@ export function fieldChanged(formName, fieldName, value) {
 }
 
 export function auxFieldChanged(formName, fieldName, value) {
-	return {type: FORM_AUX_FIELD_CHANGED, payload: {
+	return {type: AUX_FIELD_CHANGED, payload: {
 		form: formName,
 		field: fieldName,
 		value: value,
 	}};
 }
 
-export function formSubmitDone(formName, resData) {
+export function submitFormDone(formName, resData) {
 	return {
-		type: FORM_SUBMIT_DONE,
+		type: SUBMIT_FORM_DONE,
 		payload: {
 			formName,
 			resData,
@@ -85,7 +85,7 @@ export function formSubmitDone(formName, resData) {
 }
 
 export function uploadImageStart(formName, fieldName, image) {
-	return {type: FORM_IMAGE_UPLOAD_START, payload: {
+	return {type: UPLOAD_IMAGE_START, payload: {
 		form: formName,
 		field: fieldName,
 		image,
@@ -93,13 +93,13 @@ export function uploadImageStart(formName, fieldName, image) {
 }
 
 export function uploadImageFail(error, action) {
-	return {type: FORM_IMAGE_UPLOAD_FAIL, payload: {
+	return {type: UPLOAD_IMAGE_FAIL, payload: {
 		error, action
 	}};
 }
 
 export function uploadImageDone(formName, fieldName, imageUrl) {
-	return {type: FORM_IMAGE_UPLOAD_DONE, payload: {
+	return {type: UPLOAD_IMAGE_DONE, payload: {
 		form: formName,
 		field: fieldName,
 		imageUrl

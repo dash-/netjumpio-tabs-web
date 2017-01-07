@@ -54,7 +54,7 @@ const getList = (action$, store) => (
 //        to be your friend.  So this is basically a placeholder,
 //        and it will not work like that.
 const saveItem = (action$, store) => (
-	action$.ofType(actions.FORM_SUBMIT)
+	action$.ofType(actions.SUBMIT_FORM)
 		.switchMap(action => (
 			Observable.fromPromise(
 				api.createRelatedClient({
@@ -64,7 +64,7 @@ const saveItem = (action$, store) => (
 					accessToken: store.getState().getIn(['user', 'accessToken']),
 				}).create(action.payload)
 			).flatMap(payload => Observable.concat(
-				Observable.of(formsActions.formSubmitDone('people')),
+				Observable.of(formsActions.submitFormDone('people')),
 				Observable.of(actions.addItemDone(payload))
 			)).catch(error => (
 				Observable.of(actions.addItemFail(error, action))

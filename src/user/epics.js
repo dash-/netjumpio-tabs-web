@@ -14,8 +14,8 @@ import * as formsActions from '../forms/actions';
 // Epics
 ///
 
-const loginFormSubmit = (action$, store) => (
-	action$.ofType(actions.LOGIN_FORM_SUBMIT)
+const submitLoginForm = (action$, store) => (
+	action$.ofType(actions.SUBMIT_LOGIN_FORM)
 		.switchMap(action => (
 			Observable.of(actions.loginStart(action.payload))
 		))
@@ -30,7 +30,7 @@ const login = (action$, store) => (
 					password: action.payload.password,
 				}, 'user')
 			).flatMap(payload => Observable.concat(
-				Observable.of(formsActions.formSubmitDone('login', payload)),
+				Observable.of(formsActions.submitFormDone('login', payload)),
 				Observable.of(actions.loginDone(payload))
 			)).catch(error => (
 				Observable.of(actions.loginFail(error, action))
@@ -59,6 +59,6 @@ const logout = (action$, store) => (
 ///
 
 export default combineEpics(
-	loginFormSubmit, login, logout
+	submitLoginForm, login, logout
 );
 

@@ -54,8 +54,8 @@ const getItem = (action$, store) => (
 		))
 );
 
-const formSubmit = (action$, store) => (
-	action$.ofType(actions.FORM_SUBMIT)
+const submitForm = (action$, store) => (
+	action$.ofType(actions.SUBMIT_FORM)
 		.switchMap(action => {
 			if(isUndefined(action.payload.id)) {
 				return Observable.of(actions.addItemStart(
@@ -80,7 +80,7 @@ const addItem = (action$, store) => (
 					accessToken: store.getState().getIn(['user', 'accessToken']),
 				}).create(action.payload)
 			).flatMap(payload => Observable.concat(
-				Observable.of(formsActions.formSubmitDone('tabsets')),
+				Observable.of(formsActions.submitFormDone('tabsets')),
 				Observable.of(formsActions.clearFormValues('tabsets')),
 				Observable.of(actions.addItemDone(payload))
 			)).catch(error => (
@@ -109,7 +109,7 @@ const editItem = (action$, store) => (
 					accessToken: store.getState().getIn(['user', 'accessToken']),
 				}).upsert(omit(action.payload, ['_meta']))
 			).flatMap(payload => Observable.concat(
-				Observable.of(formsActions.formSubmitDone('tabsets')),
+				Observable.of(formsActions.submitFormDone('tabsets')),
 				Observable.of(formsActions.clearFormValues('tabsets')),
 				Observable.of(actions.editItemDone(action.payload))
 			)).catch(error => (
@@ -157,7 +157,7 @@ const restoreItem = (action$, store) => (
 ///
 
 export default combineEpics(
-	getList, getItem, formSubmit, addItem,
+	getList, getItem, submitForm, addItem,
 	editItemPrompt, editItem, removeItem, restoreItem
 );
 

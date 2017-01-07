@@ -9,7 +9,7 @@ import * as formsActions from '../forms/actions';
 // Action types
 ///
 
-export const LOGIN_FORM_SUBMIT = formsActions.FORM_SUBMIT_START + ':login';
+export const SUBMIT_LOGIN_FORM = formsActions.SUBMIT_FORM_START + ':login';
 
 export const LOGIN_START = 'USER:LOGIN_START';
 export const LOGIN_FAIL = 'USER:LOGIN_FAIL';

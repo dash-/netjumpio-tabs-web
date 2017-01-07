@@ -15,16 +15,16 @@ import * as actions from './actions';
 
 function root(state = fromJS({}), action) {
 	const handlers = {
-		[actions.FORM_INIT]: initForm,
-		[actions.FORM_INIT_DATA]: initFormData,
-		[actions.FORM_CLEAR]: clearForm,
-		[actions.FORM_CLEAR_VALUES]: clearFormValues,
-		[actions.FORM_SHOW]: showForm,
-		[actions.FORM_HIDE]: hideForm,
-		[actions.FORM_FIELD_CHANGED]: fieldChanged,
-		[actions.FORM_AUX_FIELD_CHANGED]: auxFieldChanged,
-		[actions.FORM_IMAGE_UPLOAD_START]: imageUploadStart,
-		[actions.FORM_IMAGE_UPLOAD_DONE]: imageUploadDone,
+		[actions.INIT_FORM]: initForm,
+		[actions.INIT_FORM_DATA]: initFormData,
+		[actions.CLEAR_FORM]: clearForm,
+		[actions.CLEAR_FORM_VALUES]: clearFormValues,
+		[actions.SHOW_FORM]: showForm,
+		[actions.HIDE_FORM]: hideForm,
+		[actions.FIELD_CHANGED]: fieldChanged,
+		[actions.AUX_FIELD_CHANGED]: auxFieldChanged,
+		[actions.UPLOAD_IMAGE_START]: imageUploadStart,
+		[actions.UPLOAD_IMAGE_DONE]: imageUploadDone,
 		default: (state) => state,
 	};
 

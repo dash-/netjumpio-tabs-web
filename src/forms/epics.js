@@ -17,10 +17,10 @@ import * as actions from './actions';
 ///
 
 const submitForm = (action$, store) => (
-	action$.ofType(actions.FORM_SUBMIT_START)
+	action$.ofType(actions.SUBMIT_FORM_START)
 		.debounceTime(50)
 		.switchMap(action => (
-			Observable.of(actions.delegateFormSubmit(
+			Observable.of(actions.delegateSubmitForm(
 				action.payload,
 				store.getState().getIn(['forms', action.payload, 'values']).toJS(),
 				store.getState().getIn(['forms', action.payload, 'aux']).toJS(),
@@ -29,7 +29,7 @@ const submitForm = (action$, store) => (
 );
 
 const submitFormDone = (action$, store) => (
-	action$.ofType(actions.FORM_SUBMIT_DONE)
+	action$.ofType(actions.SUBMIT_FORM_DONE)
 		.debounceTime(50)
 		.switchMap(action => (Observable.of(
 			actions.hideForm(action.payload.formName)
@@ -37,7 +37,7 @@ const submitFormDone = (action$, store) => (
 );
 
 const uploadImageStart = (action$, store) => (
-	action$.ofType(actions.FORM_IMAGE_UPLOAD_START)
+	action$.ofType(actions.UPLOAD_IMAGE_START)
 		.debounceTime(50)
 		.switchMap(action => (
 			Observable.fromPromise(

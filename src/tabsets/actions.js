@@ -9,7 +9,7 @@ import * as formsActions from '../forms/actions';
 // Action types
 ///
 
-export const FORM_SUBMIT = formsActions.FORM_SUBMIT_START + ':tabsets';
+export const SUBMIT_FORM = formsActions.SUBMIT_FORM_START + ':tabsets';
 
 export const GET_LIST_START = 'TABSETS:GET_LIST_START';
 export const GET_LIST_FAIL = 'TABSETS:GET_LIST_FAIL';

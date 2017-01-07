@@ -9,7 +9,7 @@ import * as formsActions from '../forms/actions';
 // Action types
 ///
 
-export const FORM_SUBMIT = formsActions.FORM_SUBMIT_START + ':roles';
+export const SUBMIT_FORM = formsActions.SUBMIT_FORM_START + ':roles';
 
 export const GET_LIST_START = 'ROLES:GET_LIST_START';
 export const GET_LIST_FAIL = 'ROLES:GET_LIST_FAIL';

@@ -9,7 +9,7 @@ import * as formsActions from '../forms/actions';
 // Action types
 ///
 
-export const FORM_SUBMIT = formsActions.FORM_SUBMIT_START + ':groups';
+export const SUBMIT_FORM = formsActions.SUBMIT_FORM_START + ':groups';
 
 export const GET_LIST_START = 'GROUPS:GET_LIST_START';
 export const GET_LIST_FAIL = 'GROUPS:GET_LIST_FAIL';

@@ -9,8 +9,8 @@ import * as formsActions from '../forms/actions';
 // Action types
 ///
 
-export const URL_FORM_SUBMIT = formsActions.FORM_SUBMIT_START + ':tabsUrl';
-export const TABS_FORM_SUBMIT = formsActions.FORM_SUBMIT_START + ':tabs';
+export const SUBMIT_URL_FORM = formsActions.SUBMIT_FORM_START + ':tabsUrl';
+export const SUBMIT_TABS_FORM = formsActions.SUBMIT_FORM_START + ':tabs';
 
 export const GET_WEBPAGE_INFO_START = 'TABS:GET_WEBPAGE_INFO_START';
 export const GET_WEBPAGE_INFO_FAIL = 'TABS:GET_WEBPAGE_INFO_FAIL';
