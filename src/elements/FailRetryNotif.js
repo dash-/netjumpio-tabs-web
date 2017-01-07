@@ -77,15 +77,20 @@ class FailRetryNotifView extends Component {
 				type="error"
 				triggeredBy={this.props.triggeredBy}
 				renderMessage={this.renderMessage}
-				hideAfter={15000}
+				hideAfter={this.props.hideAfter}
 			/>
 		);
 	}
 }
 
 FailRetryNotifView.propTypes = {
+	hideAfter: PropTypes.number,
 	triggeredBy: PropTypes.string.isRequired,
 	dispatch: PropTypes.func.isRequired,
+};
+
+FailRetryNotifView.defaultProps = {
+	hideAfter: 15000,
 };
 
 

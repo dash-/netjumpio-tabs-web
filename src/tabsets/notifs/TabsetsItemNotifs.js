@@ -5,7 +5,10 @@
 import React, { Component } from 'react';
 
 import ItemPanelNotifications from '../../elements/ItemPanelNotifications';
+import GetItemFailNotif from './GetItemFailNotif';
 import RemoveTabDoneNotif from '../../tabs/notifs/RemoveItemDoneNotif';
+import RemoveTabFailNotif from '../../tabs/notifs/RemoveItemFailNotif';
+import RestoreTabFailNotif from '../../tabs/notifs/RestoreItemFailNotif';
 
 
 ///
@@ -20,7 +23,10 @@ class TabsetsItemNotifsView extends Component {
 	render() {
 		return (
 			<ItemPanelNotifications>
+				<GetItemFailNotif />
 				<RemoveTabDoneNotif />
+				<RemoveTabFailNotif />
+				<RestoreTabFailNotif />
 			</ItemPanelNotifications>
 		);
 	}
