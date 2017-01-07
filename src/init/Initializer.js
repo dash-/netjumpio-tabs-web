@@ -17,10 +17,10 @@ import * as rolesActions from '../roles/actions';
 
 class InitializerView extends Component {
 	componentWillMount() {
-		this.props.getTabsets();
-		this.props.getPeople();
-		this.props.getGroups();
-		this.props.getRoles();
+		this.props.dispatch(tabsetsActions.getListStart());
+		this.props.dispatch(peopleActions.getListStart());
+		this.props.dispatch(groupsActions.getListStart());
+		this.props.dispatch(rolesActions.getListStart());
 	}
 
 	render() {
@@ -32,10 +32,7 @@ class InitializerView extends Component {
 }
 
 InitializerView.propTypes = {
-	getTabsets: PropTypes.func.isRequired,
-	getPeople: PropTypes.func.isRequired,
-	getGroups: PropTypes.func.isRequired,
-	getRoles: PropTypes.func.isRequired,
+	dispatch: PropTypes.func.isRequired,
 };
 
 
@@ -51,10 +48,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
 	return {
-		getTabsets: () => dispatch(tabsetsActions.getListStart()),
-		getPeople: () => dispatch(peopleActions.getListStart()),
-		getGroups: () => dispatch(groupsActions.getListStart()),
-		getRoles: () => dispatch(rolesActions.getListStart()),
+		dispatch
 	};
 }
 
