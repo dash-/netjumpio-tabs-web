@@ -83,16 +83,16 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return {
+	return {
 		auxFieldChanged: (form, field, value) => dispatch(
 			actions.auxFieldChanged(form, field, value)
 		),
-  };
+	};
 }
 
 const connector = connect(
-  mapStateToProps,
-  mapDispatchToProps
+	mapStateToProps,
+	mapDispatchToProps
 );
 
 export default connector(AuxDataView);

@@ -25,5 +25,7 @@ class TabsetsFormNotifsView extends Component {
 	}
 }
 
+TabsetsFormNotifsView.propTypes = {}; 
+
 export default TabsetsFormNotifsView;
 

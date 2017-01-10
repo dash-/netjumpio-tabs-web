@@ -46,5 +46,7 @@ class PeopleFormView extends Component {
 	}
 }
 
+PeopleFormView.propTypes = {}; 
+
 export default PeopleFormView;
 

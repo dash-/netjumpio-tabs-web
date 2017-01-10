@@ -20,5 +20,7 @@ class Landing extends Component {
 	}
 }
 
+Landing.propTypes = {}; 
+
 export default Landing;
 

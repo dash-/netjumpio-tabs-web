@@ -71,16 +71,16 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return {
+	return {
 		fieldChanged: (form, field, value) => dispatch(
 			actions.fieldChanged(form, field, value)
 		),
-  };
+	};
 }
 
 const connector = connect(
-  mapStateToProps,
-  mapDispatchToProps
+	mapStateToProps,
+	mapDispatchToProps
 );
 
 export default connector(FormControlView);

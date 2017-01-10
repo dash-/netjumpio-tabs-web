@@ -25,5 +25,7 @@ class PeopleFormNotifsView extends Component {
 	}
 }
 
+PeopleFormNotifsView.propTypes = {}; 
+
 export default PeopleFormNotifsView;
 

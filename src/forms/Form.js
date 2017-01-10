@@ -60,8 +60,12 @@ class FormView extends Component {
 			className: classNames('ts-form', this.props.className),
 		});
 
+		const children = React.Children.toArray(
+			this.props.children
+		);
+
 		return React.createElement(
-			'form', props, this.props.children.concat(
+			'form', props, children.concat(
 				<button
 					type="submit" className="hidden"
 					key="hiddenSubmitButton-9a3209b5-35ad-4a35-ae4b-1729eeb8d7cf"
@@ -98,15 +102,15 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return {
+	return {
 		initForm: (name) => dispatch(actions.initForm(name)),
 		submitForm: (name) => dispatch(actions.submitFormStart(name)),
-  };
+	};
 }
 
 const connector = connect(
-  mapStateToProps,
-  mapDispatchToProps
+	mapStateToProps,
+	mapDispatchToProps
 );
 
 export default connector(FormView);

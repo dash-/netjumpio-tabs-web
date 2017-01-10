@@ -31,7 +31,7 @@ class PeopleListItemView extends Component {
 }
 
 PeopleListItemView.propTypes = {
-	item: types.ListItem,
+	item: types.ListItem.isRequired,
 };
 
 export default PeopleListItemView;

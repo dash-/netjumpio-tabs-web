@@ -49,5 +49,7 @@ class RolesFormView extends Component {
 	}
 }
 
+RolesFormView.propTypes = {}; 
+
 export default RolesFormView;
 

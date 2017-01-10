@@ -140,7 +140,7 @@ class OverviewPanelView extends Component {
 }
 
 OverviewPanelView.propTypes = {
-	overview: types.Overview,
+	overview: types.Overview.isRequired,
 };
 
 export { OverviewPanelView };

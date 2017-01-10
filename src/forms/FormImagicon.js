@@ -123,7 +123,7 @@ FormImagiconView.propTypes = assign(
 			PropTypes.string,
 			PropTypes.object,
 		]),
-		forms: types.Forms,
+		forms: types.Forms.isRequired,
 		children: PropTypes.node,
 	}
 );
@@ -150,8 +150,8 @@ function mapDispatchToProps(dispatch) {
 }
 
 const connector = connect(
-  mapStateToProps,
-  mapDispatchToProps
+	mapStateToProps,
+	mapDispatchToProps
 );
 
 export default connector(FormImagiconView);

@@ -22,5 +22,7 @@ class RolesItemNotifsView extends Component {
 	}
 }
 
-export default RolesNotifsView;
+RolesItemNotifsView.propTypes = {}; 
+
+export default RolesItemNotifsView;
 

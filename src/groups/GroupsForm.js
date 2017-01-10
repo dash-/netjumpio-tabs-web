@@ -57,5 +57,7 @@ class GroupsFormView extends Component {
 	}
 }
 
+GroupsFormView.propTypes = {}; 
+
 export default GroupsFormView;
 

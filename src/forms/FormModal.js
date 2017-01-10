@@ -73,7 +73,7 @@ FormModalView.propTypes = {
 	initForm: PropTypes.func.isRequired,
 	hideForm: PropTypes.func.isRequired,
 	submitForm: PropTypes.func.isRequired,
-	forms: types.Forms,
+	forms: types.Forms.isRequired,
 	children: PropTypes.node,
 };
 
@@ -91,16 +91,16 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return {
+	return {
 		initForm: (name) => dispatch(actions.initForm(name)),
 		hideForm: (name) => dispatch(actions.hideForm(name)),
 		submitForm: (name) => dispatch(actions.submitFormStart(name)),
-  };
+	};
 }
 
 const connector = connect(
-  mapStateToProps,
-  mapDispatchToProps
+	mapStateToProps,
+	mapDispatchToProps
 );
 
 export default connector(FormModalView);

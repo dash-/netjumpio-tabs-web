@@ -33,4 +33,6 @@ class PeopleListNotifsView extends Component {
 	}
 }
 
+PeopleListNotifsView.propTypes = {}; 
+
 export default PeopleListNotifsView;

@@ -33,4 +33,6 @@ class RolesListNotifsView extends Component {
 	}
 }
 
+RolesListNotifsView.propTypes = {}; 
+
 export default RolesListNotifsView;

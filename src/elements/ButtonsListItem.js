@@ -37,10 +37,10 @@ class ButtonsListItemView extends Component {
 }
 
 ButtonsListItemView.propTypes = {
-	onClick: PropTypes.func,
-	dispatchAction: PropTypes.func,
 	action: PropTypes.object,
-	icon: PropTypes.string,
+	icon: PropTypes.string.isRequired,
+	onClick: PropTypes.func,
+	dispatchAction: PropTypes.func.isRequired,
 	children: PropTypes.node,
 };
 
@@ -58,14 +58,14 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return {
+	return {
 		dispatchAction: (action) => dispatch(action),
-  };
+	};
 }
 
 const connector = connect(
-  mapStateToProps,
-  mapDispatchToProps
+	mapStateToProps,
+	mapDispatchToProps
 );
 
 export default connector(ButtonsListItemView);

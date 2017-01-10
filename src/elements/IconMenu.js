@@ -34,7 +34,7 @@ class IconMenuView extends Component {
 
 IconMenuView.propTypes = assign({}, DropdownButton.propTypes, {
 	icon: PropTypes.string,
-  title: PropTypes.node,
+	title: PropTypes.node,
 });
 
 export default IconMenuView;

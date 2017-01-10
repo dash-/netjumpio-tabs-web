@@ -129,11 +129,11 @@ OverviewPanelItemView.propTypes = {
 	title: PropTypes.node.isRequired,
 	selected: PropTypes.string,
 	notifications: PropTypes.node,
-	overview: types.Overview,
+	overview: types.Overview.isRequired,
 	toggleItem: PropTypes.func.isRequired,
-	selectItem:  PropTypes.func.isRequired,
-	clearForm:  PropTypes.func.isRequired,
-	showForm:  PropTypes.func.isRequired,
+	selectItem: PropTypes.func.isRequired,
+	clearForm: PropTypes.func.isRequired,
+	showForm: PropTypes.func.isRequired,
 	children: PropTypes.node,
 };
 

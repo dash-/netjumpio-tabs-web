@@ -55,8 +55,8 @@ function mapDispatchToProps(dispatch) {
 }
 
 const connector = connect(
-  mapStateToProps,
-  mapDispatchToProps
+	mapStateToProps,
+	mapDispatchToProps
 );
 
 export default connector(InitializerView);

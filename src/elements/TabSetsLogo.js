@@ -17,5 +17,7 @@ class TabSetsLogoView extends Component {
 	}
 }
 
+TabSetsLogoView.propTypes = {}; 
+
 export default TabSetsLogoView;
 

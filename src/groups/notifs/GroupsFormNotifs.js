@@ -25,5 +25,7 @@ class GroupsFormNotifsView extends Component {
 	}
 }
 
+GroupsFormNotifsView.propTypes = {}; 
+
 export default GroupsFormNotifsView;
 

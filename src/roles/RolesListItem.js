@@ -50,7 +50,7 @@ class RolesListItemView extends Component {
 }
 
 RolesListItemView.propTypes = {
-	item: types.ListItem,
+	item: types.ListItem.isRequired,
 };
 
 export default RolesListItemView;

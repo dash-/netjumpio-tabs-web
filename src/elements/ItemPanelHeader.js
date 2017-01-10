@@ -30,7 +30,7 @@ class ItemPanelHeaderView extends Component {
 		if(isString(defLogoIcon)) {
 			return (
 				<Icon
-					name={this.props.defaultLogoIcon}
+					name={defLogoIcon}
 					className="blank-logo"
 					size="3x"
 				/>

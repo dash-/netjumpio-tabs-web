@@ -14,9 +14,9 @@ import LoginForm from './LoginForm';
 ///
 
 class LoginPageView extends Component {
-  render() {
-    return (
-    	<div className="page login-page">
+	render() {
+		return (
+			<div className="page login-page">
 				<div className="login-section col-md-6 col-md-offset-3">
 					<h1>Please sign in</h1>
 					<LoginForm>
@@ -26,9 +26,11 @@ class LoginPageView extends Component {
 					</LoginForm>
 				</div>
 			</div>
-    );
-  }
+		);
+	}
 }
+
+LoginPageView.propTypes = {}; 
 
 export default LoginPageView;
 

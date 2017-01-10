@@ -28,4 +28,6 @@ class Root extends Component {
 	}
 }
 
+Root.propTypes = {}; 
+
 export default Root;

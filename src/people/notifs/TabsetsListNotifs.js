@@ -33,4 +33,6 @@ class GroupsListNotifsView extends Component {
 	}
 }
 
+GroupsListNotifsView.propTypes = {}; 
+
 export default GroupsListNotifsView;

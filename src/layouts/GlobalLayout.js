@@ -10,13 +10,13 @@ import React, { Component, PropTypes } from 'react';
 ///
 
 class GlobalLayout extends Component {
-  render() {
-    return (
-    	<div className="global-layout">
+	render() {
+		return (
+			<div className="global-layout">
 				{this.props.children}
 			</div>
-    );
-  }
+		);
+	}
 }
 
 GlobalLayout.propTypes = {

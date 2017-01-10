@@ -13,7 +13,7 @@ import ImmutablePropTypes from 'react-immutable-proptypes';
 export const ListItem = ImmutablePropTypes.contains({
 	logoUrl: PropTypes.string,
 	name: PropTypes.string,
-	url: PropTypes.string,
+	url: PropTypes.string.isRequired,
 	id: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.number,

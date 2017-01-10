@@ -25,5 +25,7 @@ class RolesFormNotifsView extends Component {
 	}
 }
 
+RolesFormNotifsView.propTypes = {}; 
+
 export default RolesFormNotifsView;
 

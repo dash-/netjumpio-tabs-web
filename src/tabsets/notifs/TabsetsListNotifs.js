@@ -33,4 +33,6 @@ class TabsetsListNotifsView extends Component {
 	}
 }
 
+TabsetsListNotifsView.propTypes = {}; 
+
 export default TabsetsListNotifsView;
