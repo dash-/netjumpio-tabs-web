@@ -4,7 +4,6 @@
 
 import { fromJS } from 'immutable';
 import { combineReducers } from 'redux-immutable';
-import isUndefined from 'lodash/isUndefined';
 
 import * as actions from './actions';
 import panels from './panelsReducers';
@@ -14,11 +13,7 @@ import panels from './panelsReducers';
 // Reducers
 ///
 
-function root(state = fromJS({}), action) {
-	if(isUndefined(state.get('selected'))) {
-		state = state.set('selected', '');
-	}
-
+function root(state = fromJS({selected: ''}), action) {
 	const handlers = {
 		[actions.OVERVIEW_SELECT_ITEM]: selectOverviewItem,
 		default: (state) => state,
