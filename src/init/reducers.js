@@ -32,6 +32,7 @@ function root(state = fromJS({progress: 0}), action) {
 	return handler(state, action);
 }
 
+export { actionsCount };
 export default root;
 
 
