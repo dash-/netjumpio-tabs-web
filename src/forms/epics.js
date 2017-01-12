@@ -61,8 +61,6 @@ const uploadImageStart = (action$, store) => (
 );
 
 
-
-
 ///
 // Exports
 ///
@@ -70,4 +68,8 @@ const uploadImageStart = (action$, store) => (
 export default combineEpics(
 	submitFormStart, submitFormDone, uploadImageStart
 );
+
+export {
+	submitFormStart, submitFormDone, uploadImageStart
+};
 

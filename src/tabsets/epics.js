@@ -161,3 +161,8 @@ export default combineEpics(
 	editItemPrompt, editItem, removeItem, restoreItem
 );
 
+export {
+	getList, getItem, submitForm, addItem,
+	editItemPrompt, editItem, removeItem, restoreItem
+};
+

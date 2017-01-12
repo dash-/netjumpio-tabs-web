@@ -62,3 +62,7 @@ export default combineEpics(
 	submitLoginForm, login, logout
 );
 
+export {
+	submitLoginForm, login, logout
+};
+

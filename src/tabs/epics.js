@@ -151,3 +151,8 @@ export default combineEpics(
 	addItem, editItemPrompt, editItem, removeItem, restoreItem
 );
 
+export {
+	submitUrlForm, getWebpageInfo, submitTabsForm,
+	addItem, editItemPrompt, editItem, removeItem, restoreItem
+};
+

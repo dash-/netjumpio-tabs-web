@@ -36,3 +36,7 @@ export default combineEpics(
 	togglePanel
 );
 
+export {
+	togglePanel
+};
+
