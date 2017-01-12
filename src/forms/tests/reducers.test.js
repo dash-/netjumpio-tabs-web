@@ -12,7 +12,7 @@ const defaultForm = fromJS({
 	aux: {},
 });
 
-it('correctly reduces invalid action', () => {
+it('forms: correctly reduces invalid action', () => {
 	const reduction = reducer(
 		fromJS({}), {type: null},
 	).toJS();
@@ -22,7 +22,7 @@ it('correctly reduces invalid action', () => {
 	expect(reduction).toEqual(correctReduction);
 });
 
-it('correctly reduces INIT_FORM action', () => {
+it('forms: correctly reduces FORMS:INIT_FORM action', () => {
 	const reduction = reducer(
 		fromJS({}), actions.initForm('i', {})
 	).toJS();
@@ -34,7 +34,7 @@ it('correctly reduces INIT_FORM action', () => {
 	expect(reduction).toEqual(correctReduction);
 });
 
-it('correctly reduces INIT_FORM_DATA action', () => {
+it('forms: correctly reduces FORMS:INIT_FORM_DATA action', () => {
 	const reduction = reducer(
 		fromJS({}), actions.initFormData('i', {
 			values: { i: 1, j: 2 },
@@ -54,7 +54,7 @@ it('correctly reduces INIT_FORM_DATA action', () => {
 });
 
 
-it('correctly reduces CLEAR_FORM action', () => {
+it('forms: correctly reduces FORMS:CLEAR_FORM action', () => {
 	const reduction = reducer(fromJS({
 		i: defaultForm.set('values', fromJS({
 			i: 1, j: 2
@@ -70,7 +70,7 @@ it('correctly reduces CLEAR_FORM action', () => {
 	expect(reduction).toEqual(correctReduction);
 });
 
-it('correctly reduces CLEAR_FORM_VALUES action', () => {
+it('forms: correctly reduces FORMS:CLEAR_FORM_VALUES action', () => {
 	const reduction = reducer(fromJS({
 		i: defaultForm.set('values', fromJS({
 			i: 1, j: 2
@@ -84,7 +84,7 @@ it('correctly reduces CLEAR_FORM_VALUES action', () => {
 	expect(reduction).toEqual(correctReduction);
 });
 
-it('correctly reduces SHOW_FORM action', () => {
+it('forms: correctly reduces FORMS:SHOW_FORM action', () => {
 	const reduction = reducer(fromJS({
 		i: defaultForm.toJS(),
 	}), actions.showForm('i')).toJS();
@@ -96,7 +96,7 @@ it('correctly reduces SHOW_FORM action', () => {
 	expect(reduction).toEqual(correctReduction);
 });
 
-it('correctly reduces HIDE_FORM action', () => {
+it('forms: correctly reduces FORMS:HIDE_FORM action', () => {
 	const reduction = reducer(fromJS({
 		i: defaultForm.set('isVisible', true).toJS()
 	}), actions.hideForm('i')).toJS();
@@ -108,7 +108,7 @@ it('correctly reduces HIDE_FORM action', () => {
 	expect(reduction).toEqual(correctReduction);
 });
 
-it('correctly reduces FIELD_CHANGED action', () => {
+it('forms: correctly reduces FORMS:FIELD_CHANGED action', () => {
 	const reduction = reducer(fromJS({
 		i: defaultForm.toJS(),
 	}), actions.fieldChanged('i', 'j', 1)).toJS();
@@ -122,7 +122,7 @@ it('correctly reduces FIELD_CHANGED action', () => {
 	expect(reduction).toEqual(correctReduction);
 });
 
-it('correctly reduces AUX_FIELD_CHANGED action', () => {
+it('forms: correctly reduces FORMS:AUX_FIELD_CHANGED action', () => {
 	const reduction = reducer(fromJS({
 		i: defaultForm.toJS(),
 	}), actions.auxFieldChanged('i', 'j', 1)).toJS();
@@ -136,7 +136,7 @@ it('correctly reduces AUX_FIELD_CHANGED action', () => {
 	expect(reduction).toEqual(correctReduction);
 });
 
-it('correctly reduces UPLOAD_IMAGE_START action', () => {
+it('forms: correctly reduces FORMS:UPLOAD_IMAGE_START action', () => {
 	const reduction = reducer(fromJS({
 		i: defaultForm.toJS(),
 	}), actions.uploadImageStart('i', 'j', 'k')).toJS();
@@ -150,7 +150,7 @@ it('correctly reduces UPLOAD_IMAGE_START action', () => {
 	expect(reduction).toEqual(correctReduction);
 });
 
-it('correctly reduces UPLOAD_IMAGE_DONE action', () => {
+it('forms: correctly reduces FORMS:UPLOAD_IMAGE_DONE action', () => {
 	const reduction = reducer(fromJS({
 		i: defaultForm.set('uploads', fromJS({
 			j: {isUploading: true}

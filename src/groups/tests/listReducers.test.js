@@ -17,7 +17,7 @@ const defaultItemWithMeta = defaultItem.set('_meta', fromJS({
 	keyPath: ['groups', 0]
 }));
 
-it('correctly reduces invalid action', () => {
+it('groups: correctly reduces invalid action', () => {
 	const reduction = reducer(
 		fromJS({}), {type: null},
 	).toJS();
@@ -27,7 +27,7 @@ it('correctly reduces invalid action', () => {
 	expect(reduction).toEqual(correctReduction);
 });
 
-it('correctly reduces GET_LIST_DONE action', () => {
+it('groups: correctly reduces GROUPS:GET_LIST_DONE action', () => {
 	const reduction = reducer(fromJS({
 		groups: [],
 	}), actions.getListDone([defaultItem.toJS()])).toJS();
@@ -41,7 +41,7 @@ it('correctly reduces GET_LIST_DONE action', () => {
 	expect(reduction).toEqual(correctReduction);
 });
 
-it('correctly reduces ADD_ITEM_DONE action', () => {
+it('groups: correctly reduces GROUPS:ADD_ITEM_DONE action', () => {
 	const reduction = reducer(fromJS({
 		groups: [],
 	}), actions.addItemDone(defaultItem.toJS())).toJS();
@@ -55,7 +55,7 @@ it('correctly reduces ADD_ITEM_DONE action', () => {
 	expect(reduction).toEqual(correctReduction);
 });
 
-it('correctly reduces EDIT_ITEM_DONE action', () => {
+it('groups: correctly reduces GROUPS:EDIT_ITEM_DONE action', () => {
 	const reduction = reducer(fromJS({
 		groups: [
 			defaultItemWithMeta.toJS()
@@ -73,7 +73,7 @@ it('correctly reduces EDIT_ITEM_DONE action', () => {
 	expect(reduction).toEqual(correctReduction);
 });
 
-it('correctly reduces REMOVE_ITEM_DONE action', () => {
+it('groups: correctly reduces GROUPS:REMOVE_ITEM_DONE action', () => {
 	const reduction = reducer(fromJS({
 		groups: [
 			defaultItemWithMeta.toJS()
@@ -87,7 +87,7 @@ it('correctly reduces REMOVE_ITEM_DONE action', () => {
 	expect(reduction).toEqual(correctReduction);
 });
 
-it('correctly reduces RESTORE_ITEM_DONE action', () => {
+it('groups: correctly reduces GROUPS:RESTORE_ITEM_DONE action', () => {
 	const reduction = reducer(fromJS({
 		groups: [],
 	}), actions.restoreItemDone(defaultItemWithMeta.toJS())).toJS();

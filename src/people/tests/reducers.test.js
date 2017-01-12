@@ -8,7 +8,7 @@ const defaultItem = fromJS({
 	id: 'c',
 });
 
-it('correctly reduces invalid action', () => {
+it('people: correctly reduces invalid action', () => {
 	const reduction = reducer(
 		fromJS({}), {type: null},
 	).toJS();
@@ -18,7 +18,7 @@ it('correctly reduces invalid action', () => {
 	expect(reduction).toEqual(correctReduction);
 });
 
-it('correctly reduces GET_LIST_DONE action', () => {
+it('people: correctly reduces PEOPLE:GET_LIST_DONE action', () => {
 	const reduction = reducer(
 		fromJS([]),
 		actions.getListDone([defaultItem.toJS()])
@@ -29,7 +29,7 @@ it('correctly reduces GET_LIST_DONE action', () => {
 	expect(reduction).toEqual(correctReduction);
 });
 
-it('correctly reduces ADD_ITEM_DONE action', () => {
+it('people: correctly reduces PEOPLE:ADD_ITEM_DONE action', () => {
 	const reduction = reducer(
 		fromJS([]),
 		actions.addItemDone(defaultItem.toJS())

@@ -13,7 +13,7 @@ const defaultItem = fromJS({
 	roles: [],
 });
 
-it('correctly reduces invalid action', () => {
+it('groups: correctly reduces invalid action', () => {
 	const reduction = reducer(
 		fromJS({}), {type: null},
 	).toJS();
@@ -23,7 +23,7 @@ it('correctly reduces invalid action', () => {
 	expect(reduction).toEqual(correctReduction);
 });
 
-it('correctly reduces GET_ITEM_DONE action', () => {
+it('groups: correctly reduces GROUPS:GET_ITEM_DONE action', () => {
 	const reduction = reducer(
 		fromJS({}),
 		actions.getItemDone([defaultItem.toJS()])
