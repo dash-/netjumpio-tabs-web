@@ -33,7 +33,7 @@ class ProfilePanelButtonView extends Component {
 	///
 
 	handleClick(evt) {
-		this.props.toggleProfilePanel();
+		this.props.togglePanel();
 	}
 
 
@@ -73,7 +73,7 @@ class ProfilePanelButtonView extends Component {
 
 ProfilePanelButtonView.propTypes = {
 	user: userTypes.User.isRequired,
-	toggleProfilePanel: PropTypes.func.isRequired,
+	togglePanel: PropTypes.func.isRequired,
 };
 
 export { ProfilePanelButtonView };
@@ -91,7 +91,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
 	return {
-		toggleProfilePanel: () => dispatch(actions.toggleProfilePanel()),
+		togglePanel: () => dispatch(actions.togglePanel()),
 	};
 }
 

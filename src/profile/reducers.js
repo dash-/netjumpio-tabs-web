@@ -13,8 +13,8 @@ import * as actions from './actions';
 
 function root(state = fromJS({}), action) {
 	const handlers = {
-		[actions.PROFILE_PANEL_SHOW]: showPanel,
-		[actions.PROFILE_PANEL_DISMISS]: dismissPanel,
+		[actions.SHOW_PANEL]: showPanel,
+		[actions.DISMISS_PANEL]: dismissPanel,
 		default: (state) => state,
 	};
 

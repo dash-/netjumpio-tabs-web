@@ -12,7 +12,7 @@ import * as actions from './actions';
 ///
 
 const togglePanel = (action$, store) => (
-	action$.ofType(actions.PROFILE_PANEL_TOGGLE)
+	action$.ofType(actions.TOGGLE_PANEL)
 		.debounceTime(50)
 		.map(action => {
 			const isShown = store.getState().getIn(
@@ -20,10 +20,10 @@ const togglePanel = (action$, store) => (
 			);
 
 			if(isShown) {
-				return actions.dismissProfilePanel();
+				return actions.dismissPanel();
 			}
 
-			return actions.showProfilePanel();
+			return actions.showPanel();
 		})
 );
 

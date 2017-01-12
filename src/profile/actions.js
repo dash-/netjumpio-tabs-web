@@ -2,24 +2,24 @@
 // Action types
 ///
 
-export const PROFILE_PANEL_TOGGLE = 'PROFILE:PANEL_TOGGLE';
-export const PROFILE_PANEL_SHOW = 'PROFILE:PANEL_SHOW';
-export const PROFILE_PANEL_DISMISS = 'PROFILE:PANEL_DISMISS';
+export const TOGGLE_PANEL = 'PROFILE:TOGGLE_PANEL';
+export const SHOW_PANEL = 'PROFILE:SHOW_PANEL';
+export const DISMISS_PANEL = 'PROFILE:DISMISS_PANEL';
 
 
 ///
 // Action creators
 ///
 
-export function toggleProfilePanel() {
-	return {type: PROFILE_PANEL_TOGGLE};
+export function togglePanel() {
+	return {type: TOGGLE_PANEL};
 }
 
-export function showProfilePanel() {
-	return {type: PROFILE_PANEL_SHOW};
+export function showPanel() {
+	return {type: SHOW_PANEL};
 }
 
-export function dismissProfilePanel() {
-	return {type: PROFILE_PANEL_DISMISS};
+export function dismissPanel() {
+	return {type: DISMISS_PANEL};
 }
 
