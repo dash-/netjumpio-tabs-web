@@ -7,7 +7,7 @@ import { ProfilePanelButtonView as ProfilePanelButton } from '../ProfilePanelBut
 it('renders without crashing', () => {
 	const props = {
 		user: fromJS({}),
-		toggleProfilePanel: () => {},
+		togglePanel: () => {},
 	};
 
 	shallow(
