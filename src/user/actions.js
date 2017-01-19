@@ -24,6 +24,10 @@ export const LOGOUT_DONE = 'USER:LOGOUT_DONE';
 // Action creators
 ///
 
+export function submitLoginForm(formData) {
+	return {type: SUBMIT_LOGIN_FORM, payload: formData};
+}
+
 export function loginStart(credentials) {
 	return {type: LOGIN_START, payload: credentials};
 }

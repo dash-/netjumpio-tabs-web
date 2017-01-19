@@ -41,6 +41,10 @@ export const RESTORE_ITEM_DONE = 'TABSETS:RESTORE_ITEM_DONE';
 // Action creators
 ///
 
+export function submitForm(formData) {
+	return {type: SUBMIT_FORM, payload: formData};
+}
+
 export function getListStart() {
 	return {type: GET_LIST_START};
 }

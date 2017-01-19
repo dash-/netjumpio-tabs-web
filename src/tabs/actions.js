@@ -37,6 +37,18 @@ export const RESTORE_ITEM_DONE = 'TABS:RESTORE_ITEM_DONE';
 // Action creators
 ///
 
+export function submitUrlForm(formData) {
+	return {type: SUBMIT_URL_FORM, payload: formData};
+}
+
+export function submitTabsForm(tabsetId, formData) {
+	return {
+		type: SUBMIT_TABS_FORM,
+		payload: formData,
+		aux: {tabsetId: tabsetId},
+	};
+}
+
 export function getWebpageInfoStart(url) {
 	return {type: GET_WEBPAGE_INFO_START, payload: url};
 }
