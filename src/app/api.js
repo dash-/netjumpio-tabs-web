@@ -6,12 +6,18 @@ import Loopback from 'loopback-promised';
 
 
 ///
-// Default export
+// Configuration
 ///
 
-const instance = Loopback.createInstance({
-	baseURL: process.env.API_BASE_URL
-});
+const baseURL = process.env.API_BASE_URL;
+
+///
+// Exports
+///
+
+export {baseURL};
+
+const instance = Loopback.createInstance({baseURL});
 
 export default instance;
 
