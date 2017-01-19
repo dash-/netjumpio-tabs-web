@@ -65,6 +65,7 @@ const saveItem = (action$, store) => (
 				}).create(action.payload)
 			).flatMap(payload => Observable.concat(
 				Observable.of(formsActions.submitFormDone('people')),
+				Observable.of(formsActions.clearFormValues('people')),
 				Observable.of(actions.addItemDone(payload))
 			)).catch(error => (
 				Observable.of(actions.addItemFail(error, action))
