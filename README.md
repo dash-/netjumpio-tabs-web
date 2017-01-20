@@ -28,11 +28,51 @@ accountants, developers, and executives based on their roles, and know that no
 one has links to resources they shouldn't be attempting to access.
 
 
-## Use
+## Installation and Use
+
+From a root directory you'd like to install to, issue the following commands:
+
+```sh
+git clone git@github.com:dash-/netjumpio-tabs-web.git web
+git clone git@github.com:dash-/netjumpio-tabs-api.git api
+```
+
+In each of these directories, install the node packages:
+
+```sh
+npm install
+```
+
+Create local copies of the environmental files, and edit them appropriately.
+
+```sh
+cp web/env-example.sh ~/.tabs-web-env.sh
+cp api/env-example.sh ~/.tabs-api-env.sh
+```
+
+To run the API, from the `api` directory, run:
+
+```sh
+source ~/.tabs-web-env.sh
+node .
+```
+
+To run the webserver, from the `web` directory, run:
+
+```sh
+source ~/.tabs-api-env.sh
+npm start
+```
 
 
-## Installation
+## Testing
 
+There are currently 230 tests in 138 test suites.  Tests can be run from the
+`web` directory by issuing the command:
+
+```sh
+npm test
+```
 
 ## Architecture / Key Dependencies
 
@@ -55,7 +95,8 @@ one has links to resources they shouldn't be attempting to access.
 
 This project is managed in [Trello](https://trello.com/b/eOQPzm7e/client-dev),
 but feel free to submit issues or pull-requests on
-[Github](https://github.com/dash-/netjumpio-tabs-web).
+[Github](https://github.com/dash-/netjumpio-tabs-web).  Please ensure that all
+tests run successfully before submitting a pull request.
 
 Developers serious about contributing can even join the development team,
 although there are currently no paid positions.  Visit our [New Developer
