@@ -5,6 +5,7 @@
 import { fromJS } from 'immutable';
 import configureMockStore from 'redux-mock-store';
 import { ActionsObservable } from 'redux-observable';
+import rxjs from 'rxjs';
 
 import epic from '../epics';
 import * as actions from '../actions';
