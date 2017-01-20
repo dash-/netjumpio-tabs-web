@@ -13,10 +13,9 @@ solution to this ubiquitous business problem does not exist.
 
 Until now.
 
-TabSets from Netjump.io is not the first Bookmark Management solution, but it is
-the first Role-Based Bookmarking solution.  TabSets provides advanced tools for
-managing a complex directory of hyperlinks that exist within the enterprise,
-organizations, groups, and roles.
+TabSets from Netjump.io is the first Role-Based Bookmarking solution.  TabSets
+provides advanced tools for managing a complex directory of hyperlinks that
+exist within the enterprise, organizations, groups, and roles.
 
 Switching email web apps for your entire company? No problem. With TabSets, one
 link can be changed, and the entire organization's bookmarks will be updated.
@@ -83,11 +82,11 @@ npm test
   * Autoprefixer
   * ESLint
   * Jest
-* react-router
-* redux (or Cycle or mobX?)
-* less
+* redux
 * immutable, redux-immutable
-* rxjs@5.0.0-rc1, redux-observable
+* rxjs, redux-observable
+* react-router
+* less
 * bootstrap, bootstrap-webpack, react-bootstrap
 
 
